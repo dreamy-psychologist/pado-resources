@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>내성의 창 (Window of Tolerance) | 신경계 온도계</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #FDF8F3;
+      --warm-beige: #F5E6D3;
+      --soft-sage: #C5D4C0;
+      --calm-blue: #B8C9D4;
+      --dusty-rose: #E8D4D4;
+      --soft-lavender: #D4D4E8;
+      --deep-forest: #3D5A47;
+      --warm-brown: #8B7355;
+      --soft-charcoal: #4A4A4A;
+      
+      /* 온도 색상 */
+      --temp-hot: #E07A5F;
+      --temp-hot-light: #FDF0ED;
+      --temp-optimal: #5B8A72;
+      --temp-optimal-light: #EDF5F0;
+      --temp-cool: #6B8CAE;
+      --temp-cool-light: #EDF2F7;
+      
+      --hyper-gradient: linear-gradient(135deg, #FDF0ED 0%, #F8E1DC 50%, #FDF8F3 100%);
+      --optimal-gradient: linear-gradient(135deg, #EDF5F0 0%, #D8EBE0 50%, #F0F8F4 100%);
+      --hypo-gradient: linear-gradient(135deg, #EDF2F7 0%, #DCE5EF 50%, #F5F8FC 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--cream);
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(197, 212, 192, 0.4) 0%, transparent 100%);
+      border-radius: 30px;
+      position: relative;
+    }
+
+    .header::before {
+      content: '🌡️';
+      font-size: 48px;
+      display: block;
+      margin-bottom: 20px;
+      animation: gentle-pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes gentle-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .header h1 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .header .subtitle {
+      font-size: 1.1rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+    }
+
+    .header .tag {
+      display: inline-block;
+      background: var(--soft-sage);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-top: 12px;
+      color: var(--deep-forest);
+    }
+
+    /* Key Insight Box */
+    .key-insight {
+      background: linear-gradient(135deg, #fff 0%, var(--soft-sage) 100%);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 50px;
+      border-left: 5px solid var(--deep-forest);
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+
+    .key-insight h2 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.4rem;
+      color: var(--deep-forest);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .key-insight p {
+      font-size: 1rem;
+      line-height: 1.9;
+    }
+
+    .key-insight .highlight {
+      background: linear-gradient(180deg, transparent 60%, var(--soft-sage) 60%);
+      padding: 0 4px;
+      font-weight: 500;
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+      border: 1px solid rgba(139, 115, 85, 0.1);
+    }
+
+    .section-card h2 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.5rem;
+      color: var(--deep-forest);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-card > p {
+      font-size: 1rem;
+      color: var(--soft-charcoal);
+      margin-bottom: 16px;
+    }
+
+    .section-card .highlight {
+      background: linear-gradient(180deg, transparent 60%, var(--warm-beige) 60%);
+      padding: 0 4px;
+      font-weight: 500;
+    }
+
+    /* Zone Section */
+    .zone-section {
+      margin-bottom: 50px;
+    }
+
+    .zone-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .zone-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    .hyper .zone-icon { background: var(--temp-hot-light); }
+    .optimal .zone-icon { background: var(--temp-optimal-light); }
+    .hypo .zone-icon { background: var(--temp-cool-light); }
+
+    .zone-title {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    .hyper .zone-title { color: var(--temp-hot); }
+    .optimal .zone-title { color: var(--temp-optimal); }
+    .hypo .zone-title { color: var(--temp-cool); }
+
+    .zone-subtitle {
+      font-size: 0.95rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+    }
+
+    /* Explanation Cards */
+    .explanation-card {
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .hyper .explanation-card { background: var(--hyper-gradient); border: 1px solid rgba(224, 122, 95, 0.2); }
+    .optimal .explanation-card { background: var(--optimal-gradient); border: 1px solid rgba(91, 138, 114, 0.2); }
+    .hypo .explanation-card { background: var(--hypo-gradient); border: 1px solid rgba(107, 140, 174, 0.2); }
+
+    .explanation-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .explanation-card p {
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    /* Symptom Tags */
+    .symptom-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .symptom-tag {
+      padding: 10px 16px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      cursor: default;
+    }
+
+    .hyper .symptom-tag {
+      background: rgba(224, 122, 95, 0.15);
+      color: #9A4F3A;
+    }
+    .hyper .symptom-tag:hover {
+      background: rgba(224, 122, 95, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .optimal .symptom-tag {
+      background: rgba(91, 138, 114, 0.15);
+      color: #3D5A47;
+    }
+    .optimal .symptom-tag:hover {
+      background: rgba(91, 138, 114, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .hypo .symptom-tag {
+      background: rgba(107, 140, 174, 0.15);
+      color: #4A6B8A;
+    }
+    .hypo .symptom-tag:hover {
+      background: rgba(107, 140, 174, 0.25);
+      transform: translateY(-2px);
+    }
+
+    /* Strategy Box */
+    .strategy-box {
+      background: white;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .hyper .strategy-box { border-left: 4px solid var(--temp-hot); }
+    .optimal .strategy-box { border-left: 4px solid var(--temp-optimal); }
+    .hypo .strategy-box { border-left: 4px solid var(--temp-cool); }
+
+    .strategy-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .strategy-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .strategy-item {
+      background: var(--cream);
+      padding: 10px 16px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .hyper .strategy-item:hover { background: var(--temp-hot-light); }
+    .optimal .strategy-item:hover { background: var(--temp-optimal-light); }
+    .hypo .strategy-item:hover { background: var(--temp-cool-light); }
+
+    /* Interactive Thermometer Section */
+    .thermometer-section {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+      border: 1px solid rgba(139, 115, 85, 0.1);
+    }
+
+    .thermometer-section h2 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.5rem;
+      color: var(--deep-forest);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .thermometer-section > p {
+      text-align: center;
+      color: var(--warm-brown);
+      font-size: 0.95rem;
+      margin-bottom: 32px;
+    }
+
+    .thermometer-container {
+      display: flex;
+      gap: 40px;
+      align-items: stretch;
+    }
+
+    .thermometer-visual {
+      width: 140px;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .thermometer-svg {
+      width: 120px;
+      height: 400px;
+    }
+
+    .thermometer-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .info-card {
+      border-radius: 16px;
+      padding: 20px 24px;
+      transition: all 0.3s ease;
+      opacity: 0.5;
+      transform: scale(0.98);
+    }
+
+    .info-card.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .info-card.hyper-card {
+      background: var(--temp-hot-light);
+      border-left: 4px solid var(--temp-hot);
+    }
+
+    .info-card.optimal-card {
+      background: var(--temp-optimal-light);
+      border-left: 4px solid var(--temp-optimal);
+      flex: 1.3;
+    }
+
+    .info-card.hypo-card {
+      background: var(--temp-cool-light);
+      border-left: 4px solid var(--temp-cool);
+    }
+
+    .info-card h4 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .info-card.hyper-card h4 { color: var(--temp-hot); }
+    .info-card.optimal-card h4 { color: var(--temp-optimal); }
+    .info-card.hypo-card h4 { color: var(--temp-cool); }
+
+    .info-card p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin: 0;
+      color: var(--soft-charcoal);
+    }
+
+    /* Slider Area */
+    .slider-area {
+      margin-top: 32px;
+      padding: 28px;
+      background: var(--cream);
+      border-radius: 20px;
+    }
+
+    .slider-label {
+      text-align: center;
+      font-size: 1rem;
+      color: var(--soft-charcoal);
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    .slider-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .slider-wrapper span {
+      font-size: 28px;
+    }
+
+    #temp-slider {
+      flex: 1;
+      height: 14px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: linear-gradient(to right, 
+        var(--temp-cool) 0%, 
+        var(--temp-cool) 16.7%,
+        var(--temp-optimal) 30%, 
+        var(--temp-optimal) 70%, 
+        var(--temp-hot) 83.3%,
+        var(--temp-hot) 100%
+      );
+      border-radius: 7px;
+      outline: none;
+    }
+
+    #temp-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 32px;
+      height: 32px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+      cursor: pointer;
+      border: 4px solid var(--temp-optimal);
+    }
+
+    #temp-slider::-moz-range-thumb {
+      width: 32px;
+      height: 32px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+      cursor: pointer;
+      border: 4px solid var(--temp-optimal);
+    }
+
+    .temp-display {
+      text-align: center;
+      margin-top: 28px;
+    }
+
+    .temp-value {
+      font-size: 56px;
+      font-weight: 700;
+      font-family: 'Gowun Batang', serif;
+      transition: color 0.3s;
+    }
+
+    .temp-status {
+      font-size: 1.15rem;
+      margin-top: 10px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    /* Benefits Section */
+    .benefits-section {
+      background: linear-gradient(135deg, var(--calm-blue) 0%, var(--soft-sage) 100%);
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      color: var(--deep-forest);
+    }
+
+    .benefits-section h2 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.5rem;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .benefit-card {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 28px;
+      border-radius: 20px;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--deep-forest);
+    }
+
+    .benefit-card p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--soft-charcoal);
+    }
+
+    .benefit-card .example {
+      background: rgba(61, 90, 71, 0.1);
+      padding: 14px 18px;
+      border-radius: 12px;
+      margin-top: 16px;
+      font-size: 0.9rem;
+    }
+
+    .benefit-card .example strong {
+      color: var(--deep-forest);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* Communication Section */
+    .comm-section {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      border: 2px dashed var(--soft-sage);
+    }
+
+    .comm-section h2 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.5rem;
+      color: var(--deep-forest);
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .comm-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .comm-item {
+      background: var(--cream);
+      padding: 24px;
+      border-radius: 16px;
+    }
+
+    .comm-item h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--deep-forest);
+    }
+
+    .comm-examples {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .comm-example {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .comm-label {
+      flex-shrink: 0;
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .comm-label.before {
+      background: var(--dusty-rose);
+      color: #8B5A5A;
+    }
+
+    .comm-label.after {
+      background: var(--soft-sage);
+      color: var(--deep-forest);
+    }
+
+    .comm-text {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Tips Section */
+    .tips {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+
+    .tips h2 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.5rem;
+      color: var(--deep-forest);
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .tips-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .tip-item {
+      background: var(--cream);
+      padding: 20px 24px;
+      border-radius: 14px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .tip-number {
+      background: var(--deep-forest);
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .tip-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .tip-text strong {
+      color: var(--deep-forest);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      color: var(--warm-brown);
+      font-size: 0.9rem;
+    }
+
+    .footer .thermo {
+      display: inline-block;
+      animation: gentle-pulse 3s ease-in-out infinite;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .thermometer-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .thermometer-visual {
+        width: 160px;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .header h1 {
+        font-size: 2rem;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+      }
+      .container {
+        max-width: 100%;
+        padding: 20px;
+      }
+      .header::before,
+      .footer .thermo {
+        animation: none;
+      }
+      .symptom-tag:hover,
+      .strategy-item:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header">
+      <h1>내성의 창</h1>
+      <p class="subtitle">Window of Tolerance</p>
+      <span class="tag">신경계 온도계로 나를 이해하기</span>
+    </header>
+
+    <!-- Key Insight -->
+    <section class="key-insight">
+      <h2>💡 핵심 이해</h2>
+      <p>
+        우리 신경계에는 <span class="highlight">"최적의 기능 구간"</span>이 있습니다.<br><br>
+        마치 체온이 36.5도일 때 몸이 가장 잘 작동하는 것처럼,
+        신경계도 <strong>특정 범위 안에 있을 때</strong> 감정을 조절하고, 명확하게 생각하고, 
+        다른 사람과 연결될 수 있어요.<br><br>
+        이 최적의 구간을 <span class="highlight">"내성의 창 (Window of Tolerance)"</span>이라고 부릅니다.<br>
+        Dan Siegel 박사가 만든 이 개념은, 스트레스와 감정이 우리 신경계에 
+        어떤 영향을 미치는지 이해하는 데 핵심적인 도구예요.
+      </p>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="section-card">
+      <h2>🌡️ 온도계로 이해하기</h2>
+      <p>
+        신경계의 상태를 <strong>체온</strong>으로 비유하면 직관적으로 이해할 수 있어요.<br>
+        36.5도가 정상 체온인 것처럼, 우리 신경계에도 "적정 온도"가 있습니다.
+      </p>
+      <p>
+        <strong>38° 이상 — 과각성</strong>: 신경계가 과열된 상태 (불안, 공황, 분노)<br>
+        <strong>36.5° 근처 — 내성의 창</strong>: 최적의 기능 상태 (편안, 명확, 연결)<br>
+        <strong>35° 이하 — 저각성</strong>: 신경계가 냉각된 상태 (무감각, 멍함, 해리)
+      </p>
+      <p>
+        온도를 알면 <span class="highlight">내가 지금 어떤 상태인지</span>, 
+        <span class="highlight">뭘 해야 하는지</span>가 명확해져요.
+      </p>
+    </section>
+
+    <!-- Hyperarousal Zone -->
+    <section class="zone-section hyper">
+      <div class="zone-header">
+        <div class="zone-icon">🔥</div>
+        <div>
+          <h2 class="zone-title">과각성 Hyperarousal</h2>
+          <p class="zone-subtitle">38° 이상 — 신경계 과열</p>
+        </div>
+      </div>
+
+      <div class="explanation-card">
+        <h3>🧠 무슨 상태인가요?</h3>
+        <p>
+          신경계가 <strong>"위험하다!"</strong>고 판단해서 <strong>투쟁-도피(Fight-Flight)</strong> 모드가 켜진 상태예요.
+          실제로 위험하지 않아도, 몸은 위험에 대비하고 있어요.<br><br>
+          교감신경이 과활성화되어 심장이 빨리 뛰고, 근육이 긴장하고, 
+          호흡이 얕아지고, 생각이 빨라집니다.
+        </p>
+      </div>
+
+      <div class="symptom-grid">
+        <span class="symptom-tag">불안</span>
+        <span class="symptom-tag">공황</span>
+        <span class="symptom-tag">분노</span>
+        <span class="symptom-tag">과잉경계</span>
+        <span class="symptom-tag">심장 빨리 뜀</span>
+        <span class="symptom-tag">근육 긴장</span>
+        <span class="symptom-tag">얕은 호흡</span>
+        <span class="symptom-tag">수면 어려움</span>
+        <span class="symptom-tag">예민함</span>
+        <span class="symptom-tag">통제 불능 느낌</span>
+        <span class="symptom-tag">생각 과속</span>
+        <span class="symptom-tag">쉽게 놀람</span>
+      </div>
+
+      <div class="strategy-box">
+        <h4 class="strategy-title">💡 온도 낮추기 (진정 전략)</h4>
+        <div class="strategy-items">
+          <span class="strategy-item">느린 호흡 (들숨 4초, 날숨 6초)</span>
+          <span class="strategy-item">차가운 물로 세수</span>
+          <span class="strategy-item">5-4-3-2-1 그라운딩</span>
+          <span class="strategy-item">무거운 이불 덮기</span>
+          <span class="strategy-item">발바닥 바닥에 붙이기</span>
+          <span class="strategy-item">낮은 조명/어두운 방</span>
+          <span class="strategy-item">자극 줄이기 (소리, 빛)</span>
+          <span class="strategy-item">양손 심장에 대기</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Window of Tolerance Zone -->
+    <section class="zone-section optimal">
+      <div class="zone-header">
+        <div class="zone-icon">✨</div>
+        <div>
+          <h2 class="zone-title">내성의 창 Window of Tolerance</h2>
+          <p class="zone-subtitle">36.5° 근처 — 최적의 기능 상태</p>
+        </div>
+      </div>
+
+      <div class="explanation-card">
+        <h3>🧠 무슨 상태인가요?</h3>
+        <p>
+          신경계가 <strong>"안전하다"</strong>고 느끼는 상태예요.
+          감정을 느끼면서도 조절할 수 있고, 생각이 명확하고, 다른 사람과 연결될 수 있어요.<br><br>
+          교감신경과 부교감신경이 균형을 이루고 있어서, 
+          <strong>학습, 성장, 관계 형성</strong>이 가능한 상태입니다.
+          이 구간 안에서는 스트레스를 받아도 빠르게 회복할 수 있어요.
+        </p>
+      </div>
+
+      <div class="symptom-grid">
+        <span class="symptom-tag">편안함</span>
+        <span class="symptom-tag">명확한 사고</span>
+        <span class="symptom-tag">감정 조절 가능</span>
+        <span class="symptom-tag">현재에 집중</span>
+        <span class="symptom-tag">호기심</span>
+        <span class="symptom-tag">유연한 반응</span>
+        <span class="symptom-tag">사회적 연결</span>
+        <span class="symptom-tag">공감 가능</span>
+        <span class="symptom-tag">문제 해결 가능</span>
+        <span class="symptom-tag">신체 인식</span>
+        <span class="symptom-tag">회복 탄력성</span>
+      </div>
+
+      <div class="strategy-box">
+        <h4 class="strategy-title">✓ 이 상태를 유지하려면</h4>
+        <div class="strategy-items">
+          <span class="strategy-item">규칙적인 수면</span>
+          <span class="strategy-item">적절한 운동</span>
+          <span class="strategy-item">사회적 연결</span>
+          <span class="strategy-item">예측 가능한 루틴</span>
+          <span class="strategy-item">자기 돌봄 시간</span>
+          <span class="strategy-item">안전한 환경 만들기</span>
+          <span class="strategy-item">한계 전에 쉬기</span>
+          <span class="strategy-item">즐거운 활동 유지</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hypoarousal Zone -->
+    <section class="zone-section hypo">
+      <div class="zone-header">
+        <div class="zone-icon">❄️</div>
+        <div>
+          <h2 class="zone-title">저각성 Hypoarousal</h2>
+          <p class="zone-subtitle">35° 이하 — 신경계 냉각</p>
+        </div>
+      </div>
+
+      <div class="explanation-card">
+        <h3>🧠 무슨 상태인가요?</h3>
+        <p>
+          신경계가 <strong>"너무 압도적이다"</strong>고 판단해서 <strong>동결(Freeze)</strong> 모드로 들어간 상태예요.
+          몸과 마음이 "셧다운"되어 보호 모드에 들어갑니다.<br><br>
+          등쪽 미주신경(dorsal vagal)이 활성화되어 
+          에너지를 보존하고 자극으로부터 "숨는" 반응이에요.
+        </p>
+      </div>
+
+      <div class="symptom-grid">
+        <span class="symptom-tag">무감각</span>
+        <span class="symptom-tag">해리</span>
+        <span class="symptom-tag">멍함</span>
+        <span class="symptom-tag">무기력</span>
+        <span class="symptom-tag">에너지 없음</span>
+        <span class="symptom-tag">연결 안 됨</span>
+        <span class="symptom-tag">느린 반응</span>
+        <span class="symptom-tag">기억 어려움</span>
+        <span class="symptom-tag">몸이 무거움</span>
+        <span class="symptom-tag">말하기 어려움</span>
+        <span class="symptom-tag">텅 빈 느낌</span>
+        <span class="symptom-tag">시간 왜곡</span>
+      </div>
+
+      <div class="strategy-box">
+        <h4 class="strategy-title">💡 온도 올리기 (활성화 전략)</h4>
+        <div class="strategy-items">
+          <span class="strategy-item">가벼운 스트레칭</span>
+          <span class="strategy-item">찬물 마시기/세수</span>
+          <span class="strategy-item">밝은 빛 쬐기</span>
+          <span class="strategy-item">발바닥으로 바닥 느끼기</span>
+          <span class="strategy-item">아삭한 음식 먹기</span>
+          <span class="strategy-item">신맛 느끼기</span>
+          <span class="strategy-item">가벼운 움직임</span>
+          <span class="strategy-item">큰 소리로 노래하기</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Thermometer -->
+    <section class="thermometer-section">
+      <h2>🌡️ 지금 내 신경계 온도는?</h2>
+      <p>슬라이더를 움직여서 지금 내 상태를 확인해보세요</p>
+
+      <div class="thermometer-container">
+        
+        <div class="thermometer-visual">
+          <svg class="thermometer-svg" viewBox="0 0 120 400">
+            <!-- 온도계 외곽 -->
+            <rect x="40" y="20" width="40" height="280" rx="20" fill="#F5F5F4" stroke="#D6D3D1" stroke-width="2"/>
+            
+            <!-- 온도 채움 -->
+            <clipPath id="thermo-clip">
+              <rect x="44" y="24" width="32" height="272" rx="16"/>
+            </clipPath>
+            
+            <g clip-path="url(#thermo-clip)">
+              <!-- 과각성 영역 -->
+              <rect x="44" y="24" width="32" height="70" fill="#E07A5F"/>
+              <rect x="44" y="94" width="32" height="30" fill="#E8A090"/>
+              <!-- 내성의 창 -->
+              <rect x="44" y="124" width="32" height="100" fill="#5B8A72"/>
+              <!-- 저각성 영역 -->
+              <rect x="44" y="224" width="32" height="30" fill="#8FAEC4"/>
+              <rect x="44" y="254" width="32" height="42" fill="#6B8CAE"/>
+            </g>
+            
+            <!-- 현재 온도 마커 -->
+            <g id="temp-marker">
+              <polygon id="marker-arrow" points="85,174 108,162 108,186" fill="#5B8A72"/>
+              <rect id="marker-line" x="44" y="172" width="32" height="4" fill="white" rx="2"/>
+            </g>
+            
+            <!-- 온도계 구슬 -->
+            <circle cx="60" cy="340" r="38" fill="#F5F5F4" stroke="#D6D3D1" stroke-width="2"/>
+            <circle id="bulb-fill" cx="60" cy="340" r="30" fill="#5B8A72"/>
+            
+            <!-- 눈금 및 레이블 -->
+            <g font-family="'Noto Sans KR', sans-serif" font-size="11" fill="#8B7355">
+              <line x1="82" y1="44" x2="92" y2="44" stroke="#A8A29E" stroke-width="1.5"/>
+              <text x="96" y="48">40°</text>
+              
+              <line x1="82" y1="94" x2="92" y2="94" stroke="#A8A29E" stroke-width="1.5"/>
+              <text x="96" y="98">38°</text>
+              
+              <line x1="82" y1="174" x2="95" y2="174" stroke="#5B8A72" stroke-width="2"/>
+              <text x="96" y="178" fill="#5B8A72" font-weight="600" font-size="12">36.5°</text>
+              
+              <line x1="82" y1="239" x2="92" y2="239" stroke="#A8A29E" stroke-width="1.5"/>
+              <text x="96" y="243">35°</text>
+              
+              <line x1="82" y1="284" x2="92" y2="284" stroke="#A8A29E" stroke-width="1.5"/>
+              <text x="96" y="288">34°</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="thermometer-info">
+          <div class="info-card hyper-card" id="card-hyper">
+            <h4>🔥 과각성 (38° 이상)</h4>
+            <p>불안, 공황, 분노, 심장이 빨리 뜀<br>투쟁-도피 모드가 활성화된 상태</p>
+          </div>
+          <div class="info-card optimal-card active" id="card-optimal">
+            <h4>✨ 내성의 창 (36.5° 근처)</h4>
+            <p>편안함, 명확한 사고, 감정 조절 가능<br>현재에 집중하고 연결될 수 있는 상태</p>
+          </div>
+          <div class="info-card hypo-card" id="card-hypo">
+            <h4>❄️ 저각성 (35° 이하)</h4>
+            <p>무감각, 해리, 멍함, 에너지 없음<br>동결 모드가 활성화된 상태</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="slider-area">
+        <p class="slider-label">지금 내 상태를 슬라이더로 표시해보세요</p>
+        <div class="slider-wrapper">
+          <span>❄️</span>
+          <input type="range" min="34" max="40" step="0.5" value="36.5" id="temp-slider" oninput="updateTemp(this.value)">
+          <span>🔥</span>
+        </div>
+        <div class="temp-display">
+          <div class="temp-value" id="temp-value" style="color: #5B8A72;">36.5°</div>
+          <div class="temp-status" id="temp-status" style="color: #3D5A47;">내성의 창 안에 있어요</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+      <h2>🌿 이걸 알면 좋은 점</h2>
+      <div class="benefits-grid">
+        
+        <div class="benefit-card">
+          <h3>🪞 나를 더 잘 이해할 수 있어요</h3>
+          <p>
+            "왜 갑자기 화가 났지?", "왜 아무것도 하기 싫지?" 같은 
+            내 반응이 이해되기 시작해요.<br><br>
+            그건 "내 성격 문제"가 아니라, 
+            <strong>신경계가 조절을 시도하는 것</strong>이었어요.
+          </p>
+          <div class="example">
+            <strong>예시</strong>
+            "아, 지금 38도쯤이구나. 신경계가 과열됐네. 
+            내가 예민한 게 아니라 조절이 필요한 거구나."
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <h3>💬 상대방에게 전달하기 쉬워요</h3>
+          <p>
+            복잡한 감정 상태를 <strong>"온도"로 표현</strong>하면 
+            상대방도 이해하기 쉬워요.<br><br>
+            "화났어"보다 "지금 38도야"가 
+            더 중립적이고 명확하게 전달돼요.
+          </p>
+          <div class="example">
+            <strong>예시</strong>
+            "지금 나 34도쯤이라 대화가 잘 안 될 것 같아. 
+            30분 후에 다시 이야기해도 될까?"
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <h3>🛠️ 필요한 대처를 찾을 수 있어요</h3>
+          <p>
+            온도에 따라 <strong>다른 전략</strong>이 필요해요.<br><br>
+            과열되면 → 식히기 (진정)<br>
+            냉각되면 → 데우기 (활성화)<br><br>
+            방향을 알면 뭘 해야 할지 명확해져요.
+          </p>
+          <div class="example">
+            <strong>예시</strong>
+            "35도라서 무기력한 거구나. 
+            가만히 있는 게 아니라 가벼운 움직임이 필요하겠다."
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Communication Guide -->
+    <section class="comm-section">
+      <h2>💬 온도로 커뮤니케이션하기</h2>
+      <div class="comm-grid">
+        
+        <div class="comm-item">
+          <h3>🔥 과각성 상태일 때</h3>
+          <div class="comm-examples">
+            <div class="comm-example">
+              <span class="comm-label before">전</span>
+              <span class="comm-text">"지금 너무 짜증나서 대화 못 해!"</span>
+            </div>
+            <div class="comm-example">
+              <span class="comm-label after">후</span>
+              <span class="comm-text">"지금 38도쯤이야. 10분만 진정할 시간이 필요해."</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="comm-item">
+          <h3>❄️ 저각성 상태일 때</h3>
+          <div class="comm-examples">
+            <div class="comm-example">
+              <span class="comm-label before">전</span>
+              <span class="comm-text">"몰라, 아무것도 하기 싫어."</span>
+            </div>
+            <div class="comm-example">
+              <span class="comm-label after">후</span>
+              <span class="comm-text">"지금 34도 정도라 반응이 느려. 중요한 결정은 나중에 하자."</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="comm-item">
+          <h3>🤝 상대방에게 도움 요청할 때</h3>
+          <div class="comm-examples">
+            <div class="comm-example">
+              <span class="comm-label before">전</span>
+              <span class="comm-text">"왜 이렇게 힘들지..."</span>
+            </div>
+            <div class="comm-example">
+              <span class="comm-label after">후</span>
+              <span class="comm-text">"지금 온도가 높아서 옆에 같이 있어주면 좋겠어."</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="comm-item">
+          <h3>👨‍👩‍👧 가족/파트너와 공유할 때</h3>
+          <div class="comm-examples">
+            <div class="comm-example">
+              <span class="comm-label before">전</span>
+              <span class="comm-text">"오늘 컨디션 안 좋아."</span>
+            </div>
+            <div class="comm-example">
+              <span class="comm-label after">후</span>
+              <span class="comm-text">"오늘 35도쯤에서 시작했어. 저녁때 좀 올라왔으면 좋겠다."</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="tips">
+      <h2>🌱 기억해두면 좋은 것들</h2>
+      <div class="tips-grid">
+        <div class="tip-item">
+          <span class="tip-number">1</span>
+          <p class="tip-text">
+            <strong>내성의 창은 고정된 게 아니에요.</strong><br>
+            수면 부족, 스트레스, 트라우마 리마인더 등에 따라 
+            좁아지기도 하고, 안전한 환경에서는 넓어지기도 해요.
+          </p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-number">2</span>
+          <p class="tip-text">
+            <strong>창 밖으로 나가는 건 "나쁜 것"이 아니에요.</strong><br>
+            그건 신경계가 자기를 보호하려는 자연스러운 반응이에요.
+            자신을 탓하지 말고, "아, 지금 조절이 필요하구나" 하고 인식하면 돼요.
+          </p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-number">3</span>
+          <p class="tip-text">
+            <strong>한계에 도달하기 전에 알아차리세요.</strong><br>
+            "아직 괜찮아"가 아니라 "좀 피곤한 것 같아"일 때 
+            미리 조절하는 게 멜트다운을 예방하는 가장 좋은 방법이에요.
+          </p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-number">4</span>
+          <p class="tip-text">
+            <strong>공동조절(Co-regulation)의 힘을 믿으세요.</strong><br>
+            안전한 사람과 함께 있는 것만으로도 신경계가 안정될 수 있어요.
+            혼자 조절해야 한다는 부담을 내려놓으세요.
+          </p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-number">5</span>
+          <p class="tip-text">
+            <strong>연습하면 창이 넓어질 수 있어요.</strong><br>
+            마음챙김, 호흡 연습, 신체 감각 인식(바디스캔) 등을 
+            꾸준히 하면 더 많은 감정을 견딜 수 있는 힘이 생겨요.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>당신의 신경계는 당신을 보호하려고 최선을 다하고 있어요.</p>
+      <p>그 신호를 읽고, 필요한 것을 채워주세요. <span class="thermo">🌡️</span></p>
+      <p style="margin-top: 24px; font-size: 0.85rem; color: #8B7355;">
+        <strong>PADO Psychological Wellness</strong><br>
+        Dr. Yeji Son
+      </p>
+    </footer>
+
+  </div>
+
+  <script>
+    function updateTemp(value) {
+      const temp = parseFloat(value);
+      const tempValue = document.getElementById('temp-value');
+      const tempStatus = document.getElementById('temp-status');
+      const marker = document.getElementById('marker-arrow');
+      const markerLine = document.getElementById('marker-line');
+      const bulb = document.getElementById('bulb-fill');
+      
+      const cardHyper = document.getElementById('card-hyper');
+      const cardOptimal = document.getElementById('card-optimal');
+      const cardHypo = document.getElementById('card-hypo');
+      
+      // 온도 -> Y 위치 변환 (40도=44, 34도=284)
+      const y = 44 + (40 - temp) * (240 / 6);
+      
+      marker.setAttribute('points', `85,${y} 108,${y-12} 108,${y+12}`);
+      markerLine.setAttribute('y', y - 2);
+      
+      tempValue.textContent = temp.toFixed(1) + '°';
+      
+      // 카드 초기화
+      cardHyper.classList.remove('active');
+      cardOptimal.classList.remove('active');
+      cardHypo.classList.remove('active');
+      
+      // 색상 변수
+      const colorHot = '#E07A5F';
+      const colorOptimal = '#5B8A72';
+      const colorCool = '#6B8CAE';
+      
+      let thumbColor;
+      let markerColor;
+      
+      // 상태별 스타일링
+      if (temp >= 38) {
+        // 과각성
+        tempValue.style.color = colorHot;
+        tempStatus.style.color = '#9A4F3A';
+        tempStatus.textContent = '과각성 상태 — 신경계가 과열되어 있어요';
+        bulb.setAttribute('fill', colorHot);
+        thumbColor = colorHot;
+        markerColor = colorHot;
+        cardHyper.classList.add('active');
+      } else if (temp <= 35) {
+        // 저각성
+        tempValue.style.color = colorCool;
+        tempStatus.style.color = '#4A6B8A';
+        tempStatus.textContent = '저각성 상태 — 신경계가 너무 차가워요';
+        bulb.setAttribute('fill', colorCool);
+        thumbColor = colorCool;
+        markerColor = colorCool;
+        cardHypo.classList.add('active');
+      } else {
+        // 내성의 창
+        tempValue.style.color = colorOptimal;
+        tempStatus.style.color = '#3D5A47';
+        tempStatus.textContent = '내성의 창 안에 있어요';
+        bulb.setAttribute('fill', colorOptimal);
+        thumbColor = colorOptimal;
+        markerColor = colorOptimal;
+        cardOptimal.classList.add('active');
+      }
+      
+      // 마커 색상 업데이트
+      marker.setAttribute('fill', markerColor);
+      
+      // 동적으로 슬라이더 썸 스타일 업데이트
+      const styleId = 'dynamic-slider-style';
+      let styleEl = document.getElementById(styleId);
+      if (!styleEl) {
+        styleEl = document.createElement('style');
+        styleEl.id = styleId;
+        document.head.appendChild(styleEl);
+      }
+      styleEl.textContent = `
+        #temp-slider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 32px;
+          height: 32px;
+          background: white;
+          border-radius: 50%;
+          box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+          cursor: pointer;
+          border: 4px solid ${thumbColor};
+        }
+        #temp-slider::-moz-range-thumb {
+          width: 32px;
+          height: 32px;
+          background: white;
+          border-radius: 50%;
+          box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+          cursor: pointer;
+          border: 4px solid ${thumbColor};
+        }
+      `;
+    }
+    
+    // 초기화
+    document.addEventListener('DOMContentLoaded', function() {
+      updateTemp(36.5);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Window of Tolerance | Your Nervous System Thermometer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #FDF8F3;
+      --warm-beige: #F5E6D3;
+      --soft-sage: #C5D4C0;
+      --calm-blue: #B8C9D4;
+      --dusty-rose: #E8D4D4;
+      --soft-lavender: #D4D4E8;
+      --deep-forest: #3D5A47;
+      --warm-brown: #8B7355;
+      --soft-charcoal: #4A4A4A;
+      
+      /* Temperature colors */
+      --temp-hot: #E07A5F;
+      --temp-hot-light: #FDF0ED;
+      --temp-optimal: #5B8A72;
+      --temp-optimal-light: #EDF5F0;
+      --temp-cool: #6B8CAE;
+      --temp-cool-light: #EDF2F7;
+      
+      --hyper-gradient: linear-gradient(135deg, #FDF0ED 0%, #F8E1DC 50%, #FDF8F3 100%);
+      --optimal-gradient: linear-gradient(135deg, #EDF5F0 0%, #D8EBE0 50%, #F0F8F4 100%);
+      --hypo-gradient: linear-gradient(135deg, #EDF2F7 0%, #DCE5EF 50%, #F5F8FC 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      background: var(--cream);
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(197, 212, 192, 0.4) 0%, transparent 100%);
+      border-radius: 30px;
+      position: relative;
+    }
+
+    .header::before {
+      content: '🌡️';
+      font-size: 48px;
+      display: block;
+      margin-bottom: 20px;
+      animation: gentle-pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes gentle-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .header .subtitle {
+      font-size: 1.1rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+    }
+
+    .header .tag {
+      display: inline-block;
+      background: var(--soft-sage);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-top: 12px;
+      color: var(--deep-forest);
+    }
+
+    /* Key Insight Box */
+    .key-insight {
+      background: linear-gradient(135deg, #fff 0%, var(--soft-sage) 100%);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 50px;
+      border-left: 5px solid var(--deep-forest);
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+
+    .key-insight h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--deep-forest);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .key-insight p {
+      font-size: 1rem;
+      line-height: 1.9;
+    }
+
+    .key-insight .highlight {
+      background: linear-gradient(180deg, transparent 60%, var(--soft-sage) 60%);
+      padding: 0 4px;
+      font-weight: 500;
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+      border: 1px solid rgba(139, 115, 85, 0.1);
+    }
+
+    .section-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--deep-forest);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-card > p {
+      font-size: 1rem;
+      color: var(--soft-charcoal);
+      margin-bottom: 16px;
+    }
+
+    .section-card .highlight {
+      background: linear-gradient(180deg, transparent 60%, var(--warm-beige) 60%);
+      padding: 0 4px;
+      font-weight: 500;
+    }
+
+    /* Zone Section */
+    .zone-section {
+      margin-bottom: 50px;
+    }
+
+    .zone-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .zone-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    .hyper .zone-icon { background: var(--temp-hot-light); }
+    .optimal .zone-icon { background: var(--temp-optimal-light); }
+    .hypo .zone-icon { background: var(--temp-cool-light); }
+
+    .zone-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+    }
+
+    .hyper .zone-title { color: var(--temp-hot); }
+    .optimal .zone-title { color: var(--temp-optimal); }
+    .hypo .zone-title { color: var(--temp-cool); }
+
+    .zone-subtitle {
+      font-size: 0.95rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+    }
+
+    /* Explanation Cards */
+    .explanation-card {
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .hyper .explanation-card { background: var(--hyper-gradient); border: 1px solid rgba(224, 122, 95, 0.2); }
+    .optimal .explanation-card { background: var(--optimal-gradient); border: 1px solid rgba(91, 138, 114, 0.2); }
+    .hypo .explanation-card { background: var(--hypo-gradient); border: 1px solid rgba(107, 140, 174, 0.2); }
+
+    .explanation-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .explanation-card p {
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    /* Symptom Tags */
+    .symptom-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .symptom-tag {
+      padding: 10px 16px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      cursor: default;
+    }
+
+    .hyper .symptom-tag {
+      background: rgba(224, 122, 95, 0.15);
+      color: #9A4F3A;
+    }
+    .hyper .symptom-tag:hover {
+      background: rgba(224, 122, 95, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .optimal .symptom-tag {
+      background: rgba(91, 138, 114, 0.15);
+      color: #3D5A47;
+    }
+    .optimal .symptom-tag:hover {
+      background: rgba(91, 138, 114, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .hypo .symptom-tag {
+      background: rgba(107, 140, 174, 0.15);
+      color: #4A6B8A;
+    }
+    .hypo .symptom-tag:hover {
+      background: rgba(107, 140, 174, 0.25);
+      transform: translateY(-2px);
+    }
+
+    /* Strategy Box */
+    .strategy-box {
+      background: white;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .hyper .strategy-box { border-left: 4px solid var(--temp-hot); }
+    .optimal .strategy-box { border-left: 4px solid var(--temp-optimal); }
+    .hypo .strategy-box { border-left: 4px solid var(--temp-cool); }
+
+    .strategy-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .strategy-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .strategy-item {
+      background: var(--cream);
+      padding: 10px 16px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .hyper .strategy-item:hover { background: var(--temp-hot-light); }
+    .optimal .strategy-item:hover { background: var(--temp-optimal-light); }
+    .hypo .strategy-item:hover { background: var(--temp-cool-light); }
+
+    /* Interactive Thermometer Section */
+    .thermometer-section {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+      border: 1px solid rgba(139, 115, 85, 0.1);
+    }
+
+    .thermometer-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--deep-forest);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .thermometer-section > p {
+      text-align: center;
+      color: var(--warm-brown);
+      font-size: 0.95rem;
+      margin-bottom: 32px;
+    }
+
+    .thermometer-container {
+      display: flex;
+      gap: 40px;
+      align-items: stretch;
+    }
+
+    .thermometer-visual {
+      width: 140px;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .thermometer-svg {
+      width: 120px;
+      height: 400px;
+    }
+
+    .thermometer-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .info-card {
+      border-radius: 16px;
+      padding: 20px 24px;
+      transition: all 0.3s ease;
+      opacity: 0.5;
+      transform: scale(0.98);
+    }
+
+    .info-card.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .info-card.hyper-card {
+      background: var(--temp-hot-light);
+      border-left: 4px solid var(--temp-hot);
+    }
+
+    .info-card.optimal-card {
+      background: var(--temp-optimal-light);
+      border-left: 4px solid var(--temp-optimal);
+      flex: 1.3;
+    }
+
+    .info-card.hypo-card {
+      background: var(--temp-cool-light);
+      border-left: 4px solid var(--temp-cool);
+    }
+
+    .info-card h4 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .info-card.hyper-card h4 { color: var(--temp-hot); }
+    .info-card.optimal-card h4 { color: var(--temp-optimal); }
+    .info-card.hypo-card h4 { color: var(--temp-cool); }
+
+    .info-card p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin: 0;
+      color: var(--soft-charcoal);
+    }
+
+    /* Slider Area */
+    .slider-area {
+      margin-top: 32px;
+      padding: 28px;
+      background: var(--cream);
+      border-radius: 20px;
+    }
+
+    .slider-label {
+      text-align: center;
+      font-size: 1rem;
+      color: var(--soft-charcoal);
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    .slider-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .slider-wrapper span {
+      font-size: 28px;
+    }
+
+    #temp-slider {
+      flex: 1;
+      height: 14px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: linear-gradient(to right, 
+        var(--temp-cool) 0%, 
+        var(--temp-cool) 16.7%,
+        var(--temp-optimal) 30%, 
+        var(--temp-optimal) 70%, 
+        var(--temp-hot) 83.3%,
+        var(--temp-hot) 100%
+      );
+      border-radius: 7px;
+      outline: none;
+    }
+
+    #temp-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 32px;
+      height: 32px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+      cursor: pointer;
+      border: 4px solid var(--temp-optimal);
+    }
+
+    #temp-slider::-moz-range-thumb {
+      width: 32px;
+      height: 32px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+      cursor: pointer;
+      border: 4px solid var(--temp-optimal);
+    }
+
+    .temp-display {
+      text-align: center;
+      margin-top: 28px;
+    }
+
+    .temp-value {
+      font-size: 56px;
+      font-weight: 700;
+      font-family: 'Cormorant Garamond', serif;
+      transition: color 0.3s;
+    }
+
+    .temp-status {
+      font-size: 1.15rem;
+      margin-top: 10px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    /* Benefits Section */
+    .benefits-section {
+      background: linear-gradient(135deg, var(--calm-blue) 0%, var(--soft-sage) 100%);
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      color: var(--deep-forest);
+    }
+
+    .benefits-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .benefit-card {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 28px;
+      border-radius: 20px;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--deep-forest);
+    }
+
+    .benefit-card p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--soft-charcoal);
+    }
+
+    .benefit-card .example {
+      background: rgba(61, 90, 71, 0.1);
+      padding: 14px 18px;
+      border-radius: 12px;
+      margin-top: 16px;
+      font-size: 0.9rem;
+    }
+
+    .benefit-card .example strong {
+      color: var(--deep-forest);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* Communication Section */
+    .comm-section {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      border: 2px dashed var(--soft-sage);
+    }
+
+    .comm-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--deep-forest);
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .comm-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .comm-item {
+      background: var(--cream);
+      padding: 24px;
+      border-radius: 16px;
+    }
+
+    .comm-item h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--deep-forest);
+    }
+
+    .comm-examples {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .comm-example {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .comm-label {
+      flex-shrink: 0;
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .comm-label.before {
+      background: var(--dusty-rose);
+      color: #8B5A5A;
+    }
+
+    .comm-label.after {
+      background: var(--soft-sage);
+      color: var(--deep-forest);
+    }
+
+    .comm-text {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Tips Section */
+    .tips {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+
+    .tips h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--deep-forest);
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .tips-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .tip-item {
+      background: var(--cream);
+      padding: 20px 24px;
+      border-radius: 14px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .tip-number {
+      background: var(--deep-forest);
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .tip-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .tip-text strong {
+      color: var(--deep-forest);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      color: var(--warm-brown);
+      font-size: 0.9rem;
+    }
+
+    .footer .thermo {
+      display: inline-block;
+      animation: gentle-pulse 3s ease-in-out infinite;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .thermometer-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .thermometer-visual {
+        width: 160px;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .header h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+      }
+      .container {
+        max-width: 100%;
+        padding: 20px;
+      }
+      .header::before,
+      .footer .thermo {
+        animation: none;
+      }
+      .symptom-tag:hover,
+      .strategy-item:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header">
+      <h1>Window of Tolerance</h1>
+      <p class="subtitle">Understanding Your Nervous System</p>
+      <span class="tag">Your Nervous System Thermometer</span>
+    </header>
+
+    <!-- Key Insight -->
+    <section class="key-insight">
+      <h2>💡 The Core Concept</h2>
+      <p>
+        Your nervous system has an <span class="highlight">"optimal functioning zone"</span>.<br><br>
+        Just like your body works best when your temperature is around 98.6°F (37°C),
+        your nervous system also functions best <strong>within a specific range</strong> — 
+        where you can regulate emotions, think clearly, and connect with others.<br><br>
+        This optimal zone is called the <span class="highlight">"Window of Tolerance"</span>.<br>
+        Developed by Dr. Dan Siegel, this concept is a key tool for understanding 
+        how stress and emotions affect our nervous system.
+      </p>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="section-card">
+      <h2>🌡️ Understanding Through Temperature</h2>
+      <p>
+        Using <strong>body temperature</strong> as a metaphor makes this concept intuitive.<br>
+        Just as 98.6°F is your normal body temperature, your nervous system also has an "ideal temperature."
+      </p>
+      <p>
+        <strong>Above 100°F — Hyperarousal</strong>: Nervous system overheated (anxiety, panic, anger)<br>
+        <strong>Around 98.6°F — Window of Tolerance</strong>: Optimal state (calm, clear, connected)<br>
+        <strong>Below 95°F — Hypoarousal</strong>: Nervous system too cold (numbness, shutdown, dissociation)
+      </p>
+      <p>
+        Knowing your temperature helps you understand <span class="highlight">where you are right now</span> 
+        and <span class="highlight">what you need to do</span>.
+      </p>
+    </section>
+
+    <!-- Hyperarousal Zone -->
+    <section class="zone-section hyper">
+      <div class="zone-header">
+        <div class="zone-icon">🔥</div>
+        <div>
+          <h2 class="zone-title">Hyperarousal</h2>
+          <p class="zone-subtitle">Above 100°F — Nervous System Overheated</p>
+        </div>
+      </div>
+
+      <div class="explanation-card">
+        <h3>🧠 What's happening?</h3>
+        <p>
+          Your nervous system has detected <strong>"Danger!"</strong> and activated the 
+          <strong>Fight-or-Flight</strong> response. Even if there's no real threat, 
+          your body is preparing for one.<br><br>
+          The sympathetic nervous system is overactivated — heart racing, muscles tense, 
+          breathing shallow, thoughts racing.
+        </p>
+      </div>
+
+      <div class="symptom-grid">
+        <span class="symptom-tag">Anxiety</span>
+        <span class="symptom-tag">Panic</span>
+        <span class="symptom-tag">Anger</span>
+        <span class="symptom-tag">Hypervigilance</span>
+        <span class="symptom-tag">Racing heart</span>
+        <span class="symptom-tag">Muscle tension</span>
+        <span class="symptom-tag">Shallow breathing</span>
+        <span class="symptom-tag">Sleep difficulties</span>
+        <span class="symptom-tag">Irritability</span>
+        <span class="symptom-tag">Feeling out of control</span>
+        <span class="symptom-tag">Racing thoughts</span>
+        <span class="symptom-tag">Easily startled</span>
+      </div>
+
+      <div class="strategy-box">
+        <h4 class="strategy-title">💡 Cool Down (Calming Strategies)</h4>
+        <div class="strategy-items">
+          <span class="strategy-item">Slow breathing (4 in, 6 out)</span>
+          <span class="strategy-item">Cold water on face</span>
+          <span class="strategy-item">5-4-3-2-1 grounding</span>
+          <span class="strategy-item">Weighted blanket</span>
+          <span class="strategy-item">Feet flat on floor</span>
+          <span class="strategy-item">Dim lighting / dark room</span>
+          <span class="strategy-item">Reduce stimulation</span>
+          <span class="strategy-item">Hands on heart</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Window of Tolerance Zone -->
+    <section class="zone-section optimal">
+      <div class="zone-header">
+        <div class="zone-icon">✨</div>
+        <div>
+          <h2 class="zone-title">Window of Tolerance</h2>
+          <p class="zone-subtitle">Around 98.6°F — Optimal Functioning</p>
+        </div>
+      </div>
+
+      <div class="explanation-card">
+        <h3>🧠 What's happening?</h3>
+        <p>
+          Your nervous system feels <strong>"Safe"</strong>.
+          You can feel emotions while still regulating them, think clearly, 
+          and connect with others.<br><br>
+          The sympathetic and parasympathetic systems are in balance, 
+          making <strong>learning, growth, and relationship-building</strong> possible.
+          Within this zone, you can handle stress and recover quickly.
+        </p>
+      </div>
+
+      <div class="symptom-grid">
+        <span class="symptom-tag">Calm</span>
+        <span class="symptom-tag">Clear thinking</span>
+        <span class="symptom-tag">Emotional regulation</span>
+        <span class="symptom-tag">Present-focused</span>
+        <span class="symptom-tag">Curious</span>
+        <span class="symptom-tag">Flexible responses</span>
+        <span class="symptom-tag">Social connection</span>
+        <span class="symptom-tag">Empathy</span>
+        <span class="symptom-tag">Problem-solving</span>
+        <span class="symptom-tag">Body awareness</span>
+        <span class="symptom-tag">Resilience</span>
+      </div>
+
+      <div class="strategy-box">
+        <h4 class="strategy-title">✓ To Stay in This Zone</h4>
+        <div class="strategy-items">
+          <span class="strategy-item">Regular sleep</span>
+          <span class="strategy-item">Regular exercise</span>
+          <span class="strategy-item">Social connection</span>
+          <span class="strategy-item">Predictable routines</span>
+          <span class="strategy-item">Self-care time</span>
+          <span class="strategy-item">Safe environments</span>
+          <span class="strategy-item">Rest before burnout</span>
+          <span class="strategy-item">Enjoyable activities</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hypoarousal Zone -->
+    <section class="zone-section hypo">
+      <div class="zone-header">
+        <div class="zone-icon">❄️</div>
+        <div>
+          <h2 class="zone-title">Hypoarousal</h2>
+          <p class="zone-subtitle">Below 95°F — Nervous System Shutdown</p>
+        </div>
+      </div>
+
+      <div class="explanation-card">
+        <h3>🧠 What's happening?</h3>
+        <p>
+          Your nervous system has determined things are <strong>"Too overwhelming"</strong> 
+          and entered <strong>Freeze</strong> mode. Your body and mind have "shut down" 
+          into a protective state.<br><br>
+          The dorsal vagal pathway is activated, conserving energy and 
+          "hiding" from overwhelming stimulation.
+        </p>
+      </div>
+
+      <div class="symptom-grid">
+        <span class="symptom-tag">Numbness</span>
+        <span class="symptom-tag">Dissociation</span>
+        <span class="symptom-tag">Brain fog</span>
+        <span class="symptom-tag">Lethargy</span>
+        <span class="symptom-tag">No energy</span>
+        <span class="symptom-tag">Disconnected</span>
+        <span class="symptom-tag">Slow responses</span>
+        <span class="symptom-tag">Memory difficulties</span>
+        <span class="symptom-tag">Heavy body</span>
+        <span class="symptom-tag">Hard to speak</span>
+        <span class="symptom-tag">Feeling empty</span>
+        <span class="symptom-tag">Time distortion</span>
+      </div>
+
+      <div class="strategy-box">
+        <h4 class="strategy-title">💡 Warm Up (Activation Strategies)</h4>
+        <div class="strategy-items">
+          <span class="strategy-item">Gentle stretching</span>
+          <span class="strategy-item">Cold water / ice</span>
+          <span class="strategy-item">Bright light</span>
+          <span class="strategy-item">Feel feet on floor</span>
+          <span class="strategy-item">Crunchy foods</span>
+          <span class="strategy-item">Sour tastes</span>
+          <span class="strategy-item">Light movement</span>
+          <span class="strategy-item">Sing loudly</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Thermometer -->
+    <section class="thermometer-section">
+      <h2>🌡️ What's Your Current Temperature?</h2>
+      <p>Move the slider to check in with yourself right now</p>
+
+      <div class="thermometer-container">
+        
+        <div class="thermometer-visual">
+          <svg class="thermometer-svg" viewBox="0 0 120 400">
+            <!-- Thermometer outline -->
+            <rect x="40" y="20" width="40" height="280" rx="20" fill="#F5F5F4" stroke="#D6D3D1" stroke-width="2"/>
+            
+            <!-- Temperature fill -->
+            <clipPath id="thermo-clip">
+              <rect x="44" y="24" width="32" height="272" rx="16"/>
+            </clipPath>
+            
+            <g clip-path="url(#thermo-clip)">
+              <!-- Hyperarousal zone -->
+              <rect x="44" y="24" width="32" height="70" fill="#E07A5F"/>
+              <rect x="44" y="94" width="32" height="30" fill="#E8A090"/>
+              <!-- Window of Tolerance -->
+              <rect x="44" y="124" width="32" height="100" fill="#5B8A72"/>
+              <!-- Hypoarousal zone -->
+              <rect x="44" y="224" width="32" height="30" fill="#8FAEC4"/>
+              <rect x="44" y="254" width="32" height="42" fill="#6B8CAE"/>
+            </g>
+            
+            <!-- Current temperature marker -->
+            <g id="temp-marker">
+              <polygon id="marker-arrow" points="85,174 108,162 108,186" fill="#5B8A72"/>
+              <rect id="marker-line" x="44" y="172" width="32" height="4" fill="white" rx="2"/>
+            </g>
+            
+            <!-- Thermometer bulb -->
+            <circle cx="60" cy="340" r="38" fill="#F5F5F4" stroke="#D6D3D1" stroke-width="2"/>
+            <circle id="bulb-fill" cx="60" cy="340" r="30" fill="#5B8A72"/>
+            
+            <!-- Scale and labels -->
+            <g font-family="'Nunito Sans', sans-serif" font-size="11" fill="#8B7355">
+              <line x1="82" y1="44" x2="92" y2="44" stroke="#A8A29E" stroke-width="1.5"/>
+              <text x="96" y="48">104°</text>
+              
+              <line x1="82" y1="94" x2="92" y2="94" stroke="#A8A29E" stroke-width="1.5"/>
+              <text x="96" y="98">100°</text>
+              
+              <line x1="82" y1="174" x2="95" y2="174" stroke="#5B8A72" stroke-width="2"/>
+              <text x="96" y="178" fill="#5B8A72" font-weight="600" font-size="12">98.6°</text>
+              
+              <line x1="82" y1="239" x2="92" y2="239" stroke="#A8A29E" stroke-width="1.5"/>
+              <text x="96" y="243">95°</text>
+              
+              <line x1="82" y1="284" x2="92" y2="284" stroke="#A8A29E" stroke-width="1.5"/>
+              <text x="96" y="288">93°</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="thermometer-info">
+          <div class="info-card hyper-card" id="card-hyper">
+            <h4>🔥 Hyperarousal (100°+)</h4>
+            <p>Anxiety, panic, anger, racing heart<br>Fight-or-flight mode activated</p>
+          </div>
+          <div class="info-card optimal-card active" id="card-optimal">
+            <h4>✨ Window of Tolerance (~98.6°)</h4>
+            <p>Calm, clear thinking, emotional regulation<br>Present, connected, able to learn</p>
+          </div>
+          <div class="info-card hypo-card" id="card-hypo">
+            <h4>❄️ Hypoarousal (Below 95°)</h4>
+            <p>Numbness, dissociation, brain fog, no energy<br>Freeze mode activated</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="slider-area">
+        <p class="slider-label">Use the slider to mark your current state</p>
+        <div class="slider-wrapper">
+          <span>❄️</span>
+          <input type="range" min="93" max="104" step="0.5" value="98.6" id="temp-slider" oninput="updateTemp(this.value)">
+          <span>🔥</span>
+        </div>
+        <div class="temp-display">
+          <div class="temp-value" id="temp-value" style="color: #5B8A72;">98.6°</div>
+          <div class="temp-status" id="temp-status" style="color: #3D5A47;">You're in the Window of Tolerance</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+      <h2>🌿 Why This Matters</h2>
+      <div class="benefits-grid">
+        
+        <div class="benefit-card">
+          <h3>🪞 Better Self-Understanding</h3>
+          <p>
+            Questions like "Why did I suddenly get so angry?" or 
+            "Why can't I do anything?" start to make sense.<br><br>
+            It's not a "character flaw" — it's your 
+            <strong>nervous system trying to regulate</strong>.
+          </p>
+          <div class="example">
+            <strong>Example</strong>
+            "Oh, I'm at about 100° right now. My nervous system is overheated. 
+            I'm not being oversensitive — I just need to regulate."
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <h3>💬 Easier Communication</h3>
+          <p>
+            Using <strong>"temperature"</strong> to describe complex emotional states 
+            makes it easier for others to understand.<br><br>
+            "I'm at 100°" is more neutral and clearer 
+            than "I'm so angry right now."
+          </p>
+          <div class="example">
+            <strong>Example</strong>
+            "I'm at about 94° right now, so I can't really focus on this conversation. 
+            Can we talk in 30 minutes?"
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <h3>🛠️ Finding the Right Strategy</h3>
+          <p>
+            Different temperatures need <strong>different approaches</strong>.<br><br>
+            Overheated → Cool down (calming)<br>
+            Too cold → Warm up (activation)<br><br>
+            Knowing the direction makes the path clear.
+          </p>
+          <div class="example">
+            <strong>Example</strong>
+            "I'm at 94° — that's why I feel so unmotivated. 
+            I don't need to rest more; I need some gentle movement."
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Communication Guide -->
+    <section class="comm-section">
+      <h2>💬 Communicating with Temperature</h2>
+      <div class="comm-grid">
+        
+        <div class="comm-item">
+          <h3>🔥 When You're Hyperaroused</h3>
+          <div class="comm-examples">
+            <div class="comm-example">
+              <span class="comm-label before">Before</span>
+              <span class="comm-text">"I'm too frustrated to talk right now!"</span>
+            </div>
+            <div class="comm-example">
+              <span class="comm-label after">After</span>
+              <span class="comm-text">"I'm at about 101° right now. I need 10 minutes to cool down."</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="comm-item">
+          <h3>❄️ When You're Hypoaroused</h3>
+          <div class="comm-examples">
+            <div class="comm-example">
+              <span class="comm-label before">Before</span>
+              <span class="comm-text">"I don't know. I don't want to do anything."</span>
+            </div>
+            <div class="comm-example">
+              <span class="comm-label after">After</span>
+              <span class="comm-text">"I'm at about 94° — my responses are slow. Let's make any big decisions later."</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="comm-item">
+          <h3>🤝 Asking for Support</h3>
+          <div class="comm-examples">
+            <div class="comm-example">
+              <span class="comm-label before">Before</span>
+              <span class="comm-text">"I don't know why everything feels so hard..."</span>
+            </div>
+            <div class="comm-example">
+              <span class="comm-label after">After</span>
+              <span class="comm-text">"My temperature is running high. Could you just sit with me for a bit?"</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="comm-item">
+          <h3>👨‍👩‍👧 Sharing with Family / Partner</h3>
+          <div class="comm-examples">
+            <div class="comm-example">
+              <span class="comm-label before">Before</span>
+              <span class="comm-text">"I'm not feeling well today."</span>
+            </div>
+            <div class="comm-example">
+              <span class="comm-label after">After</span>
+              <span class="comm-text">"I woke up at about 95° today. Hoping to get back to 98.6° by evening."</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="tips">
+      <h2>🌱 Things to Remember</h2>
+      <div class="tips-grid">
+        <div class="tip-item">
+          <span class="tip-number">1</span>
+          <p class="tip-text">
+            <strong>Your window isn't fixed.</strong><br>
+            It can narrow with sleep deprivation, stress, or trauma reminders, 
+            and widen in safe environments.
+          </p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-number">2</span>
+          <p class="tip-text">
+            <strong>Leaving your window isn't "bad."</strong><br>
+            It's your nervous system's natural protective response.
+            Don't blame yourself — just notice: "I need to regulate right now."
+          </p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-number">3</span>
+          <p class="tip-text">
+            <strong>Notice before you hit your limit.</strong><br>
+            Don't wait until you're at "I'm fine" — regulate when you're at 
+            "I'm getting tired." That's the best way to prevent meltdowns.
+          </p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-number">4</span>
+          <p class="tip-text">
+            <strong>Trust in co-regulation.</strong><br>
+            Simply being with a safe person can stabilize your nervous system.
+            Let go of the pressure to regulate alone.
+          </p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-number">5</span>
+          <p class="tip-text">
+            <strong>Your window can expand with practice.</strong><br>
+            Mindfulness, breathing exercises, and body awareness (body scans) 
+            can build your capacity to tolerate more intense emotions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Your nervous system is doing its best to protect you.</p>
+      <p>Learn to read its signals, and give it what it needs. <span class="thermo">🌡️</span></p>
+      <p style="margin-top: 24px; font-size: 0.85rem; color: #8B7355;">
+        <strong>PADO Psychological Wellness</strong><br>
+        Dr. Yeji Son
+      </p>
+    </footer>
+
+  </div>
+
+  <script>
+    function updateTemp(value) {
+      const temp = parseFloat(value);
+      const tempValue = document.getElementById('temp-value');
+      const tempStatus = document.getElementById('temp-status');
+      const marker = document.getElementById('marker-arrow');
+      const markerLine = document.getElementById('marker-line');
+      const bulb = document.getElementById('bulb-fill');
+      
+      const cardHyper = document.getElementById('card-hyper');
+      const cardOptimal = document.getElementById('card-optimal');
+      const cardHypo = document.getElementById('card-hypo');
+      
+      // Temperature -> Y position (104=44, 93=284)
+      const y = 44 + (104 - temp) * (240 / 11);
+      
+      marker.setAttribute('points', `85,${y} 108,${y-12} 108,${y+12}`);
+      markerLine.setAttribute('y', y - 2);
+      
+      tempValue.textContent = temp.toFixed(1) + '°';
+      
+      // Reset cards
+      cardHyper.classList.remove('active');
+      cardOptimal.classList.remove('active');
+      cardHypo.classList.remove('active');
+      
+      // Colors
+      const colorHot = '#E07A5F';
+      const colorOptimal = '#5B8A72';
+      const colorCool = '#6B8CAE';
+      
+      let thumbColor;
+      let markerColor;
+      
+      // State-based styling
+      if (temp >= 100) {
+        // Hyperarousal
+        tempValue.style.color = colorHot;
+        tempStatus.style.color = '#9A4F3A';
+        tempStatus.textContent = 'Hyperarousal — Your nervous system is overheated';
+        bulb.setAttribute('fill', colorHot);
+        thumbColor = colorHot;
+        markerColor = colorHot;
+        cardHyper.classList.add('active');
+      } else if (temp <= 95) {
+        // Hypoarousal
+        tempValue.style.color = colorCool;
+        tempStatus.style.color = '#4A6B8A';
+        tempStatus.textContent = 'Hypoarousal — Your nervous system is too cold';
+        bulb.setAttribute('fill', colorCool);
+        thumbColor = colorCool;
+        markerColor = colorCool;
+        cardHypo.classList.add('active');
+      } else {
+        // Window of Tolerance
+        tempValue.style.color = colorOptimal;
+        tempStatus.style.color = '#3D5A47';
+        tempStatus.textContent = "You're in the Window of Tolerance";
+        bulb.setAttribute('fill', colorOptimal);
+        thumbColor = colorOptimal;
+        markerColor = colorOptimal;
+        cardOptimal.classList.add('active');
+      }
+      
+      // Update marker color
+      marker.setAttribute('fill', markerColor);
+      
+      // Dynamic slider thumb styling
+      const styleId = 'dynamic-slider-style';
+      let styleEl = document.getElementById(styleId);
+      if (!styleEl) {
+        styleEl = document.createElement('style');
+        styleEl.id = styleId;
+        document.head.appendChild(styleEl);
+      }
+      styleEl.textContent = `
+        #temp-slider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 32px;
+          height: 32px;
+          background: white;
+          border-radius: 50%;
+          box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+          cursor: pointer;
+          border: 4px solid ${thumbColor};
+        }
+        #temp-slider::-moz-range-thumb {
+          width: 32px;
+          height: 32px;
+          background: white;
+          border-radius: 50%;
+          box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+          cursor: pointer;
+          border: 4px solid ${thumbColor};
+        }
+      `;
+    }
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      updateTemp(98.6);
+    });
+  </script>
+</body>
+</html>
