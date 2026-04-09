@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>휴식의 메뉴판 (Neuro-affirming)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #FDF8F3;
+      --warm-beige: #F5E6D3;
+      --soft-sage: #C5D4C0;
+      --calm-blue: #B8C9D4;
+      --dusty-rose: #E8D4D4;
+      --soft-lavender: #D4D4E8;
+      --deep-forest: #3D5A47;
+      --warm-brown: #8B7355;
+      --soft-charcoal: #4A4A4A;
+      --low-stim-gradient: linear-gradient(135deg, #D4D4E8 0%, #E8D4D4 50%, #FDF8F3 100%);
+      --active-gradient: linear-gradient(135deg, #C5D4C0 0%, #B8C9D4 50%, #E8F4F0 100%);
+      --stim-gradient: linear-gradient(135deg, #F5E6D3 0%, #E8D4D4 50%, #D4D4E8 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--cream);
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(212, 212, 232, 0.3) 0%, transparent 100%);
+      border-radius: 30px;
+      position: relative;
+    }
+
+    .header::before {
+      content: '🔄';
+      font-size: 48px;
+      display: block;
+      margin-bottom: 20px;
+      animation: gentle-spin 8s linear infinite;
+    }
+
+    @keyframes gentle-spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .header h1 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .header .subtitle {
+      font-size: 1.1rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+    }
+
+    .header .tag {
+      display: inline-block;
+      background: var(--soft-lavender);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-top: 12px;
+      color: #6B6B8D;
+    }
+
+    /* Key Insight Box */
+    .key-insight {
+      background: linear-gradient(135deg, #fff 0%, var(--soft-lavender) 100%);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 50px;
+      border-left: 5px solid #8B8BB8;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+
+    .key-insight h2 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.4rem;
+      color: #6B6B8D;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .key-insight p {
+      font-size: 1rem;
+      line-height: 1.9;
+    }
+
+    .key-insight .highlight {
+      background: linear-gradient(180deg, transparent 60%, var(--soft-lavender) 60%);
+      padding: 0 4px;
+      font-weight: 500;
+    }
+
+    /* Intro Section */
+    .intro {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+      border: 1px solid rgba(139, 115, 85, 0.1);
+    }
+
+    .intro h2 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.5rem;
+      color: var(--deep-forest);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .intro p {
+      font-size: 1rem;
+      color: var(--soft-charcoal);
+      margin-bottom: 16px;
+    }
+
+    .intro .highlight {
+      background: linear-gradient(180deg, transparent 60%, var(--warm-beige) 60%);
+      padding: 0 4px;
+      font-weight: 500;
+    }
+
+    /* Section Cards */
+    .rest-section {
+      margin-bottom: 50px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .section-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    .low-stim .section-icon {
+      background: var(--soft-lavender);
+    }
+
+    .active .section-icon {
+      background: var(--soft-sage);
+    }
+
+    .stim .section-icon {
+      background: var(--warm-beige);
+    }
+
+    .section-title {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    .low-stim .section-title {
+      color: #6B6B8D;
+    }
+
+    .active .section-title {
+      color: var(--deep-forest);
+    }
+
+    .stim .section-title {
+      color: var(--warm-brown);
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+    }
+
+    /* Explanation Cards */
+    .explanation-card {
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .low-stim .explanation-card {
+      background: var(--low-stim-gradient);
+      border: 1px solid rgba(212, 212, 232, 0.5);
+    }
+
+    .active .explanation-card {
+      background: var(--active-gradient);
+      border: 1px solid rgba(197, 212, 192, 0.5);
+    }
+
+    .stim .explanation-card {
+      background: var(--stim-gradient);
+      border: 1px solid rgba(245, 230, 211, 0.5);
+    }
+
+    .explanation-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .explanation-card p {
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    /* Menu Grid */
+    .menu-card {
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .low-stim .menu-card {
+      border-left: 4px solid var(--soft-lavender);
+    }
+
+    .active .menu-card {
+      border-left: 4px solid var(--soft-sage);
+    }
+
+    .stim .menu-card {
+      border-left: 4px solid var(--warm-beige);
+    }
+
+    .menu-category {
+      margin-bottom: 28px;
+    }
+
+    .menu-category:last-child {
+      margin-bottom: 0;
+    }
+
+    .category-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .menu-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .menu-item {
+      background: var(--cream);
+      padding: 10px 16px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      cursor: default;
+    }
+
+    .low-stim .menu-item:hover {
+      background: var(--soft-lavender);
+      transform: translateY(-2px);
+    }
+
+    .active .menu-item:hover {
+      background: var(--soft-sage);
+      transform: translateY(-2px);
+    }
+
+    .stim .menu-item:hover {
+      background: var(--warm-beige);
+      transform: translateY(-2px);
+    }
+
+    /* Sensory Guide */
+    .sensory-guide {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-top: 50px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+
+    .sensory-guide h2 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.5rem;
+      color: var(--deep-forest);
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .sensory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .sensory-box {
+      padding: 24px;
+      border-radius: 16px;
+      background: var(--cream);
+    }
+
+    .sensory-box h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sensory-box ul {
+      list-style: none;
+      font-size: 0.9rem;
+    }
+
+    .sensory-box li {
+      padding: 6px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .sensory-box li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--warm-brown);
+      font-size: 0.8rem;
+    }
+
+    /* State Check */
+    .state-check {
+      background: linear-gradient(135deg, var(--calm-blue) 0%, var(--soft-sage) 100%);
+      border-radius: 24px;
+      padding: 40px;
+      margin-top: 50px;
+      color: var(--deep-forest);
+    }
+
+    .state-check h2 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .state-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .state-item {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 24px;
+      border-radius: 16px;
+    }
+
+    .state-item h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .state-item p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .state-item .recommend {
+      background: rgba(61, 90, 71, 0.1);
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+    }
+
+    .state-item .recommend strong {
+      color: var(--deep-forest);
+    }
+
+    /* Tips Section */
+    .tips {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-top: 50px;
+      border: 2px dashed var(--soft-lavender);
+    }
+
+    .tips h2 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.5rem;
+      color: #6B6B8D;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .tips-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .tip-item {
+      background: var(--cream);
+      padding: 20px 24px;
+      border-radius: 14px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .tip-number {
+      background: #8B8BB8;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .tip-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      color: var(--warm-brown);
+      font-size: 0.9rem;
+    }
+
+    .footer .loop {
+      display: inline-block;
+      animation: gentle-spin 8s linear infinite;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+      }
+      .container {
+        max-width: 100%;
+        padding: 20px;
+      }
+      .menu-item:hover {
+        transform: none;
+      }
+      .header::before,
+      .footer .loop {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header">
+      <h1>휴식의 메뉴판</h1>
+      <p class="subtitle">멈추지 않아도 괜찮은 나만의 쉼</p>
+      <span class="tag">Neuro-affirming</span>
+    </header>
+
+    <!-- Key Insight -->
+    <section class="key-insight">
+      <h2>💡 핵심 이해</h2>
+      <p>
+        "가만히 있어야 쉬는 거다"라는 말은 <span class="highlight">모든 사람에게 맞는 말이 아닙니다.</span><br><br>
+        어떤 뇌는 계속해서 정보를 처리하고 있어서, 오히려 <strong>아무것도 안 하면 더 힘들 수 있어요.</strong>
+        외부 자극이 없으면 내부 자극(생각, 감각, 불편함)이 더 크게 느껴지기도 하죠.<br><br>
+        그래서 우리에게 필요한 건 <span class="highlight">"멈추기"가 아니라 "전환하기"</span>입니다.<br>
+        에너지를 소모하는 활동에서 → 에너지를 조절하는 활동으로 바꾸는 것.
+      </p>
+    </section>
+
+    <!-- Introduction -->
+    <section class="intro">
+      <h2>🔄 휴식을 다시 정의해요</h2>
+      <p>
+        이 메뉴판에서 휴식은 세 가지로 나뉩니다:
+      </p>
+      <p>
+        <strong>1. 저자극 휴식</strong> — 자극을 줄이되, 완전히 멈추지 않는 활동<br>
+        <strong>2. 조절적 자기자극 (Stimming)</strong> — 신경계를 안정시키는 반복적 감각 활동<br>
+        <strong>3. 능동적 휴식</strong> — 예측 가능하고 구조화된 활동으로 전환하기
+      </p>
+      <p>
+        세 가지 모두 <span class="highlight">"진짜 휴식"</span>입니다. 
+        나에게 맞는 걸 고르면 돼요.
+      </p>
+    </section>
+
+    <!-- Low-Stimulation Rest Section -->
+    <section class="rest-section low-stim">
+      <div class="section-header">
+        <div class="section-icon">🌙</div>
+        <div>
+          <h2 class="section-title">저자극 휴식 Low-Stimulation Rest</h2>
+          <p class="section-subtitle">자극은 줄이되, 신경계가 편안해지는 최소한의 활동</p>
+        </div>
+      </div>
+
+      <div class="explanation-card">
+        <h3>🎯 목적 (Purpose)</h3>
+        <p>
+          외부 자극(소리, 빛, 사회적 요구)을 줄여서 <strong>감각 과부하를 해소</strong>하는 것입니다.
+          완전히 멈추는 게 아니라, 신경계가 "안전하다"고 느낄 수 있는 예측 가능한 환경을 만드는 거예요.
+        </p>
+      </div>
+
+      <div class="explanation-card">
+        <h3>🧠 왜 필요한가요? (Why)</h3>
+        <p>
+          어떤 뇌는 <strong>필터링 없이 많은 자극을 동시에 처리</strong>합니다.
+          하루 종일 사회적 상황, 감각 자극, 예측 불가능한 일들을 처리하면 신경계가 과부하 상태가 돼요.
+          이때 "아무것도 안 하기"보다 "안전한 자극만 남기기"가 더 효과적입니다.
+        </p>
+      </div>
+
+      <div class="explanation-card">
+        <h3>⚙️ 작동 원리 (Mechanism)</h3>
+        <p>
+          예측 가능하고 통제 가능한 환경은 <strong>편도체(위협 감지 영역)의 활성화를 낮춥니다.</strong>
+          익숙한 자극, 반복적인 패턴, 혼자만의 공간은 신경계에 "경계를 풀어도 된다"는 신호를 보내요.
+          이것이 진정한 의미의 '쉼'입니다.
+        </p>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-category">
+          <h4 class="category-title">🏠 안전한 공간 만들기</h4>
+          <div class="menu-items">
+            <span class="menu-item">어두운 방에 있기</span>
+            <span class="menu-item">담요로 몸 감싸기</span>
+            <span class="menu-item">텐트나 작은 공간에 들어가기</span>
+            <span class="menu-item">커튼 치고 불 끄기</span>
+            <span class="menu-item">혼자만의 방에 있기</span>
+            <span class="menu-item">익숙한 장소에 머물기</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">🎧 감각 차단/조절</h4>
+          <div class="menu-items">
+            <span class="menu-item">노이즈캔슬링 헤드폰 쓰기</span>
+            <span class="menu-item">귀마개 끼기</span>
+            <span class="menu-item">선글라스/아이마스크 쓰기</span>
+            <span class="menu-item">후드 뒤집어쓰기</span>
+            <span class="menu-item">조용한 백색소음 틀기</span>
+            <span class="menu-item">익숙한 음악 반복 듣기</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">🔁 예측 가능한 활동</h4>
+          <div class="menu-items">
+            <span class="menu-item">이미 본 영상 다시 보기</span>
+            <span class="menu-item">좋아하는 책 다시 읽기</span>
+            <span class="menu-item">익숙한 게임 하기</span>
+            <span class="menu-item">같은 노래 반복 듣기</span>
+            <span class="menu-item">특별 관심사 자료 보기</span>
+            <span class="menu-item">정해진 루틴 따르기</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">🛋️ 압박/고유수용감각</h4>
+          <div class="menu-items">
+            <span class="menu-item">무거운 이불 덮기</span>
+            <span class="menu-item">압박조끼 입기</span>
+            <span class="menu-item">꽉 끼는 옷 입기</span>
+            <span class="menu-item">쿠션 사이에 끼기</span>
+            <span class="menu-item">벽에 등 기대고 앉기</span>
+            <span class="menu-item">바닥에 납작 엎드리기</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stimming Section -->
+    <section class="rest-section stim">
+      <div class="section-header">
+        <div class="section-icon">✨</div>
+        <div>
+          <h2 class="section-title">조절적 자기자극 Regulatory Stimming</h2>
+          <p class="section-subtitle">신경계를 안정시키는 반복적인 감각 활동</p>
+        </div>
+      </div>
+
+      <div class="explanation-card">
+        <h3>🎯 목적 (Purpose)</h3>
+        <p>
+          스티밍은 <strong>신경계의 자기 조절 도구</strong>입니다.
+          과각성 상태를 낮추거나, 저각성 상태에서 에너지를 올리는 데 사용해요.
+          이건 "이상한 행동"이 아니라 <strong>뇌가 스스로를 돌보는 방법</strong>입니다.
+        </p>
+      </div>
+
+      <div class="explanation-card">
+        <h3>🧠 왜 필요한가요? (Why)</h3>
+        <p>
+          반복적이고 예측 가능한 감각 입력은 <strong>뇌에 "안전 신호"</strong>를 보냅니다.
+          내가 통제할 수 있는 자극이기 때문이에요.
+          스티밍을 억누르면 오히려 조절 능력이 떨어지고, 멜트다운 위험이 높아질 수 있어요.
+        </p>
+      </div>
+
+      <div class="explanation-card">
+        <h3>⚙️ 작동 원리 (Mechanism)</h3>
+        <p>
+          리드미컬한 움직임과 감각 자극은 <strong>미주신경을 활성화</strong>하고, 
+          세로토닌과 도파민 분비를 촉진합니다.
+          또한 전정감각(균형)과 고유수용감각(신체 위치)을 자극해 
+          "내 몸이 어디 있는지" 인식하게 해주어 안정감을 줍니다.
+        </p>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-category">
+          <h4 class="category-title">👐 손/촉각 스티밍</h4>
+          <div class="menu-items">
+            <span class="menu-item">피젯 큐브/스피너</span>
+            <span class="menu-item">탱글 만지작거리기</span>
+            <span class="menu-item">슬라임/찰흙 주무르기</span>
+            <span class="menu-item">좋아하는 질감 만지기</span>
+            <span class="menu-item">구슬/돌 굴리기</span>
+            <span class="menu-item">고무줄 튕기기</span>
+            <span class="menu-item">손가락 두드리기</span>
+            <span class="menu-item">손톱 끝 만지기</span>
+            <span class="menu-item">천 쓸어내리기</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">🔄 움직임 스티밍</h4>
+          <div class="menu-items">
+            <span class="menu-item">흔들의자에서 흔들기</span>
+            <span class="menu-item">앞뒤로 몸 흔들기</span>
+            <span class="menu-item">제자리에서 점프하기</span>
+            <span class="menu-item">빙글빙글 돌기</span>
+            <span class="menu-item">다리 떨기</span>
+            <span class="menu-item">손 퍼덕이기</span>
+            <span class="menu-item">발끝으로 걷기</span>
+            <span class="menu-item">왔다갔다 걷기</span>
+            <span class="menu-item">그네 타기</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">👀 시각 스티밍</h4>
+          <div class="menu-items">
+            <span class="menu-item">라바램프 보기</span>
+            <span class="menu-item">글리터 보틀 흔들기</span>
+            <span class="menu-item">물 흐르는 영상 보기</span>
+            <span class="menu-item">빛 반짝이는 거 보기</span>
+            <span class="menu-item">만화경 들여다보기</span>
+            <span class="menu-item">불꽃/촛불 응시하기</span>
+            <span class="menu-item">패턴 이미지 보기</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">👂 청각 스티밍</h4>
+          <div class="menu-items">
+            <span class="menu-item">같은 음악 반복 듣기</span>
+            <span class="menu-item">특정 소리 반복 듣기</span>
+            <span class="menu-item">허밍/콧노래</span>
+            <span class="menu-item">소리 내며 읽기</span>
+            <span class="menu-item">리듬 두드리기</span>
+            <span class="menu-item">ASMR 듣기</span>
+            <span class="menu-item">좋아하는 대사 반복하기</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">👅 구강/미각 스티밍</h4>
+          <div class="menu-items">
+            <span class="menu-item">츄잉 목걸이 씹기</span>
+            <span class="menu-item">아삭한 음식 먹기</span>
+            <span class="menu-item">신맛 사탕 먹기</span>
+            <span class="menu-item">얼음 씹기</span>
+            <span class="menu-item">빨대로 음료 마시기</span>
+            <span class="menu-item">껌 씹기</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Active Rest Section -->
+    <section class="rest-section active">
+      <div class="section-header">
+        <div class="section-icon">🌿</div>
+        <div>
+          <h2 class="section-title">능동적 휴식 Active Rest</h2>
+          <p class="section-subtitle">예측 가능하고 구조화된 활동으로 전환하기</p>
+        </div>
+      </div>
+
+      <div class="explanation-card">
+        <h3>🎯 목적 (Purpose)</h3>
+        <p>
+          스트레스를 주는 활동에서 → <strong>내가 통제할 수 있는 활동</strong>으로 전환하는 것입니다.
+          "아무것도 안 하기"가 힘들다면, 대신 예측 가능하고 만족감을 주는 활동을 하는 게 더 효과적이에요.
+        </p>
+      </div>
+
+      <div class="explanation-card">
+        <h3>🧠 왜 필요한가요? (Why)</h3>
+        <p>
+          어떤 뇌는 <strong>"빈 공간"을 싫어할 수 있어요.</strong>
+          아무것도 안 하면 머릿속에서 오히려 생각이 더 많아지거나, 불안해지거나, 반추가 시작될 수 있죠.
+          이럴 때는 뇌에게 "다른 할 일"을 주는 게 더 쉬는 방법이에요.
+        </p>
+      </div>
+
+      <div class="explanation-card">
+        <h3>⚙️ 작동 원리 (Mechanism)</h3>
+        <p>
+          구조화된 활동은 <strong>전두엽(계획/실행 영역)에 명확한 과제</strong>를 줍니다.
+          이건 "반추 회로"를 차단하고, 현재에 집중하게 해요.
+          특히 손을 쓰는 활동은 운동피질을 활성화해서 다른 영역의 과활성화를 줄여줍니다.
+        </p>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-category">
+          <h4 class="category-title">✋ 손으로 하는 반복 작업</h4>
+          <div class="menu-items">
+            <span class="menu-item">퍼즐 맞추기</span>
+            <span class="menu-item">레고/블록 조립</span>
+            <span class="menu-item">비즈 꿰기</span>
+            <span class="menu-item">뜨개질/코바늘</span>
+            <span class="menu-item">컬러링북</span>
+            <span class="menu-item">종이접기</span>
+            <span class="menu-item">모형 조립</span>
+            <span class="menu-item">분류/정리하기</span>
+            <span class="menu-item">카드 섞기</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">🎮 특별 관심사 몰입</h4>
+          <div class="menu-items">
+            <span class="menu-item">관심 주제 조사하기</span>
+            <span class="menu-item">컬렉션 정리하기</span>
+            <span class="menu-item">위키 읽기</span>
+            <span class="menu-item">좋아하는 것 목록 만들기</span>
+            <span class="menu-item">관련 영상 보기</span>
+            <span class="menu-item">팬 커뮤니티 보기</span>
+            <span class="menu-item">데이터 정리/분석하기</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">📋 구조화된 활동</h4>
+          <div class="menu-items">
+            <span class="menu-item">체크리스트 만들기</span>
+            <span class="menu-item">물건 분류/정리</span>
+            <span class="menu-item">사진 폴더 정리</span>
+            <span class="menu-item">플레이리스트 만들기</span>
+            <span class="menu-item">일정 계획 세우기</span>
+            <span class="menu-item">숫자 세기/계산하기</span>
+            <span class="menu-item">알파벳순 정렬</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">🚶 부드러운 움직임</h4>
+          <div class="menu-items">
+            <span class="menu-item">정해진 경로 산책</span>
+            <span class="menu-item">트램펄린 뛰기</span>
+            <span class="menu-item">수영하기</span>
+            <span class="menu-item">자전거 타기</span>
+            <span class="menu-item">스트레칭 루틴</span>
+            <span class="menu-item">청소하기</span>
+            <span class="menu-item">빨래 개기</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">🎨 창작 활동</h4>
+          <div class="menu-items">
+            <span class="menu-item">그림 그리기</span>
+            <span class="menu-item">글쓰기</span>
+            <span class="menu-item">코딩하기</span>
+            <span class="menu-item">음악 만들기</span>
+            <span class="menu-item">사진 편집</span>
+            <span class="menu-item">요리/베이킹</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sensory Guide -->
+    <section class="sensory-guide">
+      <h2>🎛️ 감각 상태별 가이드</h2>
+      <div class="sensory-grid">
+        <div class="sensory-box">
+          <h3>😵 과자극 상태일 때</h3>
+          <p style="font-size: 0.85rem; margin-bottom: 10px; color: #666;">너무 많은 자극, 지침, 예민함</p>
+          <ul>
+            <li>감각 입력 줄이기 (어둡게, 조용하게)</li>
+            <li>압박감 주기 (무거운 이불, 꽉 안기)</li>
+            <li>저강도 스티밍 (천천히 흔들기)</li>
+            <li>혼자 있는 시간 갖기</li>
+          </ul>
+        </div>
+        <div class="sensory-box">
+          <h3>😶 저자극 상태일 때</h3>
+          <p style="font-size: 0.85rem; margin-bottom: 10px; color: #666;">무기력, 멍함, 에너지 없음</p>
+          <ul>
+            <li>감각 입력 늘리기 (밝게, 음악 틀기)</li>
+            <li>움직임 스티밍 (점프, 스트레칭)</li>
+            <li>아삭한/신 음식 먹기</li>
+            <li>찬물로 세수하기</li>
+          </ul>
+        </div>
+        <div class="sensory-box">
+          <h3>🌀 생각이 멈추지 않을 때</h3>
+          <p style="font-size: 0.85rem; margin-bottom: 10px; color: #666;">반추, 루프, 걱정</p>
+          <ul>
+            <li>손 쓰는 활동하기</li>
+            <li>특별 관심사에 몰입하기</li>
+            <li>숫자 세기/분류하기</li>
+            <li>이미 아는 콘텐츠 보기</li>
+          </ul>
+        </div>
+        <div class="sensory-box">
+          <h3>💥 멜트다운 직전일 때</h3>
+          <p style="font-size: 0.85rem; margin-bottom: 10px; color: #666;">한계, 폭발 직전</p>
+          <ul>
+            <li>즉시 자극 제거 (떠나기)</li>
+            <li>안전한 공간으로 이동</li>
+            <li>말 걸지 않기 요청</li>
+            <li>익숙한 스티밍 하기</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- State Check -->
+    <section class="state-check">
+      <h2>🧭 지금 나에게 필요한 휴식은?</h2>
+      <div class="state-grid">
+        <div class="state-item">
+          <h3>😵‍💫 "너무 많다. 다 시끄럽다. 사람들 지친다."</h3>
+          <p>감각 과부하 / 사회적 피로 상태</p>
+          <div class="recommend">
+            <strong>→ 저자극 휴식:</strong> 어두운 방, 노이즈캔슬링, 혼자 있기, 무거운 이불
+          </div>
+        </div>
+        <div class="state-item">
+          <h3>🔄 "가만히 있으면 이상해. 뭔가 해야 할 것 같아."</h3>
+          <p>조절 필요 / 에너지 방출 필요 상태</p>
+          <div class="recommend">
+            <strong>→ 스티밍:</strong> 흔들기, 손 스티밍, 움직임, 좋아하는 질감 만지기
+          </div>
+        </div>
+        <div class="state-item">
+          <h3>🌀 "머리가 멈추질 않아. 생각이 계속 돌아."</h3>
+          <p>반추 / 과잉사고 상태</p>
+          <div class="recommend">
+            <strong>→ 능동적 휴식:</strong> 퍼즐, 정리하기, 특별 관심사 몰입, 손 쓰는 작업
+          </div>
+        </div>
+        <div class="state-item">
+          <h3>😶 "아무것도 하기 싫어. 근데 쉬는 것도 아닌 것 같아."</h3>
+          <p>저에너지 / 해리 상태 가능성</p>
+          <div class="recommend">
+            <strong>→ 부드러운 감각 자극:</strong> 따뜻한 음료, 좋아하는 영상 틀기, 편안한 질감 만지기
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="tips">
+      <h2>💜 기억해두면 좋은 것들</h2>
+      <div class="tips-grid">
+        <div class="tip-item">
+          <span class="tip-number">1</span>
+          <p class="tip-text">
+            <strong>스티밍은 숨길 필요 없어요.</strong><br>
+            그건 당신의 뇌가 스스로를 돌보는 방법입니다. 
+            안전한 환경에서는 마음껏 하세요.
+          </p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-number">2</span>
+          <p class="tip-text">
+            <strong>"남들처럼 쉬어야 해"라는 생각을 내려놓으세요.</strong><br>
+            가만히 눕는 게 힘들다면, 그게 당신에게는 휴식이 아닌 거예요. 
+            나에게 맞는 방식을 찾으면 됩니다.
+          </p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-number">3</span>
+          <p class="tip-text">
+            <strong>나만의 "휴식 키트"를 만들어두세요.</strong><br>
+            좋아하는 질감, 피젯, 이어폰, 선글라스 등을 가방에 넣어두면 
+            어디서든 필요할 때 쓸 수 있어요.
+          </p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-number">4</span>
+          <p class="tip-text">
+            <strong>한계에 도달하기 전에 휴식하세요.</strong><br>
+            "아직 괜찮아"가 아니라 "좀 피곤한 것 같아"일 때 쉬는 게 
+            멜트다운을 예방하는 가장 좋은 방법이에요.
+          </p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-number">5</span>
+          <p class="tip-text">
+            <strong>특별 관심사에 빠지는 건 "시간 낭비"가 아니에요.</strong><br>
+            그건 당신의 뇌가 충전되는 방식입니다. 
+            죄책감 없이 즐기세요.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>멈추지 않아도 괜찮아요.</p>
+      <p>당신에게 맞는 방식으로 쉬면 됩니다. <span class="loop">🔄</span></p>
+      <p style="margin-top: 24px; font-size: 0.85rem; color: #8B7355;">
+        <strong>PADO Psychological Wellness</strong><br>
+        Dr. Yeji Son
+      </p>
+    </footer>
+
+  </div>
+</body>
+</html>
