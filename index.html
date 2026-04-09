@@ -60,8 +60,18 @@
       font-size: 1rem;
       color: var(--warm-brown);
       font-weight: 400;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+ 
+    .logo-title {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.9rem;
+      color: var(--warm-brown);
+      font-weight: 400;
+      letter-spacing: 0.5px;
       margin-bottom: 32px;
+      opacity: 0.85;
     }
  
     .header-desc {
@@ -249,6 +259,18 @@
       margin-left: 8px;
     }
  
+    /* New Badge */
+    .new-badge {
+      display: inline-block;
+      background: var(--soft-sage);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      color: var(--deep-forest);
+      margin-left: 8px;
+      font-weight: 600;
+    }
+ 
     /* Footer */
     .footer {
       text-align: center;
@@ -267,7 +289,15 @@
     .footer-name {
       font-size: 0.95rem;
       color: var(--warm-brown);
+      margin-bottom: 4px;
+    }
+ 
+    .footer-title {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.85rem;
+      color: var(--warm-brown);
       margin-bottom: 16px;
+      opacity: 0.85;
     }
  
     .footer-note {
@@ -298,6 +328,7 @@
     <header class="header">
       <h1 class="logo">PADO Psychological Wellness</h1>
       <p class="logo-sub">Dr. Yeji Son</p>
+      <p class="logo-title">Licensed Psychologist</p>
       <p class="header-desc">
         <span class="ko">마음을 이해하고 돌보는 데 도움이 되는 자료들을 모았습니다.</span>
         <span class="ko">필요한 자료를 골라 읽어보세요.</span>
@@ -334,23 +365,30 @@
           </div>
         </div>
  
-        <!-- Coming Soon 1 -->
-        <div class="resource-card coming-soon">
-          <div class="card-icon regulation">🪟</div>
+        <!-- 내성의 창 (Window of Tolerance) - NEW -->
+        <div class="resource-card">
+          <div class="card-icon regulation">🌡️</div>
           <h3 class="card-title">
-            Window of Tolerance
-            <span class="coming-soon-badge">Coming Soon</span>
+            내성의 창
+            <span class="new-badge">NEW</span>
           </h3>
+          <p class="card-title-en">Window of Tolerance</p>
           <span class="card-tag">조절 · Regulation</span>
           <p class="card-desc">
-            내 신경계의 "견딜 수 있는 창" 이해하기.
+            신경계 온도계로 나를 이해하기. 
+            과각성, 저각성, 그리고 최적의 기능 구간 — 내 상태를 알면 대처가 보여요.
           </p>
           <p class="card-desc-en">
-            Understanding your nervous system's "window of tolerance."
+            Understanding yourself through your nervous system thermometer.
+            Hyperarousal, hypoarousal, and optimal functioning — knowing your state shows you what to do.
           </p>
+          <div class="lang-buttons">
+            <a href="window_of_tolerance.html" class="lang-btn ko">한국어</a>
+            <a href="window_of_tolerance_en.html" class="lang-btn en">English</a>
+          </div>
         </div>
  
-        <!-- Coming Soon 2 -->
+        <!-- Coming Soon - Emotion Wheel -->
         <div class="resource-card coming-soon">
           <div class="card-icon emotion">🎡</div>
           <h3 class="card-title">
@@ -374,10 +412,10 @@
     <footer class="footer">
       <p class="footer-logo">PADO Psychological Wellness</p>
       <p class="footer-name">Dr. Yeji Son</p>
+      <p class="footer-title">Licensed Psychologist</p>
       <p class="footer-note">© 2025 All rights reserved</p>
     </footer>
  
   </div>
 </body>
 </html>
- 
