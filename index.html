@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PADO Psychological Wellness - Resources</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Gowun+Batang:wght@400;700&family=Libre+Baskerville:wght@400;700&family=Source+Sans+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --cream: #FDF8F3;
@@ -17,27 +17,27 @@
       --warm-brown: #8B7355;
       --soft-charcoal: #4A4A4A;
     }
-
+ 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
+ 
     body {
-      font-family: 'Noto Sans KR', sans-serif;
+      font-family: 'Noto Sans KR', 'Source Sans Pro', sans-serif;
       background: var(--cream);
       color: var(--soft-charcoal);
       line-height: 1.8;
       min-height: 100vh;
     }
-
+ 
     .container {
       max-width: 1000px;
       margin: 0 auto;
       padding: 40px 24px;
     }
-
+ 
     /* Header */
     .header {
       text-align: center;
@@ -46,35 +46,48 @@
       background: linear-gradient(135deg, rgba(197, 212, 192, 0.3) 0%, rgba(184, 201, 212, 0.3) 50%, rgba(212, 212, 232, 0.3) 100%);
       border-radius: 30px;
     }
-
+ 
     .logo {
-      font-family: 'Gowun Batang', serif;
-      font-size: 2.4rem;
+      font-family: 'Libre Baskerville', 'Gowun Batang', serif;
+      font-size: 2.2rem;
       font-weight: 700;
       color: var(--deep-forest);
-      margin-bottom: 8px;
-      letter-spacing: 2px;
+      margin-bottom: 4px;
+      letter-spacing: 1px;
     }
-
+ 
     .logo-sub {
       font-size: 1rem;
       color: var(--warm-brown);
       font-weight: 400;
       letter-spacing: 1px;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
     }
-
+ 
     .header-desc {
       font-size: 1.05rem;
       color: var(--soft-charcoal);
-      max-width: 500px;
+      max-width: 550px;
       margin: 0 auto;
-      line-height: 1.9;
+      line-height: 2;
     }
-
+ 
+    .header-desc .ko {
+      display: block;
+      margin-bottom: 4px;
+    }
+ 
+    .header-desc .en {
+      display: block;
+      font-family: 'Source Sans Pro', sans-serif;
+      color: var(--warm-brown);
+      font-size: 0.95rem;
+      margin-top: 12px;
+    }
+ 
     /* Section Title */
     .section-title {
-      font-family: 'Gowun Batang', serif;
+      font-family: 'Gowun Batang', 'Libre Baskerville', serif;
       font-size: 1.5rem;
       color: var(--deep-forest);
       margin-bottom: 30px;
@@ -82,7 +95,14 @@
       align-items: center;
       gap: 12px;
     }
-
+ 
+    .section-title .en {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.1rem;
+      color: var(--warm-brown);
+      font-weight: 400;
+    }
+ 
     /* Resource Cards Grid */
     .resources-grid {
       display: grid;
@@ -90,7 +110,7 @@
       gap: 24px;
       margin-bottom: 60px;
     }
-
+ 
     .resource-card {
       background: white;
       border-radius: 20px;
@@ -102,13 +122,13 @@
       display: block;
       border: 1px solid transparent;
     }
-
+ 
     .resource-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
       border-color: var(--soft-sage);
     }
-
+ 
     .card-icon {
       width: 56px;
       height: 56px;
@@ -119,31 +139,39 @@
       font-size: 28px;
       margin-bottom: 20px;
     }
-
+ 
     .card-icon.neuro {
       background: var(--soft-lavender);
     }
-
+ 
     .card-icon.emotion {
       background: var(--dusty-rose);
     }
-
+ 
     .card-icon.regulation {
       background: var(--soft-sage);
     }
-
+ 
     .card-icon.relationship {
       background: var(--calm-blue);
     }
-
+ 
     .card-title {
       font-family: 'Gowun Batang', serif;
       font-size: 1.25rem;
       font-weight: 700;
       color: var(--deep-forest);
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
-
+ 
+    .card-title-en {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--warm-brown);
+      margin-bottom: 12px;
+    }
+ 
     .card-tag {
       display: inline-block;
       background: var(--cream);
@@ -153,25 +181,64 @@
       color: var(--warm-brown);
       margin-bottom: 16px;
     }
-
+ 
     .card-desc {
       font-size: 0.95rem;
       color: #666;
       line-height: 1.7;
+      margin-bottom: 8px;
     }
-
+ 
+    .card-desc-en {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.85rem;
+      color: #999;
+      line-height: 1.6;
+    }
+ 
+    /* Language Buttons */
+    .lang-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+    }
+ 
+    .lang-btn {
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: 1px solid var(--soft-lavender);
+      background: white;
+      color: var(--soft-charcoal);
+    }
+ 
+    .lang-btn:hover {
+      background: var(--soft-lavender);
+      color: var(--deep-forest);
+    }
+ 
+    .lang-btn.ko::before {
+      content: '🇰🇷 ';
+    }
+ 
+    .lang-btn.en::before {
+      content: '🇺🇸 ';
+    }
+ 
     /* Coming Soon Card */
     .resource-card.coming-soon {
       opacity: 0.6;
       cursor: default;
     }
-
+ 
     .resource-card.coming-soon:hover {
       transform: none;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
       border-color: transparent;
     }
-
+ 
     .coming-soon-badge {
       display: inline-block;
       background: var(--warm-beige);
@@ -181,7 +248,7 @@
       color: var(--warm-brown);
       margin-left: 8px;
     }
-
+ 
     /* Footer */
     .footer {
       text-align: center;
@@ -189,32 +256,37 @@
       border-top: 1px solid rgba(139, 115, 85, 0.1);
       margin-top: 40px;
     }
-
+ 
     .footer-logo {
-      font-family: 'Gowun Batang', serif;
+      font-family: 'Libre Baskerville', 'Gowun Batang', serif;
       font-size: 1.2rem;
       color: var(--deep-forest);
       margin-bottom: 8px;
     }
-
+ 
     .footer-name {
       font-size: 0.95rem;
       color: var(--warm-brown);
       margin-bottom: 16px;
     }
-
+ 
     .footer-note {
       font-size: 0.85rem;
       color: #999;
     }
-
+ 
     /* Responsive */
     @media (max-width: 600px) {
       .logo {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
       }
       .resources-grid {
         grid-template-columns: 1fr;
+      }
+      .section-title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
       }
     }
   </style>
@@ -224,31 +296,44 @@
     
     <!-- Header -->
     <header class="header">
-      <h1 class="logo">PADO</h1>
-      <p class="logo-sub">Psychological Wellness</p>
+      <h1 class="logo">PADO Psychological Wellness</h1>
+      <p class="logo-sub">Dr. Yeji Son</p>
       <p class="header-desc">
-        마음을 이해하고 돌보는 데 도움이 되는 자료들을 모았습니다.
-        필요한 자료를 골라 읽어보세요.
+        <span class="ko">마음을 이해하고 돌보는 데 도움이 되는 자료들을 모았습니다.</span>
+        <span class="ko">필요한 자료를 골라 읽어보세요.</span>
+        <span class="en">A collection of resources to help you understand and care for your mind.</span>
       </p>
     </header>
-
+ 
     <!-- Resources Section -->
     <section>
-      <h2 class="section-title">📚 심리교육 자료</h2>
+      <h2 class="section-title">
+        📚 심리교육 자료 
+        <span class="en">Psychoeducation Resources</span>
+      </h2>
       
       <div class="resources-grid">
         
         <!-- 휴식의 메뉴판 -->
-        <a href="rest-menu.html" class="resource-card">
+        <div class="resource-card">
           <div class="card-icon neuro">🔄</div>
           <h3 class="card-title">휴식의 메뉴판</h3>
+          <p class="card-title-en">The Rest Menu</p>
           <span class="card-tag">Neuro-affirming</span>
           <p class="card-desc">
             멈추지 않아도 괜찮은 나만의 쉼. 
             저자극 휴식, 스티밍, 능동적 휴식 — 나에게 맞는 방식을 찾아보세요.
           </p>
-        </a>
-
+          <p class="card-desc-en">
+            Finding rest without having to stop. 
+            Low-stimulation rest, stimming, active rest — find what works for you.
+          </p>
+          <div class="lang-buttons">
+            <a href="rest_menu_neuro_affirming.html" class="lang-btn ko">한국어</a>
+            <a href="rest-menu-en.html" class="lang-btn en">English</a>
+          </div>
+        </div>
+ 
         <!-- Coming Soon 1 -->
         <div class="resource-card coming-soon">
           <div class="card-icon regulation">🪟</div>
@@ -256,13 +341,15 @@
             Window of Tolerance
             <span class="coming-soon-badge">Coming Soon</span>
           </h3>
-          <span class="card-tag">조절</span>
+          <span class="card-tag">조절 · Regulation</span>
           <p class="card-desc">
-            내 신경계의 "견딜 수 있는 창" 이해하기. 
-            과각성과 저각성 사이에서 균형 찾기.
+            내 신경계의 "견딜 수 있는 창" 이해하기.
+          </p>
+          <p class="card-desc-en">
+            Understanding your nervous system's "window of tolerance."
           </p>
         </div>
-
+ 
         <!-- Coming Soon 2 -->
         <div class="resource-card coming-soon">
           <div class="card-icon emotion">🎡</div>
@@ -270,23 +357,27 @@
             감정의 수레바퀴
             <span class="coming-soon-badge">Coming Soon</span>
           </h3>
-          <span class="card-tag">감정</span>
+          <p class="card-title-en">Emotion Wheel</p>
+          <span class="card-tag">감정 · Emotion</span>
           <p class="card-desc">
-            내 감정에 이름 붙이기. 
-            복잡한 감정을 세분화하고 이해하는 도구.
+            내 감정에 이름 붙이기.
+          </p>
+          <p class="card-desc-en">
+            Naming and understanding your emotions.
           </p>
         </div>
-
+ 
       </div>
     </section>
-
+ 
     <!-- Footer -->
     <footer class="footer">
       <p class="footer-logo">PADO Psychological Wellness</p>
       <p class="footer-name">Dr. Yeji Son</p>
       <p class="footer-note">© 2025 All rights reserved</p>
     </footer>
-
+ 
   </div>
 </body>
 </html>
+ 
