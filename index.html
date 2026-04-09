@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PADO Psychological Wellness - Resources</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FDF8F3;
+      --warm-beige: #F5E6D3;
+      --soft-sage: #C5D4C0;
+      --calm-blue: #B8C9D4;
+      --dusty-rose: #E8D4D4;
+      --soft-lavender: #D4D4E8;
+      --deep-forest: #3D5A47;
+      --warm-brown: #8B7355;
+      --soft-charcoal: #4A4A4A;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--cream);
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 60px 30px;
+      background: linear-gradient(135deg, rgba(197, 212, 192, 0.3) 0%, rgba(184, 201, 212, 0.3) 50%, rgba(212, 212, 232, 0.3) 100%);
+      border-radius: 30px;
+    }
+
+    .logo {
+      font-family: 'Gowun Batang', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+
+    .logo-sub {
+      font-size: 1rem;
+      color: var(--warm-brown);
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .header-desc {
+      font-size: 1.05rem;
+      color: var(--soft-charcoal);
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.9;
+    }
+
+    /* Section Title */
+    .section-title {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.5rem;
+      color: var(--deep-forest);
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Resource Cards Grid */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    .resource-card {
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      border: 1px solid transparent;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      border-color: var(--soft-sage);
+    }
+
+    .card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .card-icon.neuro {
+      background: var(--soft-lavender);
+    }
+
+    .card-icon.emotion {
+      background: var(--dusty-rose);
+    }
+
+    .card-icon.regulation {
+      background: var(--soft-sage);
+    }
+
+    .card-icon.relationship {
+      background: var(--calm-blue);
+    }
+
+    .card-title {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+    }
+
+    .card-tag {
+      display: inline-block;
+      background: var(--cream);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: var(--warm-brown);
+      margin-bottom: 16px;
+    }
+
+    .card-desc {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    /* Coming Soon Card */
+    .resource-card.coming-soon {
+      opacity: 0.6;
+      cursor: default;
+    }
+
+    .resource-card.coming-soon:hover {
+      transform: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      border-color: transparent;
+    }
+
+    .coming-soon-badge {
+      display: inline-block;
+      background: var(--warm-beige);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: var(--warm-brown);
+      margin-left: 8px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px;
+      border-top: 1px solid rgba(139, 115, 85, 0.1);
+      margin-top: 40px;
+    }
+
+    .footer-logo {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.2rem;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+    }
+
+    .footer-name {
+      font-size: 0.95rem;
+      color: var(--warm-brown);
+      margin-bottom: 16px;
+    }
+
+    .footer-note {
+      font-size: 0.85rem;
+      color: #999;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .logo {
+        font-size: 1.8rem;
+      }
+      .resources-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header">
+      <h1 class="logo">PADO</h1>
+      <p class="logo-sub">Psychological Wellness</p>
+      <p class="header-desc">
+        마음을 이해하고 돌보는 데 도움이 되는 자료들을 모았습니다.
+        필요한 자료를 골라 읽어보세요.
+      </p>
+    </header>
+
+    <!-- Resources Section -->
+    <section>
+      <h2 class="section-title">📚 심리교육 자료</h2>
+      
+      <div class="resources-grid">
+        
+        <!-- 휴식의 메뉴판 -->
+        <a href="rest-menu.html" class="resource-card">
+          <div class="card-icon neuro">🔄</div>
+          <h3 class="card-title">휴식의 메뉴판</h3>
+          <span class="card-tag">Neuro-affirming</span>
+          <p class="card-desc">
+            멈추지 않아도 괜찮은 나만의 쉼. 
+            저자극 휴식, 스티밍, 능동적 휴식 — 나에게 맞는 방식을 찾아보세요.
+          </p>
+        </a>
+
+        <!-- Coming Soon 1 -->
+        <div class="resource-card coming-soon">
+          <div class="card-icon regulation">🪟</div>
+          <h3 class="card-title">
+            Window of Tolerance
+            <span class="coming-soon-badge">Coming Soon</span>
+          </h3>
+          <span class="card-tag">조절</span>
+          <p class="card-desc">
+            내 신경계의 "견딜 수 있는 창" 이해하기. 
+            과각성과 저각성 사이에서 균형 찾기.
+          </p>
+        </div>
+
+        <!-- Coming Soon 2 -->
+        <div class="resource-card coming-soon">
+          <div class="card-icon emotion">🎡</div>
+          <h3 class="card-title">
+            감정의 수레바퀴
+            <span class="coming-soon-badge">Coming Soon</span>
+          </h3>
+          <span class="card-tag">감정</span>
+          <p class="card-desc">
+            내 감정에 이름 붙이기. 
+            복잡한 감정을 세분화하고 이해하는 도구.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer-logo">PADO Psychological Wellness</p>
+      <p class="footer-name">Dr. Yeji Son</p>
+      <p class="footer-note">© 2025 All rights reserved</p>
+    </footer>
+
+  </div>
+</body>
+</html>
