@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Needy Love | Anxious Attachment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #FDF8F3;
+      --warm-beige: #F5E6D3;
+      --soft-sage: #C5D4C0;
+      --calm-blue: #B8C9D4;
+      --dusty-rose: #E8D4D4;
+      --soft-lavender: #D4D4E8;
+      --deep-forest: #3D5A47;
+      --warm-brown: #8B7355;
+      --soft-charcoal: #4A4A4A;
+      
+      /* Theme colors */
+      --heart-pink: #D4707A;
+      --heart-pink-light: #FDF0F2;
+      --heart-coral: #E8A0A0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      background: var(--cream);
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(232, 212, 212, 0.4) 0%, transparent 100%);
+      border-radius: 30px;
+      position: relative;
+    }
+
+    .header::before {
+      content: '💗';
+      font-size: 48px;
+      display: block;
+      margin-bottom: 20px;
+      animation: gentle-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes gentle-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    .header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--heart-pink);
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+    }
+
+    .header .subtitle {
+      font-size: 1.1rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .header .tag {
+      display: inline-block;
+      background: var(--dusty-rose);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-top: 16px;
+      color: var(--heart-pink);
+    }
+
+    /* Intro */
+    .intro {
+      background: linear-gradient(135deg, #fff 0%, var(--dusty-rose) 100%);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 50px;
+      border-left: 5px solid var(--heart-pink);
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+
+    .intro p {
+      font-size: 1rem;
+      line-height: 1.9;
+    }
+
+    .intro .highlight {
+      background: linear-gradient(180deg, transparent 60%, var(--dusty-rose) 60%);
+      padding: 0 4px;
+      font-weight: 500;
+    }
+
+    /* Message Box */
+    .message-box {
+      background: white;
+      border-radius: 20px;
+      padding: 28px;
+      margin: 24px 0;
+      border: 2px solid var(--dusty-rose);
+      position: relative;
+    }
+
+    .message-box::before {
+      content: '💬';
+      position: absolute;
+      top: -15px;
+      left: 24px;
+      font-size: 24px;
+      background: white;
+      padding: 0 8px;
+    }
+
+    .message-text {
+      font-size: 1.15rem;
+      color: var(--heart-pink);
+      font-style: italic;
+      text-align: center;
+      padding: 8px 0;
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+      border: 1px solid rgba(139, 115, 85, 0.1);
+    }
+
+    .section-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--deep-forest);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-card > p {
+      font-size: 1rem;
+      color: var(--soft-charcoal);
+      margin-bottom: 16px;
+    }
+
+    /* Pattern Box */
+    .pattern-box {
+      background: var(--heart-pink-light);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+
+    .pattern-title {
+      font-weight: 600;
+      color: var(--heart-pink);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pattern-list {
+      list-style: none;
+    }
+
+    .pattern-list li {
+      padding: 8px 0;
+      padding-left: 24px;
+      position: relative;
+      font-size: 0.95rem;
+    }
+
+    .pattern-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--heart-pink);
+    }
+
+    /* Flow Diagram */
+    .flow-diagram {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .flow-step {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .flow-number {
+      width: 32px;
+      height: 32px;
+      background: var(--heart-pink);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .flow-content {
+      flex: 1;
+      background: var(--heart-pink-light);
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+    }
+
+    .flow-arrow {
+      text-align: center;
+      color: var(--heart-coral);
+      font-size: 1.2rem;
+      margin-left: 40px;
+    }
+
+    /* Healthy Script Section */
+    .script-section {
+      background: linear-gradient(135deg, var(--soft-sage) 0%, var(--calm-blue) 100%);
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+    }
+
+    .script-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--deep-forest);
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .script-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .script-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 28px;
+    }
+
+    .script-step-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .script-step-number {
+      width: 36px;
+      height: 36px;
+      background: var(--deep-forest);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .script-step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      color: var(--deep-forest);
+      font-weight: 700;
+    }
+
+    .script-example {
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 16px 20px;
+      font-size: 0.95rem;
+      color: var(--soft-charcoal);
+      border-left: 4px solid var(--deep-forest);
+      font-style: italic;
+    }
+
+    /* ACT Steps Section */
+    .act-section {
+      margin-bottom: 50px;
+    }
+
+    .act-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .act-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+    }
+
+    .act-header p {
+      color: var(--warm-brown);
+      font-size: 0.95rem;
+    }
+
+    .act-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .act-card {
+      background: white;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      border-left: 5px solid var(--heart-pink);
+      transition: all 0.3s ease;
+    }
+
+    .act-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .act-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .act-step-badge {
+      background: var(--heart-pink);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .act-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--deep-forest);
+      font-weight: 700;
+    }
+
+    .act-process-tag {
+      display: inline-block;
+      background: var(--soft-lavender);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: #6B6B8D;
+      margin-bottom: 16px;
+    }
+
+    .act-card p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .act-practice {
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 12px;
+    }
+
+    .act-practice-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--warm-brown);
+      margin-bottom: 8px;
+    }
+
+    .act-practice-list {
+      list-style: none;
+      font-size: 0.9rem;
+    }
+
+    .act-practice-list li {
+      padding: 6px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .act-practice-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--heart-pink);
+    }
+
+    .act-quote {
+      background: var(--heart-pink-light);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-top: 12px;
+      font-style: italic;
+      color: var(--heart-pink);
+      font-size: 0.95rem;
+    }
+
+    /* Journal Section */
+    .journal-section {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      border: 2px dashed var(--dusty-rose);
+    }
+
+    .journal-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--deep-forest);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .journal-prompts {
+      display: grid;
+      gap: 12px;
+    }
+
+    .journal-prompt {
+      background: var(--cream);
+      padding: 16px 20px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .journal-prompt-icon {
+      font-size: 1.2rem;
+    }
+
+    /* Closing */
+    .closing {
+      background: linear-gradient(135deg, var(--dusty-rose) 0%, var(--soft-lavender) 100%);
+      border-radius: 24px;
+      padding: 40px;
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .closing p {
+      font-size: 1.1rem;
+      color: var(--deep-forest);
+      line-height: 2;
+    }
+
+    .closing .highlight {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      display: block;
+      margin-top: 16px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      color: var(--warm-brown);
+      font-size: 0.9rem;
+    }
+
+    .footer .heart {
+      display: inline-block;
+      animation: gentle-pulse 2s ease-in-out infinite;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 2.2rem;
+      }
+      
+      .flow-step {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      
+      .flow-arrow {
+        margin-left: 0;
+        align-self: center;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+      }
+      .container {
+        max-width: 100%;
+        padding: 20px;
+      }
+      .header::before,
+      .footer .heart {
+        animation: none;
+      }
+      .act-card:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header">
+      <h1>Needy Love</h1>
+      <p class="subtitle">Understanding Anxious Attachment</p>
+      <span class="tag">Breaking the Love Confirmation Loop</span>
+    </header>
+
+    <!-- Intro -->
+    <section class="intro">
+      <p>
+        Do you often feel this way in relationships?<br><br>
+        <em>"I need to know if they really love me."</em><br>
+        <em>"What if I did something wrong and they've changed their mind?"</em><br>
+        <em>"I can only relax when they reassure me."</em><br><br>
+        This pattern is called the <span class="highlight">"Love Confirmation Loop."</span><br>
+        It's a natural response that comes from anxious attachment, but when repeated, 
+        it can put strain on relationships.
+      </p>
+
+      <div class="message-box">
+        <p class="message-text">"Even if I made you upset, I still love you. You do too, right?"</p>
+      </div>
+
+      <p>
+        This message contains an <strong>apology, a love declaration, and a confirmation request</strong> all at once.<br>
+        Let's explore why this pattern emerges and how to approach it differently.
+      </p>
+    </section>
+
+    <!-- Understanding the Pattern -->
+    <section class="section-card">
+      <h2>🔍 Understanding This Pattern</h2>
+      
+      <div class="pattern-box">
+        <h3 class="pattern-title">💭 What's Happening Inside</h3>
+        <ul class="pattern-list">
+          <li><strong>Anxious attachment</strong>: Persistent fear that the relationship could be unstable</li>
+          <li><strong>Confirmation seeking</strong>: Urgent need to be reassured of love and commitment</li>
+          <li><strong>Preemptive guilt</strong>: Assuming "I've done something wrong" before even confirming the other person's feelings</li>
+        </ul>
+      </div>
+
+      <h3 style="font-size: 1.1rem; color: var(--deep-forest); margin: 24px 0 16px;">The Emotional Flow</h3>
+      
+      <div class="flow-diagram">
+        <div class="flow-step">
+          <div class="flow-number">1</div>
+          <div class="flow-content"><strong>Premise</strong>: "I've hurt them" → positioning yourself as the one at fault</div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="flow-number">2</div>
+          <div class="flow-content"><strong>Fear</strong>: "They might stop loving me because of this"</div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="flow-number">3</div>
+          <div class="flow-content"><strong>Softening move</strong>: Declaring love first to smooth over tension</div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="flow-number">4</div>
+          <div class="flow-content"><strong>Confirmation demand</strong>: "You too, right?" — requiring immediate reassurance</div>
+        </div>
+      </div>
+
+      <div class="pattern-box" style="background: #FEF3F0; margin-top: 24px;">
+        <h3 class="pattern-title" style="color: #C47A6A;">⚠️ When This Pattern Repeats</h3>
+        <ul class="pattern-list">
+          <li>It creates pressure on your partner to "prove" their love</li>
+          <li>Over time, it can lead to emotional exhaustion in the relationship</li>
+          <li>Focus shifts from healthy conflict repair to maintaining connection at all costs</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Healthy Communication -->
+    <section class="script-section">
+      <h2>💚 Healthier Communication</h2>
+      
+      <div class="script-grid">
+        <div class="script-card">
+          <div class="script-step-header">
+            <div class="script-step-number">1</div>
+            <h3 class="script-step-title">Clear Apology</h3>
+          </div>
+          <p style="font-size: 0.95rem; color: var(--soft-charcoal); margin-bottom: 12px;">
+            Separate the apology from the love expression. Start by taking responsibility.
+          </p>
+          <div class="script-example">
+            "I'm worried my words earlier might have hurt you.<br>
+            That wasn't my intention, and I'm sorry if it felt that way."
+          </div>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-header">
+            <div class="script-step-number">2</div>
+            <h3 class="script-step-title">Unconditional Love Statement</h3>
+          </div>
+          <p style="font-size: 0.95rem; color: var(--soft-charcoal); margin-bottom: 12px;">
+            Express your feelings without demanding confirmation.
+          </p>
+          <div class="script-example">
+            "You're still very important to me, and that hasn't changed."
+          </div>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-header">
+            <div class="script-step-number">3</div>
+            <h3 class="script-step-title">Invitation for Dialogue</h3>
+          </div>
+          <p style="font-size: 0.95rem; color: var(--soft-charcoal); margin-bottom: 12px;">
+            Give your partner time and space. Don't demand an immediate response.
+          </p>
+          <div class="script-example">
+            "When you feel ready, I'd like to hear how you're feeling."
+          </div>
+        </div>
+      </div>
+
+      <p style="text-align: center; margin-top: 28px; color: var(--deep-forest); font-size: 0.95rem;">
+        This approach reduces pressure on your partner while<br>
+        <strong>keeping responsibility and love affirmation distinct</strong>.
+      </p>
+    </section>
+
+    <!-- ACT Mini Program -->
+    <section class="act-section">
+      <div class="act-header">
+        <h2>🌱 7-Step Mind Training</h2>
+        <p>Breaking the Love Confirmation Loop (ACT-based)</p>
+      </div>
+
+      <div class="act-grid">
+        
+        <!-- Step 1 -->
+        <div class="act-card">
+          <div class="act-card-header">
+            <span class="act-step-badge">Step 1</span>
+            <h3 class="act-card-title">Notice & Name</h3>
+          </div>
+          <span class="act-process-tag">Present Moment + Defusion</span>
+          <p>
+            When the urge to seek reassurance arises, pause.
+          </p>
+          <div class="act-practice">
+            <p class="act-practice-title">Practice</p>
+            <ul class="act-practice-list">
+              <li>When the urge arises, stop</li>
+              <li>Say silently: "Here's the 'love confirmation loop' showing up."</li>
+              <li>Acknowledge: "This is my mind trying to keep me safe."</li>
+            </ul>
+          </div>
+          <div class="act-quote">
+            Simply noticing "I'm having this thought" creates distance.
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="act-card">
+          <div class="act-card-header">
+            <span class="act-step-badge">Step 2</span>
+            <h3 class="act-card-title">Make Space for Discomfort</h3>
+          </div>
+          <span class="act-process-tag">Acceptance</span>
+          <p>
+            It's okay to feel anxiety and guilt. You don't have to fix them right now.
+          </p>
+          <div class="act-practice">
+            <p class="act-practice-title">Practice</p>
+            <ul class="act-practice-list">
+              <li>Notice physical sensations (tight chest, shallow breath)</li>
+              <li>Instead of pushing away, breathe into them</li>
+              <li>Say: "I can make space for this guilt and fear."</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="act-card">
+          <div class="act-card-header">
+            <span class="act-step-badge">Step 3</span>
+            <h3 class="act-card-title">Defuse from the Story</h3>
+          </div>
+          <span class="act-process-tag">Cognitive Defusion</span>
+          <p>
+            Recognize the familiar thought pattern and weaken its grip.
+          </p>
+          <div class="act-practice">
+            <p class="act-practice-title">Practice</p>
+            <ul class="act-practice-list">
+              <li>Identify the script: "If I don't confirm love now, I'll lose it."</li>
+              <li>Say it out loud in a <strong>silly voice</strong>, or</li>
+              <li>Sing it to the tune of "Happy Birthday"</li>
+            </ul>
+          </div>
+          <div class="act-quote">
+            When you see thoughts as "sounds/words" rather than "commands," they lose power.
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="act-card">
+          <div class="act-card-header">
+            <span class="act-step-badge">Step 4</span>
+            <h3 class="act-card-title">Values Check</h3>
+          </div>
+          <span class="act-process-tag">Values</span>
+          <p>
+            Choose actions based on values, not emotions.
+          </p>
+          <div class="act-practice">
+            <p class="act-practice-title">Ask Yourself</p>
+            <ul class="act-practice-list">
+              <li>"Do I value safety through control, or trust through openness?"</li>
+              <li>"If I were the partner I want to be, how would I act right now?"</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="act-card">
+          <div class="act-card-header">
+            <span class="act-step-badge">Step 5</span>
+            <h3 class="act-card-title">Committed Action</h3>
+          </div>
+          <span class="act-process-tag">Committed Action</span>
+          <p>
+            Practice the 3-step healthy communication method.
+          </p>
+          <div class="act-practice">
+            <p class="act-practice-title">Practice</p>
+            <ul class="act-practice-list">
+              <li>Clear apology: "I'm sorry if my words felt hurtful."</li>
+              <li>Unconditional love: "You're still important to me."</li>
+              <li>Invitation: "When you feel ready, I'd like to hear your thoughts."</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="act-card">
+          <div class="act-card-header">
+            <span class="act-step-badge">Step 6</span>
+            <h3 class="act-card-title">Self-as-Context</h3>
+          </div>
+          <span class="act-process-tag">Self-as-Context</span>
+          <p>
+            You are bigger than this anxiety.
+          </p>
+          <div class="act-practice">
+            <p class="act-practice-title">Visualize</p>
+            <ul class="act-practice-list">
+              <li>Imagine yourself as the <strong>sky</strong>, and your anxiety and guilt as <strong>passing weather</strong></li>
+            </ul>
+          </div>
+          <div class="act-quote">
+            "I am more than this urge to seek reassurance.<br>
+            I can watch it pass."
+          </div>
+        </div>
+
+        <!-- Step 7 -->
+        <div class="act-card">
+          <div class="act-card-header">
+            <span class="act-step-badge">Step 7</span>
+            <h3 class="act-card-title">Reflection & Expansion</h3>
+          </div>
+          <span class="act-process-tag">Reinforcement</span>
+          <p>
+            Strengthen the new pattern and gradually expand.
+          </p>
+          <div class="act-practice">
+            <p class="act-practice-title">Journal Prompts</p>
+            <ul class="act-practice-list">
+              <li>"What situations triggered the urge this week?"</li>
+              <li>"How did I make room for discomfort without urgent action?"</li>
+              <li>"How did my choices reflect my values?"</li>
+            </ul>
+          </div>
+          <p style="margin-top: 16px; font-size: 0.9rem; color: var(--warm-brown);">
+            💡 Commit to <strong>expanding the pause</strong> between urge and action by 1-2 minutes each time.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Journal Section -->
+    <section class="journal-section">
+      <h2>✍️ Today's Reflection</h2>
+      <div class="journal-prompts">
+        <div class="journal-prompt">
+          <span class="journal-prompt-icon">💭</span>
+          <span>When did you feel the urge to seek reassurance today?</span>
+        </div>
+        <div class="journal-prompt">
+          <span class="journal-prompt-icon">🌊</span>
+          <span>What sensations did you notice in your body in that moment?</span>
+        </div>
+        <div class="journal-prompt">
+          <span class="journal-prompt-icon">🌱</span>
+          <span>If you chose differently instead of acting on the urge, what value were you honoring?</span>
+        </div>
+        <div class="journal-prompt">
+          <span class="journal-prompt-icon">💚</span>
+          <span>How would the partner you want to be act in this situation?</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="closing">
+      <p>
+        Wanting reassurance of love is natural.<br>
+        It means you value connection deeply.<br><br>
+        But you can slowly practice learning that<br>
+        <strong>you can be safe even without confirmation</strong>.
+      </p>
+      <span class="highlight">You are already worthy of love. 💗</span>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Anxiety passes. Love remains. <span class="heart">💗</span></p>
+      <p style="margin-top: 24px; font-size: 0.85rem; color: #8B7355;">
+        <strong>PADO Psychological Wellness</strong><br>
+        Dr. Yeji Son, Licensed Psychologist
+      </p>
+    </footer>
+
+  </div>
+</body>
+</html>

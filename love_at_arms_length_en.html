@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love at Arm's Length | Avoidant Attachment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #FDF8F3;
+      --warm-beige: #F5E6D3;
+      --soft-sage: #C5D4C0;
+      --calm-blue: #B8C9D4;
+      --dusty-rose: #E8D4D4;
+      --soft-lavender: #D4D4E8;
+      --deep-forest: #3D5A47;
+      --warm-brown: #8B7355;
+      --soft-charcoal: #4A4A4A;
+      
+      /* Theme colors - cool blue tones */
+      --wall-blue: #6B8CAE;
+      --wall-blue-light: #EDF2F7;
+      --wall-blue-mid: #B8C9D4;
+      --wall-slate: #5A7A8A;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      background: var(--cream);
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(184, 201, 212, 0.4) 0%, transparent 100%);
+      border-radius: 30px;
+      position: relative;
+    }
+
+    .header::before {
+      content: '🧊';
+      font-size: 48px;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--wall-blue);
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+    }
+
+    .header .subtitle {
+      font-size: 1.1rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .header .tag {
+      display: inline-block;
+      background: var(--wall-blue-light);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-top: 16px;
+      color: var(--wall-blue);
+    }
+
+    /* Intro */
+    .intro {
+      background: linear-gradient(135deg, #fff 0%, var(--calm-blue) 100%);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 50px;
+      border-left: 5px solid var(--wall-blue);
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+
+    .intro p {
+      font-size: 1rem;
+      line-height: 1.9;
+    }
+
+    .intro .highlight {
+      background: linear-gradient(180deg, transparent 60%, var(--calm-blue) 60%);
+      padding: 0 4px;
+      font-weight: 500;
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+      border: 1px solid rgba(139, 115, 85, 0.1);
+    }
+
+    .section-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--deep-forest);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-card > p {
+      font-size: 1rem;
+      color: var(--soft-charcoal);
+      margin-bottom: 16px;
+    }
+
+    /* Inner Voice Box */
+    .inner-voice {
+      background: var(--wall-blue-light);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 24px 0;
+      border-left: 4px solid var(--wall-blue);
+    }
+
+    .inner-voice-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--wall-blue);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .inner-voice-content {
+      font-style: italic;
+      color: var(--wall-slate);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    /* Pattern Box */
+    .pattern-box {
+      background: var(--wall-blue-light);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+
+    .pattern-title {
+      font-weight: 600;
+      color: var(--wall-blue);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pattern-list {
+      list-style: none;
+    }
+
+    .pattern-list li {
+      padding: 8px 0;
+      padding-left: 24px;
+      position: relative;
+      font-size: 0.95rem;
+    }
+
+    .pattern-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--wall-blue);
+    }
+
+    /* Origin Section */
+    .origin-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .origin-card {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 24px;
+      border-left: 4px solid var(--wall-blue);
+    }
+
+    .origin-card h4 {
+      font-size: 1rem;
+      color: var(--deep-forest);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .origin-card p {
+      font-size: 0.95rem;
+      color: var(--soft-charcoal);
+      line-height: 1.7;
+    }
+
+    /* Defense Mechanism Box */
+    .defense-box {
+      background: linear-gradient(135deg, var(--wall-blue-light) 0%, #E8EEF3 100%);
+      border-radius: 20px;
+      padding: 28px;
+      margin: 24px 0;
+      border: 2px dashed var(--wall-blue-mid);
+    }
+
+    .defense-box h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      color: var(--wall-slate);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .defense-box p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--soft-charcoal);
+    }
+
+    /* Healing Section */
+    .healing-section {
+      background: linear-gradient(135deg, var(--soft-sage) 0%, var(--calm-blue) 100%);
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+    }
+
+    .healing-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--deep-forest);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .healing-section > p {
+      text-align: center;
+      color: var(--deep-forest);
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+    }
+
+    .healing-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .healing-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 28px;
+      transition: all 0.3s ease;
+    }
+
+    .healing-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .healing-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .healing-number {
+      width: 36px;
+      height: 36px;
+      background: var(--wall-blue);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .healing-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      color: var(--deep-forest);
+      font-weight: 700;
+    }
+
+    .healing-card p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--soft-charcoal);
+    }
+
+    .healing-practice {
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 16px;
+      font-size: 0.9rem;
+    }
+
+    .healing-practice strong {
+      color: var(--deep-forest);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* Journey Section */
+    .journey-section {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      border: 2px dashed var(--calm-blue);
+    }
+
+    .journey-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--deep-forest);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .journey-steps {
+      display: grid;
+      gap: 16px;
+    }
+
+    .journey-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--cream);
+      padding: 20px 24px;
+      border-radius: 16px;
+    }
+
+    .journey-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .journey-content h4 {
+      font-size: 1rem;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+    }
+
+    .journey-content p {
+      font-size: 0.9rem;
+      color: var(--warm-brown);
+      line-height: 1.6;
+    }
+
+    /* Reminder Box */
+    .reminder-box {
+      background: var(--wall-blue-light);
+      border-radius: 20px;
+      padding: 28px;
+      margin-top: 32px;
+      text-align: center;
+    }
+
+    .reminder-box p {
+      font-size: 1rem;
+      color: var(--wall-slate);
+      line-height: 1.9;
+    }
+
+    .reminder-box .emphasis {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--wall-blue);
+      font-weight: 700;
+      display: block;
+      margin-top: 12px;
+    }
+
+    /* Closing */
+    .closing {
+      background: linear-gradient(135deg, var(--calm-blue) 0%, var(--soft-lavender) 100%);
+      border-radius: 24px;
+      padding: 40px;
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .closing p {
+      font-size: 1.1rem;
+      color: var(--deep-forest);
+      line-height: 2;
+    }
+
+    .closing .highlight {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      display: block;
+      margin-top: 16px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      color: var(--warm-brown);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+      }
+      .container {
+        max-width: 100%;
+        padding: 20px;
+      }
+      .healing-card:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header">
+      <h1>Love at Arm's Length</h1>
+      <p class="subtitle">Understanding Avoidant Attachment</p>
+      <span class="tag">When closeness feels like too much</span>
+    </header>
+
+    <!-- Intro -->
+    <section class="intro">
+      <p>
+        Do you feel the urge to step back when someone gets close?<br>
+        Does being alone feel more comfortable than being with others?<br><br>
+        <em>"If I get too close, I'll get hurt."</em><br>
+        <em>"If I expect anything, I'll be disappointed."</em><br>
+        <em>"I'm fine on my own."</em><br><br>
+        If these feelings are familiar, you may have an <span class="highlight">avoidant attachment</span> pattern.<br>
+        This isn't your fault. It's a <strong>survival strategy</strong> you learned as a child.
+      </p>
+    </section>
+
+    <!-- Understanding -->
+    <section class="section-card">
+      <h2>🔍 What Is Avoidant Attachment?</h2>
+      
+      <p>
+        According to attachment theory, the relationship you had with your primary caregiver 
+        as a child significantly shapes how you form relationships as an adult.
+      </p>
+
+      <div class="inner-voice">
+        <h4 class="inner-voice-title">💭 The Inner Voice of Avoidant Attachment</h4>
+        <p class="inner-voice-content">
+          "No point in expecting anything — I'll only be disappointed."<br>
+          "If I show my emotions, they'll be ignored."<br>
+          "Don't depend on anyone and you won't get hurt."<br>
+          "It's better to handle things on my own."
+        </p>
+      </div>
+
+      <p>
+        People with avoidant attachment are more familiar with <strong>independence than intimacy</strong>,<br>
+        and tend to avoid relying on others.<br>
+        This isn't weakness — it's a method you learned to protect yourself.
+      </p>
+    </section>
+
+    <!-- Origins -->
+    <section class="section-card">
+      <h2>🌱 Where Does This Pattern Come From?</h2>
+      
+      <p>
+        Avoidant attachment develops from childhood experiences.<br>
+        It forms especially when caregivers don't respond consistently to a child's signals,
+        or when they're emotionally unavailable.
+      </p>
+
+      <div class="origin-grid">
+        <div class="origin-card">
+          <h4>😶 Emotionally Distant Parenting</h4>
+          <p>
+            An environment where crying or seeking connection was met with coldness.<br>
+            The child learns: "Showing emotions doesn't get me anywhere."
+          </p>
+        </div>
+
+        <div class="origin-card">
+          <h4>🚫 Needs Being Ignored</h4>
+          <p>
+            Experiences of not being cared for when hungry or hurt.<br>
+            The child learns: "There's no point in asking for what I need."
+          </p>
+        </div>
+
+        <div class="origin-card">
+          <h4>💪 Excessive Emphasis on Independence</h4>
+          <p>
+            Messages like "Handle it yourself" or "Don't cry."<br>
+            The child only learns to endure difficulties alone.
+          </p>
+        </div>
+
+        <div class="origin-card">
+          <h4>💔 Loss or Trauma</h4>
+          <p>
+            Experiences of abuse, neglect, or significant loss in childhood.<br>
+            This can plant fear and distrust of people.
+          </p>
+        </div>
+      </div>
+
+      <div class="defense-box">
+        <h4>🛡️ What Are Defense Mechanisms?</h4>
+        <p>
+          Defense mechanisms are <strong>unconscious psychological strategies</strong> we use 
+          to reduce anxiety and protect ourselves from psychological harm.<br><br>
+          The main defense mechanisms in avoidant attachment are:<br>
+          • <strong>Not expecting anything</strong> in the first place to avoid disappointment<br>
+          • <strong>Keeping distance</strong> from others by shutting down emotions<br><br>
+          These were effective survival strategies in childhood.<br>
+          But as an adult, you may no longer need them.
+        </p>
+      </div>
+    </section>
+
+    <!-- Patterns -->
+    <section class="section-card">
+      <h2>🔄 Patterns in Relationships</h2>
+
+      <div class="pattern-box">
+        <h3 class="pattern-title">💙 If These Feel Familiar</h3>
+        <ul class="pattern-list">
+          <li>Feeling uncomfortable and wanting distance when someone gets close</li>
+          <li>Difficulty expressing emotions or asking for help</li>
+          <li>Finding alone time more comfortable than being with others</li>
+          <li>Feeling suffocated or trapped when someone approaches</li>
+          <li>Being told you're "emotionally unavailable" by partners</li>
+          <li>Wanting to end relationships just as they start getting deeper</li>
+          <li>Fear that showing vulnerability will lead to abandonment</li>
+        </ul>
+      </div>
+
+      <div class="inner-voice" style="background: #FEF3F0; border-color: #E07A5F;">
+        <h4 class="inner-voice-title" style="color: #C47A6A;">⚠️ When This Pattern Repeats</h4>
+        <p class="inner-voice-content" style="color: #9A5A4A;">
+          • Not getting the intimacy you actually want, feeling lonely<br>
+          • Relationships staying superficial or not lasting<br>
+          • Partners saying they "feel a wall" or leaving<br>
+          • Continuing to feel alone without real connection
+        </p>
+      </div>
+    </section>
+
+    <!-- Healing -->
+    <section class="healing-section">
+      <h2>🌿 Approaches for Healing</h2>
+      <p>
+        It's possible to overcome and heal avoidant attachment patterns.<br>
+        By recognizing your patterns and practicing new ways of connecting,<br>
+        you can gradually form safe and healthy attachments.
+      </p>
+
+      <div class="healing-grid">
+        
+        <div class="healing-card">
+          <div class="healing-card-header">
+            <div class="healing-number">1</div>
+            <h3 class="healing-title">Challenge Negative Beliefs</h3>
+          </div>
+          <p>
+            Recognize that beliefs like "I'll always be disappointed" or 
+            "Showing vulnerability means being abandoned" may not be true.
+          </p>
+          <div class="healing-practice">
+            <strong>💡 Practice</strong>
+            Write down these beliefs and challenge them.<br>
+            "Has everyone really disappointed me? Were there no exceptions?"
+          </div>
+        </div>
+
+        <div class="healing-card">
+          <div class="healing-card-header">
+            <div class="healing-number">2</div>
+            <h3 class="healing-title">Practice Emotional Vulnerability</h3>
+          </div>
+          <p>
+            Gradually show vulnerable parts of yourself in safe environments 
+            with people you trust.
+          </p>
+          <div class="healing-practice">
+            <strong>💡 Practice</strong>
+            Start by sharing small concerns or feelings.<br>
+            Experience: "They accept me even when I show my weak side."
+          </div>
+        </div>
+
+        <div class="healing-card">
+          <div class="healing-card-header">
+            <div class="healing-number">3</div>
+            <h3 class="healing-title">Mindfulness & Self-Understanding</h3>
+          </div>
+          <p>
+            Practice noticing and focusing on your emotions through meditation or mindfulness.
+            People with avoidant tendencies often ignore or bury their emotions.
+          </p>
+          <div class="healing-practice">
+            <strong>💡 Practice</strong>
+            Slowly stay with your anxiety and feelings.<br>
+            "What am I feeling in my body right now?"
+          </div>
+        </div>
+
+        <div class="healing-card">
+          <div class="healing-card-header">
+            <div class="healing-number">4</div>
+            <h3 class="healing-title">Gradually Increase Intimacy</h3>
+          </div>
+          <p>
+            Gradually increase intimacy in relationships.
+            Take small steps to become familiar with closeness that once felt foreign.
+          </p>
+          <div class="healing-practice">
+            <strong>💡 Practice</strong>
+            Share something slightly more personal with close friends or partners.<br>
+            Increase physical affection or expressions of care by one step.
+          </div>
+        </div>
+
+        <div class="healing-card">
+          <div class="healing-card-header">
+            <div class="healing-number">5</div>
+            <h3 class="healing-title">Express Needs & Feelings</h3>
+          </div>
+          <p>
+            Practice honestly expressing what you need and feel.
+            People with avoidant tendencies often hesitate to ask for help or make requests.
+          </p>
+          <div class="healing-practice">
+            <strong>💡 Practice</strong>
+            Start with small requests, and experience accepting help and comfort.
+          </div>
+        </div>
+
+        <div class="healing-card">
+          <div class="healing-card-header">
+            <div class="healing-number">6</div>
+            <h3 class="healing-title">Reflect on Past Experiences</h3>
+          </div>
+          <p>
+            Reflect on your childhood attachment experiences and trauma.
+            Understand how those experiences influence your current relationship patterns.
+          </p>
+          <div class="healing-practice">
+            <strong>💡 Practice</strong>
+            "What emotions did I feel as a child?"<br>
+            "What would present-me say to the child-me?"
+          </div>
+        </div>
+
+        <div class="healing-card">
+          <div class="healing-card-header">
+            <div class="healing-number">7</div>
+            <h3 class="healing-title">Self-Compassion & Self-Care</h3>
+          </div>
+          <p>
+            Develop an attitude of empathy and kindness toward yourself.
+            Accept that your imperfect self is natural as a human being.
+          </p>
+          <div class="healing-practice">
+            <strong>💡 Practice</strong>
+            Practice self-compassion — comforting yourself when things are hard.<br>
+            Take care of yourself with sufficient rest, sleep, and exercise.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Journey -->
+    <section class="journey-section">
+      <h2>🛤️ The Healing Journey</h2>
+
+      <div class="journey-steps">
+        <div class="journey-step">
+          <span class="journey-icon">🔍</span>
+          <div class="journey-content">
+            <h4>Recognition</h4>
+            <p>Noticing your own attachment pattern is the first step.</p>
+          </div>
+        </div>
+
+        <div class="journey-step">
+          <span class="journey-icon">🌊</span>
+          <div class="journey-content">
+            <h4>Allowing Emotions</h4>
+            <p>Feel uncomfortable emotions too — stay with them instead of avoiding.</p>
+          </div>
+        </div>
+
+        <div class="journey-step">
+          <span class="journey-icon">🤝</span>
+          <div class="journey-content">
+            <h4>Safe Connection</h4>
+            <p>Practice small intimacies with people you trust.</p>
+          </div>
+        </div>
+
+        <div class="journey-step">
+          <span class="journey-icon">💚</span>
+          <div class="journey-content">
+            <h4>New Patterns</h4>
+            <p>Form relationships in new ways, not the old ones.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reminder-box">
+        <p>
+          Changing attachment patterns doesn't happen overnight.<br>
+          Be patient and give yourself time.<br>
+          If you expressed even a little more emotion than before, praise yourself.
+        </p>
+        <span class="emphasis">"You don't have to rush."</span>
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="closing">
+      <p>
+        Avoidant attachment originated from childhood wounds,<br>
+        but as an adult, through self-understanding, effort, and support from others,<br>
+        <strong>it can absolutely be healed.</strong><br><br>
+        As cracks begin to form in patterns that once seemed unchangeable,<br>
+        you'll find yourself feeling the warmth and stability of connection with others.
+      </p>
+      <span class="highlight">Even behind the wall, you deserve to be loved. 🧊→💙</span>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Walls can slowly melt. At your own pace. 💙</p>
+      <p style="margin-top: 24px; font-size: 0.85rem; color: #8B7355;">
+        <strong>PADO Psychological Wellness</strong><br>
+        Dr. Yeji Son, Licensed Psychologist
+      </p>
+    </footer>
+
+  </div>
+</body>
+</html>

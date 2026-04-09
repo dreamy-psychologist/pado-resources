@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>벽 뒤에 숨은 마음 | Love at Arm's Length</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #FDF8F3;
+      --warm-beige: #F5E6D3;
+      --soft-sage: #C5D4C0;
+      --calm-blue: #B8C9D4;
+      --dusty-rose: #E8D4D4;
+      --soft-lavender: #D4D4E8;
+      --deep-forest: #3D5A47;
+      --warm-brown: #8B7355;
+      --soft-charcoal: #4A4A4A;
+      
+      /* Theme colors - cool blue tones */
+      --wall-blue: #6B8CAE;
+      --wall-blue-light: #EDF2F7;
+      --wall-blue-mid: #B8C9D4;
+      --wall-slate: #5A7A8A;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--cream);
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(184, 201, 212, 0.4) 0%, transparent 100%);
+      border-radius: 30px;
+      position: relative;
+    }
+
+    .header::before {
+      content: '🧊';
+      font-size: 48px;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--wall-blue);
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+    }
+
+    .header .subtitle {
+      font-size: 1.2rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .header .tag {
+      display: inline-block;
+      background: var(--wall-blue-light);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-top: 16px;
+      color: var(--wall-blue);
+    }
+
+    /* Intro */
+    .intro {
+      background: linear-gradient(135deg, #fff 0%, var(--calm-blue) 100%);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 50px;
+      border-left: 5px solid var(--wall-blue);
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+
+    .intro p {
+      font-size: 1rem;
+      line-height: 1.9;
+    }
+
+    .intro .highlight {
+      background: linear-gradient(180deg, transparent 60%, var(--calm-blue) 60%);
+      padding: 0 4px;
+      font-weight: 500;
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+      border: 1px solid rgba(139, 115, 85, 0.1);
+    }
+
+    .section-card h2 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.5rem;
+      color: var(--deep-forest);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-card > p {
+      font-size: 1rem;
+      color: var(--soft-charcoal);
+      margin-bottom: 16px;
+    }
+
+    /* Inner Voice Box */
+    .inner-voice {
+      background: var(--wall-blue-light);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 24px 0;
+      border-left: 4px solid var(--wall-blue);
+    }
+
+    .inner-voice-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--wall-blue);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .inner-voice-content {
+      font-style: italic;
+      color: var(--wall-slate);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    /* Pattern Box */
+    .pattern-box {
+      background: var(--wall-blue-light);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+
+    .pattern-title {
+      font-weight: 600;
+      color: var(--wall-blue);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pattern-list {
+      list-style: none;
+    }
+
+    .pattern-list li {
+      padding: 8px 0;
+      padding-left: 24px;
+      position: relative;
+      font-size: 0.95rem;
+    }
+
+    .pattern-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--wall-blue);
+    }
+
+    /* Origin Section */
+    .origin-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .origin-card {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 24px;
+      border-left: 4px solid var(--wall-blue);
+    }
+
+    .origin-card h4 {
+      font-size: 1rem;
+      color: var(--deep-forest);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .origin-card p {
+      font-size: 0.95rem;
+      color: var(--soft-charcoal);
+      line-height: 1.7;
+    }
+
+    /* Defense Mechanism Box */
+    .defense-box {
+      background: linear-gradient(135deg, var(--wall-blue-light) 0%, #E8EEF3 100%);
+      border-radius: 20px;
+      padding: 28px;
+      margin: 24px 0;
+      border: 2px dashed var(--wall-blue-mid);
+    }
+
+    .defense-box h4 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.1rem;
+      color: var(--wall-slate);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .defense-box p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--soft-charcoal);
+    }
+
+    /* Healing Section */
+    .healing-section {
+      background: linear-gradient(135deg, var(--soft-sage) 0%, var(--calm-blue) 100%);
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+    }
+
+    .healing-section h2 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.5rem;
+      color: var(--deep-forest);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .healing-section > p {
+      text-align: center;
+      color: var(--deep-forest);
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+    }
+
+    .healing-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .healing-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 28px;
+      transition: all 0.3s ease;
+    }
+
+    .healing-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .healing-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .healing-number {
+      width: 36px;
+      height: 36px;
+      background: var(--wall-blue);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .healing-title {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.1rem;
+      color: var(--deep-forest);
+      font-weight: 700;
+    }
+
+    .healing-card p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--soft-charcoal);
+    }
+
+    .healing-practice {
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 16px;
+      font-size: 0.9rem;
+    }
+
+    .healing-practice strong {
+      color: var(--deep-forest);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* Journey Section */
+    .journey-section {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      border: 2px dashed var(--calm-blue);
+    }
+
+    .journey-section h2 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.5rem;
+      color: var(--deep-forest);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .journey-steps {
+      display: grid;
+      gap: 16px;
+    }
+
+    .journey-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--cream);
+      padding: 20px 24px;
+      border-radius: 16px;
+    }
+
+    .journey-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .journey-content h4 {
+      font-size: 1rem;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+    }
+
+    .journey-content p {
+      font-size: 0.9rem;
+      color: var(--warm-brown);
+      line-height: 1.6;
+    }
+
+    /* Reminder Box */
+    .reminder-box {
+      background: var(--wall-blue-light);
+      border-radius: 20px;
+      padding: 28px;
+      margin-top: 32px;
+      text-align: center;
+    }
+
+    .reminder-box p {
+      font-size: 1rem;
+      color: var(--wall-slate);
+      line-height: 1.9;
+    }
+
+    .reminder-box .emphasis {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.15rem;
+      color: var(--wall-blue);
+      font-weight: 700;
+      display: block;
+      margin-top: 12px;
+    }
+
+    /* Closing */
+    .closing {
+      background: linear-gradient(135deg, var(--calm-blue) 0%, var(--soft-lavender) 100%);
+      border-radius: 24px;
+      padding: 40px;
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .closing p {
+      font-size: 1.1rem;
+      color: var(--deep-forest);
+      line-height: 2;
+    }
+
+    .closing .highlight {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      display: block;
+      margin-top: 16px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      color: var(--warm-brown);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+      }
+      .container {
+        max-width: 100%;
+        padding: 20px;
+      }
+      .healing-card:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header">
+      <h1>벽 뒤에 숨은 마음</h1>
+      <p class="subtitle">Love at Arm's Length</p>
+      <span class="tag">회피형 애착 이해하기</span>
+    </header>
+
+    <!-- Intro -->
+    <section class="intro">
+      <p>
+        가까워지려고 하면 한 발 물러서고 싶어지나요?<br>
+        누군가 다가오면 괜히 불편하고, 혼자가 더 편하게 느껴지나요?<br><br>
+        <em>"너무 가까워지면 다칠 것 같아."</em><br>
+        <em>"기대하면 실망할 거야."</em><br>
+        <em>"나는 혼자서도 괜찮아."</em><br><br>
+        이런 마음이 익숙하다면, 당신은 <span class="highlight">회피형 애착</span> 패턴을 가지고 있을 수 있어요.<br>
+        이건 당신의 잘못이 아니에요. 어린 시절 배운 <strong>생존 전략</strong>이에요.
+      </p>
+    </section>
+
+    <!-- Understanding -->
+    <section class="section-card">
+      <h2>🔍 회피형 애착이란?</h2>
+      
+      <p>
+        애착이론에 따르면, 어린 시절 주 양육자와 맺은 관계의 양상이 
+        이후 우리가 관계를 맺는 방식에 큰 영향을 미쳐요.
+      </p>
+
+      <div class="inner-voice">
+        <h4 class="inner-voice-title">💭 회피형 애착의 내면 목소리</h4>
+        <p class="inner-voice-content">
+          "어차피 기대해봤자 실망만 돌아와."<br>
+          "내 감정을 드러내면 무시당할 거야."<br>
+          "누구에게도 기대지 않아야 상처받지 않아."<br>
+          "혼자 해결하는 게 더 나아."
+        </p>
+      </div>
+
+      <p>
+        회피형 애착을 가진 사람은 <strong>친밀함보다 독립성</strong>에 익숙하고,<br>
+        타인에게 기대지 않으려는 성향을 가지게 돼요.<br>
+        이건 약함이 아니라, 자신을 보호하기 위해 배운 방법이에요.
+      </p>
+    </section>
+
+    <!-- Origins -->
+    <section class="section-card">
+      <h2>🌱 이 패턴은 어디서 왔을까?</h2>
+      
+      <p>
+        회피형 애착은 어린 시절의 경험에서 비롯돼요.<br>
+        특히 보호자가 아이의 신호에 일관되게 반응하지 않거나, 
+        감정적으로 무응답할 때 형성되기 쉬워요.
+      </p>
+
+      <div class="origin-grid">
+        <div class="origin-card">
+          <h4>😶 정서적으로 거리감 있는 양육</h4>
+          <p>
+            아이가 울어도, 기뻐서 달려가도 차갑게 대하는 환경.<br>
+            "내 감정을 드러내도 소용없구나"를 학습하게 돼요.
+          </p>
+        </div>
+
+        <div class="origin-card">
+          <h4>🚫 필요를 무시당한 경험</h4>
+          <p>
+            배고프거나 아플 때 돌봐주지 않은 경험.<br>
+            "필요한 게 있어도 말해봤자 소용없어"를 배우게 돼요.
+          </p>
+        </div>
+
+        <div class="origin-card">
+          <h4>💪 과도한 독립성 강조</h4>
+          <p>
+            "혼자 해결해야 해", "울면 안 돼" 같은 메시지.<br>
+            어려움을 스스로 견디는 법만 배우게 돼요.
+          </p>
+        </div>
+
+        <div class="origin-card">
+          <h4>💔 상실이나 트라우마</h4>
+          <p>
+            어린 시절의 학대, 방임, 큰 상실 경험.<br>
+            사람에 대한 두려움과 불신이 심어질 수 있어요.
+          </p>
+        </div>
+      </div>
+
+      <div class="defense-box">
+        <h4>🛡️ 방어 기제란?</h4>
+        <p>
+          방어 기제는 불안을 줄이고 심리적 상처로부터 자신을 보호하기 위해 
+          <strong>무의식적으로 사용하는 심리적 전략</strong>이에요.<br><br>
+          회피형 애착의 주요 방어 기제는:<br>
+          • 실망을 피하기 위해 <strong>애초에 기대하지 않는 것</strong><br>
+          • 감정을 차단하여 <strong>타인과 거리를 두는 것</strong><br><br>
+          이건 어린 시절에는 효과적인 생존 전략이었어요.<br>
+          하지만 성인이 된 지금, 더 이상 필요하지 않을 수 있어요.
+        </p>
+      </div>
+    </section>
+
+    <!-- Patterns -->
+    <section class="section-card">
+      <h2>🔄 관계에서 나타나는 패턴</h2>
+
+      <div class="pattern-box">
+        <h3 class="pattern-title">💙 이런 모습이 익숙하다면</h3>
+        <ul class="pattern-list">
+          <li>가까워지려고 하면 불편해지고 거리를 두고 싶어짐</li>
+          <li>감정을 표현하거나 도움을 요청하기가 어려움</li>
+          <li>혼자 있는 시간이 더 편하게 느껴짐</li>
+          <li>상대방이 다가올수록 답답하거나 숨이 막히는 느낌</li>
+          <li>"너무 의존적이다"라는 말을 들은 적이 있음 (상대방에게)</li>
+          <li>관계가 깊어지려 하면 이유 없이 끝내고 싶어짐</li>
+          <li>취약한 모습을 보이면 버림받을 것 같은 두려움</li>
+        </ul>
+      </div>
+
+      <div class="inner-voice" style="background: #FEF3F0; border-color: #E07A5F;">
+        <h4 class="inner-voice-title" style="color: #C47A6A;">⚠️ 이 패턴이 반복되면</h4>
+        <p class="inner-voice-content" style="color: #9A5A4A;">
+          • 원하는 친밀함을 얻지 못하고 외로움을 느낌<br>
+          • 관계가 피상적으로 머물거나 오래가지 못함<br>
+          • 상대방이 "벽을 느낀다"고 말하거나 떠남<br>
+          • 진정한 연결 없이 혼자라는 느낌이 계속됨
+        </p>
+      </div>
+    </section>
+
+    <!-- Healing -->
+    <section class="healing-section">
+      <h2>🌿 치유를 위한 접근법</h2>
+      <p>
+        회피형 애착을 극복하고 치유하는 것은 가능해요.<br>
+        자신의 패턴을 인식하고, 새로운 방식으로 관계를 맺는 연습을 통해<br>
+        점진적으로 안전하고 건강한 애착을 형성할 수 있어요.
+      </p>
+
+      <div class="healing-grid">
+        
+        <div class="healing-card">
+          <div class="healing-card-header">
+            <div class="healing-number">1</div>
+            <h3 class="healing-title">부정적 신념에 도전하기</h3>
+          </div>
+          <p>
+            "나는 결국 실망할 거야", "취약함을 보이면 버림받을 거야" 같은 
+            믿음이 반드시 사실이 아닐 수 있음을 자각해요.
+          </p>
+          <div class="healing-practice">
+            <strong>💡 연습하기</strong>
+            이런 신념을 글로 써보고, 스스로 반박해보세요.<br>
+            "정말 모든 사람이 나를 실망시켰나? 예외는 없었나?"
+          </div>
+        </div>
+
+        <div class="healing-card">
+          <div class="healing-card-header">
+            <div class="healing-number">2</div>
+            <h3 class="healing-title">감정적 취약성 연습하기</h3>
+          </div>
+          <p>
+            신뢰할 수 있는 사람이나 안전한 환경에서 
+            감정적으로 취약한 모습을 조금씩 드러내 보세요.
+          </p>
+          <div class="healing-practice">
+            <strong>💡 연습하기</strong>
+            작은 고민이나 감정부터 나누어 보세요.<br>
+            "내 약한 모습을 보여도 상대가 나를 받아주는구나"를 체감하는 게 중요해요.
+          </div>
+        </div>
+
+        <div class="healing-card">
+          <div class="healing-card-header">
+            <div class="healing-number">3</div>
+            <h3 class="healing-title">마음챙김과 자기이해</h3>
+          </div>
+          <p>
+            명상이나 마음챙김을 통해 자기 감정에 집중하고 알아차리는 연습을 해요.
+            회피 성향이 있는 사람은 감정을 무시하거나 묻어두는 경우가 많아요.
+          </p>
+          <div class="healing-practice">
+            <strong>💡 연습하기</strong>
+            천천히 자신의 불안과 감정에 머물러 보세요.<br>
+            "지금 내 몸에서 뭘 느끼고 있지?"
+          </div>
+        </div>
+
+        <div class="healing-card">
+          <div class="healing-card-header">
+            <div class="healing-number">4</div>
+            <h3 class="healing-title">친밀감 단계적으로 늘리기</h3>
+          </div>
+          <p>
+            인간관계에서 친밀감을 단계적으로 높여가요.
+            작은 단계들을 통해 낯설었던 친밀감에 익숙해지는 과정을 밟아요.
+          </p>
+          <div class="healing-practice">
+            <strong>💡 연습하기</strong>
+            가까운 친구나 파트너에게 평소보다 약간 더 개인적인 이야기를 해보세요.<br>
+            스킨십이나 애정 표현을 한 단계 늘려보세요.
+          </div>
+        </div>
+
+        <div class="healing-card">
+          <div class="healing-card-header">
+            <div class="healing-number">5</div>
+            <h3 class="healing-title">필요와 감정 표현하기</h3>
+          </div>
+          <p>
+            자신이 필요로 하는 것과 느끼는 감정을 솔직하게 표현하는 연습을 해요.
+            회피형 성향을 가진 사람은 부탁이나 도움 요청을 꺼리곤 해요.
+          </p>
+          <div class="healing-practice">
+            <strong>💡 연습하기</strong>
+            작은 것부터 부탁해보고, 도움이나 위로를 받아들이는 경험을 해보세요.
+          </div>
+        </div>
+
+        <div class="healing-card">
+          <div class="healing-card-header">
+            <div class="healing-number">6</div>
+            <h3 class="healing-title">과거 경험 성찰하기</h3>
+          </div>
+          <p>
+            어린 시절의 애착 경험과 트라우마를 성찰해요.
+            그 경험이 현재 자신의 관계 맺는 방식에 어떻게 영향을 주는지 이해해봐요.
+          </p>
+          <div class="healing-practice">
+            <strong>💡 연습하기</strong>
+            "어린 시절 내가 느꼈던 감정은 뭐였지?"<br>
+            "그때의 나에게 지금의 내가 해줄 수 있는 말은?"
+          </div>
+        </div>
+
+        <div class="healing-card">
+          <div class="healing-card-header">
+            <div class="healing-number">7</div>
+            <h3 class="healing-title">자기연민과 자기돌봄</h3>
+          </div>
+          <p>
+            자기 자신에게 공감하고 친절하게 대하는 태도를 길러요.
+            완벽하지 않은 자신의 모습도 자연스러운 것임을 받아들여요.
+          </p>
+          <div class="healing-practice">
+            <strong>💡 연습하기</strong>
+            힘들 때 스스로를 다독이는 자기연민을 실천하세요.<br>
+            충분한 휴식, 수면, 운동으로 자기돌봄을 해요.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Journey -->
+    <section class="journey-section">
+      <h2>🛤️ 치유의 여정</h2>
+
+      <div class="journey-steps">
+        <div class="journey-step">
+          <span class="journey-icon">🔍</span>
+          <div class="journey-content">
+            <h4>인식하기</h4>
+            <p>자신의 애착 패턴을 알아차리는 것이 첫 걸음이에요.</p>
+          </div>
+        </div>
+
+        <div class="journey-step">
+          <span class="journey-icon">🌊</span>
+          <div class="journey-content">
+            <h4>감정 허용하기</h4>
+            <p>불편한 감정도 느끼고, 피하지 않고 머물러 보세요.</p>
+          </div>
+        </div>
+
+        <div class="journey-step">
+          <span class="journey-icon">🤝</span>
+          <div class="journey-content">
+            <h4>안전한 연결 경험하기</h4>
+            <p>신뢰할 수 있는 사람과 작은 친밀함을 연습해요.</p>
+          </div>
+        </div>
+
+        <div class="journey-step">
+          <span class="journey-icon">💚</span>
+          <div class="journey-content">
+            <h4>새로운 패턴 만들기</h4>
+            <p>옛 방식이 아닌, 새로운 방식으로 관계를 맺어봐요.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reminder-box">
+        <p>
+          애착 패턴의 변화는 하루아침에 이루어지지 않아요.<br>
+          긴 호흡을 갖고 인내심을 유지하세요.<br>
+          예전보다 감정을 조금 더 표현해봤다면 스스로를 칭찬하세요.
+        </p>
+        <span class="emphasis">"서두르지 않아도 괜찮아."</span>
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="closing">
+      <p>
+        회피형 애착은 유년기의 상처에서 비롯되었지만,<br>
+        성인이 된 후에도 자기 이해와 노력, 그리고 주변의 도움을 통해<br>
+        <strong>충분히 치유할 수 있어요.</strong><br><br>
+        완전히 똑같았던 패턴에 조금씩 금이 가기 시작하면,<br>
+        어느새 타인과 연결되는 따뜻함과 안정감을 느끼는 날이 올 거예요.
+      </p>
+      <span class="highlight">벽 뒤에 숨은 당신도 사랑받을 자격이 있어요. 🧊→💙</span>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>벽은 천천히 녹을 수 있어요. 당신의 속도대로. 💙</p>
+      <p style="margin-top: 24px; font-size: 0.85rem; color: #8B7355;">
+        <strong>PADO Psychological Wellness</strong><br>
+        Dr. Yeji Son, Licensed Psychologist
+      </p>
+    </footer>
+
+  </div>
+</body>
+</html>
