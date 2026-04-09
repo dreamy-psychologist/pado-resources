@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Rest Menu (Neuro-affirming)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FDF8F3;
+      --warm-beige: #F5E6D3;
+      --soft-sage: #C5D4C0;
+      --calm-blue: #B8C9D4;
+      --dusty-rose: #E8D4D4;
+      --soft-lavender: #D4D4E8;
+      --deep-forest: #3D5A47;
+      --warm-brown: #8B7355;
+      --soft-charcoal: #4A4A4A;
+      --low-stim-gradient: linear-gradient(135deg, #D4D4E8 0%, #E8D4D4 50%, #FDF8F3 100%);
+      --active-gradient: linear-gradient(135deg, #C5D4C0 0%, #B8C9D4 50%, #E8F4F0 100%);
+      --stim-gradient: linear-gradient(135deg, #F5E6D3 0%, #E8D4D4 50%, #D4D4E8 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+      background: var(--cream);
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(212, 212, 232, 0.3) 0%, transparent 100%);
+      border-radius: 30px;
+      position: relative;
+    }
+
+    .header::before {
+      content: '🔄';
+      font-size: 48px;
+      display: block;
+      margin-bottom: 20px;
+      animation: gentle-spin 8s linear infinite;
+    }
+
+    @keyframes gentle-spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .header h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .header .subtitle {
+      font-size: 1.1rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+    }
+
+    .header .tag {
+      display: inline-block;
+      background: var(--soft-lavender);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-top: 12px;
+      color: #6B6B8D;
+    }
+
+    /* Key Insight Box */
+    .key-insight {
+      background: linear-gradient(135deg, #fff 0%, var(--soft-lavender) 100%);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 50px;
+      border-left: 5px solid #8B8BB8;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+
+    .key-insight h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.4rem;
+      color: #6B6B8D;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .key-insight p {
+      font-size: 1rem;
+      line-height: 1.9;
+    }
+
+    .key-insight .highlight {
+      background: linear-gradient(180deg, transparent 60%, var(--soft-lavender) 60%);
+      padding: 0 4px;
+      font-weight: 500;
+    }
+
+    /* Intro Section */
+    .intro {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+      border: 1px solid rgba(139, 115, 85, 0.1);
+    }
+
+    .intro h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.5rem;
+      color: var(--deep-forest);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .intro p {
+      font-size: 1rem;
+      color: var(--soft-charcoal);
+      margin-bottom: 16px;
+    }
+
+    .intro .highlight {
+      background: linear-gradient(180deg, transparent 60%, var(--warm-beige) 60%);
+      padding: 0 4px;
+      font-weight: 500;
+    }
+
+    /* Section Cards */
+    .rest-section {
+      margin-bottom: 50px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .section-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    .low-stim .section-icon {
+      background: var(--soft-lavender);
+    }
+
+    .active .section-icon {
+      background: var(--soft-sage);
+    }
+
+    .stim .section-icon {
+      background: var(--warm-beige);
+    }
+
+    .section-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    .low-stim .section-title {
+      color: #6B6B8D;
+    }
+
+    .active .section-title {
+      color: var(--deep-forest);
+    }
+
+    .stim .section-title {
+      color: var(--warm-brown);
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+    }
+
+    /* Explanation Cards */
+    .explanation-card {
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .low-stim .explanation-card {
+      background: var(--low-stim-gradient);
+      border: 1px solid rgba(212, 212, 232, 0.5);
+    }
+
+    .active .explanation-card {
+      background: var(--active-gradient);
+      border: 1px solid rgba(197, 212, 192, 0.5);
+    }
+
+    .stim .explanation-card {
+      background: var(--stim-gradient);
+      border: 1px solid rgba(245, 230, 211, 0.5);
+    }
+
+    .explanation-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .explanation-card p {
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    /* Menu Grid */
+    .menu-card {
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .low-stim .menu-card {
+      border-left: 4px solid var(--soft-lavender);
+    }
+
+    .active .menu-card {
+      border-left: 4px solid var(--soft-sage);
+    }
+
+    .stim .menu-card {
+      border-left: 4px solid var(--warm-beige);
+    }
+
+    .menu-category {
+      margin-bottom: 28px;
+    }
+
+    .menu-category:last-child {
+      margin-bottom: 0;
+    }
+
+    .category-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .menu-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .menu-item {
+      background: var(--cream);
+      padding: 10px 16px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      cursor: default;
+    }
+
+    .low-stim .menu-item:hover {
+      background: var(--soft-lavender);
+      transform: translateY(-2px);
+    }
+
+    .active .menu-item:hover {
+      background: var(--soft-sage);
+      transform: translateY(-2px);
+    }
+
+    .stim .menu-item:hover {
+      background: var(--warm-beige);
+      transform: translateY(-2px);
+    }
+
+    /* Sensory Guide */
+    .sensory-guide {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-top: 50px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+
+    .sensory-guide h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.5rem;
+      color: var(--deep-forest);
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .sensory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .sensory-box {
+      padding: 24px;
+      border-radius: 16px;
+      background: var(--cream);
+    }
+
+    .sensory-box h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sensory-box ul {
+      list-style: none;
+      font-size: 0.9rem;
+    }
+
+    .sensory-box li {
+      padding: 6px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .sensory-box li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--warm-brown);
+      font-size: 0.8rem;
+    }
+
+    /* State Check */
+    .state-check {
+      background: linear-gradient(135deg, var(--calm-blue) 0%, var(--soft-sage) 100%);
+      border-radius: 24px;
+      padding: 40px;
+      margin-top: 50px;
+      color: var(--deep-forest);
+    }
+
+    .state-check h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .state-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .state-item {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 24px;
+      border-radius: 16px;
+    }
+
+    .state-item h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .state-item p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .state-item .recommend {
+      background: rgba(61, 90, 71, 0.1);
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+    }
+
+    .state-item .recommend strong {
+      color: var(--deep-forest);
+    }
+
+    /* Tips Section */
+    .tips {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-top: 50px;
+      border: 2px dashed var(--soft-lavender);
+    }
+
+    .tips h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.5rem;
+      color: #6B6B8D;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .tips-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .tip-item {
+      background: var(--cream);
+      padding: 20px 24px;
+      border-radius: 14px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .tip-number {
+      background: #8B8BB8;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .tip-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      color: var(--warm-brown);
+      font-size: 0.9rem;
+    }
+
+    .footer .loop {
+      display: inline-block;
+      animation: gentle-spin 8s linear infinite;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+      }
+      .container {
+        max-width: 100%;
+        padding: 20px;
+      }
+      .menu-item:hover {
+        transform: none;
+      }
+      .header::before,
+      .footer .loop {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header">
+      <h1>The Rest Menu</h1>
+      <p class="subtitle">Finding rest without having to stop</p>
+      <span class="tag">Neuro-affirming</span>
+    </header>
+
+    <!-- Key Insight -->
+    <section class="key-insight">
+      <h2>💡 Key Insight</h2>
+      <p>
+        "You need to stay still to rest" <span class="highlight">doesn't work for everyone.</span><br><br>
+        Some brains are constantly processing information, which means <strong>doing nothing can actually feel harder.</strong>
+        Without external input, internal stimuli (thoughts, sensations, discomfort) can feel even louder.<br><br>
+        That's why what we need isn't <span class="highlight">"stopping" — it's "switching."</span><br>
+        Moving from energy-draining activities → to energy-regulating activities.
+      </p>
+    </section>
+
+    <!-- Introduction -->
+    <section class="intro">
+      <h2>🔄 Redefining Rest</h2>
+      <p>
+        In this menu, rest comes in three forms:
+      </p>
+      <p>
+        <strong>1. Low-Stimulation Rest</strong> — Reducing input without fully stopping<br>
+        <strong>2. Regulatory Stimming</strong> — Repetitive sensory activities that calm the nervous system<br>
+        <strong>3. Active Rest</strong> — Switching to predictable, structured activities
+      </p>
+      <p>
+        All three are <span class="highlight">real rest.</span> 
+        Just pick what works for you.
+      </p>
+    </section>
+
+    <!-- Low-Stimulation Rest Section -->
+    <section class="rest-section low-stim">
+      <div class="section-header">
+        <div class="section-icon">🌙</div>
+        <div>
+          <h2 class="section-title">Low-Stimulation Rest</h2>
+          <p class="section-subtitle">Reducing input while keeping minimal comfortable activity</p>
+        </div>
+      </div>
+
+      <div class="explanation-card">
+        <h3>🎯 Purpose</h3>
+        <p>
+          To reduce external stimulation (sounds, lights, social demands) and <strong>relieve sensory overload.</strong>
+          It's not about stopping completely — it's about creating a predictable environment where your nervous system feels "safe."
+        </p>
+      </div>
+
+      <div class="explanation-card">
+        <h3>🧠 Why It Helps</h3>
+        <p>
+          Some brains <strong>process many stimuli simultaneously without filtering.</strong>
+          After a day of social situations, sensory input, and unpredictable events, the nervous system becomes overloaded.
+          "Doing nothing" often makes it worse — "keeping only safe stimuli" works better.
+        </p>
+      </div>
+
+      <div class="explanation-card">
+        <h3>⚙️ How It Works</h3>
+        <p>
+          Predictable, controllable environments <strong>reduce amygdala (threat-detection) activation.</strong>
+          Familiar stimuli, repetitive patterns, and solitude signal to the nervous system: "It's safe to let your guard down."
+          That's what real rest feels like.
+        </p>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-category">
+          <h4 class="category-title">🏠 Creating Safe Space</h4>
+          <div class="menu-items">
+            <span class="menu-item">Being in a dark room</span>
+            <span class="menu-item">Wrapping up in a blanket</span>
+            <span class="menu-item">Getting into a tent or small space</span>
+            <span class="menu-item">Closing curtains, turning off lights</span>
+            <span class="menu-item">Being alone in your room</span>
+            <span class="menu-item">Staying in a familiar place</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">🎧 Sensory Blocking/Adjusting</h4>
+          <div class="menu-items">
+            <span class="menu-item">Noise-canceling headphones</span>
+            <span class="menu-item">Earplugs</span>
+            <span class="menu-item">Sunglasses / eye mask</span>
+            <span class="menu-item">Pulling up a hood</span>
+            <span class="menu-item">Soft white noise</span>
+            <span class="menu-item">Listening to familiar music on repeat</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">🔁 Predictable Activities</h4>
+          <div class="menu-items">
+            <span class="menu-item">Rewatching a favorite show</span>
+            <span class="menu-item">Rereading a favorite book</span>
+            <span class="menu-item">Playing a familiar game</span>
+            <span class="menu-item">Listening to the same song on loop</span>
+            <span class="menu-item">Diving into a special interest</span>
+            <span class="menu-item">Following a set routine</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">🛋️ Pressure / Proprioception</h4>
+          <div class="menu-items">
+            <span class="menu-item">Weighted blanket</span>
+            <span class="menu-item">Compression vest</span>
+            <span class="menu-item">Tight clothing</span>
+            <span class="menu-item">Squeezing between cushions</span>
+            <span class="menu-item">Sitting with back against the wall</span>
+            <span class="menu-item">Lying flat on the floor</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stimming Section -->
+    <section class="rest-section stim">
+      <div class="section-header">
+        <div class="section-icon">✨</div>
+        <div>
+          <h2 class="section-title">Regulatory Stimming</h2>
+          <p class="section-subtitle">Repetitive sensory activities that stabilize the nervous system</p>
+        </div>
+      </div>
+
+      <div class="explanation-card">
+        <h3>🎯 Purpose</h3>
+        <p>
+          Stimming is a <strong>self-regulation tool for the nervous system.</strong>
+          It helps bring down hyperarousal or raise energy from a hypoaroused state.
+          This isn't "weird behavior" — it's <strong>how the brain takes care of itself.</strong>
+        </p>
+      </div>
+
+      <div class="explanation-card">
+        <h3>🧠 Why It Helps</h3>
+        <p>
+          Repetitive, predictable sensory input sends <strong>"safety signals"</strong> to the brain.
+          Because you control the stimulation.
+          Suppressing stims can actually reduce your ability to regulate, increasing meltdown risk.
+        </p>
+      </div>
+
+      <div class="explanation-card">
+        <h3>⚙️ How It Works</h3>
+        <p>
+          Rhythmic movements and sensory input <strong>activate the vagus nerve</strong> and 
+          promote serotonin and dopamine release.
+          They also stimulate the vestibular (balance) and proprioceptive (body position) senses, 
+          helping you feel grounded in your body.
+        </p>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-category">
+          <h4 class="category-title">👐 Hand / Tactile Stims</h4>
+          <div class="menu-items">
+            <span class="menu-item">Fidget cube / spinner</span>
+            <span class="menu-item">Playing with a tangle</span>
+            <span class="menu-item">Squishing slime or clay</span>
+            <span class="menu-item">Touching favorite textures</span>
+            <span class="menu-item">Rolling beads or stones</span>
+            <span class="menu-item">Snapping a rubber band</span>
+            <span class="menu-item">Finger tapping</span>
+            <span class="menu-item">Touching fingernails</span>
+            <span class="menu-item">Stroking soft fabric</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">🔄 Movement Stims</h4>
+          <div class="menu-items">
+            <span class="menu-item">Rocking in a chair</span>
+            <span class="menu-item">Rocking back and forth</span>
+            <span class="menu-item">Jumping in place</span>
+            <span class="menu-item">Spinning around</span>
+            <span class="menu-item">Leg bouncing</span>
+            <span class="menu-item">Hand flapping</span>
+            <span class="menu-item">Toe walking</span>
+            <span class="menu-item">Pacing</span>
+            <span class="menu-item">Swinging</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">👀 Visual Stims</h4>
+          <div class="menu-items">
+            <span class="menu-item">Watching a lava lamp</span>
+            <span class="menu-item">Shaking a glitter bottle</span>
+            <span class="menu-item">Watching water flow videos</span>
+            <span class="menu-item">Looking at sparkly things</span>
+            <span class="menu-item">Looking through a kaleidoscope</span>
+            <span class="menu-item">Gazing at flames / candles</span>
+            <span class="menu-item">Looking at patterns</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">👂 Auditory Stims</h4>
+          <div class="menu-items">
+            <span class="menu-item">Listening to the same song on repeat</span>
+            <span class="menu-item">Listening to specific sounds</span>
+            <span class="menu-item">Humming</span>
+            <span class="menu-item">Reading aloud</span>
+            <span class="menu-item">Tapping out rhythms</span>
+            <span class="menu-item">ASMR</span>
+            <span class="menu-item">Repeating favorite quotes</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">👅 Oral Stims</h4>
+          <div class="menu-items">
+            <span class="menu-item">Chewing a chewy necklace</span>
+            <span class="menu-item">Eating crunchy foods</span>
+            <span class="menu-item">Sour candy</span>
+            <span class="menu-item">Chewing ice</span>
+            <span class="menu-item">Drinking through a straw</span>
+            <span class="menu-item">Chewing gum</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Active Rest Section -->
+    <section class="rest-section active">
+      <div class="section-header">
+        <div class="section-icon">🌿</div>
+        <div>
+          <h2 class="section-title">Active Rest</h2>
+          <p class="section-subtitle">Switching to predictable, structured activities</p>
+        </div>
+      </div>
+
+      <div class="explanation-card">
+        <h3>🎯 Purpose</h3>
+        <p>
+          To switch from stressful activities → to <strong>activities you can control.</strong>
+          If "doing nothing" is hard, it's more effective to engage in something predictable and satisfying instead.
+        </p>
+      </div>
+
+      <div class="explanation-card">
+        <h3>🧠 Why It Helps</h3>
+        <p>
+          Some brains <strong>don't like "empty space."</strong>
+          Doing nothing can actually increase rumination, anxiety, or racing thoughts.
+          In these cases, giving your brain "something else to do" is a better way to rest.
+        </p>
+      </div>
+
+      <div class="explanation-card">
+        <h3>⚙️ How It Works</h3>
+        <p>
+          Structured activities give the <strong>prefrontal cortex (planning/execution) a clear task.</strong>
+          This interrupts the "rumination loop" and helps you focus on the present.
+          Activities involving hands activate the motor cortex, reducing overactivation in other areas.
+        </p>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-category">
+          <h4 class="category-title">✋ Repetitive Hand Tasks</h4>
+          <div class="menu-items">
+            <span class="menu-item">Jigsaw puzzles</span>
+            <span class="menu-item">LEGO / building blocks</span>
+            <span class="menu-item">Beading</span>
+            <span class="menu-item">Knitting / crocheting</span>
+            <span class="menu-item">Coloring books</span>
+            <span class="menu-item">Origami</span>
+            <span class="menu-item">Model building</span>
+            <span class="menu-item">Sorting / organizing</span>
+            <span class="menu-item">Shuffling cards</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">🎮 Special Interest Deep Dives</h4>
+          <div class="menu-items">
+            <span class="menu-item">Researching your interest</span>
+            <span class="menu-item">Organizing collections</span>
+            <span class="menu-item">Reading wikis</span>
+            <span class="menu-item">Making lists of favorites</span>
+            <span class="menu-item">Watching related videos</span>
+            <span class="menu-item">Browsing fan communities</span>
+            <span class="menu-item">Organizing / analyzing data</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">📋 Structured Activities</h4>
+          <div class="menu-items">
+            <span class="menu-item">Making checklists</span>
+            <span class="menu-item">Sorting / organizing items</span>
+            <span class="menu-item">Organizing photo folders</span>
+            <span class="menu-item">Creating playlists</span>
+            <span class="menu-item">Planning schedules</span>
+            <span class="menu-item">Counting / calculating</span>
+            <span class="menu-item">Alphabetizing</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">🚶 Gentle Movement</h4>
+          <div class="menu-items">
+            <span class="menu-item">Walking a familiar route</span>
+            <span class="menu-item">Jumping on a trampoline</span>
+            <span class="menu-item">Swimming</span>
+            <span class="menu-item">Cycling</span>
+            <span class="menu-item">Stretching routine</span>
+            <span class="menu-item">Cleaning</span>
+            <span class="menu-item">Folding laundry</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h4 class="category-title">🎨 Creative Activities</h4>
+          <div class="menu-items">
+            <span class="menu-item">Drawing</span>
+            <span class="menu-item">Writing</span>
+            <span class="menu-item">Coding</span>
+            <span class="menu-item">Making music</span>
+            <span class="menu-item">Photo editing</span>
+            <span class="menu-item">Cooking / baking</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sensory Guide -->
+    <section class="sensory-guide">
+      <h2>🎛️ Guide by Sensory State</h2>
+      <div class="sensory-grid">
+        <div class="sensory-box">
+          <h3>😵 When Overstimulated</h3>
+          <p style="font-size: 0.85rem; margin-bottom: 10px; color: #666;">Too much input, exhausted, on edge</p>
+          <ul>
+            <li>Reduce sensory input (dim, quiet)</li>
+            <li>Add pressure (weighted blanket, tight hug)</li>
+            <li>Low-intensity stims (slow rocking)</li>
+            <li>Time alone</li>
+          </ul>
+        </div>
+        <div class="sensory-box">
+          <h3>😶 When Understimulated</h3>
+          <p style="font-size: 0.85rem; margin-bottom: 10px; color: #666;">Sluggish, foggy, low energy</p>
+          <ul>
+            <li>Increase sensory input (bright, music on)</li>
+            <li>Movement stims (jumping, stretching)</li>
+            <li>Crunchy or sour foods</li>
+            <li>Splash cold water on face</li>
+          </ul>
+        </div>
+        <div class="sensory-box">
+          <h3>🌀 When Thoughts Won't Stop</h3>
+          <p style="font-size: 0.85rem; margin-bottom: 10px; color: #666;">Ruminating, looping, worrying</p>
+          <ul>
+            <li>Do something with your hands</li>
+            <li>Dive into a special interest</li>
+            <li>Count or sort things</li>
+            <li>Watch/read familiar content</li>
+          </ul>
+        </div>
+        <div class="sensory-box">
+          <h3>💥 When Approaching Meltdown</h3>
+          <p style="font-size: 0.85rem; margin-bottom: 10px; color: #666;">At your limit, about to explode</p>
+          <ul>
+            <li>Remove stimuli immediately (leave)</li>
+            <li>Go to a safe space</li>
+            <li>Request not to be spoken to</li>
+            <li>Use familiar stims</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- State Check -->
+    <section class="state-check">
+      <h2>🧭 What Kind of Rest Do I Need Right Now?</h2>
+      <div class="state-grid">
+        <div class="state-item">
+          <h3>😵‍💫 "It's too much. Everything is loud. People are exhausting."</h3>
+          <p>Sensory overload / Social fatigue</p>
+          <div class="recommend">
+            <strong>→ Low-Stimulation Rest:</strong> Dark room, noise-canceling, alone time, weighted blanket
+          </div>
+        </div>
+        <div class="state-item">
+          <h3>🔄 "I feel weird staying still. I need to do something."</h3>
+          <p>Need for regulation / Energy release needed</p>
+          <div class="recommend">
+            <strong>→ Stimming:</strong> Rocking, hand stims, movement, touching favorite textures
+          </div>
+        </div>
+        <div class="state-item">
+          <h3>🌀 "My brain won't stop. Thoughts keep spinning."</h3>
+          <p>Rumination / Overthinking</p>
+          <div class="recommend">
+            <strong>→ Active Rest:</strong> Puzzles, organizing, special interest deep dive, hands-on tasks
+          </div>
+        </div>
+        <div class="state-item">
+          <h3>😶 "I don't want to do anything. But I don't feel rested either."</h3>
+          <p>Low energy / Possible dissociation</p>
+          <div class="recommend">
+            <strong>→ Gentle Sensory Input:</strong> Warm drink, favorite show on, touching comfortable textures
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="tips">
+      <h2>💜 Things Worth Remembering</h2>
+      <div class="tips-grid">
+        <div class="tip-item">
+          <span class="tip-number">1</span>
+          <p class="tip-text">
+            <strong>You don't need to hide your stims.</strong><br>
+            They're how your brain takes care of itself. 
+            In safe spaces, let yourself stim freely.
+          </p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-number">2</span>
+          <p class="tip-text">
+            <strong>Let go of "I should rest like everyone else."</strong><br>
+            If staying still is hard, it's not rest for you. 
+            Find what actually works for your brain.
+          </p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-number">3</span>
+          <p class="tip-text">
+            <strong>Create your own "rest kit."</strong><br>
+            Keep favorite textures, fidgets, earphones, sunglasses in your bag. 
+            That way you're ready whenever you need them.
+          </p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-number">4</span>
+          <p class="tip-text">
+            <strong>Rest before you hit your limit.</strong><br>
+            Don't wait until "I'm still okay" — rest when "I'm getting a bit tired." 
+            That's the best way to prevent meltdowns.
+          </p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-number">5</span>
+          <p class="tip-text">
+            <strong>Deep-diving into special interests isn't "wasting time."</strong><br>
+            It's how your brain recharges. 
+            Enjoy it without guilt.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>You don't have to stop to rest.</p>
+      <p>Rest in the way that works for you. <span class="loop">🔄</span></p>
+      <p style="margin-top: 24px; font-size: 0.85rem; color: #8B7355;">
+        <strong>PADO Psychological Wellness</strong><br>
+        Dr. Yeji Son
+      </p>
+    </footer>
+
+  </div>
+</body>
+</html>
