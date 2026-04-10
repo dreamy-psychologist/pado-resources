@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>99가지 마음 돌봄 | 99 Ways to Care for Your Mind</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #FDF8F3;
+      --warm-beige: #F5E6D3;
+      --soft-sage: #C5D4C0;
+      --calm-blue: #B8C9D4;
+      --dusty-rose: #E8D4D4;
+      --soft-lavender: #D4D4E8;
+      --deep-forest: #3D5A47;
+      --warm-brown: #8B7355;
+      --soft-charcoal: #4A4A4A;
+      
+      --cat-move: #7FB5A0;
+      --cat-move-light: #E8F4F0;
+      --cat-create: #C4A0D4;
+      --cat-create-light: #F5EEF8;
+      --cat-calm: #A0C4D4;
+      --cat-calm-light: #EEF6F9;
+      --cat-connect: #D4A0A8;
+      --cat-connect-light: #F9EEEF;
+      --cat-sense: #D4C4A0;
+      --cat-sense-light: #F9F6EE;
+      --cat-play: #A8D4A0;
+      --cat-play-light: #EEF9EC;
+      --cat-express: #D4B0A0;
+      --cat-express-light: #F9F2EE;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--cream);
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(212, 212, 232, 0.4) 0%, transparent 100%);
+      border-radius: 30px;
+    }
+
+    .header::before {
+      content: '🌿';
+      font-size: 48px;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+    }
+
+    .header .subtitle {
+      font-size: 1rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    .header .tag {
+      display: inline-block;
+      background: var(--soft-lavender);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #6B6B8D;
+    }
+
+    .intro {
+      text-align: center;
+      max-width: 500px;
+      margin: 0 auto 32px;
+      font-size: 1rem;
+      color: var(--soft-charcoal);
+      line-height: 1.9;
+    }
+
+    .filter-section {
+      margin-bottom: 24px;
+    }
+
+    .filter-title {
+      font-size: 0.9rem;
+      color: var(--warm-brown);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .filter-btn {
+      padding: 8px 14px;
+      border-radius: 20px;
+      border: 2px solid transparent;
+      background: white;
+      color: var(--soft-charcoal);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .filter-btn.active {
+      border-color: var(--deep-forest);
+      background: var(--deep-forest);
+      color: white;
+      font-weight: 600;
+    }
+
+    .pick-section {
+      text-align: center;
+      margin: 32px 0;
+    }
+
+    .pick-btn {
+      padding: 18px 40px;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, var(--deep-forest), #5A7A5A);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(61, 90, 71, 0.3);
+    }
+
+    .pick-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 30px rgba(61, 90, 71, 0.4);
+    }
+
+    .pick-btn:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .result-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px 32px;
+      margin: 32px 0;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(139, 115, 85, 0.1);
+      display: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .result-card.show {
+      display: block;
+      animation: cardPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes cardPop {
+      0% { transform: scale(0.8) rotateX(20deg); opacity: 0; }
+      100% { transform: scale(1) rotateX(0); opacity: 1; }
+    }
+
+    .result-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+    }
+
+    .result-card[data-cat="move"]::before { background: var(--cat-move); }
+    .result-card[data-cat="create"]::before { background: var(--cat-create); }
+    .result-card[data-cat="calm"]::before { background: var(--cat-calm); }
+    .result-card[data-cat="connect"]::before { background: var(--cat-connect); }
+    .result-card[data-cat="sense"]::before { background: var(--cat-sense); }
+    .result-card[data-cat="play"]::before { background: var(--cat-play); }
+    .result-card[data-cat="express"]::before { background: var(--cat-express); }
+
+    .result-label {
+      font-size: 0.85rem;
+      color: var(--warm-brown);
+      margin-bottom: 16px;
+    }
+
+    .result-emoji {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .result-text {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.6rem;
+      color: var(--deep-forest);
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .result-cat {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-bottom: 24px;
+    }
+
+    .result-cat[data-cat="move"] { background: var(--cat-move-light); color: #4A8070; }
+    .result-cat[data-cat="create"] { background: var(--cat-create-light); color: #8A60A4; }
+    .result-cat[data-cat="calm"] { background: var(--cat-calm-light); color: #5090A4; }
+    .result-cat[data-cat="connect"] { background: var(--cat-connect-light); color: #A46070; }
+    .result-cat[data-cat="sense"] { background: var(--cat-sense-light); color: #8A7A40; }
+    .result-cat[data-cat="play"] { background: var(--cat-play-light); color: #508A40; }
+    .result-cat[data-cat="express"] { background: var(--cat-express-light); color: #A07050; }
+
+    .result-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      padding: 12px 24px;
+      border-radius: 25px;
+      border: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .action-btn.retry {
+      background: var(--cream);
+      color: var(--warm-brown);
+      border: 2px solid var(--warm-beige);
+    }
+
+    .action-btn.retry:hover {
+      background: var(--warm-beige);
+    }
+
+    .action-btn.done {
+      background: var(--soft-sage);
+      color: var(--deep-forest);
+    }
+
+    .action-btn.done:hover {
+      background: var(--deep-forest);
+      color: white;
+    }
+
+    .history-section {
+      margin-top: 48px;
+    }
+
+    .history-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .history-title {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.1rem;
+      color: var(--deep-forest);
+    }
+
+    .history-count {
+      font-size: 0.9rem;
+      color: var(--warm-brown);
+    }
+
+    .history-count strong {
+      color: var(--deep-forest);
+    }
+
+    .clear-btn {
+      font-size: 0.8rem;
+      color: var(--warm-brown);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+      opacity: 0.7;
+    }
+
+    .clear-btn:hover {
+      opacity: 1;
+    }
+
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .history-item {
+      background: white;
+      border-radius: 16px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-20px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    .history-check {
+      width: 24px;
+      height: 24px;
+      background: var(--soft-sage);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .history-content {
+      flex: 1;
+    }
+
+    .history-text {
+      font-size: 0.95rem;
+      color: var(--soft-charcoal);
+    }
+
+    .history-cat {
+      font-size: 0.75rem;
+      color: var(--warm-brown);
+      margin-top: 2px;
+    }
+
+    .history-remove {
+      background: none;
+      border: none;
+      color: var(--warm-brown);
+      cursor: pointer;
+      opacity: 0.5;
+      font-size: 1.2rem;
+      padding: 4px;
+    }
+
+    .history-remove:hover {
+      opacity: 1;
+    }
+
+    .empty-history {
+      text-align: center;
+      padding: 40px;
+      color: var(--warm-brown);
+      font-size: 0.95rem;
+      background: rgba(255,255,255,0.5);
+      border-radius: 16px;
+    }
+
+    .empty-history .emoji {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      color: var(--warm-brown);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 500px) {
+      .header h1 {
+        font-size: 1.7rem;
+      }
+      .filter-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+      .result-text {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <header class="header">
+      <h1>99가지 마음 돌봄</h1>
+      <p class="subtitle">99 Ways to Care for Your Mind</p>
+      <span class="tag">자기돌봄 · Self-Care</span>
+    </header>
+
+    <p class="intro">
+      마음이 힘들 때, 무엇을 해야 할지 모르겠을 때.<br>
+      하나를 뽑아서 지금 바로 해보세요.
+    </p>
+
+    <section class="filter-section">
+      <p class="filter-title">지금 뭐가 필요해요?</p>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-cat="all">🌈 전체</button>
+        <button class="filter-btn" data-cat="move">🏃 움직이기</button>
+        <button class="filter-btn" data-cat="calm">🧘 진정하기</button>
+        <button class="filter-btn" data-cat="create">🎨 만들기</button>
+        <button class="filter-btn" data-cat="express">✍️ 표현하기</button>
+        <button class="filter-btn" data-cat="connect">💬 연결하기</button>
+        <button class="filter-btn" data-cat="sense">🌸 감각쓰기</button>
+        <button class="filter-btn" data-cat="play">🎮 놀기</button>
+      </div>
+    </section>
+
+    <section class="pick-section">
+      <button class="pick-btn" onclick="pickRandom()">🎲 하나 뽑기</button>
+    </section>
+
+    <div class="result-card" id="resultCard">
+      <p class="result-label">오늘의 추천</p>
+      <span class="result-emoji" id="resultEmoji"></span>
+      <p class="result-text" id="resultText"></p>
+      <span class="result-cat" id="resultCat"></span>
+      <div class="result-actions">
+        <button class="action-btn retry" onclick="pickRandom()">🔄 다시 뽑기</button>
+        <button class="action-btn done" onclick="markDone()">✓ 해봤어요</button>
+      </div>
+    </div>
+
+    <section class="history-section" id="historySection">
+      <div class="history-header">
+        <h2 class="history-title">✅ 해본 것들 <span class="history-count">(<span id="historyCount">0</span>/<strong>99</strong>)</span></h2>
+        <button class="clear-btn" onclick="clearHistory()">전체 삭제</button>
+      </div>
+      <div class="history-list" id="historyList"></div>
+    </section>
+
+    <footer class="footer">
+      <p style="margin-bottom: 16px;">작은 돌봄 하나가 큰 변화를 만들어요. 🌿</p>
+      <p style="font-size: 0.85rem; color: #8B7355;">
+        <strong>PADO Psychological Wellness</strong><br>
+        Dr. Yeji Son, Licensed Psychologist
+      </p>
+    </footer>
+
+  </div>
+
+  <script>
+    const items = [
+      { text: "산책하기", cat: "move" },
+      { text: "스트레칭하기", cat: "move" },
+      { text: "춤추기", cat: "move" },
+      { text: "요가하기", cat: "move" },
+      { text: "자전거 타기", cat: "move" },
+      { text: "계단 오르기", cat: "move" },
+      { text: "점핑잭 10개 하기", cat: "move" },
+      { text: "트램폴린 뛰기", cat: "move" },
+      { text: "공 차기", cat: "move" },
+      { text: "농구 슛 연습", cat: "move" },
+      { text: "물구나무서기 시도", cat: "move" },
+      { text: "가벼운 조깅", cat: "move" },
+      { text: "플랭크 30초", cat: "move" },
+      { text: "방 안에서 왔다갔다 걷기", cat: "move" },
+      { text: "심호흡 5회", cat: "calm" },
+      { text: "4-7-8 호흡법", cat: "calm" },
+      { text: "명상 5분", cat: "calm" },
+      { text: "따뜻한 물로 샤워하기", cat: "calm" },
+      { text: "반신욕하기", cat: "calm" },
+      { text: "하늘 바라보기", cat: "calm" },
+      { text: "잔잔한 음악 듣기", cat: "calm" },
+      { text: "바디스캔 명상", cat: "calm" },
+      { text: "5-4-3-2-1 그라운딩", cat: "calm" },
+      { text: "울고 싶으면 울기", cat: "calm" },
+      { text: "베개에 얼굴 묻고 소리지르기", cat: "calm" },
+      { text: "아로마 향초 켜기", cat: "calm" },
+      { text: "따뜻한 차 마시기", cat: "calm" },
+      { text: "낮잠 자기 (피곤하다면)", cat: "calm" },
+      { text: "물 한 잔 마시기", cat: "calm" },
+      { text: "눈 감고 조용히 앉아있기", cat: "calm" },
+      { text: "그림 그리기", cat: "create" },
+      { text: "색칠하기", cat: "create" },
+      { text: "낙서하기", cat: "create" },
+      { text: "종이접기", cat: "create" },
+      { text: "찰흙/클레이 만지기", cat: "create" },
+      { text: "비전보드 만들기", cat: "create" },
+      { text: "카드 만들기", cat: "create" },
+      { text: "쿠키 굽기", cat: "create" },
+      { text: "요리하기", cat: "create" },
+      { text: "플레이리스트 만들기", cat: "create" },
+      { text: "사진 정리하기", cat: "create" },
+      { text: "손뜨개/바느질", cat: "create" },
+      { text: "네일아트", cat: "create" },
+      { text: "이불요새 만들기", cat: "create" },
+      { text: "방 꾸미기 계획 세우기", cat: "create" },
+      { text: "씨앗 심기", cat: "create" },
+      { text: "일기 쓰기", cat: "express" },
+      { text: "감사한 것 3개 쓰기", cat: "express" },
+      { text: "나에게 편지 쓰기", cat: "express" },
+      { text: "안 보낼 편지 쓰기", cat: "express" },
+      { text: "시 쓰기", cat: "express" },
+      { text: "노래 가사 쓰기", cat: "express" },
+      { text: "목표 리스트 쓰기", cat: "express" },
+      { text: "감정 이름 붙이기", cat: "express" },
+      { text: "그날의 기분을 색으로 표현", cat: "express" },
+      { text: "목소리 녹음하기", cat: "express" },
+      { text: "악기 연주하기", cat: "express" },
+      { text: "노래 부르기", cat: "express" },
+      { text: "종이 찢기", cat: "express" },
+      { text: "베개 펀치하기", cat: "express" },
+      { text: "친구에게 문자 보내기", cat: "connect" },
+      { text: "가족에게 전화하기", cat: "connect" },
+      { text: "안아주기", cat: "connect" },
+      { text: "5명에게 미소 짓기", cat: "connect" },
+      { text: "작은 친절 베풀기", cat: "connect" },
+      { text: "누군가의 이야기 들어주기", cat: "connect" },
+      { text: "반려동물과 놀기", cat: "connect" },
+      { text: "온라인 커뮤니티 참여", cat: "connect" },
+      { text: "영상통화하기", cat: "connect" },
+      { text: "친구 집 방문", cat: "connect" },
+      { text: "함께 밥 먹기", cat: "connect" },
+      { text: "상담사/전문가에게 연락", cat: "connect" },
+      { text: "동생/조카와 놀아주기", cat: "connect" },
+      { text: "좋아하는 음악 크게 듣기", cat: "sense" },
+      { text: "부드러운 담요 감싸기", cat: "sense" },
+      { text: "향기로운 로션 바르기", cat: "sense" },
+      { text: "얼음 손에 쥐기", cat: "sense" },
+      { text: "찬물로 세수하기", cat: "sense" },
+      { text: "맛있는 거 먹기", cat: "sense" },
+      { text: "핫초코/스무디 만들기", cat: "sense" },
+      { text: "페이셜 마사지", cat: "sense" },
+      { text: "머리 감기", cat: "sense" },
+      { text: "양초 불꽃 바라보기", cat: "sense" },
+      { text: "물고기/수족관 보기", cat: "sense" },
+      { text: "비 소리 듣기", cat: "sense" },
+      { text: "풀밭에 맨발로 서기", cat: "sense" },
+      { text: "햇빛 쬐기 15분", cat: "sense" },
+      { text: "인형/베개 안기", cat: "sense" },
+      { text: "좋아하는 영화 보기", cat: "play" },
+      { text: "예능/드라마 보기", cat: "play" },
+      { text: "게임하기", cat: "play" },
+      { text: "퍼즐 맞추기", cat: "play" },
+      { text: "십자말풀이/낱말퀴즈", cat: "play" },
+      { text: "책 읽기", cat: "play" },
+      { text: "웹툰 정주행", cat: "play" },
+      { text: "유튜브 탐험하기", cat: "play" },
+      { text: "온라인 쇼핑 구경하기", cat: "play" },
+      { text: "여행지 검색하기", cat: "play" },
+      { text: "어릴 때 좋아하던 것 해보기", cat: "play" },
+    ];
+
+    const catNames = {
+      move: "움직이기",
+      calm: "진정하기",
+      create: "만들기",
+      express: "표현하기",
+      connect: "연결하기",
+      sense: "감각쓰기",
+      play: "놀기"
+    };
+
+    const catEmojis = {
+      move: "🏃",
+      calm: "🧘",
+      create: "🎨",
+      express: "✍️",
+      connect: "💬",
+      sense: "🌸",
+      play: "🎮"
+    };
+
+    let currentFilter = "all";
+    let currentItem = null;
+    let history = JSON.parse(localStorage.getItem('copingHistory') || '[]');
+
+    function setFilter(cat) {
+      currentFilter = cat;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.cat === cat);
+      });
+    }
+
+    function pickRandom() {
+      const filtered = currentFilter === "all" 
+        ? items 
+        : items.filter(item => item.cat === currentFilter);
+      
+      const notDone = filtered.filter(item => 
+        !history.some(h => h.text === item.text)
+      );
+      
+      const pool = notDone.length > 0 ? notDone : filtered;
+      currentItem = pool[Math.floor(Math.random() * pool.length)];
+      
+      const card = document.getElementById('resultCard');
+      const emoji = document.getElementById('resultEmoji');
+      const text = document.getElementById('resultText');
+      const cat = document.getElementById('resultCat');
+      
+      emoji.textContent = catEmojis[currentItem.cat];
+      text.textContent = currentItem.text;
+      cat.textContent = `${catEmojis[currentItem.cat]} ${catNames[currentItem.cat]}`;
+      cat.dataset.cat = currentItem.cat;
+      card.dataset.cat = currentItem.cat;
+      
+      card.classList.remove('show');
+      setTimeout(() => card.classList.add('show'), 10);
+    }
+
+    function markDone() {
+      if (!currentItem) return;
+      
+      if (history.some(h => h.text === currentItem.text)) {
+        pickRandom();
+        return;
+      }
+      
+      history.unshift({
+        text: currentItem.text,
+        cat: currentItem.cat,
+        date: new Date().toISOString()
+      });
+      
+      localStorage.setItem('copingHistory', JSON.stringify(history));
+      renderHistory();
+      pickRandom();
+    }
+
+    function removeFromHistory(index) {
+      history.splice(index, 1);
+      localStorage.setItem('copingHistory', JSON.stringify(history));
+      renderHistory();
+    }
+
+    function clearHistory() {
+      if (confirm('정말 전체 삭제할까요?')) {
+        history = [];
+        localStorage.setItem('copingHistory', JSON.stringify(history));
+        renderHistory();
+      }
+    }
+
+    function renderHistory() {
+      const list = document.getElementById('historyList');
+      const count = document.getElementById('historyCount');
+      
+      count.textContent = history.length;
+      
+      if (history.length === 0) {
+        list.innerHTML = `
+          <div class="empty-history">
+            <span class="emoji">🌱</span>
+            아직 해본 것이 없어요.<br>
+            위에서 하나 뽑아보세요!
+          </div>
+        `;
+        return;
+      }
+      
+      list.innerHTML = history.map((item, index) => `
+        <div class="history-item">
+          <div class="history-check">✓</div>
+          <div class="history-content">
+            <div class="history-text">${item.text}</div>
+            <div class="history-cat">${catEmojis[item.cat]} ${catNames[item.cat]}</div>
+          </div>
+          <button class="history-remove" onclick="removeFromHistory(${index})">×</button>
+        </div>
+      `).join('');
+    }
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => setFilter(btn.dataset.cat));
+    });
+
+    renderHistory();
+  </script>
+</body>
+</html>
