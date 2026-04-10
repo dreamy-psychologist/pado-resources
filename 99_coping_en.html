@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>99 Ways to Care for Your Mind</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #FDF8F3;
+      --warm-beige: #F5E6D3;
+      --soft-sage: #C5D4C0;
+      --calm-blue: #B8C9D4;
+      --dusty-rose: #E8D4D4;
+      --soft-lavender: #D4D4E8;
+      --deep-forest: #3D5A47;
+      --warm-brown: #8B7355;
+      --soft-charcoal: #4A4A4A;
+      
+      --cat-move: #7FB5A0;
+      --cat-move-light: #E8F4F0;
+      --cat-create: #C4A0D4;
+      --cat-create-light: #F5EEF8;
+      --cat-calm: #A0C4D4;
+      --cat-calm-light: #EEF6F9;
+      --cat-connect: #D4A0A8;
+      --cat-connect-light: #F9EEEF;
+      --cat-sense: #D4C4A0;
+      --cat-sense-light: #F9F6EE;
+      --cat-play: #A8D4A0;
+      --cat-play-light: #EEF9EC;
+      --cat-express: #D4B0A0;
+      --cat-express-light: #F9F2EE;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      background: var(--cream);
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(212, 212, 232, 0.4) 0%, transparent 100%);
+      border-radius: 30px;
+    }
+
+    .header::before {
+      content: '🌿';
+      font-size: 48px;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+    }
+
+    .header .subtitle {
+      font-size: 1rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    .header .tag {
+      display: inline-block;
+      background: var(--soft-lavender);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #6B6B8D;
+    }
+
+    .intro {
+      text-align: center;
+      max-width: 500px;
+      margin: 0 auto 32px;
+      font-size: 1rem;
+      color: var(--soft-charcoal);
+      line-height: 1.9;
+    }
+
+    .filter-section {
+      margin-bottom: 24px;
+    }
+
+    .filter-title {
+      font-size: 0.9rem;
+      color: var(--warm-brown);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .filter-btn {
+      padding: 8px 14px;
+      border-radius: 20px;
+      border: 2px solid transparent;
+      background: white;
+      color: var(--soft-charcoal);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .filter-btn.active {
+      border-color: var(--deep-forest);
+      background: var(--deep-forest);
+      color: white;
+      font-weight: 600;
+    }
+
+    .pick-section {
+      text-align: center;
+      margin: 32px 0;
+    }
+
+    .pick-btn {
+      padding: 18px 40px;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, var(--deep-forest), #5A7A5A);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(61, 90, 71, 0.3);
+    }
+
+    .pick-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 30px rgba(61, 90, 71, 0.4);
+    }
+
+    .pick-btn:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .result-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px 32px;
+      margin: 32px 0;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(139, 115, 85, 0.1);
+      display: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .result-card.show {
+      display: block;
+      animation: cardPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes cardPop {
+      0% { transform: scale(0.8) rotateX(20deg); opacity: 0; }
+      100% { transform: scale(1) rotateX(0); opacity: 1; }
+    }
+
+    .result-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+    }
+
+    .result-card[data-cat="move"]::before { background: var(--cat-move); }
+    .result-card[data-cat="create"]::before { background: var(--cat-create); }
+    .result-card[data-cat="calm"]::before { background: var(--cat-calm); }
+    .result-card[data-cat="connect"]::before { background: var(--cat-connect); }
+    .result-card[data-cat="sense"]::before { background: var(--cat-sense); }
+    .result-card[data-cat="play"]::before { background: var(--cat-play); }
+    .result-card[data-cat="express"]::before { background: var(--cat-express); }
+
+    .result-label {
+      font-size: 0.85rem;
+      color: var(--warm-brown);
+      margin-bottom: 16px;
+    }
+
+    .result-emoji {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .result-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--deep-forest);
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .result-cat {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-bottom: 24px;
+    }
+
+    .result-cat[data-cat="move"] { background: var(--cat-move-light); color: #4A8070; }
+    .result-cat[data-cat="create"] { background: var(--cat-create-light); color: #8A60A4; }
+    .result-cat[data-cat="calm"] { background: var(--cat-calm-light); color: #5090A4; }
+    .result-cat[data-cat="connect"] { background: var(--cat-connect-light); color: #A46070; }
+    .result-cat[data-cat="sense"] { background: var(--cat-sense-light); color: #8A7A40; }
+    .result-cat[data-cat="play"] { background: var(--cat-play-light); color: #508A40; }
+    .result-cat[data-cat="express"] { background: var(--cat-express-light); color: #A07050; }
+
+    .result-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      padding: 12px 24px;
+      border-radius: 25px;
+      border: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .action-btn.retry {
+      background: var(--cream);
+      color: var(--warm-brown);
+      border: 2px solid var(--warm-beige);
+    }
+
+    .action-btn.retry:hover {
+      background: var(--warm-beige);
+    }
+
+    .action-btn.done {
+      background: var(--soft-sage);
+      color: var(--deep-forest);
+    }
+
+    .action-btn.done:hover {
+      background: var(--deep-forest);
+      color: white;
+    }
+
+    .history-section {
+      margin-top: 48px;
+    }
+
+    .history-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .history-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--deep-forest);
+    }
+
+    .history-count {
+      font-size: 0.9rem;
+      color: var(--warm-brown);
+    }
+
+    .history-count strong {
+      color: var(--deep-forest);
+    }
+
+    .clear-btn {
+      font-size: 0.8rem;
+      color: var(--warm-brown);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+      opacity: 0.7;
+    }
+
+    .clear-btn:hover {
+      opacity: 1;
+    }
+
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .history-item {
+      background: white;
+      border-radius: 16px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-20px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    .history-check {
+      width: 24px;
+      height: 24px;
+      background: var(--soft-sage);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .history-content {
+      flex: 1;
+    }
+
+    .history-text {
+      font-size: 0.95rem;
+      color: var(--soft-charcoal);
+    }
+
+    .history-cat {
+      font-size: 0.75rem;
+      color: var(--warm-brown);
+      margin-top: 2px;
+    }
+
+    .history-remove {
+      background: none;
+      border: none;
+      color: var(--warm-brown);
+      cursor: pointer;
+      opacity: 0.5;
+      font-size: 1.2rem;
+      padding: 4px;
+    }
+
+    .history-remove:hover {
+      opacity: 1;
+    }
+
+    .empty-history {
+      text-align: center;
+      padding: 40px;
+      color: var(--warm-brown);
+      font-size: 0.95rem;
+      background: rgba(255,255,255,0.5);
+      border-radius: 16px;
+    }
+
+    .empty-history .emoji {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      color: var(--warm-brown);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 500px) {
+      .header h1 {
+        font-size: 1.8rem;
+      }
+      .filter-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+      .result-text {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <header class="header">
+      <h1>99 Ways to Care for Your Mind</h1>
+      <p class="subtitle">Small acts of kindness for yourself</p>
+      <span class="tag">Self-Care</span>
+    </header>
+
+    <p class="intro">
+      When you're struggling and don't know what to do,<br>
+      pick one thing and try it right now.
+    </p>
+
+    <section class="filter-section">
+      <p class="filter-title">What do you need right now?</p>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-cat="all">🌈 All</button>
+        <button class="filter-btn" data-cat="move">🏃 Move</button>
+        <button class="filter-btn" data-cat="calm">🧘 Calm</button>
+        <button class="filter-btn" data-cat="create">🎨 Create</button>
+        <button class="filter-btn" data-cat="express">✍️ Express</button>
+        <button class="filter-btn" data-cat="connect">💬 Connect</button>
+        <button class="filter-btn" data-cat="sense">🌸 Senses</button>
+        <button class="filter-btn" data-cat="play">🎮 Play</button>
+      </div>
+    </section>
+
+    <section class="pick-section">
+      <button class="pick-btn" onclick="pickRandom()">🎲 Pick One</button>
+    </section>
+
+    <div class="result-card" id="resultCard">
+      <p class="result-label">Today's Suggestion</p>
+      <span class="result-emoji" id="resultEmoji"></span>
+      <p class="result-text" id="resultText"></p>
+      <span class="result-cat" id="resultCat"></span>
+      <div class="result-actions">
+        <button class="action-btn retry" onclick="pickRandom()">🔄 Pick Again</button>
+        <button class="action-btn done" onclick="markDone()">✓ Did It</button>
+      </div>
+    </div>
+
+    <section class="history-section" id="historySection">
+      <div class="history-header">
+        <h2 class="history-title">✅ Things I've Tried <span class="history-count">(<span id="historyCount">0</span>/<strong>99</strong>)</span></h2>
+        <button class="clear-btn" onclick="clearHistory()">Clear All</button>
+      </div>
+      <div class="history-list" id="historyList"></div>
+    </section>
+
+    <footer class="footer">
+      <p style="margin-bottom: 16px;">One small act of care can make a big difference. 🌿</p>
+      <p style="font-size: 0.85rem; color: #8B7355;">
+        <strong>PADO Psychological Wellness</strong><br>
+        Dr. Yeji Son, Licensed Psychologist
+      </p>
+    </footer>
+
+  </div>
+
+  <script>
+    const items = [
+      { text: "Go for a walk", cat: "move" },
+      { text: "Do some stretching", cat: "move" },
+      { text: "Dance to your favorite song", cat: "move" },
+      { text: "Try some yoga", cat: "move" },
+      { text: "Ride a bike", cat: "move" },
+      { text: "Take the stairs", cat: "move" },
+      { text: "Do 10 jumping jacks", cat: "move" },
+      { text: "Jump on a trampoline", cat: "move" },
+      { text: "Kick a ball around", cat: "move" },
+      { text: "Shoot some hoops", cat: "move" },
+      { text: "Try a handstand", cat: "move" },
+      { text: "Go for a light jog", cat: "move" },
+      { text: "Hold a plank for 30 seconds", cat: "move" },
+      { text: "Pace around the room", cat: "move" },
+      { text: "Take 5 deep breaths", cat: "calm" },
+      { text: "Try 4-7-8 breathing", cat: "calm" },
+      { text: "Meditate for 5 minutes", cat: "calm" },
+      { text: "Take a warm shower", cat: "calm" },
+      { text: "Take a relaxing bath", cat: "calm" },
+      { text: "Look at the sky", cat: "calm" },
+      { text: "Listen to calming music", cat: "calm" },
+      { text: "Do a body scan meditation", cat: "calm" },
+      { text: "Try 5-4-3-2-1 grounding", cat: "calm" },
+      { text: "Let yourself cry if you need to", cat: "calm" },
+      { text: "Scream into a pillow", cat: "calm" },
+      { text: "Light an aromatherapy candle", cat: "calm" },
+      { text: "Make a warm cup of tea", cat: "calm" },
+      { text: "Take a nap (if you're tired)", cat: "calm" },
+      { text: "Drink a glass of water", cat: "calm" },
+      { text: "Sit quietly with eyes closed", cat: "calm" },
+      { text: "Draw something", cat: "create" },
+      { text: "Color in a coloring book", cat: "create" },
+      { text: "Doodle on paper", cat: "create" },
+      { text: "Do some origami", cat: "create" },
+      { text: "Play with clay or Play-Doh", cat: "create" },
+      { text: "Make a vision board", cat: "create" },
+      { text: "Make a card for someone", cat: "create" },
+      { text: "Bake some cookies", cat: "create" },
+      { text: "Cook a meal", cat: "create" },
+      { text: "Create a playlist", cat: "create" },
+      { text: "Organize your photos", cat: "create" },
+      { text: "Knit or sew something", cat: "create" },
+      { text: "Do your nails", cat: "create" },
+      { text: "Build a pillow fort", cat: "create" },
+      { text: "Plan your dream room", cat: "create" },
+      { text: "Plant some seeds", cat: "create" },
+      { text: "Write in your journal", cat: "express" },
+      { text: "Write 3 things you're grateful for", cat: "express" },
+      { text: "Write a letter to yourself", cat: "express" },
+      { text: "Write a letter you won't send", cat: "express" },
+      { text: "Write a poem", cat: "express" },
+      { text: "Write song lyrics", cat: "express" },
+      { text: "Make a goals list", cat: "express" },
+      { text: "Name your emotions", cat: "express" },
+      { text: "Express your mood as a color", cat: "express" },
+      { text: "Record a voice memo", cat: "express" },
+      { text: "Play an instrument", cat: "express" },
+      { text: "Sing a song", cat: "express" },
+      { text: "Tear up paper", cat: "express" },
+      { text: "Punch a pillow", cat: "express" },
+      { text: "Text a friend", cat: "connect" },
+      { text: "Call a family member", cat: "connect" },
+      { text: "Give someone a hug", cat: "connect" },
+      { text: "Smile at 5 people", cat: "connect" },
+      { text: "Do a small act of kindness", cat: "connect" },
+      { text: "Listen to someone's story", cat: "connect" },
+      { text: "Play with a pet", cat: "connect" },
+      { text: "Join an online community", cat: "connect" },
+      { text: "Video call someone", cat: "connect" },
+      { text: "Visit a friend", cat: "connect" },
+      { text: "Share a meal with someone", cat: "connect" },
+      { text: "Reach out to a therapist", cat: "connect" },
+      { text: "Play with a younger sibling or cousin", cat: "connect" },
+      { text: "Blast your favorite music", cat: "sense" },
+      { text: "Wrap yourself in a soft blanket", cat: "sense" },
+      { text: "Apply scented lotion", cat: "sense" },
+      { text: "Hold an ice cube", cat: "sense" },
+      { text: "Splash cold water on your face", cat: "sense" },
+      { text: "Eat something delicious", cat: "sense" },
+      { text: "Make hot cocoa or a smoothie", cat: "sense" },
+      { text: "Give yourself a face massage", cat: "sense" },
+      { text: "Wash your hair", cat: "sense" },
+      { text: "Watch a candle flame", cat: "sense" },
+      { text: "Watch fish in an aquarium", cat: "sense" },
+      { text: "Listen to rain sounds", cat: "sense" },
+      { text: "Stand barefoot on grass", cat: "sense" },
+      { text: "Sit in sunlight for 15 minutes", cat: "sense" },
+      { text: "Hug a stuffed animal or pillow", cat: "sense" },
+      { text: "Watch your favorite movie", cat: "play" },
+      { text: "Watch a TV show", cat: "play" },
+      { text: "Play a video game", cat: "play" },
+      { text: "Do a puzzle", cat: "play" },
+      { text: "Try a crossword or word search", cat: "play" },
+      { text: "Read a book", cat: "play" },
+      { text: "Binge-read comics or webtoons", cat: "play" },
+      { text: "Explore YouTube", cat: "play" },
+      { text: "Window shop online", cat: "play" },
+      { text: "Search for dream travel destinations", cat: "play" },
+      { text: "Do something you loved as a kid", cat: "play" },
+    ];
+
+    const catNames = {
+      move: "Move",
+      calm: "Calm",
+      create: "Create",
+      express: "Express",
+      connect: "Connect",
+      sense: "Senses",
+      play: "Play"
+    };
+
+    const catEmojis = {
+      move: "🏃",
+      calm: "🧘",
+      create: "🎨",
+      express: "✍️",
+      connect: "💬",
+      sense: "🌸",
+      play: "🎮"
+    };
+
+    let currentFilter = "all";
+    let currentItem = null;
+    let history = JSON.parse(localStorage.getItem('copingHistoryEn') || '[]');
+
+    function setFilter(cat) {
+      currentFilter = cat;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.cat === cat);
+      });
+    }
+
+    function pickRandom() {
+      const filtered = currentFilter === "all" 
+        ? items 
+        : items.filter(item => item.cat === currentFilter);
+      
+      const notDone = filtered.filter(item => 
+        !history.some(h => h.text === item.text)
+      );
+      
+      const pool = notDone.length > 0 ? notDone : filtered;
+      currentItem = pool[Math.floor(Math.random() * pool.length)];
+      
+      const card = document.getElementById('resultCard');
+      const emoji = document.getElementById('resultEmoji');
+      const text = document.getElementById('resultText');
+      const cat = document.getElementById('resultCat');
+      
+      emoji.textContent = catEmojis[currentItem.cat];
+      text.textContent = currentItem.text;
+      cat.textContent = `${catEmojis[currentItem.cat]} ${catNames[currentItem.cat]}`;
+      cat.dataset.cat = currentItem.cat;
+      card.dataset.cat = currentItem.cat;
+      
+      card.classList.remove('show');
+      setTimeout(() => card.classList.add('show'), 10);
+    }
+
+    function markDone() {
+      if (!currentItem) return;
+      
+      if (history.some(h => h.text === currentItem.text)) {
+        pickRandom();
+        return;
+      }
+      
+      history.unshift({
+        text: currentItem.text,
+        cat: currentItem.cat,
+        date: new Date().toISOString()
+      });
+      
+      localStorage.setItem('copingHistoryEn', JSON.stringify(history));
+      renderHistory();
+      pickRandom();
+    }
+
+    function removeFromHistory(index) {
+      history.splice(index, 1);
+      localStorage.setItem('copingHistoryEn', JSON.stringify(history));
+      renderHistory();
+    }
+
+    function clearHistory() {
+      if (confirm('Are you sure you want to clear all?')) {
+        history = [];
+        localStorage.setItem('copingHistoryEn', JSON.stringify(history));
+        renderHistory();
+      }
+    }
+
+    function renderHistory() {
+      const list = document.getElementById('historyList');
+      const count = document.getElementById('historyCount');
+      
+      count.textContent = history.length;
+      
+      if (history.length === 0) {
+        list.innerHTML = `
+          <div class="empty-history">
+            <span class="emoji">🌱</span>
+            Nothing here yet.<br>
+            Pick one above and give it a try!
+          </div>
+        `;
+        return;
+      }
+      
+      list.innerHTML = history.map((item, index) => `
+        <div class="history-item">
+          <div class="history-check">✓</div>
+          <div class="history-content">
+            <div class="history-text">${item.text}</div>
+            <div class="history-cat">${catEmojis[item.cat]} ${catNames[item.cat]}</div>
+          </div>
+          <button class="history-remove" onclick="removeFromHistory(${index})">×</button>
+        </div>
+      `).join('');
+    }
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => setFilter(btn.dataset.cat));
+    });
+
+    renderHistory();
+  </script>
+</body>
+</html>
