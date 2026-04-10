@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Loss Grief Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #FDF8F3;
+      --warm-beige: #F5E6D3;
+      --soft-sage: #C5D4C0;
+      --calm-blue: #B8C9D4;
+      --dusty-rose: #E8D4D4;
+      --soft-lavender: #D4D4E8;
+      --deep-forest: #3D5A47;
+      --warm-brown: #8B7355;
+      --soft-charcoal: #4A4A4A;
+      
+      /* Theme colors */
+      --grief-sage: #A8B5A0;
+      --grief-sage-light: #EDF2EB;
+      --grief-rose: #D4A9A9;
+      --grief-rose-light: #F8F0F0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      background: var(--cream);
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(197, 212, 192, 0.4) 0%, transparent 100%);
+      border-radius: 30px;
+      position: relative;
+    }
+
+    .header::before {
+      content: '🕊️';
+      font-size: 48px;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+    }
+
+    .header .subtitle {
+      font-size: 1.1rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .header .tag {
+      display: inline-block;
+      background: var(--soft-sage);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-top: 16px;
+      color: var(--deep-forest);
+    }
+
+    /* Intro */
+    .intro {
+      background: linear-gradient(135deg, #fff 0%, var(--soft-sage) 100%);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 50px;
+      border-left: 5px solid var(--deep-forest);
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+
+    .intro p {
+      font-size: 1rem;
+      line-height: 1.9;
+    }
+
+    .intro .highlight {
+      background: linear-gradient(180deg, transparent 60%, var(--soft-sage) 60%);
+      padding: 0 4px;
+      font-weight: 500;
+    }
+
+    /* Quote Box */
+    .quote-box {
+      background: var(--grief-sage-light);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 24px 0;
+      border-left: 4px solid var(--grief-sage);
+    }
+
+    .quote-box p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--deep-forest);
+      font-style: italic;
+      line-height: 1.9;
+      margin: 0;
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+      border: 1px solid rgba(139, 115, 85, 0.1);
+    }
+
+    .section-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--deep-forest);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-card > p {
+      font-size: 1rem;
+      color: var(--soft-charcoal);
+      margin-bottom: 16px;
+    }
+
+    /* Symptoms Grid */
+    .symptoms-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 600px) {
+      .symptoms-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .symptom-item {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .symptom-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .symptom-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .symptom-label {
+      font-weight: 600;
+      color: var(--deep-forest);
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .symptom-desc {
+      font-size: 0.85rem;
+      color: var(--warm-brown);
+      line-height: 1.6;
+    }
+
+    /* Grief Stages */
+    .stages-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .stage-card {
+      display: flex;
+      gap: 20px;
+      background: white;
+      border-radius: 20px;
+      padding: 24px;
+      border: 1px solid rgba(139, 115, 85, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stage-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+    }
+
+    .stage-card:nth-child(1)::before { background: var(--dusty-rose); }
+    .stage-card:nth-child(2)::before { background: #D4B896; }
+    .stage-card:nth-child(3)::before { background: #C8C4A0; }
+    .stage-card:nth-child(4)::before { background: var(--calm-blue); }
+    .stage-card:nth-child(5)::before { background: var(--soft-sage); }
+
+    .stage-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .stage-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .stage-card:nth-child(1) .stage-number { background: #C08B8B; }
+    .stage-card:nth-child(2) .stage-number { background: #B8996A; }
+    .stage-card:nth-child(3) .stage-number { background: #A8A470; }
+    .stage-card:nth-child(4) .stage-number { background: #7A96A0; }
+    .stage-card:nth-child(5) .stage-number { background: #7F9B77; }
+
+    .stage-content h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      color: var(--deep-forest);
+      margin-bottom: 10px;
+    }
+
+    .stage-content p {
+      font-size: 0.9rem;
+      color: var(--soft-charcoal);
+      line-height: 1.7;
+    }
+
+    /* Dual Process Model */
+    .dpm-container {
+      margin: 28px 0;
+    }
+
+    .dpm-visual {
+      display: flex;
+      gap: 0;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .dpm-visual {
+        flex-direction: column;
+      }
+      .dpm-oscillation {
+        transform: rotate(90deg);
+        margin: 8px 0;
+      }
+    }
+
+    .dpm-side {
+      flex: 1;
+      padding: 24px;
+      border-radius: 20px;
+    }
+
+    .dpm-side.loss {
+      background: linear-gradient(145deg, var(--grief-rose-light) 0%, #F5E8E8 100%);
+      border: 1px solid var(--dusty-rose);
+      border-radius: 20px 0 0 20px;
+    }
+
+    .dpm-side.restoration {
+      background: linear-gradient(145deg, var(--grief-sage-light) 0%, #E8EDE6 100%);
+      border: 1px solid var(--soft-sage);
+      border-radius: 0 20px 20px 0;
+    }
+
+    @media (max-width: 600px) {
+      .dpm-side.loss { border-radius: 20px 20px 0 0; }
+      .dpm-side.restoration { border-radius: 0 0 20px 20px; }
+    }
+
+    .dpm-side h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .dpm-side.loss h4 { color: #8B5E5E; }
+    .dpm-side.restoration h4 { color: #5E7B56; }
+
+    .dpm-item {
+      font-size: 0.85rem;
+      padding: 6px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .dpm-side.loss .dpm-item { color: #6B4A4A; }
+    .dpm-side.restoration .dpm-item { color: #4A6B44; }
+
+    .dpm-item .dot {
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-top: 7px;
+    }
+
+    .dpm-side.loss .dot { background: #C08B8B; }
+    .dpm-side.restoration .dot { background: #8BB580; }
+
+    .dpm-oscillation {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 8px;
+    }
+
+    .osc-arrow {
+      font-size: 1.4rem;
+      color: var(--warm-brown);
+      line-height: 1;
+      animation: oscillate 2.5s ease-in-out infinite;
+      opacity: 0.6;
+    }
+
+    .osc-arrow:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+
+    @keyframes oscillate {
+      0%, 100% { opacity: 0.3; transform: translateX(-3px); }
+      50% { opacity: 0.8; transform: translateX(3px); }
+    }
+
+    .dpm-note {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .dpm-note p {
+      font-size: 0.95rem;
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .dpm-note strong {
+      color: var(--deep-forest);
+    }
+
+    /* Coping Category */
+    .coping-category {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 32px 0 16px 0;
+    }
+
+    .cat-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .cat-dot.loss { background: #C08B8B; }
+    .cat-dot.restoration { background: #8BB580; }
+    .cat-dot.both { background: linear-gradient(135deg, #C08B8B, #8BB580); }
+
+    .coping-category span {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .cat-loss { color: #8B5E5E; }
+    .cat-restoration { color: #5E7B56; }
+    .cat-both { color: var(--warm-brown); }
+
+    /* Coping Cards */
+    .coping-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .coping-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(139, 115, 85, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .coping-card:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .coping-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 24px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .coping-header .icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .coping-header h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--deep-forest);
+      flex: 1;
+    }
+
+    .coping-header .toggle {
+      font-size: 1.2rem;
+      color: var(--warm-brown);
+      transition: transform 0.3s ease;
+    }
+
+    .coping-body {
+      padding: 0 24px 24px 60px;
+      display: none;
+    }
+
+    .coping-card.open .coping-body {
+      display: block;
+    }
+
+    .coping-card.open .toggle {
+      transform: rotate(45deg);
+    }
+
+    .coping-body p {
+      font-size: 0.9rem;
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .coping-body ul {
+      list-style: none;
+    }
+
+    .coping-body ul li {
+      font-size: 0.88rem;
+      color: var(--soft-charcoal);
+      padding: 6px 0;
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .coping-body ul li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--grief-sage);
+      font-weight: 700;
+    }
+
+    /* Reframe Box */
+    .reframe-item {
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+
+    .reframe-item .before {
+      font-size: 0.85rem;
+      color: #9A7A7A;
+      margin-bottom: 6px;
+    }
+
+    .reframe-item .after {
+      font-size: 0.9rem;
+      color: var(--deep-forest);
+      font-weight: 500;
+    }
+
+    .reframe-item .arrow {
+      color: var(--grief-sage);
+      margin: 0 8px;
+    }
+
+    /* Warning Box */
+    .warning-box {
+      background: #FDF6F0;
+      border: 1px solid #E8D4C4;
+      border-radius: 20px;
+      padding: 28px;
+      margin-top: 24px;
+    }
+
+    .warning-box h3 {
+      font-family: 'Cormorant Garamond', serif;
+      color: #9B6B4A;
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .warning-list {
+      list-style: none;
+    }
+
+    .warning-list li {
+      font-size: 0.9rem;
+      color: #7A5E46;
+      padding: 8px 0;
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .warning-list li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: #C4A080;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    /* Closing */
+    .closing {
+      background: linear-gradient(135deg, var(--soft-sage) 0%, var(--calm-blue) 100%);
+      border-radius: 24px;
+      padding: 40px;
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .closing p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      color: var(--deep-forest);
+      line-height: 2.2;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      color: var(--warm-brown);
+      font-size: 0.9rem;
+    }
+
+    .footer .note {
+      font-size: 0.8rem;
+      color: #999;
+      margin-bottom: 20px;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+      }
+      .container {
+        max-width: 100%;
+        padding: 20px;
+      }
+      .coping-body {
+        display: block !important;
+      }
+      .toggle {
+        display: none;
+      }
+      .osc-arrow {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header">
+      <h1>Pet Loss Grief Guide</h1>
+      <p class="subtitle">Honoring the Bond You Shared</p>
+      <span class="tag">Grief & Healing</span>
+    </header>
+
+    <!-- Intro -->
+    <section class="intro">
+      <p>
+        Your grief is <span class="highlight">proof of your love</span>.<br><br>
+        Losing a pet is no different from losing a family member.<br>
+        "It's just an animal" is simply wrong.<br>
+        Your pet gave you unconditional love, and that loss deserves to be grieved.<br><br>
+        May this guide be a small companion on your journey through grief.
+      </p>
+    </section>
+
+    <!-- Section 1: Pet Loss Syndrome -->
+    <section class="section-card">
+      <h2>🔍 What Is Pet Loss Syndrome?</h2>
+      
+      <p>
+        Pet Loss Syndrome refers to the deep grief and psychological/physical responses 
+        experienced after the death, loss, or separation from a pet.<br>
+        This is a <strong>normal grief response</strong> — not an exaggerated emotion.
+      </p>
+
+      <h3 style="font-size: 1.05rem; color: var(--deep-forest); margin: 28px 0 16px;">Possible Symptoms</h3>
+      
+      <div class="symptoms-grid">
+        <div class="symptom-item">
+          <span class="symptom-icon">💔</span>
+          <div>
+            <div class="symptom-label">Emotional Responses</div>
+            <div class="symptom-desc">Deep sadness, emptiness, loneliness, guilt, anger</div>
+          </div>
+        </div>
+        <div class="symptom-item">
+          <span class="symptom-icon">🫀</span>
+          <div>
+            <div class="symptom-label">Physical Responses</div>
+            <div class="symptom-desc">Sleep disturbance, appetite changes, fatigue, chest pain</div>
+          </div>
+        </div>
+        <div class="symptom-item">
+          <span class="symptom-icon">🧠</span>
+          <div>
+            <div class="symptom-label">Cognitive Responses</div>
+            <div class="symptom-desc">Difficulty concentrating, recurring memories, hallucinations</div>
+          </div>
+        </div>
+        <div class="symptom-item">
+          <span class="symptom-icon">🔄</span>
+          <div>
+            <div class="symptom-label">Behavioral Responses</div>
+            <div class="symptom-desc">Social withdrawal, crying, searching for traces of your pet</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Grief Stages -->
+    <section class="section-card">
+      <h2>🌊 The Five Stages of Grief</h2>
+      
+      <p>
+        Based on the Kübler-Ross model, these stages don't necessarily come in order.<br>
+        You may move back and forth or experience them simultaneously.<br>
+        <strong>No feeling is wrong.</strong>
+      </p>
+
+      <div class="stages-grid">
+        <div class="stage-card">
+          <span class="stage-number">1</span>
+          <div class="stage-content">
+            <h3>Denial</h3>
+            <p>It doesn't feel real yet. You expect them to come running when you open the door. You think you hear their footsteps. This stage is a natural defense mechanism protecting your heart from sudden shock.</p>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <span class="stage-number">2</span>
+          <div class="stage-content">
+            <h3>Anger</h3>
+            <p>"Why my baby?" You may feel anger toward the vet, yourself, or the world. Beneath the anger lies deep love and helplessness.</p>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <span class="stage-number">3</span>
+          <div class="stage-content">
+            <h3>Bargaining</h3>
+            <p>"If only I had taken them to the vet sooner..." "If only I had done more..." The urge to turn back time is overwhelming. This is a natural desire to regain control.</p>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <span class="stage-number">4</span>
+          <div class="stage-content">
+            <h3>Depression</h3>
+            <p>The reality of loss hits, and deep sadness sets in. You may not want to do anything, and daily life may feel meaningless. Fully feeling this grief is part of healing.</p>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <span class="stage-number">5</span>
+          <div class="stage-content">
+            <h3>Acceptance</h3>
+            <p>You begin to accept their departure. The grief doesn't disappear — it coexists with gratitude for the time you shared. You move forward while keeping their memory alive.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Dual Process Model -->
+    <section class="section-card">
+      <h2>🔄 Grieving with the Dual Process Model</h2>
+      
+      <p>
+        According to Stroebe & Schut's Dual Process Model, healthy grieving involves 
+        naturally moving between <strong>Loss-Orientation</strong> and <strong>Restoration-Orientation</strong>.<br>
+        You don't have to be sad all day, nor do you have to pretend you're fine.
+      </p>
+
+      <div class="dpm-container">
+        <div class="dpm-visual">
+          <div class="dpm-side loss">
+            <h4>Loss-Oriented</h4>
+            <div class="dpm-item"><span class="dot"></span>Missing and crying for them</div>
+            <div class="dpm-item"><span class="dot"></span>Remembering time spent together</div>
+            <div class="dpm-item"><span class="dot"></span>Looking at photos and videos</div>
+            <div class="dpm-item"><span class="dot"></span>Fully feeling the grief</div>
+            <div class="dpm-item"><span class="dot"></span>Finding meaning in the loss</div>
+          </div>
+          <div class="dpm-oscillation">
+            <span class="osc-arrow">⇌</span>
+            <span class="osc-arrow">⇌</span>
+          </div>
+          <div class="dpm-side restoration">
+            <h4>Restoration-Oriented</h4>
+            <div class="dpm-item"><span class="dot"></span>Maintaining daily routines</div>
+            <div class="dpm-item"><span class="dot"></span>Starting new activities or roles</div>
+            <div class="dpm-item"><span class="dot"></span>Spending time with others</div>
+            <div class="dpm-item"><span class="dot"></span>Adapting to changed life</div>
+            <div class="dpm-item"><span class="dot"></span>Taking a break from grief</div>
+          </div>
+        </div>
+
+        <div class="dpm-note">
+          <p>
+            <strong>Moving back and forth is normal.</strong><br>
+            It's okay to cry all morning and then laugh over dinner.<br>
+            Allowing both sides is the key to healthy grieving.
+          </p>
+        </div>
+      </div>
+
+      <div class="quote-box">
+        <p>You need time to grieve and time to live.<br>
+        You don't have to stay in just one place.</p>
+      </div>
+    </section>
+
+    <!-- Section 4: Coping Strategies -->
+    <section class="section-card">
+      <h2>🌿 Coping Strategies</h2>
+      
+      <p>
+        These strategies are organized by Loss-Orientation and Restoration-Orientation.<br>
+        Start with whichever direction feels right for you now.
+      </p>
+
+      <!-- Loss-Oriented -->
+      <div class="coping-category">
+        <span class="cat-dot loss"></span>
+        <span class="cat-loss">Loss-Oriented — Time with Grief</span>
+      </div>
+
+      <div class="coping-grid">
+        <div class="coping-card open">
+          <div class="coping-header" onclick="toggleCard(this)">
+            <span class="icon">📝</span>
+            <h3>Express Your Feelings</h3>
+            <span class="toggle">+</span>
+          </div>
+          <div class="coping-body">
+            <p>Expressing emotions safely, rather than suppressing them, is the first step to recovery.</p>
+            <ul>
+              <li>Write a letter to your pet. Say what you wanted to say — apologies, gratitude, love.</li>
+              <li>Cry when you need to. Tears are part of healing.</li>
+              <li>Keep an emotion journal. Even one line a day about how you feel.</li>
+              <li>Talk to someone you trust.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="coping-card">
+          <div class="coping-header" onclick="toggleCard(this)">
+            <span class="icon">🕯️</span>
+            <h3>Create Memorial Rituals</h3>
+            <span class="toggle">+</span>
+          </div>
+          <div class="coping-body">
+            <p>Farewell rituals help process the loss in a meaningful way.</p>
+            <ul>
+              <li>Create a photo album or memory box.</li>
+              <li>Visit places your pet loved.</li>
+              <li>Set up a small memorial space at home.</li>
+              <li>Donate or volunteer in your pet's name.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="coping-card">
+          <div class="coping-header" onclick="toggleCard(this)">
+            <span class="icon">💭</span>
+            <h3>Cognitive Reframing</h3>
+            <span class="toggle">+</span>
+          </div>
+          <div class="coping-body">
+            <p>Healthy ways to shift self-blame and guilt.</p>
+            <div class="reframe-item">
+              <div class="before">"I should have done more"</div>
+              <div class="after"><span class="arrow">→</span> "I did the best I could at the time."</div>
+            </div>
+            <div class="reframe-item">
+              <div class="before">"I shouldn't be this sad"</div>
+              <div class="after"><span class="arrow">→</span> "This grief is proof of how deeply I loved."</div>
+            </div>
+            <div class="reframe-item">
+              <div class="before">"I need to get over this quickly"</div>
+              <div class="after"><span class="arrow">→</span> "Grief has no deadline. My pace is okay."</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Restoration-Oriented -->
+      <div class="coping-category">
+        <span class="cat-dot restoration"></span>
+        <span class="cat-restoration">Restoration-Oriented — Time with Life</span>
+      </div>
+
+      <div class="coping-grid">
+        <div class="coping-card">
+          <div class="coping-header" onclick="toggleCard(this)">
+            <span class="icon">🌱</span>
+            <h3>Care for Daily Life</h3>
+            <span class="toggle">+</span>
+          </div>
+          <div class="coping-body">
+            <p>Maintaining basic self-care even in grief is important.</p>
+            <ul>
+              <li>Try to keep regular sleep and eating patterns.</li>
+              <li>Move your body with light walks or stretching.</li>
+              <li>Maintain routines within your capacity.</li>
+              <li>Reduce caffeine and alcohol.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="coping-card">
+          <div class="coping-header" onclick="toggleCard(this)">
+            <span class="icon">🤝</span>
+            <h3>Use Social Support</h3>
+            <span class="toggle">+</span>
+          </div>
+          <div class="coping-body">
+            <p>Don't try to handle this alone. There are people who understand.</p>
+            <ul>
+              <li>Join communities of others who've experienced pet loss.</li>
+              <li>It's okay to distance yourself from people who say "it's just an animal."</li>
+              <li>Seek professional counseling if needed. This is courage, not weakness.</li>
+              <li>Tell family and friends specifically what you need.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="coping-card">
+          <div class="coping-header" onclick="toggleCard(this)">
+            <span class="icon">☀️</span>
+            <h3>Create New Meaning</h3>
+            <span class="toggle">+</span>
+          </div>
+          <div class="coping-body">
+            <p>Slowly adapting to changed life and finding new meaning.</p>
+            <ul>
+              <li>Continue the love your pet taught you in other ways.</li>
+              <li>Volunteer or donate in your pet's name.</li>
+              <li>Reflect on how you grew because of your pet.</li>
+              <li>Getting a new pet is not betrayal. Consider it slowly when you're ready.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Both -->
+      <div class="coping-category">
+        <span class="cat-dot both"></span>
+        <span class="cat-both">For Both — Calming Techniques</span>
+      </div>
+
+      <div class="coping-grid">
+        <div class="coping-card">
+          <div class="coping-header" onclick="toggleCard(this)">
+            <span class="icon">🫁</span>
+            <h3>Relaxation & Mindfulness</h3>
+            <span class="toggle">+</span>
+          </div>
+          <div class="coping-body">
+            <p>Techniques you can use anytime emotions feel overwhelming.</p>
+            <ul>
+              <li><strong>4-7-8 Breathing:</strong> Inhale 4 seconds, hold 7 seconds, exhale 8 seconds. Repeat 3 times.</li>
+              <li><strong>5-4-3-2-1 Grounding:</strong> Find 5 things you see, 4 you can touch, 3 you hear, 2 you smell, 1 you taste.</li>
+              <li><strong>Body Scan:</strong> Slowly move attention from toes to head, releasing tension.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: When to Seek Help -->
+    <section class="section-card">
+      <h2>⚠️ Signs You May Need Professional Help</h2>
+      
+      <p>
+        Grieving is natural, but if the following symptoms persist, 
+        consider seeking professional support.
+      </p>
+
+      <div class="warning-box">
+        <h3>🚨 Consider Professional Help If:</h3>
+        <ul class="warning-list">
+          <li>Daily functioning (work, eating, sleeping) is severely impaired for 2+ weeks</li>
+          <li>Intense guilt or self-blame continues</li>
+          <li>You've become completely isolated from others</li>
+          <li>Grief doesn't diminish over time or gets worse</li>
+          <li>You've completely lost motivation for life</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="closing">
+      <p>
+        Grief comes when love has nowhere to go.<br>
+        But that love doesn't disappear.<br><br>
+        It lives on in the time you shared,<br>
+        forever in your heart. 🕊️
+      </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="note">This resource is for educational and self-care purposes and does not replace professional medical or psychological counseling.</p>
+      <p style="margin-top: 16px; font-size: 0.85rem; color: #8B7355;">
+        <strong>PADO Psychological Wellness</strong><br>
+        Dr. Yeji Son, Licensed Psychologist
+      </p>
+    </footer>
+
+  </div>
+
+  <script>
+    function toggleCard(header) {
+      const card = header.parentElement;
+      card.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
