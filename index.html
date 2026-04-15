@@ -3,19 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PADO Psychological Wellness - Resources</title>
+  <title>PADO Resources</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Gowun+Batang:wght@400;700&family=Libre+Baskerville:wght@400;700&family=Source+Sans+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --cream: #FDF8F3;
-      --warm-beige: #F5E6D3;
-      --soft-sage: #C5D4C0;
-      --calm-blue: #B8C9D4;
-      --dusty-rose: #E8D4D4;
-      --soft-lavender: #D4D4E8;
-      --deep-forest: #3D5A47;
-      --warm-brown: #8B7355;
-      --soft-charcoal: #4A4A4A;
+      --cream: #FAF7F2;
+      --warm-beige: #F0E6D8;
+      --soft-taupe: #D4C8B8;
+      --mid-brown: #A69580;
+      --warm-brown: #6B5B4F;
+      --deep-brown: #3D3530;
+      --soft-charcoal: #4A4543;
     }
 
     * {
@@ -26,500 +24,310 @@
 
     body {
       font-family: 'Noto Sans KR', 'Source Sans Pro', sans-serif;
-      background: var(--cream);
+      background: #E8E1D9;
       color: var(--soft-charcoal);
       line-height: 1.8;
-      min-height: 100vh;
     }
 
     .container {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 40px 24px;
+      padding: 20px 16px;
     }
 
-    /* Header */
-    .header {
-      text-align: center;
-      margin-bottom: 60px;
-      padding: 60px 30px;
-      background: linear-gradient(135deg, rgba(197, 212, 192, 0.3) 0%, rgba(184, 201, 212, 0.3) 50%, rgba(212, 212, 232, 0.3) 100%);
-      border-radius: 30px;
-    }
-
-    .logo {
-      font-family: 'Libre Baskerville', 'Gowun Batang', serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--deep-forest);
-      margin-bottom: 4px;
-      letter-spacing: 1px;
-    }
-
-    .logo-sub {
-      font-size: 1rem;
-      color: var(--warm-brown);
-      font-weight: 400;
-      letter-spacing: 0.5px;
-      margin-bottom: 8px;
-    }
-
-    .logo-title {
-      font-family: 'Source Sans Pro', sans-serif;
-      font-size: 0.9rem;
-      color: var(--warm-brown);
-      font-weight: 400;
-      letter-spacing: 0.5px;
-      margin-bottom: 32px;
-      opacity: 0.85;
-    }
-
-    .header-desc {
-      font-size: 1.05rem;
-      color: var(--soft-charcoal);
-      max-width: 550px;
-      margin: 0 auto;
-      line-height: 2;
-    }
-
-    .header-desc .ko {
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .header-desc .en {
-      display: block;
-      font-family: 'Source Sans Pro', sans-serif;
-      color: var(--warm-brown);
-      font-size: 0.95rem;
-      margin-top: 12px;
-    }
-
-    /* Section Title */
-    .section-title {
-      font-family: 'Gowun Batang', 'Libre Baskerville', serif;
-      font-size: 1.5rem;
-      color: var(--deep-forest);
-      margin-bottom: 30px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .section-title .en {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 1.1rem;
-      color: var(--warm-brown);
-      font-weight: 400;
-    }
-
-    /* Resource Cards Grid */
     .resources-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 24px;
-      margin-bottom: 60px;
+      gap: 20px;
     }
 
     .resource-card {
       background: white;
-      border-radius: 20px;
-      padding: 32px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(61, 53, 48, 0.05);
       transition: all 0.3s ease;
       text-decoration: none;
       color: inherit;
       display: block;
-      border: 1px solid transparent;
+      border: 1px solid rgba(107, 91, 79, 0.08);
     }
 
     .resource-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-      border-color: var(--soft-sage);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(61, 53, 48, 0.1);
+      border-color: var(--soft-taupe);
     }
 
     .card-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
-      margin-bottom: 20px;
+      font-size: 24px;
+      margin-bottom: 16px;
+      background: var(--warm-beige);
     }
-
-    .card-icon.neuro { background: var(--soft-lavender); }
-    .card-icon.emotion { background: var(--dusty-rose); }
-    .card-icon.regulation { background: var(--soft-sage); }
-    .card-icon.spiral { background: var(--soft-lavender); }
-    .card-icon.attachment-anxious { background: var(--dusty-rose); }
-    .card-icon.attachment-avoidant { background: var(--calm-blue); }
 
     .card-title {
       font-family: 'Gowun Batang', serif;
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      color: var(--deep-forest);
+      color: var(--deep-brown);
       margin-bottom: 4px;
     }
 
     .card-title-en {
       font-family: 'Libre Baskerville', serif;
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 400;
       color: var(--warm-brown);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .card-tag {
       display: inline-block;
       background: var(--cream);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 16px;
+      font-size: 0.75rem;
       color: var(--warm-brown);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(107, 91, 79, 0.12);
     }
 
     .card-desc {
-      font-size: 0.95rem;
-      color: #666;
+      font-size: 0.9rem;
+      color: var(--soft-charcoal);
       line-height: 1.7;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .card-desc-en {
       font-family: 'Source Sans Pro', sans-serif;
-      font-size: 0.85rem;
-      color: #999;
+      font-size: 0.82rem;
+      color: var(--mid-brown);
       line-height: 1.6;
     }
 
-    /* Language Buttons */
     .lang-buttons {
       display: flex;
-      gap: 10px;
-      margin-top: 16px;
+      gap: 8px;
+      margin-top: 14px;
     }
 
     .lang-btn {
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 0.85rem;
+      padding: 7px 14px;
+      border-radius: 16px;
+      font-size: 0.8rem;
       text-decoration: none;
       transition: all 0.2s ease;
-      border: 1px solid var(--soft-lavender);
+      border: 1px solid var(--soft-taupe);
       background: white;
       color: var(--soft-charcoal);
     }
 
     .lang-btn:hover {
-      background: var(--soft-lavender);
-      color: var(--deep-forest);
+      background: var(--deep-brown);
+      border-color: var(--deep-brown);
+      color: white;
     }
 
     .lang-btn.ko::before { content: '🇰🇷 '; }
     .lang-btn.en::before { content: '🇺🇸 '; }
 
-    /* Coming Soon Card */
-    .resource-card.coming-soon {
-      opacity: 0.6;
-      cursor: default;
-    }
-
-    .resource-card.coming-soon:hover {
-      transform: none;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-      border-color: transparent;
-    }
-
-    .coming-soon-badge {
-      display: inline-block;
-      background: var(--warm-beige);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      color: var(--warm-brown);
-      margin-left: 8px;
-    }
-
-    /* New Badge */
-    .new-badge {
-      display: inline-block;
-      background: var(--soft-sage);
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      color: var(--deep-forest);
-      margin-left: 8px;
-      font-weight: 600;
-    }
-
-    /* Footer */
-    .footer {
-      text-align: center;
-      padding: 40px;
-      border-top: 1px solid rgba(139, 115, 85, 0.1);
-      margin-top: 40px;
-    }
-
-    .footer-logo {
-      font-family: 'Libre Baskerville', 'Gowun Batang', serif;
-      font-size: 1.2rem;
-      color: var(--deep-forest);
-      margin-bottom: 8px;
-    }
-
-    .footer-name {
-      font-size: 0.95rem;
-      color: var(--warm-brown);
-      margin-bottom: 4px;
-    }
-
-    .footer-title {
-      font-family: 'Source Sans Pro', sans-serif;
-      font-size: 0.85rem;
-      color: var(--warm-brown);
-      margin-bottom: 16px;
-      opacity: 0.85;
-    }
-
-    .footer-note {
-      font-size: 0.85rem;
-      color: #999;
-    }
-
-    /* Responsive */
     @media (max-width: 600px) {
-      .logo { font-size: 1.6rem; }
-      .resources-grid { grid-template-columns: 1fr; }
-      .section-title {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
+      .resources-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .resource-card {
+        padding: 24px;
+      }
+      .container {
+        padding: 16px 12px;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    
-    <!-- Header -->
-    <header class="header">
-      <h1 class="logo">PADO Psychological Wellness</h1>
-      <p class="logo-sub">Dr. Yeji Son</p>
-      <p class="logo-title">Licensed Psychologist</p>
-      <p class="header-desc">
-        <span class="ko">마음을 이해하고 돌보는 데 도움이 되는 자료들을 모았습니다.</span>
-        <span class="ko">필요한 자료를 골라 읽어보세요.</span>
-        <span class="en">A collection of resources to help you understand and care for your mind.</span>
-      </p>
-    </header>
-
-    <!-- Resources Section -->
-    <section>
-      <h2 class="section-title">
-        📚 심리교육 자료 
-        <span class="en">Psychoeducation Resources</span>
-      </h2>
+    <div class="resources-grid">
       
-      <div class="resources-grid">
-        
-        <!-- Micro Break -->
-        <div class="resource-card">
-          <div class="card-icon" style="background: var(--soft-sage);">⏸️</div>
-          <h3 class="card-title">
-            Micro Break
-            <span class="new-badge">NEW</span>
-          </h3>
-          <p class="card-title-en">30-Second Reset</p>
-          <span class="card-tag">조절 · Regulation</span>
-          <p class="card-desc">
-            30초면 충분해요. 바쁠 때 쓰는 응급 키트.
-            시간/종류/상황별로 찾는 신경계 리셋 도구.
-          </p>
-          <p class="card-desc-en">
-            30 seconds is enough. Emergency kit for busy times.
-            Find your reset by time, type, or situation.
-          </p>
-          <div class="lang-buttons">
-            <a href="micro-break-ko.html" class="lang-btn ko">한국어</a>
-            <a href="micro-break-en.html" class="lang-btn en">English</a>
-          </div>
+      <!-- Micro Break -->
+      <div class="resource-card">
+        <div class="card-icon">⏸️</div>
+        <h3 class="card-title">Micro Break</h3>
+        <p class="card-title-en">30-Second Reset</p>
+        <span class="card-tag">조절 · Regulation</span>
+        <p class="card-desc">
+          30초면 충분해요. 바쁠 때 쓰는 응급 키트.
+          시간/종류/상황별로 찾는 신경계 리셋 도구.
+        </p>
+        <p class="card-desc-en">
+          30 seconds is enough. Emergency kit for busy times.
+        </p>
+        <div class="lang-buttons">
+          <a href="https://dreamy-psychologist.github.io/pado-resources/micro-break-ko.html" class="lang-btn ko" target="_top">한국어</a>
+          <a href="https://dreamy-psychologist.github.io/pado-resources/micro-break-en.html" class="lang-btn en" target="_top">English</a>
         </div>
-
-        <!-- 감정 지도 -->
-        <div class="resource-card">
-          <div class="card-icon emotion">🧭</div>
-          <h3 class="card-title">감정 지도<span class="new-badge">NEW</span></h3>
-          <p class="card-title-en">Emotion Map</p>
-          <span class="card-tag">Neuro-affirming</span>
-          <p class="card-desc">
-            감정에서 출발해도, 몸에서 출발해도 괜찮아요.
-            내 감정에 이름 붙이고, 몸에서 느껴보기.
-          </p>
-          <p class="card-desc-en">
-            Start from emotion or body — either path is valid.
-            Name your feelings and notice them in your body.
-          </p>
-          <div class="lang-buttons">
-            <a href="emotion-map-ko.html" class="lang-btn ko">한국어</a>
-            <a href="emotion-map-en.html" class="lang-btn en">English</a>
-          </div>
-        </div>
-
-        <!-- 99가지 마음 돌봄 -->
-        <div class="resource-card">
-          <div class="card-icon" style="background: var(--soft-lavender);">🌿</div>
-          <h3 class="card-title">99가지 마음 돌봄</h3>
-          <p class="card-title-en">99 Ways to Care for Your Mind</p>
-          <span class="card-tag">자기돌봄 · Self-Care</span>
-          <p class="card-desc">
-            마음이 힘들 때, 하나를 뽑아서 지금 바로 해보세요.
-            7가지 카테고리, 랜덤 뽑기, 해본 것 기록.
-          </p>
-          <p class="card-desc-en">
-            When you're struggling, pick one and try it now.
-            Random picker with progress tracking.
-          </p>
-          <div class="lang-buttons">
-            <a href="99_coping.html" class="lang-btn ko">한국어</a>
-            <a href="99_coping_en.html" class="lang-btn en">English</a>
-          </div>
-        </div>
-
-        <!-- 반려동물 상실 애도 가이드 -->
-        <div class="resource-card">
-          <div class="card-icon" style="background: var(--soft-sage);">🕊️</div>
-          <h3 class="card-title">반려동물 상실 애도 가이드</h3>
-          <p class="card-title-en">Pet Loss Grief Guide</p>
-          <span class="card-tag">애도 · Grief</span>
-          <p class="card-desc">
-            당신의 슬픔은 사랑의 증거입니다.
-            슬픔의 5단계, 이중과정모델, 구체적인 대처 전략.
-          </p>
-          <p class="card-desc-en">
-            Your grief is proof of your love.
-            The 5 stages, Dual Process Model, and coping strategies.
-          </p>
-          <div class="lang-buttons">
-            <a href="pet_loss_grief.html" class="lang-btn ko">한국어</a>
-            <a href="pet_loss_grief_en.html" class="lang-btn en">English</a>
-          </div>
-        </div>
-
-        <!-- 생각의 소용돌이 -->
-        <div class="resource-card">
-          <div class="card-icon spiral">🌪️</div>
-          <h3 class="card-title">생각의 소용돌이에서 벗어나기</h3>
-          <p class="card-title-en">When Thoughts Start to Spiral</p>
-          <span class="card-tag">마음 조절 · Mind Regulation</span>
-          <p class="card-desc">
-            같은 생각이 빙글빙글 돌면서 멈추지 않을 때. 
-            7가지 생각 유형과 부드럽게 빠져나오는 5단계.
-          </p>
-          <p class="card-desc-en">
-            When looping thoughts won't stop. 
-            7 thought types and 5 gentle steps to find your way out.
-          </p>
-          <div class="lang-buttons">
-            <a href="thought_spiral.html" class="lang-btn ko">한국어</a>
-            <a href="thought_spiral_en.html" class="lang-btn en">English</a>
-          </div>
-        </div>
-
-        <!-- 나 정말 사랑해? -->
-        <div class="resource-card">
-          <div class="card-icon attachment-anxious">💗</div>
-          <h3 class="card-title">"나 정말 사랑해?"</h3>
-          <p class="card-title-en">Needy Love</p>
-          <span class="card-tag">불안형 애착 · Anxious Attachment</span>
-          <p class="card-desc">
-            사랑을 확인받고 싶은 마음 다루기.
-            사랑 확인 루프 이해하기, 건강한 소통법, 7단계 ACT 훈련.
-          </p>
-          <p class="card-desc-en">
-            When you keep seeking reassurance.
-            Understanding the love confirmation loop and breaking free.
-          </p>
-          <div class="lang-buttons">
-            <a href="needy_love.html" class="lang-btn ko">한국어</a>
-            <a href="needy_love_en.html" class="lang-btn en">English</a>
-          </div>
-        </div>
-
-        <!-- 벽 뒤에 숨은 마음 -->
-        <div class="resource-card">
-          <div class="card-icon attachment-avoidant">🧊</div>
-          <h3 class="card-title">벽 뒤에 숨은 마음</h3>
-          <p class="card-title-en">Love at Arm's Length</p>
-          <span class="card-tag">회피형 애착 · Avoidant Attachment</span>
-          <p class="card-desc">
-            가까워지면 멀어지고 싶을 때.
-            회피형 애착의 원인, 패턴, 그리고 치유를 위한 7가지 접근법.
-          </p>
-          <p class="card-desc-en">
-            When closeness feels like too much.
-            Understanding avoidant attachment and paths to healing.
-          </p>
-          <div class="lang-buttons">
-            <a href="love_at_arms_length.html" class="lang-btn ko">한국어</a>
-            <a href="love_at_arms_length_en.html" class="lang-btn en">English</a>
-          </div>
-        </div>
-
-        <!-- 내성의 창 -->
-        <div class="resource-card">
-          <div class="card-icon regulation">🌡️</div>
-          <h3 class="card-title">내성의 창</h3>
-          <p class="card-title-en">Window of Tolerance</p>
-          <span class="card-tag">조절 · Regulation</span>
-          <p class="card-desc">
-            신경계 온도계로 나를 이해하기. 
-            과각성, 저각성, 그리고 최적의 기능 구간.
-          </p>
-          <p class="card-desc-en">
-            Understanding yourself through your nervous system thermometer.
-          </p>
-          <div class="lang-buttons">
-            <a href="window_of_tolerance.html" class="lang-btn ko">한국어</a>
-            <a href="window_of_tolerance_en.html" class="lang-btn en">English</a>
-          </div>
-        </div>
-
-        <!-- 휴식의 메뉴판 -->
-        <div class="resource-card">
-          <div class="card-icon neuro">🔄</div>
-          <h3 class="card-title">휴식의 메뉴판</h3>
-          <p class="card-title-en">The Rest Menu</p>
-          <span class="card-tag">Neuro-affirming</span>
-          <p class="card-desc">
-            멈추지 않아도 괜찮은 나만의 쉼. 
-            저자극 휴식, 스티밍, 능동적 휴식 — 나에게 맞는 방식을 찾아보세요.
-          </p>
-          <p class="card-desc-en">
-            Finding rest without having to stop. 
-            Low-stimulation rest, stimming, active rest — find what works for you.
-          </p>
-          <div class="lang-buttons">
-            <a href="rest_menu_neuro_affirming.html" class="lang-btn ko">한국어</a>
-            <a href="rest-menu-en.html" class="lang-btn en">English</a>
-          </div>
-        </div>
-
       </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <p class="footer-logo">PADO Psychological Wellness</p>
-      <p class="footer-name">Dr. Yeji Son</p>
-      <p class="footer-title">Licensed Psychologist</p>
-      <p class="footer-note">© 2025 All rights reserved</p>
-    </footer>
+      <!-- 감정 지도 -->
+      <div class="resource-card">
+        <div class="card-icon">🧭</div>
+        <h3 class="card-title">감정 지도</h3>
+        <p class="card-title-en">Emotion Map</p>
+        <span class="card-tag">Neuro-affirming</span>
+        <p class="card-desc">
+          감정에서 출발해도, 몸에서 출발해도 괜찮아요.
+          내 감정에 이름 붙이고, 몸에서 느껴보기.
+        </p>
+        <p class="card-desc-en">
+          Start from emotion or body — either path is valid.
+        </p>
+        <div class="lang-buttons">
+          <a href="https://dreamy-psychologist.github.io/pado-resources/emotion-map-ko.html" class="lang-btn ko" target="_top">한국어</a>
+          <a href="https://dreamy-psychologist.github.io/pado-resources/emotion-map-en.html" class="lang-btn en" target="_top">English</a>
+        </div>
+      </div>
 
+      <!-- 99가지 마음 돌봄 -->
+      <div class="resource-card">
+        <div class="card-icon">🌿</div>
+        <h3 class="card-title">99가지 마음 돌봄</h3>
+        <p class="card-title-en">99 Ways to Care for Your Mind</p>
+        <span class="card-tag">자기돌봄 · Self-Care</span>
+        <p class="card-desc">
+          마음이 힘들 때, 하나를 뽑아서 지금 바로 해보세요.
+          7가지 카테고리, 랜덤 뽑기, 해본 것 기록.
+        </p>
+        <p class="card-desc-en">
+          When you're struggling, pick one and try it now.
+        </p>
+        <div class="lang-buttons">
+          <a href="https://dreamy-psychologist.github.io/pado-resources/99_coping.html" class="lang-btn ko" target="_top">한국어</a>
+          <a href="https://dreamy-psychologist.github.io/pado-resources/99_coping_en.html" class="lang-btn en" target="_top">English</a>
+        </div>
+      </div>
+
+      <!-- 반려동물 상실 애도 가이드 -->
+      <div class="resource-card">
+        <div class="card-icon">🕊️</div>
+        <h3 class="card-title">반려동물 상실 애도 가이드</h3>
+        <p class="card-title-en">Pet Loss Grief Guide</p>
+        <span class="card-tag">애도 · Grief</span>
+        <p class="card-desc">
+          당신의 슬픔은 사랑의 증거입니다.
+          슬픔의 5단계, 이중과정모델, 구체적인 대처 전략.
+        </p>
+        <p class="card-desc-en">
+          Your grief is proof of your love.
+        </p>
+        <div class="lang-buttons">
+          <a href="https://dreamy-psychologist.github.io/pado-resources/pet_loss_grief.html" class="lang-btn ko" target="_top">한국어</a>
+          <a href="https://dreamy-psychologist.github.io/pado-resources/pet_loss_grief_en.html" class="lang-btn en" target="_top">English</a>
+        </div>
+      </div>
+
+      <!-- 생각의 소용돌이 -->
+      <div class="resource-card">
+        <div class="card-icon">🌪️</div>
+        <h3 class="card-title">생각의 소용돌이에서 벗어나기</h3>
+        <p class="card-title-en">When Thoughts Start to Spiral</p>
+        <span class="card-tag">마음 조절 · Mind Regulation</span>
+        <p class="card-desc">
+          같은 생각이 빙글빙글 돌면서 멈추지 않을 때. 
+          7가지 생각 유형과 부드럽게 빠져나오는 5단계.
+        </p>
+        <p class="card-desc-en">
+          When looping thoughts won't stop.
+        </p>
+        <div class="lang-buttons">
+          <a href="https://dreamy-psychologist.github.io/pado-resources/thought_spiral.html" class="lang-btn ko" target="_top">한국어</a>
+          <a href="https://dreamy-psychologist.github.io/pado-resources/thought_spiral_en.html" class="lang-btn en" target="_top">English</a>
+        </div>
+      </div>
+
+      <!-- 나 정말 사랑해? -->
+      <div class="resource-card">
+        <div class="card-icon">💗</div>
+        <h3 class="card-title">"나 정말 사랑해?"</h3>
+        <p class="card-title-en">Needy Love</p>
+        <span class="card-tag">불안형 애착 · Anxious Attachment</span>
+        <p class="card-desc">
+          사랑을 확인받고 싶은 마음 다루기.
+          사랑 확인 루프 이해하기, 건강한 소통법.
+        </p>
+        <p class="card-desc-en">
+          When you keep seeking reassurance.
+        </p>
+        <div class="lang-buttons">
+          <a href="https://dreamy-psychologist.github.io/pado-resources/needy_love.html" class="lang-btn ko" target="_top">한국어</a>
+          <a href="https://dreamy-psychologist.github.io/pado-resources/needy_love_en.html" class="lang-btn en" target="_top">English</a>
+        </div>
+      </div>
+
+      <!-- 벽 뒤에 숨은 마음 -->
+      <div class="resource-card">
+        <div class="card-icon">🧊</div>
+        <h3 class="card-title">벽 뒤에 숨은 마음</h3>
+        <p class="card-title-en">Love at Arm's Length</p>
+        <span class="card-tag">회피형 애착 · Avoidant Attachment</span>
+        <p class="card-desc">
+          가까워지면 멀어지고 싶을 때.
+          회피형 애착의 원인, 패턴, 그리고 치유의 길.
+        </p>
+        <p class="card-desc-en">
+          When closeness feels like too much.
+        </p>
+        <div class="lang-buttons">
+          <a href="https://dreamy-psychologist.github.io/pado-resources/love_at_arms_length.html" class="lang-btn ko" target="_top">한국어</a>
+          <a href="https://dreamy-psychologist.github.io/pado-resources/love_at_arms_length_en.html" class="lang-btn en" target="_top">English</a>
+        </div>
+      </div>
+
+      <!-- 내성의 창 -->
+      <div class="resource-card">
+        <div class="card-icon">🌡️</div>
+        <h3 class="card-title">내성의 창</h3>
+        <p class="card-title-en">Window of Tolerance</p>
+        <span class="card-tag">조절 · Regulation</span>
+        <p class="card-desc">
+          신경계 온도계로 나를 이해하기.
+          과각성, 저각성, 그리고 최적의 기능 구간.
+        </p>
+        <p class="card-desc-en">
+          Understanding your nervous system thermometer.
+        </p>
+        <div class="lang-buttons">
+          <a href="https://dreamy-psychologist.github.io/pado-resources/window_of_tolerance.html" class="lang-btn ko" target="_top">한국어</a>
+          <a href="https://dreamy-psychologist.github.io/pado-resources/window_of_tolerance_en.html" class="lang-btn en" target="_top">English</a>
+        </div>
+      </div>
+
+      <!-- 휴식의 메뉴판 -->
+      <div class="resource-card">
+        <div class="card-icon">🔄</div>
+        <h3 class="card-title">휴식의 메뉴판</h3>
+        <p class="card-title-en">The Rest Menu</p>
+        <span class="card-tag">Neuro-affirming</span>
+        <p class="card-desc">
+          멈추지 않아도 괜찮은 나만의 쉼.
+          저자극 휴식, 스티밍, 능동적 휴식.
+        </p>
+        <p class="card-desc-en">
+          Finding rest without having to stop.
+        </p>
+        <div class="lang-buttons">
+          <a href="https://dreamy-psychologist.github.io/pado-resources/rest_menu_neuro_affirming.html" class="lang-btn ko" target="_top">한국어</a>
+          <a href="https://dreamy-psychologist.github.io/pado-resources/rest-menu-en.html" class="lang-btn en" target="_top">English</a>
+        </div>
+      </div>
+
+    </div>
   </div>
 </body>
 </html>
