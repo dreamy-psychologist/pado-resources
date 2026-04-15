@@ -138,6 +138,18 @@
     .lang-btn.ko::before { content: '🇰🇷 '; }
     .lang-btn.en::before { content: '🇺🇸 '; }
 
+    .new-badge {
+      display: inline-block;
+      background: #A69580;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.6rem;
+      font-weight: 600;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
     @media (max-width: 600px) {
       .resources-grid {
         grid-template-columns: 1fr;
@@ -156,10 +168,29 @@
   <div class="container">
     <div class="resources-grid">
       
+      <!-- 은밀한 안정화 -->
+      <div class="resource-card">
+        <div class="card-icon">🌊</div>
+        <h3 class="card-title">은밀한 안정화 <span class="new-badge">NEW</span></h3>
+        <p class="card-title-en">Discreet Grounding Toolkit</p>
+        <span class="card-tag">Neuro-affirming</span>
+        <p class="card-desc">
+          회의 중, 대화 중, 어디서든 아무도 모르게 쓰는 신경계 조절.
+          촉각, 호흡, 감각, 인지 — 10가지 은밀한 도구.
+        </p>
+        <p class="card-desc-en">
+          Regulate your nervous system without anyone noticing.
+        </p>
+        <div class="lang-buttons">
+          <a href="https://dreamy-psychologist.github.io/pado-resources/discreet-grounding-ko.html" class="lang-btn ko" target="_top">한국어</a>
+          <a href="https://dreamy-psychologist.github.io/pado-resources/discreet-grounding-en.html" class="lang-btn en" target="_top">English</a>
+        </div>
+      </div>
+
       <!-- Micro Break -->
       <div class="resource-card">
         <div class="card-icon">⏸️</div>
-        <h3 class="card-title">Micro Break <span style="display:inline-block; background:#A69580; color:white; padding:2px 8px; border-radius:10px; font-size:0.6rem; font-weight:600; margin-left:6px; vertical-align:middle;">NEW</span></h3>
+        <h3 class="card-title">Micro Break <span class="new-badge">NEW</span></h3>
         <p class="card-title-en">30-Second Reset</p>
         <span class="card-tag">조절 · Regulation</span>
         <p class="card-desc">
@@ -178,7 +209,7 @@
       <!-- 감정 지도 -->
       <div class="resource-card">
         <div class="card-icon">🧭</div>
-        <h3 class="card-title">감정 지도</h3>
+        <h3 class="card-title">감정 지도 <span class="new-badge">NEW</span></h3>
         <p class="card-title-en">Emotion Map</p>
         <span class="card-tag">Neuro-affirming</span>
         <p class="card-desc">
