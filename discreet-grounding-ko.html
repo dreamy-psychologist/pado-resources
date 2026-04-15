@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>은밀한 안정화 - PADO Psychological Wellness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+Pro:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans KR', 'Source Sans Pro', -apple-system, sans-serif;
+      background: linear-gradient(180deg, #FAF6F1 0%, #F2EBE3 100%);
+      min-height: 100vh;
+      padding: 40px 24px 60px;
+      color: #4A4540;
+      line-height: 1.7;
+    }
+    .container { max-width: 600px; margin: 0 auto; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(122, 154, 154, 0.15) 0%, transparent 100%);
+      border-radius: 30px;
+    }
+    .header-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      display: inline-block;
+      animation: gentleFloat 3s ease-in-out infinite;
+    }
+    .header h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #5C524A;
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+    }
+    .header-subtitle { font-size: 1.05rem; color: #8B7D70; font-weight: 300; }
+    .header-tags { margin-top: 16px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .header-tag {
+      display: inline-block;
+      background: #E8DFD4;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #7A6E62;
+    }
+
+    .insight {
+      background: linear-gradient(135deg, #fff 0%, #F7F0E8 100%);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 40px;
+      border-left: 5px solid #7A9A9A;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+    .insight h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.3rem;
+      color: #8B7D70;
+      margin-bottom: 16px;
+    }
+    .insight p { font-size: 0.95rem; line-height: 1.9; }
+    .highlight {
+      background: linear-gradient(180deg, transparent 60%, #E8DFD4 60%);
+      padding: 0 4px;
+      font-weight: 500;
+    }
+
+    .category-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .tab-btn {
+      padding: 10px 18px;
+      border: 2px solid rgba(139, 115, 85, 0.15);
+      background: #fff;
+      border-radius: 25px;
+      font-size: 0.85rem;
+      font-family: inherit;
+      font-weight: 500;
+      color: #8B7D70;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .tab-btn:hover { border-color: rgba(139, 115, 85, 0.3); }
+    .tab-btn.active {
+      background: #7A9A9A;
+      color: #fff;
+      border-color: #7A9A9A;
+    }
+
+    .techniques-grid { display: grid; gap: 16px; }
+
+    .technique-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(139, 115, 85, 0.06);
+      border: 1px solid rgba(139, 115, 85, 0.1);
+      transition: all 0.3s ease;
+    }
+    .technique-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(139, 115, 85, 0.1);
+    }
+
+    .technique-header {
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+    }
+    .technique-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .technique-icon.touch { background: #F7F0E8; }
+    .technique-icon.breath { background: #EBF1F1; }
+    .technique-icon.sensory { background: #F2ECEF; }
+    .technique-icon.mental { background: #EEF2EB; }
+
+    .technique-title-area { flex: 1; }
+    .technique-title { font-size: 1rem; font-weight: 600; color: #5C524A; margin-bottom: 2px; }
+    .technique-subtitle { font-size: 0.8rem; color: #8B7D70; font-weight: 400; }
+
+    .expand-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #FAF6F1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8B7D70;
+      font-size: 12px;
+      transition: transform 0.3s ease;
+    }
+    .technique-card.expanded .expand-icon { transform: rotate(180deg); }
+
+    .technique-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .technique-card.expanded .technique-content { max-height: 800px; }
+
+    .technique-body {
+      padding: 0 24px 24px;
+      border-top: 1px solid rgba(139, 115, 85, 0.1);
+    }
+    .technique-body > p {
+      font-size: 0.9rem;
+      color: #6B6560;
+      margin-top: 20px;
+      line-height: 1.8;
+    }
+
+    .steps-list { margin-top: 20px; list-style: none; }
+    .steps-list li {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+      color: #4A4540;
+      line-height: 1.6;
+    }
+    .step-num {
+      width: 24px;
+      height: 24px;
+      background: #FAF6F1;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #7A9A9A;
+      flex-shrink: 0;
+    }
+
+    .tags { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
+    .tag {
+      padding: 5px 12px;
+      background: #FAF6F1;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: #8B7D70;
+    }
+
+    .try-section {
+      margin-top: 20px;
+      padding: 20px;
+      background: linear-gradient(135deg, #EBF1F1 0%, #EEF2EB 100%);
+      border-radius: 16px;
+    }
+    .try-section h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #7A9A9A;
+      margin-bottom: 12px;
+    }
+    .try-btn {
+      padding: 12px 28px;
+      background: #7A9A9A;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .try-btn:hover { background: #6A8A8A; }
+    .try-btn:disabled { background: #B8C8C8; cursor: default; }
+
+    .timer-display {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #5C524A;
+      margin: 16px 0;
+      display: none;
+    }
+    .timer-display.active { display: block; }
+    .timer-instruction {
+      font-size: 0.9rem;
+      color: #6B6560;
+      margin-top: 12px;
+      display: none;
+    }
+    .timer-instruction.active { display: block; }
+
+    .tips {
+      background: #fff;
+      border-radius: 24px;
+      padding: 32px;
+      margin-top: 50px;
+      border: 2px dashed #E8DFD4;
+    }
+    .tips h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.3rem;
+      color: #8B7D70;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .tips-grid { display: grid; gap: 14px; }
+    .tip-item {
+      background: #FAF6F1;
+      padding: 18px 22px;
+      border-radius: 16px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .tip-num {
+      background: #7A9A9A;
+      color: #fff;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .tip-item p { font-size: 14px; line-height: 1.8; color: #4A4540; }
+
+    .references {
+      margin-top: 40px;
+      padding: 28px 24px;
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid rgba(139, 115, 85, 0.15);
+    }
+    .references h3 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #5C524A;
+      margin-bottom: 16px;
+    }
+    .references-content { font-size: 13px; color: #5A5A5A; line-height: 1.9; }
+    .references-content p { margin-bottom: 12px; }
+    .references-content p:last-child { margin-bottom: 0; }
+    .references-content strong { color: #4A4540; }
+    .references-content .note { color: #8B7D70; }
+
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 30px;
+      color: #8B7D70;
+      font-size: 14px;
+    }
+    .footer .icon { display: inline-block; animation: gentleFloat 3s ease-in-out infinite; }
+    .footer-brand { margin-top: 24px; font-size: 13px; }
+    .footer-brand strong { display: block; }
+
+    .hidden { display: none !important; }
+
+    .lang-switch {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .lang-switch .lang-btn {
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 13px;
+      text-decoration: none;
+      color: #8B7D70;
+      background: #fff;
+      border: 1px solid #E8DFD4;
+      transition: all 0.2s;
+    }
+    .lang-switch .lang-btn:hover { background: #FAF6F1; }
+    .lang-switch .lang-btn.active {
+      background: #5C524A;
+      color: #fff;
+      border-color: #5C524A;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="lang-switch">
+      <a href="discreet-grounding-ko.html" class="lang-btn active">🇰🇷 한국어</a>
+      <a href="discreet-grounding-en.html" class="lang-btn">🇺🇸 English</a>
+    </div>
+
+    <header class="header">
+      <span class="header-icon">🌊</span>
+      <h1>은밀한 안정화</h1>
+      <p class="header-subtitle">아무도 모르게, 그 자리에서 바로 쓰는 신경계 조절</p>
+      <div class="header-tags">
+        <span class="header-tag">Neuro-affirming</span>
+      </div>
+    </header>
+
+    <section class="insight">
+      <h2>💡 왜 '은밀한' 기법이 필요할까요?</h2>
+      <p>때로 신경계는 예고 없이 과부하 상태가 됩니다. 하지만 회의 중에 <span class="highlight">"잠깐 안정화 좀 할게요"</span>라고 말하기는 어렵죠.</p>
+      <p style="margin-top:16px;">이 기법들은 <strong>아무도 눈치채지 못하게</strong>, 그 자리에서 바로 사용할 수 있도록 설계되었습니다.</p>
+    </section>
+
+    <div class="category-tabs">
+      <button class="tab-btn active" data-category="all">전체</button>
+      <button class="tab-btn" data-category="touch">촉각</button>
+      <button class="tab-btn" data-category="breath">호흡</button>
+      <button class="tab-btn" data-category="sensory">감각</button>
+      <button class="tab-btn" data-category="mental">인지</button>
+    </div>
+
+    <div class="techniques-grid">
+      <!-- Bilateral Toe Press -->
+      <div class="technique-card" data-category="touch">
+        <div class="technique-header">
+          <div class="technique-icon touch">🦶</div>
+          <div class="technique-title-area">
+            <div class="technique-title">Bilateral Toe Press</div>
+            <div class="technique-subtitle">양측성 발가락 자극</div>
+          </div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="technique-content">
+          <div class="technique-body">
+            <p>EMDR의 양측성 자극 원리를 응용한 기법입니다. 좌우 교대 자극이 신경계를 진정시키고 현재 순간으로 돌아오게 합니다.</p>
+            <ul class="steps-list">
+              <li><span class="step-num">1</span>발을 바닥에 평평하게 놓습니다</li>
+              <li><span class="step-num">2</span>오른쪽 발가락을 바닥에 꾹 누릅니다 (2초)</li>
+              <li><span class="step-num">3</span>왼쪽 발가락을 바닥에 꾹 누릅니다 (2초)</li>
+              <li><span class="step-num">4</span>천천히 번갈아가며 8-10회 반복합니다</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">회의 중 가능</span>
+              <span class="tag">불안 완화</span>
+              <span class="tag">과각성 조절</span>
+            </div>
+            <div class="try-section">
+              <h4>지금 해보기</h4>
+              <button class="try-btn" data-timer="bilateral">시작하기</button>
+              <div class="timer-display" id="bilateral-timer">0:00</div>
+              <div class="timer-instruction" id="bilateral-instruction">오른쪽 발가락을 꾹 누르세요</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Finger Tap Sequence -->
+      <div class="technique-card" data-category="touch">
+        <div class="technique-header">
+          <div class="technique-icon touch">👆</div>
+          <div class="technique-title-area">
+            <div class="technique-title">Finger Tap Sequence</div>
+            <div class="technique-subtitle">손가락 순차 터치</div>
+          </div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="technique-content">
+          <div class="technique-body">
+            <p>엄지로 각 손가락을 순서대로 터치합니다. 책상 밑이나 주머니 안에서 할 수 있어 완전히 보이지 않습니다.</p>
+            <ul class="steps-list">
+              <li><span class="step-num">1</span>손을 자연스럽게 놓습니다 (무릎 위, 책상 밑, 주머니 안)</li>
+              <li><span class="step-num">2</span>엄지로 검지 → 중지 → 약지 → 소지 순서로 터치</li>
+              <li><span class="step-num">3</span>소지 → 약지 → 중지 → 검지 역순으로 돌아옵니다</li>
+              <li><span class="step-num">4</span>각 터치마다 숫자를 마음속으로 세어봅니다</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">100% 비가시적</span>
+              <span class="tag">집중력 회복</span>
+              <span class="tag">해리 방지</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hidden Palm Press -->
+      <div class="technique-card" data-category="touch">
+        <div class="technique-header">
+          <div class="technique-icon touch">🤲</div>
+          <div class="technique-title-area">
+            <div class="technique-title">Hidden Palm Press</div>
+            <div class="technique-subtitle">손바닥 지압</div>
+          </div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="technique-content">
+          <div class="technique-body">
+            <p>손바닥 중앙(노궁혈)을 반대 손 엄지로 누르면 진정 효과가 있습니다. 양손을 모으고 있는 것처럼 보여 자연스럽습니다.</p>
+            <ul class="steps-list">
+              <li><span class="step-num">1</span>양손을 자연스럽게 모읍니다</li>
+              <li><span class="step-num">2</span>한 손의 엄지로 반대 손바닥 중앙을 찾습니다</li>
+              <li><span class="step-num">3</span>깊게 3초 누르고, 3초 놓습니다</li>
+              <li><span class="step-num">4</span>손을 바꿔 반복합니다</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">1:1 대화 중</span>
+              <span class="tag">긴장 완화</span>
+              <span class="tag">침착함 유지</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Silent Box Breathing -->
+      <div class="technique-card" data-category="breath">
+        <div class="technique-header">
+          <div class="technique-icon breath">🌬️</div>
+          <div class="technique-title-area">
+            <div class="technique-title">Silent Box Breathing</div>
+            <div class="technique-subtitle">무음 사각 호흡</div>
+          </div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="technique-content">
+          <div class="technique-body">
+            <p>코로만 조용히 하는 사각 호흡입니다. 호흡 소리가 나지 않도록 천천히, 부드럽게 진행합니다.</p>
+            <ul class="steps-list">
+              <li><span class="step-num">1</span>코로 조용히 4초 들이쉽니다</li>
+              <li><span class="step-num">2</span>4초 멈춥니다</li>
+              <li><span class="step-num">3</span>코로 조용히 4초 내쉽니다</li>
+              <li><span class="step-num">4</span>4초 멈춥니다</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">언제 어디서나</span>
+              <span class="tag">심박수 조절</span>
+              <span class="tag">공황 완화</span>
+            </div>
+            <div class="try-section">
+              <h4>지금 해보기</h4>
+              <button class="try-btn" data-timer="box">시작하기</button>
+              <div class="timer-display" id="box-timer">4</div>
+              <div class="timer-instruction" id="box-instruction">코로 천천히 들이쉬세요</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subtle Long Exhale -->
+      <div class="technique-card" data-category="breath">
+        <div class="technique-header">
+          <div class="technique-icon breath">💨</div>
+          <div class="technique-title-area">
+            <div class="technique-title">Subtle Long Exhale</div>
+            <div class="technique-subtitle">길게 내쉬기</div>
+          </div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="technique-content">
+          <div class="technique-body">
+            <p>내쉬는 숨을 들이쉬는 숨보다 길게 하면 부교감신경이 활성화됩니다. 한숨처럼 보이지 않게 아주 천천히 내쉽니다.</p>
+            <ul class="steps-list">
+              <li><span class="step-num">1</span>자연스럽게 3-4초 들이쉽니다</li>
+              <li><span class="step-num">2</span>6-8초에 걸쳐 아주 천천히 내쉽니다</li>
+              <li><span class="step-num">3</span>입술을 살짝 벌리고 조용히 내보냅니다</li>
+              <li><span class="step-num">4</span>3-4회 반복합니다</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">즉각적 진정</span>
+              <span class="tag">부교감신경</span>
+              <span class="tag">긴장 상황</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Temperature Anchor -->
+      <div class="technique-card" data-category="sensory">
+        <div class="technique-header">
+          <div class="technique-icon sensory">🧊</div>
+          <div class="technique-title-area">
+            <div class="technique-title">Temperature Anchor</div>
+            <div class="technique-subtitle">온도 감각 앵커링</div>
+          </div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="technique-content">
+          <div class="technique-body">
+            <p>차가운 물컵이나 따뜻한 커피잔을 잡고 온도에 집중합니다. 회의 중 음료를 들고 있는 건 완전히 자연스럽습니다.</p>
+            <ul class="steps-list">
+              <li><span class="step-num">1</span>음료 컵을 양손으로 감싸 잡습니다</li>
+              <li><span class="step-num">2</span>온도가 손바닥에 전해지는 것을 느낍니다</li>
+              <li><span class="step-num">3</span>온도가 퍼져나가는 감각에 30초 집중합니다</li>
+              <li><span class="step-num">4</span>필요시 차가운/따뜻한 것을 번갈아 사용합니다</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">해리 방지</span>
+              <span class="tag">현실 감각</span>
+              <span class="tag">완전 자연스러움</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Texture Grounding -->
+      <div class="technique-card" data-category="sensory">
+        <div class="technique-header">
+          <div class="technique-icon sensory">👕</div>
+          <div class="technique-title-area">
+            <div class="technique-title">Texture Grounding</div>
+            <div class="technique-subtitle">질감 탐색</div>
+          </div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="technique-content">
+          <div class="technique-body">
+            <p>옷감, 의자 팔걸이, 또는 주머니 안 작은 물건의 질감에 집중합니다. 안정화 돌(smooth stone)을 주머니에 넣어두는 것도 좋습니다.</p>
+            <ul class="steps-list">
+              <li><span class="step-num">1</span>손이 닿는 표면을 찾습니다 (옷, 의자, 주머니 안)</li>
+              <li><span class="step-num">2</span>질감을 섬세하게 탐색합니다</li>
+              <li><span class="step-num">3</span>마음속으로 질감을 묘사합니다 (거친, 부드러운, 차가운...)</li>
+              <li><span class="step-num">4</span>다른 손가락으로 다른 부분을 느껴봅니다</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">fidget 대용</span>
+              <span class="tag">감각 과부하</span>
+              <span class="tag">집중 유지</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feet on Floor -->
+      <div class="technique-card" data-category="sensory">
+        <div class="technique-header">
+          <div class="technique-icon sensory">👟</div>
+          <div class="technique-title-area">
+            <div class="technique-title">Feet on Floor</div>
+            <div class="technique-subtitle">발바닥 감각</div>
+          </div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="technique-content">
+          <div class="technique-body">
+            <p>가장 기본적이고 강력한 안정화 기법입니다. 발바닥이 바닥에 닿는 감각에만 집중합니다.</p>
+            <ul class="steps-list">
+              <li><span class="step-num">1</span>발을 바닥에 평평하게 놓습니다</li>
+              <li><span class="step-num">2</span>발바닥 전체가 바닥에 닿는 것을 느낍니다</li>
+              <li><span class="step-num">3</span>발가락 → 발볼 → 뒤꿈치 순서로 의식을 옮깁니다</li>
+              <li><span class="step-num">4</span>바닥의 단단함, 온도를 느껴봅니다</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">즉각적</span>
+              <span class="tag">강력한 앵커</span>
+              <span class="tag">불안 급상승 시</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick 3-2-1 -->
+      <div class="technique-card" data-category="mental">
+        <div class="technique-header">
+          <div class="technique-icon mental">🧠</div>
+          <div class="technique-title-area">
+            <div class="technique-title">Quick 3-2-1</div>
+            <div class="technique-subtitle">미니 감각 스캔</div>
+          </div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="technique-content">
+          <div class="technique-body">
+            <p>전통적인 5-4-3-2-1의 축약 버전입니다. 머릿속으로만 진행하므로 아무도 모릅니다.</p>
+            <ul class="steps-list">
+              <li><span class="step-num">1</span>보이는 것 3가지를 마음속으로 이름 붙입니다</li>
+              <li><span class="step-num">2</span>들리는 것 2가지를 마음속으로 이름 붙입니다</li>
+              <li><span class="step-num">3</span>느껴지는 것 1가지를 마음속으로 이름 붙입니다</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">완전 내면적</span>
+              <span class="tag">해리 방지</span>
+              <span class="tag">10초 완료</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Color Hunt -->
+      <div class="technique-card" data-category="mental">
+        <div class="technique-header">
+          <div class="technique-icon mental">🎨</div>
+          <div class="technique-title-area">
+            <div class="technique-title">Color Hunt</div>
+            <div class="technique-subtitle">색깔 찾기</div>
+          </div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="technique-content">
+          <div class="technique-body">
+            <p>특정 색깔을 정하고 주변에서 그 색을 가진 물건들을 찾습니다. 주변을 둘러보는 것은 자연스럽습니다.</p>
+            <ul class="steps-list">
+              <li><span class="step-num">1</span>마음속으로 색 하나를 정합니다 (예: 파란색)</li>
+              <li><span class="step-num">2</span>주변에서 그 색을 가진 것을 3개 찾습니다</li>
+              <li><span class="step-num">3</span>다른 색으로 바꿔 반복합니다</li>
+              <li><span class="step-num">4</span>자연스럽게 시선을 돌리며 진행합니다</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">시각 집중</span>
+              <span class="tag">반추 차단</span>
+              <span class="tag">회의 중 가능</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="tips">
+      <h2>💛 기억해두면 좋은 것들</h2>
+      <div class="tips-grid">
+        <div class="tip-item">
+          <span class="tip-num">1</span>
+          <p>완벽하게 할 필요 없어요. 30초만 해도 신경계는 반응해요.</p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-num">2</span>
+          <p>미리 연습해두면 급할 때 자동으로 나와요. 평소에 자주 해보세요.</p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-num">3</span>
+          <p>자신에게 맞는 2-3개를 찾아서 '나만의 레퍼토리'로 만들어두세요.</p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-num">4</span>
+          <p>기법이 안 통할 때도 있어요. 그럴 땐 다른 걸 시도하거나 잠시 자리를 피해도 괜찮아요.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="references">
+      <h3>📖 참고문헌</h3>
+      <div class="references-content">
+        <p>
+          <strong>양측성 자극과 신경계</strong><br>
+          Shapiro, F. (2018). <em>Eye Movement Desensitization and Reprocessing (EMDR) Therapy.</em> Guilford Press.<br>
+          <span class="note">EMDR의 양측성 자극이 정서 조절에 미치는 영향</span>
+        </p>
+        <p>
+          <strong>호흡과 자율신경계</strong><br>
+          Porges, S. W. (2011). <em>The Polyvagal Theory.</em> W. W. Norton.<br>
+          <span class="note">느린 호흡이 부교감신경을 활성화하는 기전</span>
+        </p>
+        <p>
+          <strong>안정화와 해리</strong><br>
+          van der Kolk, B. (2014). <em>The Body Keeps the Score.</em> Penguin Books.<br>
+          <span class="note">신체 감각 기반 접근이 트라우마 반응 조절에 효과적</span>
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>아무도 모르게, 그 자리에서, 지금 바로.</p>
+      <p>당신의 신경계를 돌봐주세요. <span class="icon">🌊</span></p>
+      <p class="footer-brand">
+        <strong>PADO Psychological Wellness</strong>
+        Dr. Yeji Son
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab-btn');
+    const cards = document.querySelectorAll('.technique-card');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const category = tab.dataset.category;
+        cards.forEach(card => {
+          if (category === 'all' || card.dataset.category === category) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    cards.forEach(card => {
+      const header = card.querySelector('.technique-header');
+      header.addEventListener('click', () => {
+        card.classList.toggle('expanded');
+      });
+    });
+
+    const tryButtons = document.querySelectorAll('.try-btn');
+    tryButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const timerType = btn.dataset.timer;
+        if (timerType === 'bilateral') runBilateralTimer(btn);
+        else if (timerType === 'box') runBoxBreathing(btn);
+      });
+    });
+
+    function runBilateralTimer(btn) {
+      const timerDisplay = document.getElementById('bilateral-timer');
+      const instruction = document.getElementById('bilateral-instruction');
+      btn.disabled = true;
+      btn.textContent = '진행 중...';
+      timerDisplay.classList.add('active');
+      instruction.classList.add('active');
+      const instructions = ['오른쪽 발가락을 꾹 누르세요', '왼쪽 발가락을 꾹 누르세요'];
+      let count = 0, seconds = 0;
+      const maxReps = 8;
+      const interval = setInterval(() => {
+        seconds++;
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        timerDisplay.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+        if (seconds % 2 === 0) {
+          count++;
+          instruction.textContent = instructions[count % 2];
+        }
+        if (count >= maxReps * 2) {
+          clearInterval(interval);
+          instruction.textContent = '완료! 잘 하셨어요 🌊';
+          btn.textContent = '다시 하기';
+          btn.disabled = false;
+          setTimeout(() => {
+            timerDisplay.classList.remove('active');
+            instruction.classList.remove('active');
+            timerDisplay.textContent = '0:00';
+          }, 3000);
+        }
+      }, 1000);
+    }
+
+    function runBoxBreathing(btn) {
+      const timerDisplay = document.getElementById('box-timer');
+      const instruction = document.getElementById('box-instruction');
+      btn.disabled = true;
+      btn.textContent = '진행 중...';
+      timerDisplay.classList.add('active');
+      instruction.classList.add('active');
+      const phases = [
+        { text: '코로 천천히 들이쉬세요', duration: 4 },
+        { text: '숨을 멈추세요', duration: 4 },
+        { text: '코로 천천히 내쉬세요', duration: 4 },
+        { text: '숨을 멈추세요', duration: 4 }
+      ];
+      let currentPhase = 0, currentSecond = phases[0].duration, cycles = 0;
+      const maxCycles = 3;
+      timerDisplay.textContent = currentSecond;
+      instruction.textContent = phases[0].text;
+      const interval = setInterval(() => {
+        currentSecond--;
+        if (currentSecond <= 0) {
+          currentPhase++;
+          if (currentPhase >= phases.length) { currentPhase = 0; cycles++; }
+          if (cycles >= maxCycles) {
+            clearInterval(interval);
+            instruction.textContent = '완료! 잘 하셨어요 🌊';
+            timerDisplay.textContent = '✓';
+            btn.textContent = '다시 하기';
+            btn.disabled = false;
+            setTimeout(() => {
+              timerDisplay.classList.remove('active');
+              instruction.classList.remove('active');
+              timerDisplay.textContent = '4';
+            }, 3000);
+            return;
+          }
+          currentSecond = phases[currentPhase].duration;
+          instruction.textContent = phases[currentPhase].text;
+        }
+        timerDisplay.textContent = currentSecond;
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

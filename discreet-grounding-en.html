@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discreet Grounding - PADO Psychological Wellness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Source Sans Pro', -apple-system, sans-serif;
+      background: linear-gradient(180deg, #FAF6F1 0%, #F2EBE3 100%);
+      min-height: 100vh;
+      padding: 40px 24px 60px;
+      color: #4A4540;
+      line-height: 1.7;
+    }
+    .container { max-width: 600px; margin: 0 auto; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(122, 154, 154, 0.15) 0%, transparent 100%);
+      border-radius: 30px;
+    }
+    .header-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      display: inline-block;
+      animation: gentleFloat 3s ease-in-out infinite;
+    }
+    .header h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #5C524A;
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+    }
+    .header-subtitle { font-size: 1.05rem; color: #8B7D70; font-weight: 300; }
+    .header-tags { margin-top: 16px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .header-tag {
+      display: inline-block;
+      background: #E8DFD4;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #7A6E62;
+    }
+
+    .insight {
+      background: linear-gradient(135deg, #fff 0%, #F7F0E8 100%);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 40px;
+      border-left: 5px solid #7A9A9A;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+    .insight h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.3rem;
+      color: #8B7D70;
+      margin-bottom: 16px;
+    }
+    .insight p { font-size: 0.95rem; line-height: 1.9; }
+    .highlight {
+      background: linear-gradient(180deg, transparent 60%, #E8DFD4 60%);
+      padding: 0 4px;
+      font-weight: 500;
+    }
+
+    .category-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .tab-btn {
+      padding: 10px 18px;
+      border: 2px solid rgba(139, 115, 85, 0.15);
+      background: #fff;
+      border-radius: 25px;
+      font-size: 0.85rem;
+      font-family: inherit;
+      font-weight: 500;
+      color: #8B7D70;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .tab-btn:hover { border-color: rgba(139, 115, 85, 0.3); }
+    .tab-btn.active {
+      background: #7A9A9A;
+      color: #fff;
+      border-color: #7A9A9A;
+    }
+
+    .techniques-grid { display: grid; gap: 16px; }
+
+    .technique-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(139, 115, 85, 0.06);
+      border: 1px solid rgba(139, 115, 85, 0.1);
+      transition: all 0.3s ease;
+    }
+    .technique-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(139, 115, 85, 0.1);
+    }
+
+    .technique-header {
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+    }
+    .technique-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .technique-icon.touch { background: #F7F0E8; }
+    .technique-icon.breath { background: #EBF1F1; }
+    .technique-icon.sensory { background: #F2ECEF; }
+    .technique-icon.mental { background: #EEF2EB; }
+
+    .technique-title-area { flex: 1; }
+    .technique-title { font-size: 1rem; font-weight: 600; color: #5C524A; margin-bottom: 2px; }
+    .technique-subtitle { font-size: 0.8rem; color: #8B7D70; font-weight: 400; }
+
+    .expand-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #FAF6F1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8B7D70;
+      font-size: 12px;
+      transition: transform 0.3s ease;
+    }
+    .technique-card.expanded .expand-icon { transform: rotate(180deg); }
+
+    .technique-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .technique-card.expanded .technique-content { max-height: 800px; }
+
+    .technique-body {
+      padding: 0 24px 24px;
+      border-top: 1px solid rgba(139, 115, 85, 0.1);
+    }
+    .technique-body > p {
+      font-size: 0.9rem;
+      color: #6B6560;
+      margin-top: 20px;
+      line-height: 1.8;
+    }
+
+    .steps-list { margin-top: 20px; list-style: none; }
+    .steps-list li {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+      color: #4A4540;
+      line-height: 1.6;
+    }
+    .step-num {
+      width: 24px;
+      height: 24px;
+      background: #FAF6F1;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #7A9A9A;
+      flex-shrink: 0;
+    }
+
+    .tags { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
+    .tag {
+      padding: 5px 12px;
+      background: #FAF6F1;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: #8B7D70;
+    }
+
+    .try-section {
+      margin-top: 20px;
+      padding: 20px;
+      background: linear-gradient(135deg, #EBF1F1 0%, #EEF2EB 100%);
+      border-radius: 16px;
+    }
+    .try-section h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #7A9A9A;
+      margin-bottom: 12px;
+    }
+    .try-btn {
+      padding: 12px 28px;
+      background: #7A9A9A;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .try-btn:hover { background: #6A8A8A; }
+    .try-btn:disabled { background: #B8C8C8; cursor: default; }
+
+    .timer-display {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #5C524A;
+      margin: 16px 0;
+      display: none;
+    }
+    .timer-display.active { display: block; }
+    .timer-instruction {
+      font-size: 0.9rem;
+      color: #6B6560;
+      margin-top: 12px;
+      display: none;
+    }
+    .timer-instruction.active { display: block; }
+
+    .tips {
+      background: #fff;
+      border-radius: 24px;
+      padding: 32px;
+      margin-top: 50px;
+      border: 2px dashed #E8DFD4;
+    }
+    .tips h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.3rem;
+      color: #8B7D70;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .tips-grid { display: grid; gap: 14px; }
+    .tip-item {
+      background: #FAF6F1;
+      padding: 18px 22px;
+      border-radius: 16px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .tip-num {
+      background: #7A9A9A;
+      color: #fff;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .tip-item p { font-size: 14px; line-height: 1.8; color: #4A4540; }
+
+    .references {
+      margin-top: 40px;
+      padding: 28px 24px;
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid rgba(139, 115, 85, 0.15);
+    }
+    .references h3 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #5C524A;
+      margin-bottom: 16px;
+    }
+    .references-content { font-size: 13px; color: #5A5A5A; line-height: 1.9; }
+    .references-content p { margin-bottom: 12px; }
+    .references-content p:last-child { margin-bottom: 0; }
+    .references-content strong { color: #4A4540; }
+    .references-content .note { color: #8B7D70; }
+
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 30px;
+      color: #8B7D70;
+      font-size: 14px;
+    }
+    .footer .icon { display: inline-block; animation: gentleFloat 3s ease-in-out infinite; }
+    .footer-brand { margin-top: 24px; font-size: 13px; }
+    .footer-brand strong { display: block; }
+
+    .hidden { display: none !important; }
+
+    .lang-switch {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .lang-switch .lang-btn {
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 13px;
+      text-decoration: none;
+      color: #8B7D70;
+      background: #fff;
+      border: 1px solid #E8DFD4;
+      transition: all 0.2s;
+    }
+    .lang-switch .lang-btn:hover { background: #FAF6F1; }
+    .lang-switch .lang-btn.active {
+      background: #5C524A;
+      color: #fff;
+      border-color: #5C524A;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="lang-switch">
+      <a href="discreet-grounding-ko.html" class="lang-btn">🇰🇷 한국어</a>
+      <a href="discreet-grounding-en.html" class="lang-btn active">🇺🇸 English</a>
+    </div>
+
+    <header class="header">
+      <span class="header-icon">🌊</span>
+      <h1>Discreet Grounding</h1>
+      <p class="header-subtitle">Regulate your nervous system without anyone noticing</p>
+      <div class="header-tags">
+        <span class="header-tag">Neuro-affirming</span>
+      </div>
+    </header>
+
+    <section class="insight">
+      <h2>💡 Why "discreet" techniques?</h2>
+      <p>Sometimes your nervous system gets overwhelmed without warning. But it's hard to say <span class="highlight">"Hold on, I need to do some grounding"</span> in the middle of a meeting.</p>
+      <p style="margin-top:16px;">These techniques are designed so you can use them <strong>right there, without anyone noticing</strong>.</p>
+    </section>
+
+    <div class="category-tabs">
+      <button class="tab-btn active" data-category="all">All</button>
+      <button class="tab-btn" data-category="touch">Touch</button>
+      <button class="tab-btn" data-category="breath">Breath</button>
+      <button class="tab-btn" data-category="sensory">Sensory</button>
+      <button class="tab-btn" data-category="mental">Mental</button>
+    </div>
+
+    <div class="techniques-grid">
+      <!-- Bilateral Toe Press -->
+      <div class="technique-card" data-category="touch">
+        <div class="technique-header">
+          <div class="technique-icon touch">🦶</div>
+          <div class="technique-title-area">
+            <div class="technique-title">Bilateral Toe Press</div>
+            <div class="technique-subtitle">Alternating stimulation</div>
+          </div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="technique-content">
+          <div class="technique-body">
+            <p>Based on the bilateral stimulation principle from EMDR. Alternating left-right stimulation calms the nervous system and brings you back to the present.</p>
+            <ul class="steps-list">
+              <li><span class="step-num">1</span>Place your feet flat on the floor</li>
+              <li><span class="step-num">2</span>Press your right toes into the floor (2 sec)</li>
+              <li><span class="step-num">3</span>Press your left toes into the floor (2 sec)</li>
+              <li><span class="step-num">4</span>Alternate slowly, 8-10 times</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Meeting-friendly</span>
+              <span class="tag">Anxiety relief</span>
+              <span class="tag">Hyperarousal</span>
+            </div>
+            <div class="try-section">
+              <h4>Try it now</h4>
+              <button class="try-btn" data-timer="bilateral">Start</button>
+              <div class="timer-display" id="bilateral-timer">0:00</div>
+              <div class="timer-instruction" id="bilateral-instruction">Press your right toes down</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Finger Tap Sequence -->
+      <div class="technique-card" data-category="touch">
+        <div class="technique-header">
+          <div class="technique-icon touch">👆</div>
+          <div class="technique-title-area">
+            <div class="technique-title">Finger Tap Sequence</div>
+            <div class="technique-subtitle">Sequential touch</div>
+          </div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="technique-content">
+          <div class="technique-body">
+            <p>Touch each finger with your thumb in sequence. You can do this under the desk or in your pocket — completely invisible.</p>
+            <ul class="steps-list">
+              <li><span class="step-num">1</span>Rest your hand naturally (on lap, under desk, in pocket)</li>
+              <li><span class="step-num">2</span>Touch thumb to index → middle → ring → pinky</li>
+              <li><span class="step-num">3</span>Return: pinky → ring → middle → index</li>
+              <li><span class="step-num">4</span>Count silently with each touch</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">100% invisible</span>
+              <span class="tag">Focus recovery</span>
+              <span class="tag">Anti-dissociation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hidden Palm Press -->
+      <div class="technique-card" data-category="touch">
+        <div class="technique-header">
+          <div class="technique-icon touch">🤲</div>
+          <div class="technique-title-area">
+            <div class="technique-title">Hidden Palm Press</div>
+            <div class="technique-subtitle">Acupressure point</div>
+          </div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="technique-content">
+          <div class="technique-body">
+            <p>Pressing the center of your palm with the opposite thumb has a calming effect. Looks like you're just holding your hands together.</p>
+            <ul class="steps-list">
+              <li><span class="step-num">1</span>Bring your hands together naturally</li>
+              <li><span class="step-num">2</span>Find the center of one palm with the other thumb</li>
+              <li><span class="step-num">3</span>Press deeply for 3 seconds, release for 3 seconds</li>
+              <li><span class="step-num">4</span>Switch hands and repeat</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">1:1 conversations</span>
+              <span class="tag">Tension relief</span>
+              <span class="tag">Stay calm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Silent Box Breathing -->
+      <div class="technique-card" data-category="breath">
+        <div class="technique-header">
+          <div class="technique-icon breath">🌬️</div>
+          <div class="technique-title-area">
+            <div class="technique-title">Silent Box Breathing</div>
+            <div class="technique-subtitle">Quiet 4-4-4-4</div>
+          </div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="technique-content">
+          <div class="technique-body">
+            <p>Box breathing done quietly through the nose only. Go slowly and softly so there's no audible breath sound.</p>
+            <ul class="steps-list">
+              <li><span class="step-num">1</span>Inhale quietly through your nose for 4 seconds</li>
+              <li><span class="step-num">2</span>Hold for 4 seconds</li>
+              <li><span class="step-num">3</span>Exhale quietly through your nose for 4 seconds</li>
+              <li><span class="step-num">4</span>Hold for 4 seconds</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Anytime, anywhere</span>
+              <span class="tag">Heart rate</span>
+              <span class="tag">Panic relief</span>
+            </div>
+            <div class="try-section">
+              <h4>Try it now</h4>
+              <button class="try-btn" data-timer="box">Start</button>
+              <div class="timer-display" id="box-timer">4</div>
+              <div class="timer-instruction" id="box-instruction">Inhale slowly through your nose</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subtle Long Exhale -->
+      <div class="technique-card" data-category="breath">
+        <div class="technique-header">
+          <div class="technique-icon breath">💨</div>
+          <div class="technique-title-area">
+            <div class="technique-title">Subtle Long Exhale</div>
+            <div class="technique-subtitle">Extended out-breath</div>
+          </div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="technique-content">
+          <div class="technique-body">
+            <p>Making your exhale longer than your inhale activates the parasympathetic nervous system. Exhale very slowly so it doesn't look like a sigh.</p>
+            <ul class="steps-list">
+              <li><span class="step-num">1</span>Inhale naturally for 3-4 seconds</li>
+              <li><span class="step-num">2</span>Exhale very slowly over 6-8 seconds</li>
+              <li><span class="step-num">3</span>Part your lips slightly and release quietly</li>
+              <li><span class="step-num">4</span>Repeat 3-4 times</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Instant calm</span>
+              <span class="tag">Parasympathetic</span>
+              <span class="tag">Tense situations</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Temperature Anchor -->
+      <div class="technique-card" data-category="sensory">
+        <div class="technique-header">
+          <div class="technique-icon sensory">🧊</div>
+          <div class="technique-title-area">
+            <div class="technique-title">Temperature Anchor</div>
+            <div class="technique-subtitle">Hot or cold focus</div>
+          </div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="technique-content">
+          <div class="technique-body">
+            <p>Hold a cold water glass or warm coffee cup and focus on the temperature. Holding a drink in a meeting is completely natural.</p>
+            <ul class="steps-list">
+              <li><span class="step-num">1</span>Wrap both hands around your cup</li>
+              <li><span class="step-num">2</span>Feel the temperature spreading into your palms</li>
+              <li><span class="step-num">3</span>Focus on the sensation for 30 seconds</li>
+              <li><span class="step-num">4</span>Alternate cold/warm if available</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Anti-dissociation</span>
+              <span class="tag">Reality anchor</span>
+              <span class="tag">Totally natural</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Texture Grounding -->
+      <div class="technique-card" data-category="sensory">
+        <div class="technique-header">
+          <div class="technique-icon sensory">👕</div>
+          <div class="technique-title-area">
+            <div class="technique-title">Texture Grounding</div>
+            <div class="technique-subtitle">Feel the fabric</div>
+          </div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="technique-content">
+          <div class="technique-body">
+            <p>Focus on the texture of clothing, armrest, or a small object in your pocket. Keeping a smooth grounding stone in your pocket works great.</p>
+            <ul class="steps-list">
+              <li><span class="step-num">1</span>Find a surface you can touch (clothes, chair, pocket)</li>
+              <li><span class="step-num">2</span>Explore the texture with attention</li>
+              <li><span class="step-num">3</span>Describe it silently (rough, soft, cool...)</li>
+              <li><span class="step-num">4</span>Move to different areas with different fingers</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Fidget substitute</span>
+              <span class="tag">Sensory overload</span>
+              <span class="tag">Stay focused</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feet on Floor -->
+      <div class="technique-card" data-category="sensory">
+        <div class="technique-header">
+          <div class="technique-icon sensory">👟</div>
+          <div class="technique-title-area">
+            <div class="technique-title">Feet on Floor</div>
+            <div class="technique-subtitle">Sole awareness</div>
+          </div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="technique-content">
+          <div class="technique-body">
+            <p>The most basic and powerful grounding technique. Focus only on the sensation of your feet touching the ground.</p>
+            <ul class="steps-list">
+              <li><span class="step-num">1</span>Place your feet flat on the floor</li>
+              <li><span class="step-num">2</span>Feel your entire sole making contact</li>
+              <li><span class="step-num">3</span>Move awareness: toes → ball → heel</li>
+              <li><span class="step-num">4</span>Notice the floor's firmness and temperature</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Instant</span>
+              <span class="tag">Powerful anchor</span>
+              <span class="tag">Anxiety spike</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick 3-2-1 -->
+      <div class="technique-card" data-category="mental">
+        <div class="technique-header">
+          <div class="technique-icon mental">🧠</div>
+          <div class="technique-title-area">
+            <div class="technique-title">Quick 3-2-1</div>
+            <div class="technique-subtitle">Mini sensory scan</div>
+          </div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="technique-content">
+          <div class="technique-body">
+            <p>A shortened version of the classic 5-4-3-2-1. Done entirely in your head, so no one knows.</p>
+            <ul class="steps-list">
+              <li><span class="step-num">1</span>Silently name 3 things you can see</li>
+              <li><span class="step-num">2</span>Silently name 2 things you can hear</li>
+              <li><span class="step-num">3</span>Silently name 1 thing you can feel</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Completely internal</span>
+              <span class="tag">Anti-dissociation</span>
+              <span class="tag">10 seconds</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Color Hunt -->
+      <div class="technique-card" data-category="mental">
+        <div class="technique-header">
+          <div class="technique-icon mental">🎨</div>
+          <div class="technique-title-area">
+            <div class="technique-title">Color Hunt</div>
+            <div class="technique-subtitle">Visual search</div>
+          </div>
+          <div class="expand-icon">▼</div>
+        </div>
+        <div class="technique-content">
+          <div class="technique-body">
+            <p>Pick a color and find objects around you that match. Looking around the room is perfectly natural.</p>
+            <ul class="steps-list">
+              <li><span class="step-num">1</span>Pick a color silently (e.g., blue)</li>
+              <li><span class="step-num">2</span>Find 3 things with that color nearby</li>
+              <li><span class="step-num">3</span>Switch to a different color and repeat</li>
+              <li><span class="step-num">4</span>Move your gaze naturally as you search</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Visual focus</span>
+              <span class="tag">Stops rumination</span>
+              <span class="tag">Meeting-friendly</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="tips">
+      <h2>💛 Things to Remember</h2>
+      <div class="tips-grid">
+        <div class="tip-item">
+          <span class="tip-num">1</span>
+          <p>You don't have to do it perfectly. Even 30 seconds makes a difference to your nervous system.</p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-num">2</span>
+          <p>Practice when you're calm so it becomes automatic when you need it. Try these often.</p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-num">3</span>
+          <p>Find 2-3 that work for you and make them your personal toolkit.</p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-num">4</span>
+          <p>Sometimes a technique won't work. That's okay — try another one or step away briefly.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="references">
+      <h3>📖 References</h3>
+      <div class="references-content">
+        <p>
+          <strong>Bilateral Stimulation</strong><br>
+          Shapiro, F. (2018). <em>Eye Movement Desensitization and Reprocessing (EMDR) Therapy.</em> Guilford Press.<br>
+          <span class="note">How bilateral stimulation affects emotional regulation</span>
+        </p>
+        <p>
+          <strong>Breathing and the Autonomic Nervous System</strong><br>
+          Porges, S. W. (2011). <em>The Polyvagal Theory.</em> W. W. Norton.<br>
+          <span class="note">Slow breathing activates the parasympathetic response</span>
+        </p>
+        <p>
+          <strong>Grounding and Dissociation</strong><br>
+          van der Kolk, B. (2014). <em>The Body Keeps the Score.</em> Penguin Books.<br>
+          <span class="note">Body-based approaches are effective for trauma response regulation</span>
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Without anyone noticing. Right there. Right now.</p>
+      <p>Take care of your nervous system. <span class="icon">🌊</span></p>
+      <p class="footer-brand">
+        <strong>PADO Psychological Wellness</strong>
+        Dr. Yeji Son
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab-btn');
+    const cards = document.querySelectorAll('.technique-card');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const category = tab.dataset.category;
+        cards.forEach(card => {
+          if (category === 'all' || card.dataset.category === category) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    cards.forEach(card => {
+      const header = card.querySelector('.technique-header');
+      header.addEventListener('click', () => {
+        card.classList.toggle('expanded');
+      });
+    });
+
+    const tryButtons = document.querySelectorAll('.try-btn');
+    tryButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const timerType = btn.dataset.timer;
+        if (timerType === 'bilateral') runBilateralTimer(btn);
+        else if (timerType === 'box') runBoxBreathing(btn);
+      });
+    });
+
+    function runBilateralTimer(btn) {
+      const timerDisplay = document.getElementById('bilateral-timer');
+      const instruction = document.getElementById('bilateral-instruction');
+      btn.disabled = true;
+      btn.textContent = 'In progress...';
+      timerDisplay.classList.add('active');
+      instruction.classList.add('active');
+      const instructions = ['Press your right toes down', 'Press your left toes down'];
+      let count = 0, seconds = 0;
+      const maxReps = 8;
+      const interval = setInterval(() => {
+        seconds++;
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        timerDisplay.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+        if (seconds % 2 === 0) {
+          count++;
+          instruction.textContent = instructions[count % 2];
+        }
+        if (count >= maxReps * 2) {
+          clearInterval(interval);
+          instruction.textContent = 'Done! Great job 🌊';
+          btn.textContent = 'Try again';
+          btn.disabled = false;
+          setTimeout(() => {
+            timerDisplay.classList.remove('active');
+            instruction.classList.remove('active');
+            timerDisplay.textContent = '0:00';
+          }, 3000);
+        }
+      }, 1000);
+    }
+
+    function runBoxBreathing(btn) {
+      const timerDisplay = document.getElementById('box-timer');
+      const instruction = document.getElementById('box-instruction');
+      btn.disabled = true;
+      btn.textContent = 'In progress...';
+      timerDisplay.classList.add('active');
+      instruction.classList.add('active');
+      const phases = [
+        { text: 'Inhale slowly through your nose', duration: 4 },
+        { text: 'Hold your breath', duration: 4 },
+        { text: 'Exhale slowly through your nose', duration: 4 },
+        { text: 'Hold your breath', duration: 4 }
+      ];
+      let currentPhase = 0, currentSecond = phases[0].duration, cycles = 0;
+      const maxCycles = 3;
+      timerDisplay.textContent = currentSecond;
+      instruction.textContent = phases[0].text;
+      const interval = setInterval(() => {
+        currentSecond--;
+        if (currentSecond <= 0) {
+          currentPhase++;
+          if (currentPhase >= phases.length) { currentPhase = 0; cycles++; }
+          if (cycles >= maxCycles) {
+            clearInterval(interval);
+            instruction.textContent = 'Done! Great job 🌊';
+            timerDisplay.textContent = '✓';
+            btn.textContent = 'Try again';
+            btn.disabled = false;
+            setTimeout(() => {
+              timerDisplay.classList.remove('active');
+              instruction.classList.remove('active');
+              timerDisplay.textContent = '4';
+            }, 3000);
+            return;
+          }
+          currentSecond = phases[currentPhase].duration;
+          instruction.textContent = phases[currentPhase].text;
+        }
+        timerDisplay.textContent = currentSecond;
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
