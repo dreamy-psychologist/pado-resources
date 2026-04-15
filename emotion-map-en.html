@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emotion Map - PADO Psychological Wellness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Source Sans Pro', -apple-system, sans-serif;
+      background: linear-gradient(180deg, #FAF6F1 0%, #F2EBE3 100%);
+      min-height: 100vh;
+      padding: 40px 24px 60px;
+      color: #4A4540;
+      line-height: 1.7;
+    }
+    .container { max-width: 600px; margin: 0 auto; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.25; transform: scale(1); }
+      50% { opacity: 0.45; transform: scale(1.08); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes gentleSwing {
+      0%, 100% { transform: rotate(-8deg); }
+      50% { transform: rotate(8deg); }
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(196, 154, 108, 0.15) 0%, transparent 100%);
+      border-radius: 30px;
+    }
+    .header-icon { font-size: 48px; margin-bottom: 20px; display: inline-block; animation: gentleSwing 3s ease-in-out infinite; }
+    .header h1 { font-family: 'Libre Baskerville', serif; font-size: 2.4rem; font-weight: 700; color: #5C524A; margin-bottom: 16px; letter-spacing: -1px; }
+    .header-subtitle { font-size: 1.1rem; color: #8B7D70; font-weight: 300; }
+    .header-tags { margin-top: 16px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .header-tag { display: inline-block; background: #E8DFD4; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; color: #7A6E62; }
+    .header-tag-sub { font-size: 0.8rem; color: #A09080; font-style: italic; }
+
+    .insight {
+      background: linear-gradient(135deg, #fff 0%, #F7F0E8 100%);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 40px;
+      border-left: 5px solid #C49A6C;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+    .insight h2 { font-family: 'Libre Baskerville', serif; font-size: 1.4rem; color: #8B7D70; margin-bottom: 16px; }
+    .insight p { font-size: 1rem; line-height: 1.9; }
+    .highlight { background: linear-gradient(180deg, transparent 60%, #E8DFD4 60%); padding: 0 4px; font-weight: 500; }
+
+    .mode-toggle { display: flex; justify-content: center; gap: 0; margin-bottom: 32px; background: #E8DFD4; border-radius: 28px; padding: 4px; }
+    .mode-btn { flex: 1; padding: 12px 0; border-radius: 24px; border: none; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: inherit; background: transparent; color: #8B7D70; }
+    .mode-btn.active { background: #fff; color: #5C524A; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+
+    .view { display: none; animation: fadeIn 0.4s ease; }
+    .view.active { display: block; }
+    .view-hint { text-align: center; font-size: 15px; color: #8B7D70; margin-bottom: 24px; font-weight: 300; }
+
+    .emotion-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .emotion-btn {
+      display: flex; align-items: center; gap: 12px; padding: 16px 18px; border-radius: 20px;
+      border: 2px solid rgba(139, 115, 85, 0.15); background: #fff; cursor: pointer;
+      transition: all 0.25s; text-align: left; font-family: inherit; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .emotion-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .emotion-btn.selected { transform: scale(1.02); }
+    .emotion-btn .emoji { font-size: 26px; }
+    .emotion-btn .name { font-size: 16px; font-weight: 700; }
+
+    .body-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 24px; }
+    .body-btn {
+      display: flex; align-items: center; gap: 12px; padding: 16px 18px; border-radius: 20px;
+      border: 2px solid rgba(139, 115, 85, 0.15); background: #fff; cursor: pointer;
+      transition: all 0.2s; font-family: inherit; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .body-btn.selected { border-color: #5C524A; background: rgba(232, 223, 212, 0.13); }
+    .body-btn .emoji { font-size: 22px; }
+    .body-btn .label { font-size: 15px; font-weight: 600; color: #4A4540; }
+
+    .matched-header { font-size: 14px; color: #8B7D70; text-align: center; margin-bottom: 16px; font-weight: 500; }
+    .matched-list { display: flex; flex-direction: column; gap: 12px; }
+    .matched-btn {
+      display: flex; align-items: center; gap: 14px; padding: 16px 20px; border-radius: 20px;
+      border: 2px solid rgba(139, 115, 85, 0.15); background: #fff; cursor: pointer;
+      transition: all 0.25s; text-align: left; font-family: inherit; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .matched-btn.selected { transform: scale(1.01); }
+    .matched-btn .emoji { font-size: 28px; }
+    .matched-btn .info { flex: 1; }
+    .matched-btn .name { font-size: 16px; font-weight: 700; }
+    .matched-btn .body-label { font-size: 13px; color: #8B7D70; margin-top: 3px; }
+    .matched-btn .zone-badge { font-size: 12px; padding: 4px 12px; border-radius: 14px; font-weight: 600; }
+
+    .detail-panel {
+      margin-top: 28px; animation: slideUp 0.4s ease; background: #fff; border-radius: 24px;
+      padding: 28px 24px; box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08); border: 1px solid rgba(139, 115, 85, 0.1);
+    }
+    .detail-panel.with-left-border { border-left-width: 4px; border-left-style: solid; }
+    .zone-badge-large { display: inline-block; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
+    .detail-title { font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 700; margin: 0 0 20px; }
+    .sub-emotions-label { font-size: 13px; color: #8B7D70; margin-bottom: 10px; font-weight: 600; }
+    .sub-emotions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .sub-emotion-tag { padding: 6px 14px; border-radius: 30px; font-size: 14px; font-weight: 500; }
+    .body-section-label { font-size: 13px; color: #8B7D70; margin-bottom: 12px; font-weight: 600; }
+    .body-section { display: flex; gap: 20px; align-items: flex-start; background: #FAF6F1; border-radius: 20px; padding: 20px 16px; }
+    .body-silhouette { flex: 0 0 130px; }
+    .body-labels { flex: 1; display: flex; flex-direction: column; gap: 10px; padding-top: 12px; }
+    .body-label-item { display: flex; align-items: center; gap: 10px; }
+    .body-label-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .body-label-text { font-size: 14px; color: #4A4540; line-height: 1.5; }
+
+    .zone-guide { background: #fff; border-radius: 24px; padding: 32px; margin-top: 50px; box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08); }
+    .zone-guide h2 { font-family: 'Libre Baskerville', serif; font-size: 1.4rem; color: #8B7D70; margin-bottom: 24px; text-align: center; }
+    .zone-cards { display: grid; gap: 16px; }
+    .zone-card { padding: 20px; border-radius: 16px; }
+    .zone-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .zone-card p { font-size: 14px; line-height: 1.8; color: #4A4540; }
+
+    .tips { background: #fff; border-radius: 24px; padding: 32px; margin-top: 40px; border: 2px dashed #E8DFD4; }
+    .tips h2 { font-family: 'Libre Baskerville', serif; font-size: 1.4rem; color: #8B7D70; margin-bottom: 24px; text-align: center; }
+    .tips-grid { display: grid; gap: 14px; }
+    .tip-item { background: #FAF6F1; padding: 18px 22px; border-radius: 16px; display: flex; gap: 14px; align-items: flex-start; }
+    .tip-num { background: #C49A6C; color: #fff; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; flex-shrink: 0; }
+    .tip-item p { font-size: 14px; line-height: 1.8; color: #4A4540; }
+
+    .references { margin-top: 40px; padding: 28px 24px; background: #fff; border-radius: 20px; border: 1px solid rgba(139, 115, 85, 0.15); }
+    .references h3 { font-family: 'Libre Baskerville', serif; font-size: 15px; font-weight: 700; color: #5C524A; margin-bottom: 16px; }
+    .references-content { font-size: 13px; color: #5A5A5A; line-height: 1.9; }
+    .references-content p { margin-bottom: 12px; }
+    .references-content p:last-child { margin-bottom: 0; }
+    .references-content strong { color: #4A4540; }
+    .references-content em { font-style: italic; }
+    .references-content .note { color: #8B7D70; }
+
+    .footer { text-align: center; margin-top: 50px; padding: 30px; color: #8B7D70; font-size: 14px; }
+    .footer .icon { display: inline-block; animation: gentleSwing 3s ease-in-out infinite; }
+    .footer-brand { margin-top: 24px; font-size: 13px; }
+    .footer-brand strong { display: block; }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <span class="header-icon">🧭</span>
+      <h1>Emotion Map</h1>
+      <p class="header-subtitle">Name your emotions, feel them in your body</p>
+      <div class="header-tags">
+        <span class="header-tag">Neuro-affirming</span>
+        <span class="header-tag-sub">There are many ways to recognize emotions</span>
+      </div>
+    </header>
+
+    <section class="insight">
+      <h2>💡 Key Insight</h2>
+      <p>It's common to have trouble recognizing emotions right away. <span class="highlight">Whether you start from emotions or from your body, either way is fine.</span></p>
+      <p style="margin-top:16px;">Naming an emotion reduces amygdala activity in your brain. This is called <strong>'Affect Labeling.'</strong></p>
+      <p style="margin-top:16px;">Naming itself is <span class="highlight">the beginning of regulation.</span></p>
+    </section>
+
+    <div class="mode-toggle">
+      <button class="mode-btn active" id="modeEmotion" onclick="setMode('emotion')">🎯 Start from Emotion</button>
+      <button class="mode-btn" id="modeBody" onclick="setMode('body')">🧍 Start from Body</button>
+    </div>
+
+    <!-- EMOTION MODE -->
+    <div class="view active" id="emotionView">
+      <p class="view-hint">Select the emotion you're feeling now</p>
+      <div class="emotion-grid" id="emotionGrid"></div>
+      <div id="emotionDetail"></div>
+    </div>
+
+    <!-- BODY MODE -->
+    <div class="view" id="bodyView">
+      <p class="view-hint">Where do you feel it most in your body?</p>
+      <div class="body-grid" id="bodyGrid"></div>
+      <div id="bodyMatched"></div>
+      <div id="bodyDetail"></div>
+    </div>
+
+    <!-- Zone Guide -->
+    <section class="zone-guide">
+      <h2>🌡️ Arousal State Guide</h2>
+      <div class="zone-cards">
+        <div class="zone-card" style="background: linear-gradient(135deg, #F5E8E4 0%, #F7F0E8 100%)">
+          <h3 style="color: #C17058">🔥 Hyperarousal</h3>
+          <p>A state of being overwhelmed by energy and sensation. Anger, fear, and anxiety tend to show up here.</p>
+        </div>
+        <div class="zone-card" style="background: linear-gradient(135deg, #EEF2EB 0%, #EBF1F1 100%)">
+          <h3 style="color: #8A9A7A">✨ Window of Tolerance</h3>
+          <p>The zone where your nervous system functions optimally. You can feel joy and calm here, and respond flexibly to stress.</p>
+        </div>
+        <div class="zone-card" style="background: linear-gradient(135deg, #EBF1F1 0%, #EDEDF3 100%)">
+          <h3 style="color: #7A9A9A">❄️ Hypoarousal</h3>
+          <p>A state of lowered energy, numbness, or disconnection. Numbness and dissociation belong here.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tips -->
+    <section class="tips">
+      <h2>💛 Things to Remember</h2>
+      <div class="tips-grid">
+        <div class="tip-item">
+          <span class="tip-num">1</span>
+          <p>All emotions are information. There are no 'bad' emotions. Even uncomfortable feelings are signals trying to tell you something.</p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-num">2</span>
+          <p>Simply naming an emotion reduces amygdala activity. Labeling is itself a form of regulation.</p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-num">3</span>
+          <p>Noticing body sensations helps you recognize emotions faster and more accurately.</p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-num">4</span>
+          <p>Feeling multiple emotions at once is natural. Complex situations create complex emotions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- References -->
+    <section class="references">
+      <h3>📖 References</h3>
+      <div class="references-content">
+        <p>
+          <strong>Body-based emotion mapping</strong><br>
+          Nummenmaa, L., et al. (2014). Bodily maps of emotions. <em>PNAS, 111</em>(2), 646-651.<br>
+          <span class="note">Each emotion has unique bodily activation patterns, consistent across cultures</span>
+        </p>
+        <p>
+          <strong>Two-dimensional model of affect</strong><br>
+          Russell, J. A. (1980). A circumplex model of affect. <em>J. Pers. Soc. Psychol., 39</em>(6), 1161-1178.<br>
+          <span class="note">Emotions mapped on valence × arousal axes → connects to Window of Tolerance</span>
+        </p>
+        <p>
+          <strong>Window of Tolerance</strong><br>
+          Siegel, D. J. (1999). <em>The developing mind.</em> Guilford Press.<br>
+          <span class="note">Optimal functioning zone of the nervous system</span>
+        </p>
+        <p>
+          <strong>Affect Labeling</strong><br>
+          Lieberman, M. D., et al. (2007). Putting feelings into words. <em>Psychological Science, 18</em>(5), 421-428.<br>
+          <span class="note">Naming emotions reduces amygdala response → the beginning of regulation</span>
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Feeling your emotions is okay, just as you are.</p>
+      <p>Your emotions are here to help you. <span class="icon">🧭</span></p>
+      <p class="footer-brand">
+        <strong>PADO Psychological Wellness</strong>
+        Dr. Yeji Son
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const EMOTIONS = [
+      { id: "anger", name: "Anger", color: "#C17058", colorLight: "#F5E8E4", zone: "hyper", zoneLabel: "Hyperarousal 🔥", subEmotions: ["Irritation", "Rage", "Resentment", "Frustration"], icon: "🔥", bodyParts: [{ area: "head", label: "Head feels hot" }, { area: "jaw", label: "Jaw clenches" }, { area: "chest", label: "Chest expands" }, { area: "shoulders", label: "Shoulders rise" }, { area: "hands", label: "Fists clench" }] },
+      { id: "fear", name: "Fear", color: "#C49A6C", colorLight: "#F7F0E8", zone: "hyper", zoneLabel: "Hyperarousal 🔥", subEmotions: ["Anxiety", "Terror", "Tension", "Worry"], icon: "⚡", bodyParts: [{ area: "chest", label: "Heart races" }, { area: "stomach", label: "Stomach tightens" }, { area: "throat", label: "Throat closes" }, { area: "shoulders", label: "Shoulders hunch" }, { area: "hands", label: "Hands tremble" }] },
+      { id: "joy", name: "Joy", color: "#8A9A7A", colorLight: "#EEF2EB", zone: "window", zoneLabel: "Window of Tolerance ✨", subEmotions: ["Happiness", "Gratitude", "Excitement", "Contentment"], icon: "🌿", bodyParts: [{ area: "chest", label: "Chest feels warm" }, { area: "face", label: "Face relaxes" }, { area: "whole", label: "Body feels light" }, { area: "hands", label: "Hands open" }] },
+      { id: "calm", name: "Calm", color: "#7A9A9A", colorLight: "#EBF1F1", zone: "window", zoneLabel: "Window of Tolerance ✨", subEmotions: ["Stability", "Peace", "Ease", "Relaxation"], icon: "✨", bodyParts: [{ area: "whole", label: "Body relaxes" }, { area: "chest", label: "Breath deepens" }, { area: "shoulders", label: "Shoulders drop" }, { area: "face", label: "Expression softens" }] },
+      { id: "sadness", name: "Sadness", color: "#8A8AAA", colorLight: "#EDEDF3", zone: "mixed", zoneLabel: "Mixed Zone", subEmotions: ["Disappointment", "Longing", "Grief", "Loneliness"], icon: "💧", bodyParts: [{ area: "chest", label: "Chest feels heavy" }, { area: "throat", label: "Throat tightens" }, { area: "eyes", label: "Eyes sting" }, { area: "whole", label: "Body droops" }] },
+      { id: "shame", name: "Shame", color: "#A68A9A", colorLight: "#F2ECEF", zone: "mixed", zoneLabel: "Mixed Zone", subEmotions: ["Embarrassment", "Self-criticism", "Worthlessness", "Humiliation"], icon: "🌑", bodyParts: [{ area: "face", label: "Face flushes" }, { area: "chest", label: "Chest shrinks" }, { area: "stomach", label: "Stomach sinks" }, { area: "whole", label: "Want to hide" }] },
+      { id: "numbness", name: "Numbness", color: "#9A9A9A", colorLight: "#F0F0F0", zone: "hypo", zoneLabel: "Hypoarousal ❄️", subEmotions: ["Emptiness", "Disconnection", "Apathy", "Blankness"], icon: "🌫️", bodyParts: [{ area: "whole", label: "Body feels heavy" }, { area: "face", label: "Expression flat" }, { area: "chest", label: "Hard to breathe" }, { area: "hands", label: "Hands cold" }] },
+      { id: "disgust", name: "Disgust", color: "#7A8A6A", colorLight: "#EDF0EA", zone: "mixed", zoneLabel: "Mixed Zone", subEmotions: ["Revulsion", "Distaste", "Aversion", "Contempt"], icon: "🍃", bodyParts: [{ area: "stomach", label: "Stomach turns" }, { area: "throat", label: "Gag reflex" }, { area: "face", label: "Nose wrinkles" }, { area: "whole", label: "Pull away" }] }
+    ];
+
+    const BODY_QUESTIONS = [
+      { area: "head", label: "Head", icon: "🧠" },
+      { area: "chest", label: "Chest", icon: "💗" },
+      { area: "stomach", label: "Stomach", icon: "🫄" },
+      { area: "throat", label: "Throat", icon: "🗣️" },
+      { area: "hands", label: "Hands", icon: "🤲" },
+      { area: "whole", label: "Whole body", icon: "🧍" },
+      { area: "face", label: "Face", icon: "😶" },
+      { area: "shoulders", label: "Shoulders", icon: "💆" }
+    ];
+
+    const BODY_POSITIONS = {
+      head: { cx: 150, cy: 45, rx: 28, ry: 32 },
+      face: { cx: 150, cy: 50, rx: 22, ry: 18 },
+      eyes: { cx: 150, cy: 42, rx: 20, ry: 8 },
+      jaw: { cx: 150, cy: 62, rx: 18, ry: 10 },
+      throat: { cx: 150, cy: 82, rx: 14, ry: 10 },
+      shoulders: { cx: 150, cy: 100, rx: 50, ry: 12 },
+      chest: { cx: 150, cy: 130, rx: 35, ry: 28 },
+      stomach: { cx: 150, cy: 175, rx: 28, ry: 22 },
+      hands: { cx: 150, cy: 220, rx: 55, ry: 14 },
+      whole: { cx: 150, cy: 150, rx: 55, ry: 80 }
+    };
+
+    let currentMode = 'emotion';
+    let selectedEmotion = null;
+    let selectedBody = null;
+
+    function zoneColor(zone) {
+      if (zone === "hyper") return "#C17058";
+      if (zone === "window") return "#8A9A7A";
+      if (zone === "hypo") return "#7A9A9A";
+      return "#A68A9A";
+    }
+    function zoneGradient(zone) {
+      if (zone === "hyper") return "linear-gradient(135deg, #F5E8E4 0%, #F7F0E8 100%)";
+      if (zone === "window") return "linear-gradient(135deg, #EEF2EB 0%, #EBF1F1 100%)";
+      if (zone === "hypo") return "linear-gradient(135deg, #EBF1F1 0%, #EDEDF3 100%)";
+      return "linear-gradient(135deg, #EDEDF3 0%, #F2ECEF 100%)";
+    }
+
+    function createBodySVG(activeParts, color) {
+      let highlights = '';
+      activeParts.forEach((part, i) => {
+        const pos = BODY_POSITIONS[part.area];
+        if (pos) {
+          highlights += `
+            <ellipse cx="${pos.cx}" cy="${pos.cy}" rx="${pos.rx + 6}" ry="${pos.ry + 6}" fill="${color}" opacity="0.15" style="animation: pulse ${1.5 + i * 0.3}s ease-in-out infinite"/>
+            <ellipse cx="${pos.cx}" cy="${pos.cy}" rx="${pos.rx}" ry="${pos.ry}" fill="${color}" opacity="0.35" style="animation: pulse ${1.5 + i * 0.3}s ease-in-out infinite"/>
+          `;
+        }
+      });
+      return `
+        <svg viewBox="0 0 300 330" style="width:100%;max-width:220px">
+          <ellipse cx="150" cy="45" rx="30" ry="35" fill="#E8E0D8" stroke="#D4C8BC" stroke-width="1.5"/>
+          <rect x="140" y="75" width="20" height="18" rx="6" fill="#E8E0D8" stroke="#D4C8BC" stroke-width="1.5"/>
+          <path d="M100 93 Q90 95 85 110 L80 200 Q80 215 100 220 L120 222 L150 225 L180 222 L200 220 Q220 215 220 200 L215 110 Q210 95 200 93 Z" fill="#E8E0D8" stroke="#D4C8BC" stroke-width="1.5"/>
+          <path d="M85 110 Q60 115 50 150 L45 200 Q42 215 55 218 L65 215 Q68 210 70 200 L80 155 Q82 140 85 130" fill="#E8E0D8" stroke="#D4C8BC" stroke-width="1.5"/>
+          <path d="M215 110 Q240 115 250 150 L255 200 Q258 215 245 218 L235 215 Q232 210 230 200 L220 155 Q218 140 215 130" fill="#E8E0D8" stroke="#D4C8BC" stroke-width="1.5"/>
+          <path d="M110 220 L105 280 Q103 300 110 310 L125 312 Q130 305 128 295 L130 225" fill="#E8E0D8" stroke="#D4C8BC" stroke-width="1.5"/>
+          <path d="M190 220 L195 280 Q197 300 190 310 L175 312 Q170 305 172 295 L170 225" fill="#E8E0D8" stroke="#D4C8BC" stroke-width="1.5"/>
+          ${highlights}
+        </svg>
+      `;
+    }
+
+    function setMode(mode) {
+      currentMode = mode;
+      selectedEmotion = null;
+      selectedBody = null;
+      document.getElementById('modeEmotion').classList.toggle('active', mode === 'emotion');
+      document.getElementById('modeBody').classList.toggle('active', mode === 'body');
+      document.getElementById('emotionView').classList.toggle('active', mode === 'emotion');
+      document.getElementById('bodyView').classList.toggle('active', mode === 'body');
+      document.getElementById('emotionDetail').innerHTML = '';
+      document.getElementById('bodyMatched').innerHTML = '';
+      document.getElementById('bodyDetail').innerHTML = '';
+      renderEmotionGrid();
+      renderBodyGrid();
+    }
+
+    function renderEmotionGrid() {
+      let html = '';
+      EMOTIONS.forEach(e => {
+        const sel = selectedEmotion === e.id;
+        html += `<button class="emotion-btn${sel ? ' selected' : ''}" onclick="selectEmotion('${e.id}')" style="border-color: ${sel ? e.color : 'rgba(139, 115, 85, 0.15)'}; background: ${sel ? e.colorLight : '#fff'}; box-shadow: ${sel ? '0 4px 20px ' + e.color + '25' : '0 2px 8px rgba(0,0,0,0.04)'}">
+          <span class="emoji">${e.icon}</span>
+          <div>
+            <div class="name" style="color: ${sel ? e.color : '#4A4540'}">${e.name}</div>
+          </div>
+        </button>`;
+      });
+      document.getElementById('emotionGrid').innerHTML = html;
+    }
+
+    function selectEmotion(id) {
+      selectedEmotion = selectedEmotion === id ? null : id;
+      renderEmotionGrid();
+      renderEmotionDetail();
+    }
+
+    function renderEmotionDetail() {
+      if (!selectedEmotion) {
+        document.getElementById('emotionDetail').innerHTML = '';
+        return;
+      }
+      const e = EMOTIONS.find(em => em.id === selectedEmotion);
+      const subTags = e.subEmotions.map(s => `<span class="sub-emotion-tag" style="background:${e.colorLight};color:${e.color}">${s}</span>`).join('');
+      const bodyLabels = e.bodyParts.map(bp => `<div class="body-label-item"><div class="body-label-dot" style="background:${e.color}"></div><span class="body-label-text">${bp.label}</span></div>`).join('');
+      document.getElementById('emotionDetail').innerHTML = `
+        <div class="detail-panel with-left-border" style="border-left-color:${e.color}">
+          <div class="zone-badge-large" style="background:${zoneGradient(e.zone)};border:1px solid ${zoneColor(e.zone)}44;color:${zoneColor(e.zone)}">🌡️ ${e.zoneLabel}</div>
+          <h3 class="detail-title" style="color:${e.color}">${e.icon} ${e.name}</h3>
+          <div class="sub-emotions-label">Related emotions</div>
+          <div class="sub-emotions">${subTags}</div>
+          <div class="body-section-label">How does it feel in your body?</div>
+          <div class="body-section">
+            <div class="body-silhouette">${createBodySVG(e.bodyParts, e.color)}</div>
+            <div class="body-labels">${bodyLabels}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderBodyGrid() {
+      let html = '';
+      BODY_QUESTIONS.forEach(bq => {
+        const sel = selectedBody === bq.area;
+        html += `<button class="body-btn${sel ? ' selected' : ''}" onclick="selectBody('${bq.area}')">
+          <span class="emoji">${bq.icon}</span>
+          <span class="label">${bq.label}</span>
+        </button>`;
+      });
+      document.getElementById('bodyGrid').innerHTML = html;
+    }
+
+    function selectBody(area) {
+      selectedBody = selectedBody === area ? null : area;
+      selectedEmotion = null;
+      renderBodyGrid();
+      renderBodyMatched();
+    }
+
+    function renderBodyMatched() {
+      if (!selectedBody) {
+        document.getElementById('bodyMatched').innerHTML = '';
+        document.getElementById('bodyDetail').innerHTML = '';
+        return;
+      }
+      const matched = EMOTIONS.filter(e => e.bodyParts.some(bp => bp.area === selectedBody));
+      const bodyLabel = BODY_QUESTIONS.find(b => b.area === selectedBody)?.label;
+      let html = `<div class="matched-header" style="animation:slideUp 0.35s ease">Emotions that show up in your ${bodyLabel.toLowerCase()}</div><div class="matched-list">`;
+      matched.forEach(e => {
+        const bp = e.bodyParts.find(b => b.area === selectedBody);
+        const sel = selectedEmotion === e.id;
+        html += `<button class="matched-btn${sel ? ' selected' : ''}" onclick="selectMatchedEmotion('${e.id}')" style="border-color:${sel ? e.color : 'rgba(139,115,85,0.15)'};background:${sel ? e.colorLight : '#fff'}">
+          <span class="emoji">${e.icon}</span>
+          <div class="info">
+            <div class="name" style="color:${sel ? e.color : '#4A4540'}">${e.name}</div>
+            <div class="body-label">${bp?.label}</div>
+          </div>
+          <span class="zone-badge" style="background:${zoneGradient(e.zone)};color:${zoneColor(e.zone)}">${e.zoneLabel}</span>
+        </button>`;
+      });
+      html += '</div>';
+      document.getElementById('bodyMatched').innerHTML = html;
+      document.getElementById('bodyDetail').innerHTML = '';
+    }
+
+    function selectMatchedEmotion(id) {
+      selectedEmotion = selectedEmotion === id ? null : id;
+      renderBodyMatched();
+      renderBodyDetail();
+    }
+
+    function renderBodyDetail() {
+      if (!selectedEmotion || !selectedBody) {
+        document.getElementById('bodyDetail').innerHTML = '';
+        return;
+      }
+      const e = EMOTIONS.find(em => em.id === selectedEmotion);
+      const subTags = e.subEmotions.map(s => `<span class="sub-emotion-tag" style="background:${e.colorLight};color:${e.color};padding:4px 12px;border-radius:14px;font-size:13px">${s}</span>`).join('');
+      const bodyLabels = e.bodyParts.map(bp => {
+        const isActive = bp.area === selectedBody;
+        return `<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+          <div style="width:8px;height:8px;border-radius:50%;background:${isActive ? e.color : e.color + '66'};flex-shrink:0"></div>
+          <span style="font-size:14px;line-height:1.4;color:${isActive ? '#4A4540' : '#8B7D70'};font-weight:${isActive ? 600 : 400}">${bp.label}</span>
+        </div>`;
+      }).join('');
+      document.getElementById('bodyDetail').innerHTML = `
+        <div class="detail-panel with-left-border" style="margin-top:24px;border-left-color:${e.color}">
+          <div style="display:flex;gap:16px;align-items:flex-start;background:#FAF6F1;border-radius:20px;padding:20px 16px">
+            <div style="flex:0 0 120px">${createBodySVG(e.bodyParts, e.color)}</div>
+            <div style="flex:1;padding-top:8px">
+              <div style="font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:${e.color};margin-bottom:10px">${e.icon} ${e.name}</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px">${subTags}</div>
+              ${bodyLabels}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    renderEmotionGrid();
+    renderBodyGrid();
+  </script>
+</body>
+</html>

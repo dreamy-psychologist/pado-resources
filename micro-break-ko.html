@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Micro Break - PADO Psychological Wellness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+Pro:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', 'Source Sans Pro', -apple-system, sans-serif;
+      background: linear-gradient(180deg, #FAF6F1 0%, #F2EBE3 100%);
+      min-height: 100vh;
+      padding: 40px 24px 60px;
+      color: #4A4540;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.15); opacity: 1; }
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(138, 154, 122, 0.15) 0%, transparent 100%);
+      border-radius: 30px;
+    }
+
+    .header-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      display: inline-block;
+      animation: breathe 4s ease-in-out infinite;
+    }
+
+    .header h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #5C524A;
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+    }
+
+    .header-subtitle {
+      font-size: 1.05rem;
+      color: #8B7D70;
+      font-weight: 300;
+    }
+
+    .header-tags {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .header-tag {
+      display: inline-block;
+      background: #E8DFD4;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #7A6E62;
+    }
+
+    .insight {
+      background: linear-gradient(135deg, #fff 0%, #F7F0E8 100%);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 40px;
+      border-left: 5px solid #8A9A7A;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+
+    .insight h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.3rem;
+      color: #8B7D70;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .insight p {
+      font-size: 0.95rem;
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+
+    .insight p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight {
+      background: linear-gradient(180deg, transparent 60%, #E8DFD4 60%);
+      padding: 0 4px;
+      font-weight: 500;
+    }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0 auto 24px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid #E8DFD4;
+      background: #fff;
+      color: #8B7D70;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .back-btn:hover {
+      background: #F7F0E8;
+    }
+
+    .view {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .view.active {
+      display: block;
+    }
+
+    .view-title {
+      text-align: center;
+      font-size: 16px;
+      color: #5C524A;
+      margin-bottom: 32px;
+      font-weight: 500;
+    }
+
+    .view-title span {
+      color: #8B7D70;
+      font-weight: 400;
+    }
+
+    .menu-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .menu-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 24px;
+      border-radius: 20px;
+      border: 2px solid rgba(139, 115, 85, 0.15);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.25s;
+      text-align: left;
+      width: 100%;
+      font-family: inherit;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(139, 115, 85, 0.1);
+      border-color: rgba(139, 115, 85, 0.3);
+    }
+
+    .menu-card-icon {
+      font-size: 32px;
+    }
+
+    .menu-card-content h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #5C524A;
+      margin-bottom: 4px;
+    }
+
+    .menu-card-content p {
+      font-size: 14px;
+      color: #8B7D70;
+    }
+
+    .time-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .time-btn {
+      padding: 28px 16px;
+      border-radius: 20px;
+      border: 2px solid rgba(139, 115, 85, 0.15);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.25s;
+      text-align: center;
+      font-family: inherit;
+    }
+
+    .time-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(139, 115, 85, 0.1);
+    }
+
+    .time-btn .emoji {
+      font-size: 32px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .time-btn .label {
+      font-size: 18px;
+      font-weight: 700;
+      color: #5C524A;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .category-btn {
+      padding: 28px 20px;
+      border-radius: 20px;
+      border: 2px solid rgba(139, 115, 85, 0.15);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.25s;
+      text-align: center;
+      font-family: inherit;
+    }
+
+    .category-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(139, 115, 85, 0.1);
+    }
+
+    .category-btn .emoji {
+      font-size: 36px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .category-btn .name {
+      font-size: 17px;
+      font-weight: 700;
+      color: #5C524A;
+      margin-bottom: 4px;
+    }
+
+    .category-btn .name-en {
+      font-size: 13px;
+      color: #8B7D70;
+    }
+
+    .filter-badge {
+      text-align: center;
+      margin-bottom: 24px;
+      padding: 12px 20px;
+      background: #E8DFD4;
+      border-radius: 20px;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .filter-badge span {
+      font-size: 14px;
+      color: #5C524A;
+    }
+
+    .break-section {
+      margin-bottom: 24px;
+    }
+
+    .break-section-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .break-items {
+      display: grid;
+      gap: 10px;
+    }
+
+    .break-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-radius: 16px;
+      border: 1px solid rgba(139, 115, 85, 0.1);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+      width: 100%;
+      font-family: inherit;
+    }
+
+    .break-item:hover {
+      background: #FAF6F1;
+    }
+
+    .break-item-name {
+      font-size: 15px;
+      color: #4A4540;
+    }
+
+    .break-item-duration {
+      padding: 4px 12px;
+      border-radius: 15px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .category-header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding: 16px 24px;
+      border-radius: 20px;
+    }
+
+    .category-header .emoji {
+      font-size: 28px;
+    }
+
+    .category-header h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    .category-items {
+      display: grid;
+      gap: 12px;
+    }
+
+    .category-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-radius: 20px;
+      border: 1px solid rgba(139, 115, 85, 0.1);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+      width: 100%;
+      font-family: inherit;
+    }
+
+    .category-item:hover {
+      background: #FAF6F1;
+    }
+
+    .category-item-info .name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #4A4540;
+      margin-bottom: 4px;
+    }
+
+    .category-item-info .name-en {
+      font-size: 13px;
+      color: #8B7D70;
+    }
+
+    .category-item-duration {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .situation-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .situation-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      border-radius: 20px;
+      border: 2px solid rgba(139, 115, 85, 0.15);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.25s;
+      text-align: left;
+      width: 100%;
+      font-family: inherit;
+    }
+
+    .situation-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(139, 115, 85, 0.1);
+    }
+
+    .situation-card .emoji {
+      font-size: 28px;
+    }
+
+    .situation-card .name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #5C524A;
+      margin-bottom: 2px;
+    }
+
+    .situation-card .name-en {
+      font-size: 13px;
+      color: #8B7D70;
+    }
+
+    .situation-header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding: 20px 24px;
+      background: #fff;
+      border-radius: 20px;
+      border: 2px solid #E8DFD4;
+    }
+
+    .situation-header .emoji {
+      font-size: 32px;
+    }
+
+    .situation-header h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #5C524A;
+      margin-top: 12px;
+    }
+
+    .situation-header p {
+      font-size: 14px;
+      color: #8B7D70;
+      margin-top: 4px;
+    }
+
+    .rec-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .rec-break {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      border-radius: 20px;
+      border: 1px solid rgba(139, 115, 85, 0.1);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+      width: 100%;
+      font-family: inherit;
+    }
+
+    .rec-break:hover {
+      background: #FAF6F1;
+    }
+
+    .rec-break-icon {
+      font-size: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rec-break-content {
+      flex: 1;
+    }
+
+    .rec-break-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #4A4540;
+      margin-bottom: 2px;
+    }
+
+    .rec-break-name-en {
+      font-size: 13px;
+      color: #8B7D70;
+    }
+
+    .rec-break-duration {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .other-situation-btn {
+      display: block;
+      margin: 24px auto 0;
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: 1px solid #E8DFD4;
+      background: transparent;
+      color: #8B7D70;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .other-situation-btn:hover {
+      background: #FAF6F1;
+    }
+
+    .detail-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.1);
+    }
+
+    .detail-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .detail-category {
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .detail-duration {
+      padding: 8px 16px;
+      border-radius: 20px;
+      background: #FAF6F1;
+      font-size: 14px;
+      color: #8B7D70;
+      font-weight: 500;
+    }
+
+    .detail-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #5C524A;
+      margin-bottom: 6px;
+    }
+
+    .detail-title-en {
+      font-size: 14px;
+      color: #8B7D70;
+      margin-bottom: 24px;
+    }
+
+    .detail-instruction {
+      background: #FAF6F1;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .detail-instruction h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #8B7D70;
+      margin-bottom: 12px;
+    }
+
+    .detail-instruction p {
+      font-size: 16px;
+      line-height: 1.9;
+      color: #4A4540;
+    }
+
+    .detail-why {
+      background: linear-gradient(135deg, #EEF2EB 0%, #EBF1F1 100%);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+    }
+
+    .detail-why h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #8A9A7A;
+      margin-bottom: 8px;
+    }
+
+    .detail-why p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #4A4540;
+    }
+
+    .timer {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .timer-circle {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto;
+    }
+
+    .timer-circle svg {
+      transform: rotate(-90deg);
+    }
+
+    .timer-circle .bg {
+      fill: none;
+      stroke: #E8DFD4;
+      stroke-width: 8;
+    }
+
+    .timer-circle .progress {
+      fill: none;
+      stroke: #8A9A7A;
+      stroke-width: 8;
+      stroke-linecap: round;
+      transition: stroke-dasharray 0.3s ease;
+    }
+
+    .timer-number {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 28px;
+      font-weight: 700;
+      color: #5C524A;
+    }
+
+    .timer-btn {
+      margin-top: 16px;
+      padding: 12px 32px;
+      border-radius: 25px;
+      border: none;
+      background: #8A9A7A;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .timer-btn:hover {
+      background: #7A8A6A;
+    }
+
+    .timer-btn.paused {
+      background: #E8DFD4;
+      color: #5C524A;
+    }
+
+    .timer-complete {
+      margin-top: 16px;
+      font-size: 15px;
+      color: #8A9A7A;
+      font-weight: 500;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .try-another {
+      display: block;
+      margin: 28px auto 0;
+      padding: 12px 24px;
+      border-radius: 20px;
+      border: 1px solid #E8DFD4;
+      background: transparent;
+      color: #8B7D70;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .try-another:hover {
+      background: #FAF6F1;
+    }
+
+    .tips {
+      background: #fff;
+      border-radius: 24px;
+      padding: 32px;
+      margin-top: 50px;
+      border: 2px dashed #E8DFD4;
+    }
+
+    .tips h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.3rem;
+      color: #8B7D70;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .tips-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .tip-item {
+      background: #FAF6F1;
+      padding: 18px 22px;
+      border-radius: 16px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .tip-num {
+      background: #8A9A7A;
+      color: #fff;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .tip-item p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #4A4540;
+    }
+
+    .references {
+      margin-top: 40px;
+      padding: 28px 24px;
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid rgba(139, 115, 85, 0.15);
+    }
+
+    .references h3 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #5C524A;
+      margin-bottom: 16px;
+    }
+
+    .references-content {
+      font-size: 13px;
+      color: #5A5A5A;
+      line-height: 1.9;
+    }
+
+    .references-content p {
+      margin-bottom: 12px;
+    }
+
+    .references-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .references-content strong {
+      color: #4A4540;
+    }
+
+    .references-content em {
+      font-style: italic;
+    }
+
+    .references-content .note {
+      color: #8B7D70;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 30px;
+      color: #8B7D70;
+      font-size: 14px;
+    }
+
+    .footer .icon {
+      display: inline-block;
+      animation: breathe 4s ease-in-out infinite;
+    }
+
+    .footer-brand {
+      margin-top: 24px;
+      font-size: 13px;
+    }
+
+    .footer-brand strong {
+      display: block;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <span class="header-icon">⏸️</span>
+      <h1>Micro Break</h1>
+      <p class="header-subtitle">30초면 충분해요. 리셋하고 돌아가기.</p>
+      <div class="header-tags">
+        <span class="header-tag">🚨 바쁠 때 쓰는 응급 키트</span>
+      </div>
+    </header>
+
+    <section class="insight">
+      <h2>💡 왜 30초도 효과가 있을까요?</h2>
+      <p>스트레스 호르몬 코르티솔은 <span class="highlight">90초 안에 피크를 지나요.</span> 그 90초 동안 뭘 하느냐가 중요해요.</p>
+      <p>짧은 휴식은 '쉬는 것'이 아니라 <strong>신경계를 리셋하는 것</strong>이에요. 자율신경계의 브레이크(미주신경)를 살짝 밟아주는 거예요.</p>
+    </section>
+
+    <button class="back-btn hidden" id="backBtn" onclick="goBack()">← 처음으로 돌아가서 다시 선택하기</button>
+
+    <!-- HOME VIEW -->
+    <div class="view active" id="homeView">
+      <p class="view-title">어떻게 찾아볼까요? <span>하나를 선택하세요</span></p>
+      <div class="menu-grid">
+        <button class="menu-card" onclick="showView('timeView')">
+          <span class="menu-card-icon">⏱️</span>
+          <div class="menu-card-content">
+            <h3>시간으로 찾기</h3>
+            <p>"지금 30초 / 1분 / 3분 있어요"</p>
+          </div>
+        </button>
+        <button class="menu-card" onclick="showView('categoryView')">
+          <span class="menu-card-icon">🗂️</span>
+          <div class="menu-card-content">
+            <h3>종류로 찾기</h3>
+            <p>호흡 / 감각 / 신체 / 마음</p>
+          </div>
+        </button>
+        <button class="menu-card" onclick="showView('situationView')">
+          <span class="menu-card-icon">🎯</span>
+          <div class="menu-card-content">
+            <h3>상황으로 찾기</h3>
+            <p>회의 전, 메일 폭탄 후, 마감 직전...</p>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- TIME VIEW -->
+    <div class="view" id="timeView">
+      <p class="view-title">지금 몇 초 있어요?</p>
+      <div class="time-grid">
+        <button class="time-btn" onclick="filterByTime(30)">
+          <span class="emoji">⚡</span>
+          <span class="label">30초</span>
+        </button>
+        <button class="time-btn" onclick="filterByTime(60)">
+          <span class="emoji">✨</span>
+          <span class="label">1분</span>
+        </button>
+        <button class="time-btn" onclick="filterByTime(180)">
+          <span class="emoji">🌿</span>
+          <span class="label">3분</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- TIME RESULTS VIEW -->
+    <div class="view" id="timeResultsView">
+      <div class="filter-badge" id="timeBadge"><span>⏱️ 30초 이하로 할 수 있는 것들</span></div>
+      <div id="timeResults"></div>
+    </div>
+
+    <!-- CATEGORY VIEW -->
+    <div class="view" id="categoryView">
+      <p class="view-title">어떤 방식으로 리셋할까요?</p>
+      <div class="category-grid">
+        <button class="category-btn" onclick="showCategory('breath')">
+          <span class="emoji">🫁</span>
+          <span class="name">호흡</span>
+          <span class="name-en">Breath</span>
+        </button>
+        <button class="category-btn" onclick="showCategory('senses')">
+          <span class="emoji">👀</span>
+          <span class="name">감각</span>
+          <span class="name-en">Senses</span>
+        </button>
+        <button class="category-btn" onclick="showCategory('body')">
+          <span class="emoji">🤲</span>
+          <span class="name">신체</span>
+          <span class="name-en">Body</span>
+        </button>
+        <button class="category-btn" onclick="showCategory('mind')">
+          <span class="emoji">🧠</span>
+          <span class="name">마음</span>
+          <span class="name-en">Mind</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- CATEGORY ITEMS VIEW -->
+    <div class="view" id="categoryItemsView">
+      <div class="category-header" id="categoryHeader"></div>
+      <div class="category-items" id="categoryItems"></div>
+    </div>
+
+    <!-- SITUATION VIEW -->
+    <div class="view" id="situationView">
+      <p class="view-title">지금 어떤 상황이에요?</p>
+      <div class="situation-list" id="situationList"></div>
+    </div>
+
+    <!-- SITUATION RESULTS VIEW -->
+    <div class="view" id="situationResultsView">
+      <div class="situation-header" id="situationHeader"></div>
+      <div class="rec-list" id="situationResults"></div>
+      <button class="other-situation-btn" onclick="showView('situationView')">다른 상황 보기</button>
+    </div>
+
+    <!-- DETAIL VIEW -->
+    <div class="view" id="detailView">
+      <div class="detail-card">
+        <div class="detail-header">
+          <span class="detail-category" id="detailCategory"></span>
+          <span class="detail-duration" id="detailDuration"></span>
+        </div>
+        <h3 class="detail-title" id="detailTitle"></h3>
+        <p class="detail-title-en" id="detailTitleEn"></p>
+        <div class="detail-instruction">
+          <h4>📋 방법</h4>
+          <p id="detailInstruction"></p>
+        </div>
+        <div class="detail-why">
+          <h4>🧠 왜 효과가 있나요?</h4>
+          <p id="detailWhy"></p>
+        </div>
+        <div class="timer">
+          <div class="timer-circle">
+            <svg viewBox="0 0 100 100" width="120" height="120">
+              <circle class="bg" cx="50" cy="50" r="45"/>
+              <circle class="progress" id="timerProgress" cx="50" cy="50" r="45" stroke-dasharray="0 283"/>
+            </svg>
+            <span class="timer-number" id="timerNumber">30</span>
+          </div>
+          <button class="timer-btn" id="timerBtn" onclick="toggleTimer()">시작</button>
+          <p class="timer-complete hidden" id="timerComplete">✓ 잘 했어요. 다시 돌아갈 준비가 됐어요.</p>
+        </div>
+        <button class="try-another" onclick="goBackFromDetail()">다른 것 해보기</button>
+      </div>
+    </div>
+
+    <!-- Tips (only on home) -->
+    <section class="tips" id="tipsSection">
+      <h2>💛 알아두면 좋은 것들</h2>
+      <div class="tips-grid">
+        <div class="tip-item">
+          <span class="tip-num">1</span>
+          <p>Micro break는 '쉬는 것'이 아니라 '리셋'이에요. 30초 후에 더 나은 상태로 돌아가는 거예요.</p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-num">2</span>
+          <p>완벽하게 하지 않아도 돼요. 호흡 한 번, 어깨 한 번 으쓱하는 것만으로도 신경계는 반응해요.</p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-num">3</span>
+          <p>자주 하는 게 길게 하는 것보다 효과적이에요. 하루에 짧게 여러 번이 best.</p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-num">4</span>
+          <p>몸이 기억해요. 반복하면 점점 빨리 리셋 모드로 들어갈 수 있어요.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- References (only on home) -->
+    <section class="references" id="referencesSection">
+      <h3>📖 참고문헌</h3>
+      <div class="references-content">
+        <p>
+          <strong>Physiological Sigh</strong><br>
+          Balban, M. Y., et al. (2023). Brief structured respiration practices enhance mood and reduce physiological arousal. <em>Cell Reports Medicine, 4</em>(1).<br>
+          <span class="note">5분간의 cyclic sighing이 명상보다 효과적으로 불안 감소</span>
+        </p>
+        <p>
+          <strong>코르티솔 반응 시간</strong><br>
+          Sapolsky, R. M. (2004). <em>Why Zebras Don't Get Ulcers.</em> Holt Paperbacks.<br>
+          <span class="note">급성 스트레스 반응은 90초 내 피크, 이후 자연 감소</span>
+        </p>
+        <p>
+          <strong>미주신경과 호흡</strong><br>
+          Porges, S. W. (2011). <em>The Polyvagal Theory.</em> W. W. Norton.<br>
+          <span class="note">날숨 연장이 vagal brake를 활성화하여 진정 반응 유도</span>
+        </p>
+        <p>
+          <strong>Micro-break 효과</strong><br>
+          Kim, S., Park, Y., & Niu, Q. (2017). Micro-break activities at work to recover from daily work demands. <em>Journal of Organizational Behavior, 38</em>(1), 28-44.<br>
+          <span class="note">짧은 휴식이 피로 회복과 웰빙에 유의미한 효과</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>30초면 충분해요.</p>
+      <p>잠깐 멈추고, 리셋하고, 다시. <span class="icon">⏸️</span></p>
+      <p class="footer-brand">
+        <strong>PADO Psychological Wellness</strong>
+        Dr. Yeji Son
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const BREAKS = {
+      breath: {
+        icon: "🫁",
+        name: "호흡",
+        nameEn: "Breath",
+        color: "#7A9A9A",
+        colorLight: "#EBF1F1",
+        items: [
+          { id: "sigh", name: "생리적 한숨", nameEn: "Physiological Sigh", duration: 30, instruction: "코로 두 번 깊게 들이쉬고 (흡-흡), 입으로 길게 내쉬세요 (후—). 2-3회 반복.", why: "이중 흡입이 폐포를 열고, 긴 날숨이 부교감신경을 활성화해요." },
+          { id: "box", name: "박스 호흡 미니", nameEn: "Mini Box Breathing", duration: 60, instruction: "4초 들이쉬고 — 4초 멈추고 — 4초 내쉬고 — 4초 멈추기. 3회.", why: "일정한 리듬이 심박변이도를 높이고 자율신경계를 안정시켜요." },
+          { id: "extend", name: "내쉬기 늘리기", nameEn: "Extended Exhale", duration: 60, instruction: "3초 들이쉬고, 6초 내쉬기. 4-5회 반복.", why: "날숨이 들숨보다 길면 미주신경이 활성화돼요." }
+        ]
+      },
+      senses: {
+        icon: "👀",
+        name: "감각",
+        nameEn: "Senses",
+        color: "#8A9A7A",
+        colorLight: "#EEF2EB",
+        items: [
+          { id: "coldwater", name: "찬물 자극", nameEn: "Cold Water Reset", duration: 30, instruction: "손목 안쪽에 찬물을 10초간 흘려보내세요. 또는 얼굴에 찬물.", why: "다이브 리플렉스가 심박수를 낮추고 진정 반응을 유도해요." },
+          { id: "horizon", name: "먼 곳 바라보기", nameEn: "Horizon Gaze", duration: 30, instruction: "창밖이나 가장 먼 곳을 30초간 바라보세요. 눈의 초점을 부드럽게.", why: "근거리 집중이 교감신경을 활성화해요. 먼 곳을 보면 이완돼요." },
+          { id: "grounding", name: "5-4-3-2-1 스피드런", nameEn: "Quick 5-4-3-2-1", duration: 60, instruction: "지금 보이는 것 3개, 들리는 것 2개, 만져지는 것 1개를 빠르게 말해보세요.", why: "감각에 집중하면 반추에서 벗어나 현재로 돌아와요." }
+        ]
+      },
+      body: {
+        icon: "🤲",
+        name: "신체",
+        nameEn: "Body",
+        color: "#C49A6C",
+        colorLight: "#F7F0E8",
+        items: [
+          { id: "shoulders", name: "어깨 으쓱 & 풀기", nameEn: "Shoulder Shrug & Release", duration: 30, instruction: "어깨를 귀까지 5초 으쓱, 훅 떨어뜨리기. 3회.", why: "긴장-이완 사이클이 근육의 잔여 긴장을 풀어줘요." },
+          { id: "jaw", name: "턱 풀기", nameEn: "Jaw Release", duration: 30, instruction: "입을 살짝 벌리고, 혀를 입천장에서 떼세요. 턱을 좌우로 부드럽게.", why: "턱 긴장은 스트레스의 저장소예요. 풀면 얼굴 전체가 이완돼요." },
+          { id: "shake", name: "털어내기", nameEn: "Shake It Off", duration: 60, instruction: "일어서서 손을 30초간 털고, 다리도 가볍게 흔들어주세요.", why: "동물이 위험 후 몸을 터는 것처럼, 긴장 에너지를 방출해요." },
+          { id: "stretch", name: "30초 스트레칭", nameEn: "30-Second Stretch", duration: 30, instruction: "양손 깍지 끼고 머리 위로 쭉. 좌우로 천천히 기울이기.", why: "혈류가 돌고, 자세가 리셋돼요." }
+        ]
+      },
+      mind: {
+        icon: "🧠",
+        name: "마음",
+        nameEn: "Mind",
+        color: "#A68A9A",
+        colorLight: "#F2ECEF",
+        items: [
+          { id: "name", name: "이름 붙이기", nameEn: "Name It", duration: 30, instruction: "지금 느끼는 감정에 이름을 붙여보세요. '아, 나 지금 ___구나.'", why: "감정 명명만으로 편도체 활성이 줄어들어요. (Affect Labeling)" },
+          { id: "thismoment", name: "이 순간만", nameEn: "Just This Moment", duration: 30, instruction: "'지금 이 30초만.' 다음 할 일은 30초 후에 생각해도 돼요.", why: "미래 걱정을 잠시 내려놓으면 현재 부하가 줄어요." },
+          { id: "threegood", name: "좋은 것 3개", nameEn: "3 Good Things", duration: 60, instruction: "오늘 괜찮았던 것 3개를 빠르게 떠올려보세요. 작은 것도 OK.", why: "긍정 편향을 의도적으로 만들어 스트레스 반응을 완화해요." }
+        ]
+      }
+    };
+
+    const SITUATIONS = [
+      { id: "before-meeting", name: "회의 들어가기 전", nameEn: "Before a Meeting", icon: "📅", recommended: ["sigh", "shoulders", "thismoment"] },
+      { id: "after-email", name: "메일/슬랙 폭탄 후", nameEn: "After Email Overload", icon: "📧", recommended: ["coldwater", "shake", "name"] },
+      { id: "deadline", name: "마감 직전 패닉", nameEn: "Deadline Panic", icon: "⏰", recommended: ["sigh", "box", "thismoment"] },
+      { id: "hard-conversation", name: "힘든 대화 후", nameEn: "After a Hard Conversation", icon: "💬", recommended: ["extend", "jaw", "name"] },
+      { id: "overwhelm", name: "뭐부터 해야 할지 모를 때", nameEn: "Feeling Overwhelmed", icon: "🌊", recommended: ["grounding", "sigh", "thismoment"] }
+    ];
+
+    let currentView = 'homeView';
+    let previousView = null;
+    let currentCategory = null;
+    let currentSituation = null;
+    let currentBreak = null;
+    let timerInterval = null;
+    let timerRunning = false;
+    let timerSeconds = 0;
+    let timerTotal = 0;
+
+    function findBreakById(id) {
+      for (const [catKey, cat] of Object.entries(BREAKS)) {
+        const found = cat.items.find(item => item.id === id);
+        if (found) return { ...found, category: cat, categoryKey: catKey };
+      }
+      return null;
+    }
+
+    function showView(viewId) {
+      previousView = currentView;
+      currentView = viewId;
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.getElementById(viewId).classList.add('active');
+      const backBtn = document.getElementById('backBtn');
+      const isHome = viewId === 'homeView';
+      const isDetail = viewId === 'detailView';
+      backBtn.classList.toggle('hidden', isHome || isDetail);
+      document.getElementById('tipsSection').classList.toggle('hidden', !isHome);
+      document.getElementById('referencesSection').classList.toggle('hidden', !isHome);
+    }
+
+    function goBack() {
+      showView('homeView');
+      currentCategory = null;
+      currentSituation = null;
+    }
+
+    function goBackFromDetail() {
+      if (previousView && previousView !== 'detailView') {
+        showView(previousView);
+      } else {
+        showView('homeView');
+      }
+      resetTimer();
+    }
+
+    function filterByTime(seconds) {
+      document.getElementById('timeBadge').innerHTML = `<span>⏱️ ${seconds}초 이하로 할 수 있는 것들</span>`;
+      let html = '';
+      for (const [catKey, cat] of Object.entries(BREAKS)) {
+        const filtered = cat.items.filter(item => item.duration <= seconds);
+        if (filtered.length > 0) {
+          html += `<div class="break-section">
+            <h3 class="break-section-title" style="color: ${cat.color}">${cat.icon} ${cat.name}</h3>
+            <div class="break-items">`;
+          filtered.forEach(item => {
+            html += `<button class="break-item" onclick="showDetail('${item.id}')">
+              <span class="break-item-name">${item.name}</span>
+              <span class="break-item-duration" style="background: ${cat.colorLight}; color: ${cat.color}">${item.duration}초</span>
+            </button>`;
+          });
+          html += '</div></div>';
+        }
+      }
+      document.getElementById('timeResults').innerHTML = html;
+      showView('timeResultsView');
+    }
+
+    function showCategory(catKey) {
+      currentCategory = catKey;
+      const cat = BREAKS[catKey];
+      document.getElementById('categoryHeader').innerHTML = `
+        <span class="emoji">${cat.icon}</span>
+        <h3 style="color: ${cat.color}">${cat.name}</h3>
+      `;
+      document.getElementById('categoryHeader').style.background = cat.colorLight;
+      let html = '';
+      cat.items.forEach(item => {
+        html += `<button class="category-item" onclick="showDetail('${item.id}')">
+          <div class="category-item-info">
+            <div class="name">${item.name}</div>
+            <div class="name-en">${item.nameEn}</div>
+          </div>
+          <span class="category-item-duration" style="background: ${cat.colorLight}; color: ${cat.color}">${item.duration}초</span>
+        </button>`;
+      });
+      document.getElementById('categoryItems').innerHTML = html;
+      showView('categoryItemsView');
+    }
+
+    function initSituations() {
+      let html = '';
+      SITUATIONS.forEach(sit => {
+        html += `<button class="situation-card" onclick="showSituationResults('${sit.id}')">
+          <span class="emoji">${sit.icon}</span>
+          <div>
+            <div class="name">${sit.name}</div>
+            <div class="name-en">${sit.nameEn}</div>
+          </div>
+        </button>`;
+      });
+      document.getElementById('situationList').innerHTML = html;
+    }
+
+    function showSituationResults(sitId) {
+      const sit = SITUATIONS.find(s => s.id === sitId);
+      currentSituation = sit;
+      document.getElementById('situationHeader').innerHTML = `
+        <span class="emoji">${sit.icon}</span>
+        <h3>${sit.name}</h3>
+        <p>추천 micro break</p>
+      `;
+      let html = '';
+      sit.recommended.forEach(breakId => {
+        const breakItem = findBreakById(breakId);
+        if (breakItem) {
+          html += `<button class="rec-break" onclick="showDetail('${breakId}')">
+            <span class="rec-break-icon" style="background: ${breakItem.category.colorLight}">${breakItem.category.icon}</span>
+            <div class="rec-break-content">
+              <div class="rec-break-name">${breakItem.name}</div>
+              <div class="rec-break-name-en">${breakItem.nameEn}</div>
+            </div>
+            <span class="rec-break-duration" style="background: ${breakItem.category.colorLight}; color: ${breakItem.category.color}">${breakItem.duration}초</span>
+          </button>`;
+        }
+      });
+      document.getElementById('situationResults').innerHTML = html;
+      showView('situationResultsView');
+    }
+
+    function showDetail(breakId) {
+      const breakItem = findBreakById(breakId);
+      if (!breakItem) return;
+      currentBreak = breakItem;
+      document.getElementById('detailCategory').innerHTML = `${breakItem.category.icon} ${breakItem.category.name}`;
+      document.getElementById('detailCategory').style.background = breakItem.category.colorLight;
+      document.getElementById('detailCategory').style.color = breakItem.category.color;
+      document.getElementById('detailDuration').textContent = `⏱️ ${breakItem.duration}초`;
+      document.getElementById('detailTitle').textContent = breakItem.name;
+      document.getElementById('detailTitleEn').textContent = breakItem.nameEn;
+      document.getElementById('detailInstruction').textContent = breakItem.instruction;
+      document.getElementById('detailWhy').textContent = breakItem.why;
+      timerTotal = breakItem.duration;
+      timerSeconds = breakItem.duration;
+      updateTimerDisplay();
+      resetTimer();
+      showView('detailView');
+    }
+
+    function updateTimerDisplay() {
+      document.getElementById('timerNumber').textContent = timerSeconds;
+      const progress = ((timerTotal - timerSeconds) / timerTotal) * 283;
+      document.getElementById('timerProgress').setAttribute('stroke-dasharray', `${progress} 283`);
+    }
+
+    function toggleTimer() {
+      if (timerSeconds === 0) {
+        timerSeconds = timerTotal;
+        document.getElementById('timerComplete').classList.add('hidden');
+        updateTimerDisplay();
+        return;
+      }
+      if (timerRunning) {
+        clearInterval(timerInterval);
+        timerRunning = false;
+        document.getElementById('timerBtn').textContent = '시작';
+        document.getElementById('timerBtn').classList.remove('paused');
+      } else {
+        timerRunning = true;
+        document.getElementById('timerBtn').textContent = '일시정지';
+        document.getElementById('timerBtn').classList.add('paused');
+        timerInterval = setInterval(() => {
+          timerSeconds--;
+          updateTimerDisplay();
+          if (timerSeconds === 0) {
+            clearInterval(timerInterval);
+            timerRunning = false;
+            document.getElementById('timerBtn').textContent = '다시';
+            document.getElementById('timerBtn').classList.remove('paused');
+            document.getElementById('timerComplete').classList.remove('hidden');
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      timerRunning = false;
+      timerSeconds = timerTotal;
+      document.getElementById('timerBtn').textContent = '시작';
+      document.getElementById('timerBtn').classList.remove('paused');
+      document.getElementById('timerComplete').classList.add('hidden');
+      updateTimerDisplay();
+    }
+
+    initSituations();
+  </script>
+</body>
+</html>

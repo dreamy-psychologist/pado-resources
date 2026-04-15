@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Micro Break - PADO Psychological Wellness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Source Sans Pro', -apple-system, sans-serif;
+      background: linear-gradient(180deg, #FAF6F1 0%, #F2EBE3 100%);
+      min-height: 100vh;
+      padding: 40px 24px 60px;
+      color: #4A4540;
+      line-height: 1.7;
+    }
+    .container { max-width: 600px; margin: 0 auto; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.15); opacity: 1; }
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(138, 154, 122, 0.15) 0%, transparent 100%);
+      border-radius: 30px;
+    }
+    .header-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      display: inline-block;
+      animation: breathe 4s ease-in-out infinite;
+    }
+    .header h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #5C524A;
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+    }
+    .header-subtitle { font-size: 1.05rem; color: #8B7D70; font-weight: 300; }
+    .header-tag {
+      display: inline-block;
+      background: #E8DFD4;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #7A6E62;
+      margin-top: 16px;
+    }
+
+    .insight {
+      background: linear-gradient(135deg, #fff 0%, #F7F0E8 100%);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 40px;
+      border-left: 5px solid #8A9A7A;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+    .insight h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.3rem;
+      color: #8B7D70;
+      margin-bottom: 16px;
+    }
+    .insight p { font-size: 0.95rem; line-height: 1.9; margin-bottom: 16px; }
+    .insight p:last-child { margin-bottom: 0; }
+    .highlight {
+      background: linear-gradient(180deg, transparent 60%, #E8DFD4 60%);
+      padding: 0 4px;
+      font-weight: 500;
+    }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0 auto 24px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid #E8DFD4;
+      background: #fff;
+      color: #8B7D70;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .back-btn:hover { background: #F7F0E8; }
+
+    .view { display: none; animation: fadeIn 0.4s ease; }
+    .view.active { display: block; }
+
+    .view-title {
+      text-align: center;
+      font-size: 16px;
+      color: #5C524A;
+      margin-bottom: 32px;
+      font-weight: 500;
+    }
+    .view-title span { color: #8B7D70; font-weight: 400; }
+
+    .menu-grid { display: grid; gap: 16px; }
+    .menu-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 24px;
+      border-radius: 20px;
+      border: 2px solid rgba(139, 115, 85, 0.15);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.25s;
+      text-align: left;
+      width: 100%;
+      font-family: inherit;
+    }
+    .menu-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(139, 115, 85, 0.1);
+    }
+    .menu-card-icon { font-size: 32px; }
+    .menu-card-content h3 { font-size: 17px; font-weight: 700; color: #5C524A; margin-bottom: 4px; }
+    .menu-card-content p { font-size: 14px; color: #8B7D70; }
+
+    .time-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .time-btn {
+      padding: 28px 16px;
+      border-radius: 20px;
+      border: 2px solid rgba(139, 115, 85, 0.15);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.25s;
+      text-align: center;
+      font-family: inherit;
+    }
+    .time-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(139, 115, 85, 0.1); }
+    .time-btn .emoji { font-size: 32px; margin-bottom: 8px; display: block; }
+    .time-btn .label { font-size: 18px; font-weight: 700; color: #5C524A; }
+
+    .category-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .category-btn {
+      padding: 28px 20px;
+      border-radius: 20px;
+      border: 2px solid rgba(139, 115, 85, 0.15);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.25s;
+      text-align: center;
+      font-family: inherit;
+    }
+    .category-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(139, 115, 85, 0.1); }
+    .category-btn .emoji { font-size: 36px; margin-bottom: 12px; display: block; }
+    .category-btn .name { font-size: 17px; font-weight: 700; color: #5C524A; }
+
+    .filter-badge {
+      text-align: center;
+      margin-bottom: 24px;
+      padding: 12px 20px;
+      background: #E8DFD4;
+      border-radius: 20px;
+    }
+    .filter-badge span { font-size: 14px; color: #5C524A; }
+
+    .break-section { margin-bottom: 24px; }
+    .break-section-title { font-size: 15px; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .break-items { display: grid; gap: 10px; }
+    .break-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-radius: 16px;
+      border: 1px solid rgba(139, 115, 85, 0.1);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+      width: 100%;
+      font-family: inherit;
+    }
+    .break-item:hover { background: #FAF6F1; }
+    .break-item-name { font-size: 15px; color: #4A4540; }
+    .break-item-duration { padding: 4px 12px; border-radius: 15px; font-size: 13px; font-weight: 500; }
+
+    .category-header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding: 16px 24px;
+      border-radius: 20px;
+    }
+    .category-header .emoji { font-size: 28px; }
+    .category-header h3 { font-size: 18px; font-weight: 700; margin-top: 8px; }
+    .category-items { display: grid; gap: 12px; }
+    .category-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-radius: 20px;
+      border: 1px solid rgba(139, 115, 85, 0.1);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+      width: 100%;
+      font-family: inherit;
+    }
+    .category-item:hover { background: #FAF6F1; }
+    .category-item-info .name { font-size: 16px; font-weight: 600; color: #4A4540; margin-bottom: 4px; }
+    .category-item-duration { padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 600; }
+
+    .situation-list { display: grid; gap: 12px; }
+    .situation-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      border-radius: 20px;
+      border: 2px solid rgba(139, 115, 85, 0.15);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.25s;
+      text-align: left;
+      width: 100%;
+      font-family: inherit;
+    }
+    .situation-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(139, 115, 85, 0.1); }
+    .situation-card .emoji { font-size: 28px; }
+    .situation-card .name { font-size: 16px; font-weight: 600; color: #5C524A; }
+
+    .situation-header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding: 20px 24px;
+      background: #fff;
+      border-radius: 20px;
+      border: 2px solid #E8DFD4;
+    }
+    .situation-header .emoji { font-size: 32px; }
+    .situation-header h3 { font-size: 18px; font-weight: 700; color: #5C524A; margin-top: 12px; }
+    .situation-header p { font-size: 14px; color: #8B7D70; margin-top: 4px; }
+
+    .rec-list { display: grid; gap: 12px; }
+    .rec-break {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      border-radius: 20px;
+      border: 1px solid rgba(139, 115, 85, 0.1);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+      width: 100%;
+      font-family: inherit;
+    }
+    .rec-break:hover { background: #FAF6F1; }
+    .rec-break-icon { font-size: 24px; width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; }
+    .rec-break-content { flex: 1; }
+    .rec-break-name { font-size: 16px; font-weight: 600; color: #4A4540; }
+    .rec-break-duration { padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 600; }
+    .other-situation-btn {
+      display: block;
+      margin: 24px auto 0;
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: 1px solid #E8DFD4;
+      background: transparent;
+      color: #8B7D70;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .other-situation-btn:hover { background: #FAF6F1; }
+
+    .detail-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.1);
+    }
+    .detail-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .detail-category { padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; }
+    .detail-duration { padding: 8px 16px; border-radius: 20px; background: #FAF6F1; font-size: 14px; color: #8B7D70; font-weight: 500; }
+    .detail-title { font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 700; color: #5C524A; margin-bottom: 24px; }
+    .detail-instruction { background: #FAF6F1; border-radius: 16px; padding: 24px; margin-bottom: 20px; }
+    .detail-instruction h4 { font-size: 13px; font-weight: 600; color: #8B7D70; margin-bottom: 12px; }
+    .detail-instruction p { font-size: 16px; line-height: 1.9; color: #4A4540; }
+    .detail-why { background: linear-gradient(135deg, #EEF2EB 0%, #EBF1F1 100%); border-radius: 16px; padding: 20px 24px; margin-bottom: 24px; }
+    .detail-why h4 { font-size: 13px; font-weight: 600; color: #8A9A7A; margin-bottom: 8px; }
+    .detail-why p { font-size: 14px; line-height: 1.8; color: #4A4540; }
+
+    .timer { text-align: center; margin-top: 20px; }
+    .timer-circle { position: relative; width: 120px; height: 120px; margin: 0 auto; }
+    .timer-circle svg { transform: rotate(-90deg); }
+    .timer-circle .bg { fill: none; stroke: #E8DFD4; stroke-width: 8; }
+    .timer-circle .progress { fill: none; stroke: #8A9A7A; stroke-width: 8; stroke-linecap: round; transition: stroke-dasharray 0.3s ease; }
+    .timer-number { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 28px; font-weight: 700; color: #5C524A; }
+    .timer-btn {
+      margin-top: 16px;
+      padding: 12px 32px;
+      border-radius: 25px;
+      border: none;
+      background: #8A9A7A;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .timer-btn:hover { background: #7A8A6A; }
+    .timer-btn.paused { background: #E8DFD4; color: #5C524A; }
+    .timer-complete { margin-top: 16px; font-size: 15px; color: #8A9A7A; font-weight: 500; animation: fadeIn 0.4s ease; }
+    .try-another {
+      display: block;
+      margin: 28px auto 0;
+      padding: 12px 24px;
+      border-radius: 20px;
+      border: 1px solid #E8DFD4;
+      background: transparent;
+      color: #8B7D70;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .try-another:hover { background: #FAF6F1; }
+
+    .tips {
+      background: #fff;
+      border-radius: 24px;
+      padding: 32px;
+      margin-top: 50px;
+      border: 2px dashed #E8DFD4;
+    }
+    .tips h2 { font-family: 'Libre Baskerville', serif; font-size: 1.3rem; color: #8B7D70; margin-bottom: 24px; text-align: center; }
+    .tips-grid { display: grid; gap: 14px; }
+    .tip-item { background: #FAF6F1; padding: 18px 22px; border-radius: 16px; display: flex; gap: 14px; align-items: flex-start; }
+    .tip-num { background: #8A9A7A; color: #fff; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; flex-shrink: 0; }
+    .tip-item p { font-size: 14px; line-height: 1.8; color: #4A4540; }
+
+    .references { margin-top: 40px; padding: 28px 24px; background: #fff; border-radius: 20px; border: 1px solid rgba(139, 115, 85, 0.15); }
+    .references h3 { font-family: 'Libre Baskerville', serif; font-size: 15px; font-weight: 700; color: #5C524A; margin-bottom: 16px; }
+    .references-content { font-size: 13px; color: #5A5A5A; line-height: 1.9; }
+    .references-content p { margin-bottom: 12px; }
+    .references-content p:last-child { margin-bottom: 0; }
+    .references-content strong { color: #4A4540; }
+    .references-content em { font-style: italic; }
+    .references-content .note { color: #8B7D70; }
+
+    .footer { text-align: center; margin-top: 50px; padding: 30px; color: #8B7D70; font-size: 14px; }
+    .footer .icon { display: inline-block; animation: breathe 4s ease-in-out infinite; }
+    .footer-brand { margin-top: 24px; font-size: 13px; }
+    .footer-brand strong { display: block; }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <span class="header-icon">⏸️</span>
+      <h1>Micro Break</h1>
+      <p class="header-subtitle">30 seconds is enough. Reset and return.</p>
+      <span class="header-tag">🚨 Emergency kit for busy moments</span>
+    </header>
+
+    <section class="insight">
+      <h2>💡 Why does 30 seconds work?</h2>
+      <p>The stress hormone cortisol <span class="highlight">peaks within 90 seconds.</span> What you do during those 90 seconds matters.</p>
+      <p>A short break isn't about "resting" — it's about <strong>resetting your nervous system</strong>. You're gently pressing the brake (vagus nerve) of your autonomic nervous system.</p>
+    </section>
+
+    <button class="back-btn hidden" id="backBtn" onclick="goBack()">← Back to start</button>
+
+    <!-- HOME VIEW -->
+    <div class="view active" id="homeView">
+      <p class="view-title">How would you like to find a break? <span>Choose one</span></p>
+      <div class="menu-grid">
+        <button class="menu-card" onclick="showView('timeView')">
+          <span class="menu-card-icon">⏱️</span>
+          <div class="menu-card-content">
+            <h3>Find by Time</h3>
+            <p>"I have 30 sec / 1 min / 3 min"</p>
+          </div>
+        </button>
+        <button class="menu-card" onclick="showView('categoryView')">
+          <span class="menu-card-icon">🗂️</span>
+          <div class="menu-card-content">
+            <h3>Find by Type</h3>
+            <p>Breath / Senses / Body / Mind</p>
+          </div>
+        </button>
+        <button class="menu-card" onclick="showView('situationView')">
+          <span class="menu-card-icon">🎯</span>
+          <div class="menu-card-content">
+            <h3>Find by Situation</h3>
+            <p>Before meeting, after emails, deadline...</p>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- TIME VIEW -->
+    <div class="view" id="timeView">
+      <p class="view-title">How much time do you have?</p>
+      <div class="time-grid">
+        <button class="time-btn" onclick="filterByTime(30)">
+          <span class="emoji">⚡</span>
+          <span class="label">30 sec</span>
+        </button>
+        <button class="time-btn" onclick="filterByTime(60)">
+          <span class="emoji">✨</span>
+          <span class="label">1 min</span>
+        </button>
+        <button class="time-btn" onclick="filterByTime(180)">
+          <span class="emoji">🌿</span>
+          <span class="label">3 min</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- TIME RESULTS VIEW -->
+    <div class="view" id="timeResultsView">
+      <div class="filter-badge" id="timeBadge"><span>⏱️ Things you can do in 30 seconds or less</span></div>
+      <div id="timeResults"></div>
+    </div>
+
+    <!-- CATEGORY VIEW -->
+    <div class="view" id="categoryView">
+      <p class="view-title">How would you like to reset?</p>
+      <div class="category-grid">
+        <button class="category-btn" onclick="showCategory('breath')">
+          <span class="emoji">🫁</span>
+          <span class="name">Breath</span>
+        </button>
+        <button class="category-btn" onclick="showCategory('senses')">
+          <span class="emoji">👀</span>
+          <span class="name">Senses</span>
+        </button>
+        <button class="category-btn" onclick="showCategory('body')">
+          <span class="emoji">🤲</span>
+          <span class="name">Body</span>
+        </button>
+        <button class="category-btn" onclick="showCategory('mind')">
+          <span class="emoji">🧠</span>
+          <span class="name">Mind</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- CATEGORY ITEMS VIEW -->
+    <div class="view" id="categoryItemsView">
+      <div class="category-header" id="categoryHeader"></div>
+      <div class="category-items" id="categoryItems"></div>
+    </div>
+
+    <!-- SITUATION VIEW -->
+    <div class="view" id="situationView">
+      <p class="view-title">What's your situation?</p>
+      <div class="situation-list" id="situationList"></div>
+    </div>
+
+    <!-- SITUATION RESULTS VIEW -->
+    <div class="view" id="situationResultsView">
+      <div class="situation-header" id="situationHeader"></div>
+      <div class="rec-list" id="situationResults"></div>
+      <button class="other-situation-btn" onclick="showView('situationView')">See other situations</button>
+    </div>
+
+    <!-- DETAIL VIEW -->
+    <div class="view" id="detailView">
+      <div class="detail-card">
+        <div class="detail-header">
+          <span class="detail-category" id="detailCategory"></span>
+          <span class="detail-duration" id="detailDuration"></span>
+        </div>
+        <h3 class="detail-title" id="detailTitle"></h3>
+        <div class="detail-instruction">
+          <h4>📋 How to</h4>
+          <p id="detailInstruction"></p>
+        </div>
+        <div class="detail-why">
+          <h4>🧠 Why it works</h4>
+          <p id="detailWhy"></p>
+        </div>
+        <div class="timer">
+          <div class="timer-circle">
+            <svg viewBox="0 0 100 100" width="120" height="120">
+              <circle class="bg" cx="50" cy="50" r="45"/>
+              <circle class="progress" id="timerProgress" cx="50" cy="50" r="45" stroke-dasharray="0 283"/>
+            </svg>
+            <span class="timer-number" id="timerNumber">30</span>
+          </div>
+          <button class="timer-btn" id="timerBtn" onclick="toggleTimer()">Start</button>
+          <p class="timer-complete hidden" id="timerComplete">✓ Well done. You're ready to go back.</p>
+        </div>
+        <button class="try-another" onclick="goBackFromDetail()">Try something else</button>
+      </div>
+    </div>
+
+    <!-- Tips (only on home) -->
+    <section class="tips" id="tipsSection">
+      <h2>💛 Good to Know</h2>
+      <div class="tips-grid">
+        <div class="tip-item">
+          <span class="tip-num">1</span>
+          <p>A micro break isn't about 'resting' — it's about resetting. You come back in a better state after 30 seconds.</p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-num">2</span>
+          <p>You don't have to do it perfectly. Even one breath or one shoulder shrug sends a signal to your nervous system.</p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-num">3</span>
+          <p>Frequent is better than long. Several short breaks throughout the day is best.</p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-num">4</span>
+          <p>Your body remembers. With practice, you'll enter reset mode faster and faster.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- References (only on home) -->
+    <section class="references" id="referencesSection">
+      <h3>📖 References</h3>
+      <div class="references-content">
+        <p>
+          <strong>Physiological Sigh</strong><br>
+          Balban, M. Y., et al. (2023). Brief structured respiration practices enhance mood and reduce physiological arousal. <em>Cell Reports Medicine, 4</em>(1).<br>
+          <span class="note">5 minutes of cyclic sighing more effective than meditation for reducing anxiety</span>
+        </p>
+        <p>
+          <strong>Cortisol Response Time</strong><br>
+          Sapolsky, R. M. (2004). <em>Why Zebras Don't Get Ulcers.</em> Holt Paperbacks.<br>
+          <span class="note">Acute stress response peaks within 90 seconds, then naturally decreases</span>
+        </p>
+        <p>
+          <strong>Vagus Nerve and Breathing</strong><br>
+          Porges, S. W. (2011). <em>The Polyvagal Theory.</em> W. W. Norton.<br>
+          <span class="note">Extended exhales activate the vagal brake, inducing a calming response</span>
+        </p>
+        <p>
+          <strong>Micro-break Effects</strong><br>
+          Kim, S., Park, Y., & Niu, Q. (2017). Micro-break activities at work to recover from daily work demands. <em>Journal of Organizational Behavior, 38</em>(1), 28-44.<br>
+          <span class="note">Short breaks have significant effects on fatigue recovery and wellbeing</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>30 seconds is enough.</p>
+      <p>Pause, reset, return. <span class="icon">⏸️</span></p>
+      <p class="footer-brand">
+        <strong>PADO Psychological Wellness</strong>
+        Dr. Yeji Son
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const BREAKS = {
+      breath: {
+        icon: "🫁",
+        name: "Breath",
+        color: "#7A9A9A",
+        colorLight: "#EBF1F1",
+        items: [
+          { id: "sigh", name: "Physiological Sigh", duration: 30, instruction: "Inhale deeply through your nose twice (sniff-sniff), then exhale slowly through your mouth (whooo). Repeat 2-3 times.", why: "The double inhale opens up collapsed lung sacs, and the long exhale activates your parasympathetic nervous system." },
+          { id: "box", name: "Mini Box Breathing", duration: 60, instruction: "Inhale 4 seconds — Hold 4 seconds — Exhale 4 seconds — Hold 4 seconds. Repeat 3 times.", why: "The steady rhythm increases heart rate variability and stabilizes your autonomic nervous system." },
+          { id: "extend", name: "Extended Exhale", duration: 60, instruction: "Inhale for 3 seconds, exhale for 6 seconds. Repeat 4-5 times.", why: "When your exhale is longer than your inhale, it activates the vagus nerve." }
+        ]
+      },
+      senses: {
+        icon: "👀",
+        name: "Senses",
+        color: "#8A9A7A",
+        colorLight: "#EEF2EB",
+        items: [
+          { id: "coldwater", name: "Cold Water Reset", duration: 30, instruction: "Run cold water on the inside of your wrists for 10 seconds. Or splash cold water on your face.", why: "The dive reflex lowers your heart rate and triggers a calming response." },
+          { id: "horizon", name: "Horizon Gaze", duration: 30, instruction: "Look out a window or at the farthest point you can see for 30 seconds. Let your eyes soften.", why: "Near-focus activates your sympathetic nervous system. Looking far away helps you relax." },
+          { id: "grounding", name: "Quick 5-4-3-2-1", duration: 60, instruction: "Quickly name: 3 things you see, 2 things you hear, 1 thing you feel.", why: "Focusing on your senses pulls you out of rumination and back to the present." }
+        ]
+      },
+      body: {
+        icon: "🤲",
+        name: "Body",
+        color: "#C49A6C",
+        colorLight: "#F7F0E8",
+        items: [
+          { id: "shoulders", name: "Shoulder Shrug & Release", duration: 30, instruction: "Shrug your shoulders up to your ears for 5 seconds, then drop them. Repeat 3 times.", why: "The tension-release cycle releases residual muscle tension." },
+          { id: "jaw", name: "Jaw Release", duration: 30, instruction: "Open your mouth slightly, let your tongue drop from the roof of your mouth. Gently move your jaw side to side.", why: "The jaw is a storage site for stress. Releasing it relaxes your whole face." },
+          { id: "shake", name: "Shake It Off", duration: 60, instruction: "Stand up and shake your hands for 30 seconds, then gently shake your legs too.", why: "Like animals shaking after danger, this releases tension energy from your body." },
+          { id: "stretch", name: "30-Second Stretch", duration: 30, instruction: "Interlace your fingers and reach overhead. Slowly lean side to side.", why: "Gets your blood flowing and resets your posture." }
+        ]
+      },
+      mind: {
+        icon: "🧠",
+        name: "Mind",
+        color: "#A68A9A",
+        colorLight: "#F2ECEF",
+        items: [
+          { id: "name", name: "Name It", duration: 30, instruction: "Name what you're feeling right now. 'Oh, I'm feeling ___.'", why: "Just naming an emotion reduces amygdala activity. (Affect Labeling)" },
+          { id: "thismoment", name: "Just This Moment", duration: 30, instruction: "'Just these 30 seconds.' You can think about what's next after 30 seconds.", why: "Setting aside future worries reduces your present cognitive load." },
+          { id: "threegood", name: "3 Good Things", duration: 60, instruction: "Quickly think of 3 things that were okay today. Small things count.", why: "Intentionally creating a positive bias helps buffer the stress response." }
+        ]
+      }
+    };
+
+    const SITUATIONS = [
+      { id: "before-meeting", name: "Before a Meeting", icon: "📅", recommended: ["sigh", "shoulders", "thismoment"] },
+      { id: "after-email", name: "After Email Overload", icon: "📧", recommended: ["coldwater", "shake", "name"] },
+      { id: "deadline", name: "Deadline Panic", icon: "⏰", recommended: ["sigh", "box", "thismoment"] },
+      { id: "hard-conversation", name: "After a Hard Conversation", icon: "💬", recommended: ["extend", "jaw", "name"] },
+      { id: "overwhelm", name: "Feeling Overwhelmed", icon: "🌊", recommended: ["grounding", "sigh", "thismoment"] }
+    ];
+
+    let currentView = 'homeView';
+    let previousView = null;
+    let timerInterval = null;
+    let timerRunning = false;
+    let timerSeconds = 0;
+    let timerTotal = 0;
+
+    function findBreakById(id) {
+      for (const [catKey, cat] of Object.entries(BREAKS)) {
+        const found = cat.items.find(item => item.id === id);
+        if (found) return { ...found, category: cat, categoryKey: catKey };
+      }
+      return null;
+    }
+
+    function showView(viewId) {
+      previousView = currentView;
+      currentView = viewId;
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.getElementById(viewId).classList.add('active');
+      const isHome = viewId === 'homeView';
+      const isDetail = viewId === 'detailView';
+      document.getElementById('backBtn').classList.toggle('hidden', isHome || isDetail);
+      document.getElementById('tipsSection').classList.toggle('hidden', !isHome);
+      document.getElementById('referencesSection').classList.toggle('hidden', !isHome);
+    }
+
+    function goBack() { showView('homeView'); }
+
+    function goBackFromDetail() {
+      if (previousView && previousView !== 'detailView') showView(previousView);
+      else showView('homeView');
+      resetTimer();
+    }
+
+    function filterByTime(seconds) {
+      const label = seconds === 30 ? '30 seconds' : seconds === 60 ? '1 minute' : '3 minutes';
+      document.getElementById('timeBadge').innerHTML = `<span>⏱️ Things you can do in ${label} or less</span>`;
+      let html = '';
+      for (const [catKey, cat] of Object.entries(BREAKS)) {
+        const filtered = cat.items.filter(item => item.duration <= seconds);
+        if (filtered.length > 0) {
+          html += `<div class="break-section"><h3 class="break-section-title" style="color:${cat.color}">${cat.icon} ${cat.name}</h3><div class="break-items">`;
+          filtered.forEach(item => {
+            html += `<button class="break-item" onclick="showDetail('${item.id}')"><span class="break-item-name">${item.name}</span><span class="break-item-duration" style="background:${cat.colorLight};color:${cat.color}">${item.duration}s</span></button>`;
+          });
+          html += '</div></div>';
+        }
+      }
+      document.getElementById('timeResults').innerHTML = html;
+      showView('timeResultsView');
+    }
+
+    function showCategory(catKey) {
+      const cat = BREAKS[catKey];
+      document.getElementById('categoryHeader').innerHTML = `<span class="emoji">${cat.icon}</span><h3 style="color:${cat.color}">${cat.name}</h3>`;
+      document.getElementById('categoryHeader').style.background = cat.colorLight;
+      let html = '';
+      cat.items.forEach(item => {
+        html += `<button class="category-item" onclick="showDetail('${item.id}')"><div class="category-item-info"><div class="name">${item.name}</div></div><span class="category-item-duration" style="background:${cat.colorLight};color:${cat.color}">${item.duration}s</span></button>`;
+      });
+      document.getElementById('categoryItems').innerHTML = html;
+      showView('categoryItemsView');
+    }
+
+    function initSituations() {
+      let html = '';
+      SITUATIONS.forEach(sit => {
+        html += `<button class="situation-card" onclick="showSituationResults('${sit.id}')"><span class="emoji">${sit.icon}</span><div><div class="name">${sit.name}</div></div></button>`;
+      });
+      document.getElementById('situationList').innerHTML = html;
+    }
+
+    function showSituationResults(sitId) {
+      const sit = SITUATIONS.find(s => s.id === sitId);
+      document.getElementById('situationHeader').innerHTML = `<span class="emoji">${sit.icon}</span><h3>${sit.name}</h3><p>Recommended micro breaks</p>`;
+      let html = '';
+      sit.recommended.forEach(breakId => {
+        const breakItem = findBreakById(breakId);
+        if (breakItem) {
+          html += `<button class="rec-break" onclick="showDetail('${breakId}')"><span class="rec-break-icon" style="background:${breakItem.category.colorLight}">${breakItem.category.icon}</span><div class="rec-break-content"><div class="rec-break-name">${breakItem.name}</div></div><span class="rec-break-duration" style="background:${breakItem.category.colorLight};color:${breakItem.category.color}">${breakItem.duration}s</span></button>`;
+        }
+      });
+      document.getElementById('situationResults').innerHTML = html;
+      showView('situationResultsView');
+    }
+
+    function showDetail(breakId) {
+      const breakItem = findBreakById(breakId);
+      if (!breakItem) return;
+      document.getElementById('detailCategory').innerHTML = `${breakItem.category.icon} ${breakItem.category.name}`;
+      document.getElementById('detailCategory').style.background = breakItem.category.colorLight;
+      document.getElementById('detailCategory').style.color = breakItem.category.color;
+      document.getElementById('detailDuration').textContent = `⏱️ ${breakItem.duration}s`;
+      document.getElementById('detailTitle').textContent = breakItem.name;
+      document.getElementById('detailInstruction').textContent = breakItem.instruction;
+      document.getElementById('detailWhy').textContent = breakItem.why;
+      timerTotal = breakItem.duration;
+      timerSeconds = breakItem.duration;
+      updateTimerDisplay();
+      resetTimer();
+      showView('detailView');
+    }
+
+    function updateTimerDisplay() {
+      document.getElementById('timerNumber').textContent = timerSeconds;
+      const progress = ((timerTotal - timerSeconds) / timerTotal) * 283;
+      document.getElementById('timerProgress').setAttribute('stroke-dasharray', `${progress} 283`);
+    }
+
+    function toggleTimer() {
+      if (timerSeconds === 0) {
+        timerSeconds = timerTotal;
+        document.getElementById('timerComplete').classList.add('hidden');
+        updateTimerDisplay();
+        return;
+      }
+      if (timerRunning) {
+        clearInterval(timerInterval);
+        timerRunning = false;
+        document.getElementById('timerBtn').textContent = 'Start';
+        document.getElementById('timerBtn').classList.remove('paused');
+      } else {
+        timerRunning = true;
+        document.getElementById('timerBtn').textContent = 'Pause';
+        document.getElementById('timerBtn').classList.add('paused');
+        timerInterval = setInterval(() => {
+          timerSeconds--;
+          updateTimerDisplay();
+          if (timerSeconds === 0) {
+            clearInterval(timerInterval);
+            timerRunning = false;
+            document.getElementById('timerBtn').textContent = 'Again';
+            document.getElementById('timerBtn').classList.remove('paused');
+            document.getElementById('timerComplete').classList.remove('hidden');
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      timerRunning = false;
+      timerSeconds = timerTotal;
+      document.getElementById('timerBtn').textContent = 'Start';
+      document.getElementById('timerBtn').classList.remove('paused');
+      document.getElementById('timerComplete').classList.add('hidden');
+      updateTimerDisplay();
+    }
+
+    initSituations();
+  </script>
+</body>
+</html>
