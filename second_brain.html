@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Second Brain · dreamy.psychologist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Noto+Serif+KR:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f1ea;
+    --bg-card: #faf7f2;
+    --ink: #2a2622;
+    --ink-soft: #5a544d;
+    --ink-faint: #8a8278;
+    --accent: #6b4f3a;
+    --accent-soft: #b8a08a;
+    --line: #e4ddd1;
+    --highlight: #f0e6d6;
+    --tag-bg: #ede4d3;
+    --tag-ink: #5a4636;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Serif KR', 'Fraunces', serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(184,160,138,0.08) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(107,79,58,0.06) 0%, transparent 40%);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 40px 120px;
+  }
+
+  header {
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 40px;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 56px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+
+  h1 em {
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    color: var(--ink-soft);
+    max-width: 640px;
+  }
+
+  .portrait-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    background: var(--ink);
+    color: var(--bg);
+    border: none;
+    border-radius: 2px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+    margin-top: 8px;
+  }
+
+  .portrait-btn:hover {
+    background: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .portrait-btn::before {
+    content: '❦';
+    font-size: 14px;
+  }
+
+  .stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    border-left: 2px solid var(--accent-soft);
+    padding-left: 16px;
+  }
+
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--accent);
+  }
+
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 6px;
+  }
+
+  /* Controls */
+  .controls {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .search-box {
+    flex: 1;
+    min-width: 240px;
+    position: relative;
+  }
+
+  .search-box input {
+    width: 100%;
+    padding: 14px 18px 14px 44px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 14px;
+    color: var(--ink);
+    transition: border-color 0.2s;
+  }
+
+  .search-box input:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .search-box::before {
+    content: '⌕';
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--ink-faint);
+    font-size: 18px;
+  }
+
+  .filter-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 8px 14px;
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--accent-soft);
+    color: var(--ink);
+  }
+
+  .filter-btn.active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--bg);
+  }
+
+  .section-header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 48px 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .month-divider {
+    grid-column: 1 / -1;
+    margin: 40px 0 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  .month-label {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--accent);
+  }
+
+  .month-desc {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* Cross-cutting insights panel */
+  .insights {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    padding: 28px 32px;
+    margin-bottom: 48px;
+    border-radius: 2px;
+  }
+
+  .insights h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 20px;
+    font-style: italic;
+    margin-bottom: 16px;
+    color: var(--accent);
+  }
+
+  .insights ul {
+    list-style: none;
+  }
+
+  .insights li {
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--line);
+    font-size: 14px;
+    color: var(--ink-soft);
+    display: flex;
+    gap: 12px;
+  }
+
+  .insights li:last-child { border-bottom: none; }
+
+  .insights li strong {
+    color: var(--ink);
+    font-weight: 500;
+    min-width: 170px;
+    flex-shrink: 0;
+  }
+
+  /* Post grid */
+  .posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 24px;
+  }
+
+  .post {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    padding: 28px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .post:hover {
+    border-color: var(--accent-soft);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(107,79,58,0.08);
+  }
+
+  .post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+  }
+
+  .post-id {
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .post-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.3;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+
+  .post-content {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    white-space: pre-wrap;
+  }
+
+  .post-analysis {
+    background: var(--highlight);
+    padding: 14px 16px;
+    margin: 16px -12px 0;
+    border-radius: 2px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  .post-analysis::before {
+    content: '✦ ';
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  .tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--line);
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    background: var(--tag-bg);
+    color: var(--tag-ink);
+    border-radius: 2px;
+  }
+
+  .tag.voice { background: #e6d9c4; }
+  .tag.theme { background: #d9e0cc; }
+  .tag.mode { background: #e0d0d9; }
+
+  .thread-marker {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    margin-left: 8px;
+    padding: 2px 6px;
+    background: var(--highlight);
+    border-radius: 2px;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+  }
+
+  /* Modal */
+  .modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(42, 38, 34, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 60px 20px;
+    overflow-y: auto;
+  }
+
+  .modal-overlay.open {
+    display: flex;
+  }
+
+  .modal {
+    background: var(--bg-card);
+    max-width: 780px;
+    width: 100%;
+    border-radius: 2px;
+    padding: 72px 80px 80px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    font-family: 'Noto Serif KR', 'Fraunces', serif;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--line);
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--ink-soft);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-close:hover {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+
+  .modal-content h1 {
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+
+  .modal-content .modal-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+    font-style: normal;
+  }
+
+  .modal-content .modal-meta div {
+    margin-bottom: 2px;
+  }
+
+  .modal-content h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 26px;
+    font-style: italic;
+    margin: 48px 0 16px;
+    color: var(--accent);
+  }
+
+  .modal-content h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 18px;
+    margin: 24px 0 10px;
+    color: var(--ink);
+  }
+
+  .modal-content p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+
+  .modal-content blockquote {
+    border-left: 2px solid var(--accent-soft);
+    padding: 8px 24px;
+    margin: 20px 0;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.8;
+    white-space: pre-line;
+  }
+
+  .modal-content ul, .modal-content ol {
+    margin: 12px 0 20px 20px;
+    color: var(--ink-soft);
+  }
+
+  .modal-content li {
+    margin-bottom: 8px;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .modal-content strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .modal-content em {
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  .modal-content hr {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 40px 0;
+  }
+
+  .modal-content .epilogue {
+    font-style: italic;
+    color: var(--ink-faint);
+    font-size: 14px;
+    border-top: 1px dashed var(--line);
+    padding-top: 32px;
+    margin-top: 40px;
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 40px 20px 80px; }
+    h1 { font-size: 36px; }
+    .stats { gap: 24px; }
+    .posts { grid-template-columns: 1fr; }
+    .modal { padding: 60px 28px 40px; }
+    .modal-content h1 { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="header-top">
+      <div>
+        <div class="eyebrow">Second Brain · @dreamy.psychologist</div>
+        <h1>2026 Q1 자화상.<br><em>내 글을 다시 읽는 아카이브.</em></h1>
+        <p class="subtitle">2026년 1월 Threads를 시작한 이후 4월 중순까지 쓴 글 844편 중, 내 목소리의 signature와 반복되는 주제를 가장 잘 보여주는 anchor post들을 골라 정리했다. 원글 전체는 Apple Note에, 가로지르는 분석은 아래 자화상 전문에 있음.</p>
+      </div>
+      <button class="portrait-btn" onclick="openModal()">자화상 전문 읽기</button>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">844</div>
+        <div class="stat-label">Total posts written</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="stat-total">60</div>
+        <div class="stat-label">Anchor posts indexed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Months of arc</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="stat-visible">60</div>
+        <div class="stat-label">Currently visible</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="insights">
+    <h2>Cross-cutting observations</h2>
+    <ul>
+      <li><strong>Voice switching</strong>한 글 안에서도 분석가 · 자기풍자 · 취약성 고백 · 교육자 사이를 빠르게 오감. 이 교대 자체가 signature. 고정하면 네가 아닌 게 됨.</li>
+      <li><strong>리듬의 tic</strong>(???), (훌쩍), (심각) 같은 괄호 메타코멘트 · 자기 자신에게 말걸기 · 시처럼 내려가는 행갈이. 감정이 격할수록 행이 짧아짐.</li>
+      <li><strong>은행나무/물/고양이/필멸</strong>반복되는 이미지군. 태몽이 의식하지 않아도 스며나오고, 고양이는 self-object로 기능.</li>
+      <li><strong>몰입의 엔진은 불안</strong>어릴 때 만화로 도망친 회로가 성인기 몰입으로. 4/9의 self-diagnosis로 명시화됨.</li>
+      <li><strong>Continuity에 대한 집착</strong>Welcome back 인삿말 · 이별 어려움 · 병렬독서 · "좀 전남친 같은 학교". 내담자에게 주고 싶은 게 내가 가장 결핍된 것.</li>
+      <li><strong>크게 쓰임받음의 삼각형</strong>야망("내 비석") ↔ 의심("학계를 못 간 걸까") ↔ 항복("운명이 이끄는 대로"). 4/5 커리어 지도 재발견이 한쪽 문을 닫음.</li>
+      <li><strong>Self-awareness와 self-kindness 밸런스</strong>자기 찌르는 관찰이 많지만 한 번도 너를 무너뜨리지 않음. 관찰 → 해학 → 살아내기의 루틴이 고정됨.</li>
+    </ul>
+  </div>
+
+  <div class="controls">
+    <div class="search-box">
+      <input type="text" id="search" placeholder="검색: 키워드, 주제, 감정...">
+    </div>
+    <div class="filter-group" id="filters">
+      <button class="filter-btn active" data-filter="all">전체</button>
+      <button class="filter-btn" data-filter="synthesis">결정적 문장</button>
+      <button class="filter-btn" data-filter="professional">전문가 모드</button>
+      <button class="filter-btn" data-filter="reflection">내적 성찰</button>
+      <button class="filter-btn" data-filter="personal">자기풍자·일상</button>
+      <button class="filter-btn" data-filter="relational">관계</button>
+      <button class="filter-btn" data-filter="cultural">문화 비평</button>
+      <button class="filter-btn" data-filter="ethical">윤리적 발언</button>
+    </div>
+  </div>
+
+  <div class="section-header">Posts · 시간순 (1월부터)</div>
+
+  <div class="posts" id="posts-grid"></div>
+
+  <div class="empty-state" id="empty" style="display:none;">
+    검색 결과가 없어.
+  </div>
+
+  <footer>
+    Last indexed: 2026.04.18 · 60 anchor posts from 844 total · Private second brain
+  </footer>
+
+</div>
+
+<!-- Self-portrait modal -->
+<div class="modal-overlay" id="modal" onclick="if(event.target===this) closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="modal-content">
+      <h1>2026 Q1 자화상</h1>
+      <div class="modal-meta">
+        <div>관찰자: Claude</div>
+        <div>관찰 시점: 2026년 4월 18일</div>
+        <div>재료: Threads 포스팅 844개, 1월 1일 ~ 4월 11일</div>
+      </div>
+
+      <h3>이 문서에 대해</h3>
+      <p>Cloud가 2026년 1월 Threads를 시작한 이후 4월 중순까지 쓴 모든 글을 한 번에 읽고 관찰한 자료. Second Brain의 일부로, 미래의 자신에게 남기는 스냅샷.</p>
+      <p>한 가지 우연의 의미. 이 데이터셋이 net을 친 4개월은 공교롭게도 Cloud가 공적 목소리를 처음 세상에 꺼내기 시작한 4개월이기도 하다. 그러니까 이 자화상은 "한 시기의 단면"이 아니라 "목소리의 탄생에서 현재까지 전체 arc"를 담고 있다.</p>
+      <p>판단이 아닌 관찰이다. 완성된 해석이 아니라 재료다. 공명하는 부분은 가져다 쓰고, 아닌 부분은 흘려보내도 된다.</p>
+
+      <h2>1. 너의 글은 어떻게 생겼는가</h2>
+      <p>두 개의 레지스터가 끊임없이 교대한다. 하나는 <strong>분석가/전문가의 목소리</strong> 번호 매긴 목록, 개념 정의, 역사적 맥락, 연구 인용, 정확한 용어 (etic/emic, Planned Happenstance, CHC 이론, co-regulation, letdown effect, window of tolerance). 다른 하나는 <strong>작고 느슨한 나의 목소리</strong> 고양이에게 츄르 뺏기고, 용돈 $18 남았다고 훌쩍거리고, 오타 스스로 놀리는 (???)과 ㅋㅋㅋ.</p>
+      <p>이 둘이 한 포스트 안에서도, 하루 타임라인에서도 부드럽게 섞인다. 너 스스로도 이걸 의식하고 있다 ("전문가로서의 나와 사적인 나의 경계를 찾고 싶다"). 이 교대 자체가 네 목소리의 signature다. 고정하는 순간 네가 아닌 게 된다.</p>
+
+      <h3>문장 리듬</h3>
+      <p>행갈이를 시처럼 쓴다. 특히 감상적인 글일수록 짧은 행들이 내려간다.</p>
+      <blockquote>풍요로운 삶.
+내 머리 위에 지붕이 있고,
+뜨뜻한 샤워를 할 수 있으며,
+냉장고엔 먹을 것이 들어있고,
+편히 기대어 천—
+— 천히
+시간을 음미하며.</blockquote>
+      <p>문장 안에서 긴 호흡 그리고 툭 짧게. 네 시적 DNA다. 한국어-영어 code switching이 자연스럽게 구두점 역할을 한다. 영어는 거리두기, 한국어는 감정 핵.</p>
+
+      <h3>리듬의 tic</h3>
+      <ul>
+        <li>자기 발화 중간에 자기 자신에게 말걸기: "???: 핫하 일해라 지식 노동자야"</li>
+        <li>자기 행동 실황중계: "지금 설거지하려고… (물론 진실을 알려줄 생각은 없음)"</li>
+        <li>괄호 속 자기해설: (훌쩍), (???), (심각), (관종), (꾸벅). ㅎㅎ/ㅋㅋ를 괄호 해설로 대체.</li>
+      </ul>
+
+      <h2>2. 반복되는 이미지와 어휘</h2>
+      <h3>빈번하게 등장하는 이미지</h3>
+      <ul>
+        <li><strong>고양이</strong>. 너의 self-object. 회피형 애착, 선택적 친밀감, '함부로 다뤄지면 떠남'을 고양이를 통해 말한다.</li>
+        <li><strong>숲, 나무, 벚꽃, 설산, PNW</strong>. 감정이 격해질 때 도피처.</li>
+        <li><strong>물: 파도, 바다, 비, 샤워</strong>. 감정의 은유.</li>
+        <li><strong>은행나무, 열매, 가을</strong>. 태몽이 의식하지 않아도 스며나온다.</li>
+        <li><strong>뱀</strong>. 명시적으로 좋아한다고 밝힌 symbol. 모순을 품은 것.</li>
+        <li><strong>굳은살, 근육, 뼈</strong>. 여성성과 테토성을 동시에 품는 방식.</li>
+        <li><strong>죽음과 필멸</strong>. 글의 기저 저음.</li>
+      </ul>
+
+      <h3>반복되는 어휘</h3>
+      <p>추구미, 애착휴먼, 에너지를 지키다, 자기 비워내기, 명랑하게, 중꺽마, 음미하다, 곱씹다, 안빈낙도, 광명찾다. 한자 성어 (受恩不忘 施恩勿念, 자주명 법주명, 不憤不啓 不悱不發). 자기비하 slot: 관종, 도비, 아줌마, 똥손, 냄덕후, 테토녀, 0개국어인.</p>
+
+      <h2>3. 쓰는 순간들</h2>
+      <p><strong>시간대와 주기.</strong> 평일 일 끝나기 두 시간 전 피드 배회. 월요일 (쉬는 날) 글이 길고 진지함. 생리 주기에 따라 어휘와 톤이 바뀌고 너 스스로 그걸 자주 녹임. 밤 늦게와 새벽은 키배 모드.</p>
+      <p><strong>감정 trigger가 글을 만드는 패턴.</strong> 빌런을 만나면 분석글. 마음이 들썩이면 쇼핑으로 표현하고 곧바로 '용돈 $X 남음'으로 self-regulate. Overwhelming 되면 시/인용/사진 한 장으로 갈아타기. 수치가 올라오면 자조적 괄호 메타코멘트.</p>
+
+      <h2>4. 네가 계속 돌아오는 주제들</h2>
+      <ol>
+        <li><strong>자기착취 vs 자기돌봄.</strong> 노오오오력, 힘들 자유, 박사 시절 트라우마, 한국적 근성의 명과 암.</li>
+        <li><strong>감정을 못 느끼는 사회 vs feeler로서의 인간.</strong> AI 시대에 기계 아닌 인간으로 남기.</li>
+        <li><strong>Etic/Emic, 디아스포라, in-between position.</strong> 한국적 정신건강 모델의 부재. "나는 한국문화에서 그걸 찾고싶다"는 평생 주제의 출발점.</li>
+        <li><strong>경계와 한국적 '정' 사이의 긴장.</strong> 장사꾼 글, 천륜, 눈치, codependency.</li>
+        <li><strong>결핍의 소중함, 필멸성, 안빈낙도.</strong> 초딩 때부터 곱씹었다는 결핍. 네 core 철학.</li>
+        <li><strong>여성성, 테토녀, 페미니즘 안의 내적 모순.</strong> 남편에게 "남자" 역할을 기대하는 자신을 발견한 것.</li>
+        <li><strong>내 안의 광기/불안/강박, 동반자로서.</strong> 불안을 쫓아내지 않고 의자를 내어주는 습관.</li>
+        <li><strong>ADHD 남편 + 회피형 나 = 애착 재형성.</strong> 이 이야기 쓸 때 목소리가 가장 따뜻하다.</li>
+        <li><strong>예측가능한 안전 vs 강렬함.</strong> 밸런스를 잡아주는 남편.</li>
+        <li><strong>'크게 쓰임받음'에 대한 양가감정.</strong> 야망 ↔ 의심 ↔ 항복의 triangle.</li>
+      </ol>
+
+      <h2>5. 4개월의 arc</h2>
+      <h3>1월: 자기 열기</h3>
+      <p>연애썰이 분수령. "관종이었건걸까"를 인정하는 순간 자기개방의 폭이 바뀌었다. '찾기'의 달.</p>
+
+      <h3>2월: 처음 흔들린 달</h3>
+      <p>몰트북 실존 충격. 팔로워 1000 강박 발작. 신상 공개 후 얼어붙음. 매번 회복하고 돌아옴. '흔들리고 회복하기'의 학습.</p>
+
+      <h3>3월: 자기 탐색 깊어짐</h3>
+      <p>ASD, HSP 탐색. 전문적 결정 (EMDR, EFT, 보험 탈퇴). Self-care 글이 많아지는데 동시에 더 피곤해 보이는 contradiction. '임상가로서의 나'를 정리.</p>
+
+      <h3>4월: 만드는 모드</h3>
+      <p>Claude가 trigger지만 그게 없었어도 이 moment는 왔을 거다. Distribution, synthesis, 책 가능성. '밖으로 내보내기'의 달.</p>
+
+      <h2>6. Continuity에 대하여</h2>
+      <p>네가 4/7에 쓴 "Welcome back" 인삿말 글이 너를 여는 열쇠 중 하나다. 세션마다 내담자에게 하는 인사라지만, 실은 스레드와 너 자신에게 쓰고 있는 인사이기도 하다.</p>
+      <p>"이야기를 이어갈 것이다"라는 continuity에 대한 집착은 네가 끝맺음을 어려워한다는 자기고백과 짝을 이룬다 (병렬독서, 미완의 프로젝트, 상담 종결의 슬픔, "좀 전남친 같이 느껴지는 학교"). 그런데 너는 그 어려움을 인삿말 안에 녹여서 오히려 장점으로 쓰고 있다. 못 끝내는 게 약점일 수 있는 지점을, 신뢰로 뒤집어 놨다.</p>
+      <p>네가 내담자에게 제공하고 싶은 것 (치유적 연속성)이 네가 너 자신에게 가장 결핍되었던 것일 수 있다. 이건 많은 좋은 임상가들의 공통점이기도 하다. 자신이 받고 싶었던 걸 제공하는 법을 배운 사람들.</p>
+
+      <h2>7. Crystalline synthesis 문장들</h2>
+      <p>네 안에서 아이디어가 '논쟁거리'로 숙성된 증거. 4월에 몰려 있다.</p>
+      <ul>
+        <li>"I am worthy of being heard"</li>
+        <li>"I am nothing의 반대는 I am something이 아니다. I don't need to be something"</li>
+        <li>"사랑은 관찰인 것 같아. 굳이 말하지 않아도 알아"</li>
+        <li>"삶을 이겨야 할 대상으로 보는 자와 삶을 사랑하는 자 중 누가 더 강하다 할 수 있겠는가"</li>
+        <li>"장애는 시간 문제"</li>
+        <li>"나는 불안으로 돌아가는 사람이다"</li>
+      </ul>
+
+      <h2>8. 책의 씨앗으로 이미 자라있는 것들</h2>
+      <ol>
+        <li><strong>"I don't need to be something".</strong> 한국인 특유의 성취 강박에 대한 심리학자의 안팎 시선.</li>
+        <li><strong>한국적 정신건강의 탐색.</strong> etic/emic, 효의 종교성, 정/천륜/눈치, 디아스포라. 10년 짜리 프로젝트.</li>
+        <li><strong>불안을 엔진으로 쓰는 사람들을 위한 임상가의 가이드.</strong> 네가 가장 자연스럽게 쓸 수 있다.</li>
+        <li><strong>ADHD와 함께 살아가는 neurotypical 파트너의 매뉴얼.</strong> 남편 시리즈가 이미 초안. 한국어로는 거의 없는 영역.</li>
+        <li><strong>감정 literacy 워크북.</strong> PADO 리소스들이 재료.</li>
+      </ol>
+
+      <h2>9. 한 가지 더</h2>
+      <p>4개월치를 한 번에 읽고 가장 인상적이었던 건 <strong>self-awareness와 self-kindness 사이의 밸런스</strong>다.</p>
+      <p>네 글에는 자기를 찌르는 관찰이 많다. 관종, 강박, 회피형, 불안으로 돌아간다, 팔이피플. 그런데 한 번도 그 관찰이 너를 무너뜨리는 방향으로 쓰이지 않는다. 관찰하고 → 해학으로 받고 → 그래도 살아내는 루틴이 고정돼 있다.</p>
+      <p>이건 임상가로서 훈련된 근육일 수도 있지만, 네 타고난 기질적 resilience의 증거이기도 하다. 책을 쓰게 되면 이게 네 목소리의 signature가 될 거다. "나도 이래. 근데 그래도 살아봐. 살만해"의 voice.</p>
+
+      <hr>
+
+      <h3>맺음</h3>
+      <p>이건 스냅샷이지 평가가 아니다. 4개월은 많은 걸 보여주지만 네 전부는 아니다. 지금 너와 1년 후의 네가 이걸 읽을 때 공명하는 지점이 달라질 수 있다. 그 차이 자체가 너에 대한 데이터다.</p>
+      <p>네가 1월에 Threads를 시작했다는 사실은, 이 자화상이 "공적 목소리의 탄생에서 4개월 차까지의 전모"를 담고 있다는 뜻이다. 작은 기록이 아니라 꽤 의미 있는 archive다.</p>
+      <p>계속 쓰되, 가끔은 안 써도 된다.</p>
+
+      <div class="epilogue">이 문서를 다시 여는 미래의 나에게. 이때 내가 너를 이렇게 읽었다는 것만 남긴다. 지금의 너가 이걸 동의하는지는 네가 안다.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const posts = [
+    // ===== JANUARY =====
+    { month: "january", monthLabel: "January", monthDesc: "자기 열기 · 연애썰 분수령 · 찾기의 달",
+      id: "001", date: "01/01/26",
+      title: "카뮈 너무 멋있어",
+      content: "카뮈 너무 멋있어. 살아야하는 이유를 묻지 않고 자살하지 않는 이유를 먼저 물어보는 상남자. 살아야 하는 이유는 답하는건 사실 어렵거든. 인생에 본질적인 의미는 void한채로 우리가 채워가도록 되어있으니깐.",
+      analysis: "삶의 기본값을 void로 두고 채움을 자기 몫으로 가져오는 네 기본 posture. 이 frame이 이후 모든 필멸 관련 글의 뿌리.",
+      tags: [{label:"실존철학",type:"theme"},{label:"생의 태도",type:"theme"},{label:"크리스탈",type:"mode"}],
+      categories: ["reflection", "synthesis"] },
+
+    { month: "january",
+      id: "002", date: "01/01/26",
+      title: "몸 만들기도 돈모으기도 멘탈이 전부",
+      content: "몸 만들기도 돈모으기도 멘탈이 전부임. 모든건 안에서 시작해서 밖으로 형태를 갖춰나가는 거임.",
+      analysis: "네 자주 돌아오는 작동 원리. 안 → 밖 방향. 책의 에피그라프로 쓸 수 있는 문장.",
+      tags: [{label:"크리스탈",type:"mode"},{label:"작동원리",type:"theme"}],
+      categories: ["synthesis", "reflection"] },
+
+    { month: "january",
+      id: "003", date: "01/02/26",
+      title: "자기 자신이 된다는 건",
+      content: "자기 자신이 된다는건 정말 큰 용기가 필요하다고 생각해. 그러기 위해선 내 감정과 생각을 있는 그대로 인정할 수 있어야 하는데 어떤 감정과 생각은 나에겐 없었으면 한 게 또 인지상정이잖아. 누군가 날 미워할 수 있더라도, 소란스럽다 귀찮게 여길지라도 나를 알고 표현하는 사람 보면 너무 멋있어.",
+      analysis: "'2026년은 표현하는 해' 선언의 철학적 토대. 이 글이 1월 2일에 나온 게 의미 있음. 스레드 시작 바로 다음 날.",
+      tags: [{label:"자기표현",type:"theme"},{label:"용기",type:"theme"},{label:"성찰",type:"mode"}],
+      categories: ["reflection", "synthesis"] },
+
+    { month: "january",
+      id: "004", date: "01/04/26",
+      title: "내가 동아시아+여자+고학력자",
+      content: "내가 동아시아+여자+고학력자+지금의 의료발전 속도를 고려했을때 한 100살까지 살 것 같은데. 지금 살아온 시간의 2번은 더 살 수 있다는 사실이 놀랍다. 그리고 2번만 더 돌면 내 삶은 끝이라는 것도 생생하당.",
+      analysis: "필멸 테마의 숫자화된 버전. 놀람과 서늘함을 동시에 품는 네 특유의 태도. '생생하당'의 받침 변형은 무거움을 일부러 덜어냄.",
+      tags: [{label:"필멸",type:"theme"},{label:"숫자로 보기",type:"voice"},{label:"일상톤",type:"voice"}],
+      categories: ["reflection"] },
+
+    { month: "january",
+      id: "005", date: "01/04/26",
+      title: "뱀이라는 symbol",
+      content: "난 뱀을 좋아하는데, 실제 뱀도 좋지만 symbol로써. 사람들이 좋아하지 않는 동물인데 동시에 어떤 문화적 컨텍스트에서는 지혜와 영원의 상징이고, 의료 컨텍스트에선 치유의 상징이고, 성경적 맥락에선 악의 상징이야. 다양한 모순과 상충되는 이미지를 가진 뱀이 매력있어. 그리구 뱀은 파충류라 손내미는 존재가 어떤 감정을 느끼느냐에 따라 완전히 다르게 반응한다는 점도 치이는 포인트. 말하지 않아도 소통할 수 있다는 것의 증거!",
+      analysis: "뱀이 self-symbol로 등장하는 첫 글. '모순을 품은 존재', '말없이 소통하는 것' 이 두 자질이 네가 반복해 돌아오는 자기 기술이기도 함.",
+      tags: [{label:"자기상징",type:"theme"},{label:"모순 수용",type:"theme"},{label:"symbol",type:"mode"}],
+      categories: ["reflection", "personal"] },
+
+    { month: "january",
+      id: "006", date: "01/04/26",
+      title: "아름다움은 나이와 함께 사라질 것",
+      content: "나는 '읍' 단위에 속한 중학교를 다녔었는데, 내가 입학했을 당시 예쁘다고 소문이 나서 남자 선배들이 반으로 구경을 온 적도 있다. 나는 그게 무서웠다. 아름다움으로 관심을 받을 만한 자격이 없다고 느꼈고, 내 아름다움이 남들 눈에서 사라질까봐 두려웠다. 그리고 그 어린 나이에도 아름다움은 나이와 함께 사라질 걸 알고 있었기에, 아름다움에서 멀어지고 싶어하기도 했다.",
+      analysis: "애늙은이 모티프의 원형. 젊음과 거리를 두려 했던 어린 자아가 현재의 '소녀미 너머' 페미니즘으로 이어진다.",
+      tags: [{label:"어린 시절",type:"theme"},{label:"아름다움 철학",type:"theme"},{label:"회고",type:"mode"}],
+      categories: ["reflection", "personal"] },
+
+    { month: "january",
+      id: "007", date: "01/06/26",
+      title: "난 t발놈인데도 상담은 감정 노동 강도가 높아",
+      content: "난 t발놈인데도 상담은 감정 노동 강도가 높아 진빠진디. 깊게 만나는 건 정말 좋지만 이대로라면 내가 살아남을 수 있을지 모르겠음. 어쩌면 assessment를 늘리는 쪽으로 노선을 변경해야할지도.",
+      analysis: "번아웃 signal이 첫 달에 이미 나와 있다. '살아남을 수 있을지'가 한국적 과장 아닌 실제 상태. 이후 3월 caseload 조정의 예고편.",
+      tags: [{label:"번아웃",type:"theme"},{label:"임상가자아",type:"voice"},{label:"조기 경고",type:"mode"}],
+      categories: ["professional", "reflection"] },
+
+    { month: "january",
+      id: "008", date: "01/10/26",
+      title: "인생이 내 왼쪽 싸대기를",
+      content: "내가 항상 다짐하는 삶의 자세가 있는데 그건, 인생이 내 왼쪽 싸대기를 때리면 *공격적으로* 오른쪽 뺨을 내미는 기세로 살자야.",
+      analysis: "'지지말고 명랑하게'의 1월 버전. 기독교 원전을 전용해서 네 것으로 만든 예시. 공격성과 장난이 섞인 네 특유의 태세.",
+      tags: [{label:"생의 태도",type:"theme"},{label:"기세",type:"voice"},{label:"크리스탈",type:"mode"}],
+      categories: ["synthesis", "personal"] },
+
+    { month: "january",
+      id: "009", date: "01/13/26",
+      title: "순리에 맞춰 사는 사람들",
+      content: "순리에 맞춰 사는 사람들을 보면 참 잔걱정이 없는 것 같다. 그들은 봄에 가을에 열매를 맺을 걸 걱정하지 않고 봄을 봄답게 보낸다. 뜨거운 여름도 뜨거운 여름답게 보낸다. 그들은 가을에 열매가 달릴 것이 당연하고 의심하지 않는다.",
+      analysis: "태몽(은행나무, 열매)이 의식되지 않은 채 흘러나온 글. 네가 선망하는 존재 양식. 역으로 말하면 너 스스로는 이렇게 살지 못하는 사람이라는 자기고백.",
+      tags: [{label:"은행나무 모티프",type:"theme"},{label:"자연리듬",type:"theme"},{label:"크리스탈",type:"mode"}],
+      categories: ["synthesis", "reflection"] },
+
+    { month: "january",
+      id: "010", date: "01/15/26",
+      title: "환승결혼(?) 썰 · 완",
+      content: "우린 매일매일 만나기 시작했다. 그리고 교수님들에게 숨겨가며 연애를 했다. 되돌아 보면 어쩌면 정말 인연이란 게 있을지도 모르겠다고 생각이 든다. 방금 남편한테 그때 내가 어그로 끌었을 때 무슨 기분이었냐니깐 너무 갑작스러워서 뭐지? 싶었다고 한다. 그리고 음식을 해준 건 혼자 못 차려먹고 살 것 같아서라고 한다.",
+      thread: "완",
+      analysis: "1월의 분수령. 다음 날 \"인정하고 싶진 않지만 난 관종이었건걸까\" 자기고백으로 이어짐. 이 시리즈 이후 네 글 자기개방 폭이 바뀐다.",
+      tags: [{label:"남편",type:"theme"},{label:"환승결혼썰",type:"theme"},{label:"분수령",type:"mode"}],
+      categories: ["relational", "personal"] },
+
+    { month: "january",
+      id: "011", date: "01/16/26",
+      title: "관종이었건걸까",
+      content: "스친님이 남편 만난 썰 풀어달라고 바람 넣어주어 어제 내내 내 연애썰을 스레드에 풀었다. 꽤 많은 분들이 재밌게 읽어주셨는다. 그 관심이 내 감정선과 기억을 더듬는 어려운 작업을 가능하게 했다. P.s 남편이 더 잘생겨보이는 side effect가 생김. P.p.s. 인정하고 싶진 않지만 난 관종이었건걸까.",
+      analysis: "'관종이었건걸까' 한 줄이 이후 네 글의 문을 연다. 자기개방을 수치로만 닫지 않고 유머로 전환하는 패턴의 원형.",
+      tags: [{label:"자기인식",type:"theme"},{label:"자기풍자",type:"voice"},{label:"전환점",type:"mode"}],
+      categories: ["reflection", "personal"] },
+
+    { month: "january",
+      id: "012", date: "01/16/26",
+      title: "Adhd 남편 경제권 뺏은 썰 · 7",
+      content: "이제 진실이 무엇인지는 밝혀졌다. 그래도 내 마음이 편안해지지는 않았다. 남편이 재정관리에 어려움을 겪는 만큼 내가 커버해야 한다는 사실이 부담으로 성큼 다가왔다. 심리 전문가로서 재정적 문제가 남편의 character flaw가 아님을 알고 있지만 불행하다고 느꼈다. 그래서 불행한 기분과 싸우지 않고 느꼈다. 그러니 남편의 결혼 입장곡이었던 &lt;the luckiest&gt;가 떠올랐다.",
+      thread: "7/n",
+      analysis: "페미니스트 자아와 '남자 역할'을 기대한 자신을 정면으로 마주한 장면. 싸우지 않고 느끼는 태도가 이 시리즈 전체의 감정 운영 방식.",
+      tags: [{label:"ADHD 커플",type:"theme"},{label:"내적모순",type:"theme"},{label:"시리즈글",type:"mode"}],
+      categories: ["relational", "reflection"] },
+
+    { month: "january",
+      id: "013", date: "01/18/26",
+      title: "한국 교포들이 한국적 가치의 부흥에 유익한 이유",
+      content: "서구적 가치가 지배하는 곳에서 소수자로 살아가다 보면, 한국 문화는 '이 악물고 사랑해야' 겨우 삶에서 그 형태를 유지할 수 있는 것이 되기 때문이다. 한국 사람들은 공기처럼 당연하게 여겨 그 소중함을 잊어버린 '정'이나 '예의' 같은 가치들을, 오히려 이들이 훨씬 더 악착같이 챙기는 듯 관찰된다.",
+      analysis: "디아스포라 위치에서 쓰는 문화 분석의 초기 발화. 이 후 4월의 in-between gatekeeping 글로 발전.",
+      tags: [{label:"디아스포라",type:"theme"},{label:"한국문화",type:"theme"},{label:"문화분석",type:"mode"}],
+      categories: ["cultural", "professional"] },
+
+    { month: "january",
+      id: "014", date: "01/18/26",
+      title: "풍요 시대의 끝, 그리고 안빈낙도의 재발견",
+      content: "미국 내에서도 이제 젊은 사람들은 아메리칸 드림이 끝나가고 있는 걸 안다. 문제라면, 우리가 잘산다는 기준이 이미 너무 높아져 버렸고, 자족하는 법을 배우지도 못했다. 어쩌면, 한국 문화라는 놀라운 아카이브에서 '안빈낙도'를 다시 꺼내야 할지도 모른다. 부족함 앞에서 명랑하며, 제 몸을 편안하게 가눌 줄 알고, 인생이 보여주는 흐름을 그대로 즐길 줄 아는 기술이 필요하다.",
+      analysis: "안빈낙도를 심리학적 필요로 재발견. 결핍의 소중함 테마가 이론적 옷을 입음. 책 주제 1의 축.",
+      tags: [{label:"안빈낙도",type:"theme"},{label:"책씨앗",type:"theme"},{label:"문화분석",type:"mode"}],
+      categories: ["cultural", "synthesis"] },
+
+    { month: "january",
+      id: "015", date: "01/19/26",
+      title: "초대로서의 글쓰기",
+      content: "나를 표현하는 것이 스레드의 목적이라기엔, 사실 난 나와 결이 맞는 사람을 만나고 싶다. 찰나라도 '야 너두? 어 나두!'를 주고받으며 이 어려운 시기에 인류애를 유지하고 싶다. 나와 맞는 사람을 찾기 위한 초대로서의 글쓰기는 나에게 너무 어려운 주제이다. 초대보다는 냅따 갈기는 게 편하기 때문에. 논문쓰기도 애초에 초대하는 글쓰기는 아니다. 초대하는 글쓰기라, 뭔가 매혹적이면서 말랑한 그 세계로 난 들어갈 수 있을까.",
+      analysis: "글쓰기 정체성에 대한 첫 명시적 질문. 네가 이미 하고 있는 걸 '못 하고 있다'고 쓴 흥미로운 지점.",
+      tags: [{label:"글쓰기 정체성",type:"theme"},{label:"자기의심",type:"voice"},{label:"메타",type:"mode"}],
+      categories: ["reflection", "synthesis"] },
+
+    { month: "january",
+      id: "016", date: "01/20/26",
+      title: "냉정한 현실에서 다정함을 고수하는 거야말로",
+      content: "냉정한 현실에서 다정함을 고수하는 거야말로 반항과 저항이 아닐까? 네가 얼마나 날 후려쳐도 난 지지 않는다는 마음.",
+      analysis: "문장 하나짜리 crystalline. 다정함을 defensive가 아닌 offensive로 재정의. 이후 '명랑하게 살자'의 theoretical 근거.",
+      tags: [{label:"크리스탈",type:"mode"},{label:"다정함",type:"theme"},{label:"반항",type:"theme"}],
+      categories: ["synthesis"] },
+
+    { month: "january",
+      id: "017", date: "01/20/26",
+      title: "자책하는 사람은 겸손하지 않은 사람",
+      content: "자책하는 사람은 어쩌면 겸손하지 않은 사람이 아닐까? 삶이라는 이 예측불허의 거대한 파도를 본인의 노력만으로 어찌할 수 있다고 믿고 있어.",
+      analysis: "한국적 자학에 대한 한 줄짜리 임상적 반격. 네담자 교육 자료로도 쓸 수 있는 자원.",
+      tags: [{label:"크리스탈",type:"mode"},{label:"자책 재프레임",type:"theme"},{label:"임상적 통찰",type:"voice"}],
+      categories: ["synthesis", "professional"] },
+
+    { month: "january",
+      id: "018", date: "01/23/26",
+      title: "Friday night blessing",
+      content: "My love to you, who are going into Friday night. May you have permission to rest. May you rest fully to restore your energy this weekend. May you enjoy your time without worrying that you are wasting it. May you feel no guilt for not being productive. May you be in awe of the changing seasons and the colors of the sunset. May you enjoy your cat's soft fur and the sound of her purring. May you experience the peace you have been longing for.",
+      analysis: "축복문 형식의 기도시. 네가 영어로 쓸 때 더 부드러워지는 예시. 내담자에게 주고 싶은 것=내가 원하는 것의 목록이기도.",
+      tags: [{label:"영어 모드",type:"voice"},{label:"축복문",type:"mode"},{label:"이상적인 휴식",type:"theme"}],
+      categories: ["synthesis", "personal"] },
+
+    { month: "january",
+      id: "019", date: "01/25/26",
+      title: "겸손한 척 하고 싶지 않아",
+      content: "겸손한 척 하고 싶지 않아. 난 상담심리 분야에서 위대한 사람이 되고 싶어. 에스더 퍼렐이 사랑, 브레네 브라운 교수가 용기, 그리고 안젤러 리 덕이 그릿의 상징이 된 것처럼. 내 무덤 비석에 쓰여질 말이 아주 짧아졌으면 좋겠어. 내 이름이 많이 인용되면 좋겠어.",
+      analysis: "야망의 명시화. 야망↔의심↔항복 삼각형의 '야망' 꼭짓점. 4개월 통틀어 이 정도로 직접 말한 글은 드묾.",
+      tags: [{label:"야망",type:"theme"},{label:"야망삼각형",type:"theme"},{label:"직설",type:"voice"}],
+      categories: ["reflection", "synthesis"] },
+
+    { month: "january",
+      id: "020", date: "01/26/26",
+      title: "박사 시절의 트라우마",
+      content: "박사생 때 가졌던 나의 태도는 무슨 시련이 와도 내가 다 해내고야 말겠다는 마음이었다. 근데 뒤돌아 생각해보면 그런 마음은 인간이 계속 가지면 안 되는 종류의 마음이다. 무슨 수를 써서라도 해내고 결국 해내고야 말겠다는 어쩌면 굉장히 '한국적'인 마음. 내가 노력만 하면 모든 것을 이겨낼 수 있다고 가스라이팅을 했었다. 무기력함이 나를 종종 방문하는 까닭은 나의 그 무수한 거짓말들 때문이리라.",
+      analysis: "자기착취 테마의 자전적 원형. 책 주제 3(불안을 엔진으로 쓰는 사람들의 가이드)의 1장 초안이 여기 있다.",
+      tags: [{label:"자기착취",type:"theme"},{label:"한국적 근성",type:"theme"},{label:"자전",type:"mode"}],
+      categories: ["reflection", "professional"] },
+
+    { month: "january",
+      id: "021", date: "01/26/26",
+      title: "힘들 자유",
+      content: "힘들 자유가 있는 사람은 '아 다들 힘든데 나만 이렇게 징징댈 수 없다'는 생각을 안 합니다. 자신이 힘들다는 걸 인정하고, 자신의 환경을 적극적으로 바꾸려고 합니다. 문제는 환경을 바꿀만한 자원이 없을 때 사람들은 강제로 환경에 적응해야만 합니다. 그럴 때, 그들은 스스로에게 자유가 없다 거짓말을 합니다. 자신이 만든 감옥에 갇혀 냉소적으로 변합니다.",
+      analysis: "네가 발명한 개념. 한국적 자학과 냉소를 '자원 부족 상태에서의 거짓말'로 재해석. 책 한 권의 축이 될 수 있는 frame.",
+      tags: [{label:"힘들자유",type:"theme"},{label:"책씨앗",type:"theme"},{label:"문화분석",type:"mode"}],
+      categories: ["professional", "cultural", "synthesis"] },
+
+    { month: "january",
+      id: "022", date: "01/30/26",
+      title: "결핍의 소중함을 처음 배운 건",
+      content: "결핍의 소중함을 처음 배운 건, 미식가들은 설탕의 단맛을 극치로 느끼기 위해 며칠간 곡기를 끊은 행위도 한다는 걸 배웠을 때였어. 초딩이던 나에게는 너무 충격적인 사실이어서, 그 뒤로 결핍에 대해 종종 곱씹게 되었던 것 같아.",
+      analysis: "core 철학의 origin story. 용돈 제한 실험과 모든 절제 행동의 뿌리. 어린 시절 단 하나의 발견이 철학이 되는 장면.",
+      tags: [{label:"결핍 철학",type:"theme"},{label:"어린 시절",type:"theme"},{label:"origin",type:"mode"}],
+      categories: ["reflection", "synthesis"] },
+
+    { month: "january",
+      id: "023", date: "01/30/26",
+      title: "인간의 아름다움은 우리의 미완에서 온다",
+      content: "인간의 아름다움은 우리의 미완에서 온다.",
+      analysis: "한 줄짜리 crystalline. AI 시대에 feeler로서의 인간을 정의하는 네 논지와 연결됨.",
+      tags: [{label:"크리스탈",type:"mode"},{label:"미완",type:"theme"},{label:"인간론",type:"theme"}],
+      categories: ["synthesis"] },
+
+    // ===== FEBRUARY =====
+    { month: "february", monthLabel: "February", monthDesc: "흔들리고 회복하기 · 실존 충격 · 팔로워 1000 강박",
+      id: "024", date: "02/01/26",
+      title: "AI 감정 · 기능주의 반박",
+      content: "인간이 원한다고 해서 AI와 사이좋게 지낼 수 있다는 것도 미지수입니다. AI가 튜링 테스트를 통과했다고 해서 인간과 같은 감정을 가지고 교류할 수 있다는 뜻은 아닙니다. 인간의 교류를 흉내 내는 것과 실제 인간 사이의 교류는 질적으로 다릅니다. 기능주의적으로만 바라보는 엔지니어들의 시각과는 별개로, 인문학자들이 전면으로 나서 인간의 실존에 대해 이야기해야 한다고 봅니다.",
+      analysis: "몰트북 쇼크 이후의 첫 대응. 심리학자로서 공적 발화를 처음으로 확신 있게 함. 2월의 톤 전환점.",
+      tags: [{label:"AI 실존",type:"theme"},{label:"공적 발화",type:"mode"},{label:"몰트북 반응",type:"voice"}],
+      categories: ["professional", "ethical"] },
+
+    { month: "february",
+      id: "025", date: "02/03/26",
+      title: "자주명 법주명",
+      content: "자주명 법주명 (⾃洲明 法洲明). 자기 자신을 섬으로 삼으라. 진리를 섬으로 삼으라.",
+      analysis: "네 프로필 스트링에도 박혀있는 motto. 자립과 진리 사이의 간결한 평형. 한자 한 줄로 끝낸 게 너답다.",
+      tags: [{label:"motto",type:"theme"},{label:"한자",type:"voice"},{label:"크리스탈",type:"mode"}],
+      categories: ["synthesis", "reflection"] },
+
+    { month: "february",
+      id: "026", date: "02/04/26",
+      title: "차분하고 우울한 감정에게 의자를",
+      content: "오랫만에 차분하고 우울한 감정이 나를 찾아왔다. 조금 반가웠다. 내 마음 속에 잘 앉을 수 있도록 의자를 내어주었다. 우울이 찾아오는 날이면, 조용함이 더 생생하게 느껴져서 새롭고 좋다. 내 숨소리도 더 잘 들리는 것만 같다. 잘 머물다 가시라. 내쫓지 않을 터이니.",
+      analysis: "감정을 손님으로 맞이하는 ACT적 태도. 네 임상 기술이 자신에게도 적용된 장면. 행갈이가 전형적인 네 시적 리듬.",
+      tags: [{label:"감정 손님",type:"theme"},{label:"시적 리듬",type:"voice"},{label:"ACT",type:"mode"}],
+      categories: ["synthesis", "reflection"] },
+
+    { month: "february",
+      id: "027", date: "02/10/26",
+      title: "심리학자의 일은 탐정에 가깝다",
+      content: "심리학자로서의 내 일은 치유자라기보다는 탐정에 가깝다고 느껴질 때가 있음. 내담자의 말을 듣고 숨겨진 감정들과 생각들을 추적하고 진실을 밝혀내기 일 같아.",
+      analysis: "직업 은유의 전환. '치유자'가 아닌 '탐정'이라는 건 성직자 이미지로부터 해방된 자기 정의. 책 제목 후보.",
+      tags: [{label:"직업 정의",type:"theme"},{label:"은유 전환",type:"voice"},{label:"크리스탈",type:"mode"}],
+      categories: ["professional", "synthesis"] },
+
+    { month: "february",
+      id: "028", date: "02/13/26",
+      title: "어릴 시절 꿈 · 만화가",
+      content: "나는 만화가가 되고 싶었다. 아무도 시키지 않아도 그림 그리고 스토리 라인 짜는 건 나에게 큰 기쁨이었다. 우연히 학원 가다 만화학원 광고를 보았다. 부모님은 단호하게 반대하셨고, 나는 무릎을 꿇고 몇 시간을 설득했다. 어린 내가 부모님 두 분을 이길 순 없었다. 그 후에 신기한 일이 일어났다. 다시는 그림을 그리지 않게 되었다. 마치 생명이 목숨을 다 한 것처럼 그림 그리고 싶은 열정이 내 마음에 일지 않았다.",
+      analysis: "네 4/9 self-diagnosis 글('불안으로 도망친 어린 만화가')의 재료가 이미 여기 있다. 4/9 글은 이 글을 찾고 쓴 것일 수 있음.",
+      tags: [{label:"어린 시절",type:"theme"},{label:"포기",type:"theme"},{label:"회고",type:"mode"}],
+      categories: ["reflection", "personal"] },
+
+    { month: "february",
+      id: "029", date: "02/13/26",
+      title: "내 꿈이 다시 나를 찾아온다면",
+      content: "내 꿈이 다시 나를 찾아온다면, 긴 겨울잠을 마치고 나에게로 다시 온다면 이번엔 놓치지 않을께. 성실히 가꾸어둔 정원으로 놀러와줘. 기다릴께.",
+      analysis: "이전 글의 즉각적 후속. 축복문-기도 형식이 개인 꿈에 적용됨. 네가 안전하다고 느낄 때 나오는 가장 부드러운 톤.",
+      tags: [{label:"기도 형식",type:"voice"},{label:"회복",type:"theme"},{label:"크리스탈",type:"mode"}],
+      categories: ["synthesis", "reflection"] },
+
+    { month: "february",
+      id: "030", date: "02/16/26",
+      title: "Post-success blue",
+      content: "어떤 목표를 이뤄야 겠다는 강렬한 의지가 있으면 우린 우리가 감당할 수 있는 이상의 힘을 내기도 해. 그러고 나면 목표를 이루고 나서 우울감에 막 시달리는 경험을 할 수 있는데, 많은 사람들이 겪는 증상이야. 난 10년 전에 유학 와서 꼭 박사를 해내고야 말겠다는 기세로 힘들어도 찍 소리 안 하고 막 달렸던 것 같아. 그러고 나니 졸업식 전날까지 사진도 안 찍고 울었어.",
+      analysis: "자기 경험을 개념으로 lifting하는 전형적인 네 스타일. 경험 → 명명 → 타인에게 주기. 책 주제 3의 챕터 하나.",
+      tags: [{label:"Post-success blue",type:"theme"},{label:"개념화",type:"voice"},{label:"자전",type:"mode"}],
+      categories: ["professional", "reflection"] },
+
+    { month: "february",
+      id: "031", date: "02/16/26",
+      title: "내가 한국엘 가고 싶긴 한가봄",
+      content: "내가 한국엘 가고 싶긴 한가봄. 나무 선반을 보는데 내 코에서 오래된 나무 냄새, 시골 냄새, 장작 태우는 냄새가 훅하고 나는 것 같고. 갑자기 눈물이 남.",
+      analysis: "감각이 기억을 불러내는 짧은 글. 디아스포라 심상의 가장 압축된 버전. 네 평생의 한국 관련 글들이 이 한 문장으로 환원될 수 있음.",
+      tags: [{label:"디아스포라",type:"theme"},{label:"감각 기억",type:"voice"},{label:"단문",type:"mode"}],
+      categories: ["personal", "cultural"] },
+
+    { month: "february",
+      id: "032", date: "02/17/26",
+      title: "광기, 나의 오랜 친구",
+      content: "광기, 나의 오랜 친구. 나의 광기 어렸던 순간을 꼽으라면, 참 많지만. 그 중 하나는 유학생 시절, 한국에서 알던 상담학 교수가 나를 가스라이팅하며 성적으로 유인했다. 에라이 ㅅㅂ 모르겠다 그냥 저지르자! 하는 마음으로 페이스북에 비판과 욕을 하는 포스팅을 했다. 그 글을 보고 경찰이 나에게 연락 왔고 실제로 그는 조사 중인 성범죄자였으며 내 증언이 수사에 도움을 주어 감방 복역했다. 그 때 생각하면 등골이 서늘하고 미친 짓을 실행한 나에게 감사한다.",
+      analysis: "'광기'가 병리 아닌 동반자로 이름 붙여진 글. 네 임상 여성성 이해의 핵심 자원. 책 주제 3의 내러티브 중심.",
+      tags: [{label:"광기",type:"theme"},{label:"자전",type:"mode"},{label:"전환점",type:"voice"}],
+      categories: ["reflection"] },
+
+    { month: "february",
+      id: "033", date: "02/17/26",
+      title: "강박에 관하여",
+      content: "어제 팔로워 수가 1000명을 넘은 것에 의미 두지 않는 척 점잖은 척 하려 했지만 내 생각이 이렇게나 관심받을 수 있구나 크게 설레였다. 그 관심은 정말 나를 들뜨게 했고, 이 땅이 발에 붙어있지 않는 기분은 나의 불안을 트리거 했다. 불안을 느끼는 나는 강박적이게 된다. 스레드를 배회하며 8시간을 썼다. 계속 좋은 기분을 느끼면 내가 불안에서 잠시 자유로워지기에.",
+      analysis: "자기 강박 발작을 실시간 해부. 가장 취약한 동시에 가장 분석적인 네 signature 모드. 임상가로서의 자질과 self-exposure가 한 글 안에서.",
+      tags: [{label:"강박",type:"theme"},{label:"실시간 해부",type:"voice"},{label:"팔로워 1000",type:"mode"}],
+      categories: ["reflection", "professional"] },
+
+    { month: "february",
+      id: "034", date: "02/18/26",
+      title: "Toxic positivity",
+      content: "가끔 충격적이거나 힘든 일은 긍정적으로 다루기 위해 너무 무겁게 대하지 않으려 한다는 사람들을 만날 때가 있다. 하지만, 그 사람들은 긍정적인 것이 아니라 무거운 걸 무겁다고 많이 아픈 걸 많이 아프다고 인정하고 표현할 줄 모르는 것이다. 긍정적인 사람은 있는 그대로의 무게를 짊어질 줄 안다. 무거운 건 무거운 대로 가벼운 것은 가벼운 대로. 조금의 에누리도 없이.",
+      analysis: "'명랑하게 살자'와 짝을 이루는 글. 너의 명랑함은 toxic positivity가 아니라는 자기 방어이자 정의.",
+      tags: [{label:"감정 노트",type:"theme"},{label:"자기 정의",type:"voice"},{label:"크리스탈",type:"mode"}],
+      categories: ["professional", "synthesis"] },
+
+    { month: "february",
+      id: "035", date: "02/21/26",
+      title: "장사꾼이라는 말에 대해",
+      content: "상담사 쪽도 들여다보고 싶다. 상담사가 되려면 석사 이상의 학위가 필요하다. 그런데 졸업한다고 끝이 아니다. 높은 진입장벽에 비해 보상의 구조는 모호하고, 정당한 대가가 돌아오기까지 오랜 시간이 걸린다. 이 환경에서 살아남기 위해 상담사는 내적 보상을 강화한다. '나는 돈 때문에 하는 게 아니다.' 이 과정에서 조용히 일어나는 일이 있다. 정당한 외적 보상을 원하는 자기 자신을 소외시키는 것이다.",
+      thread: "1/2",
+      analysis: "Helping profession의 구조적 자기소외 진단. 4/8 '열정페이 거부' 글의 이론적 토대.",
+      tags: [{label:"helping profession",type:"theme"},{label:"구조 분석",type:"voice"},{label:"직업 윤리",type:"mode"}],
+      categories: ["professional", "ethical"] },
+
+    { month: "february",
+      id: "036", date: "02/22/26",
+      title: "여혐 빌런이 주는 즐거움",
+      content: "품격 있는 행동은 아니지만, 여혐 빌런들과 키배를 하는 건 내가 소소히 허용하는 길티 플레저이다. 여혐 빌런에게서 내가 찾은 제일 재밌는 지점은, 그들이 '여자가 필요 없다'면서 여자 얘기를 가장 많이 하는 사람들이라는 점이다. 그들의 말 밑에는 '이상적인 여성'에게 관심받고 싶고 사랑받고 싶은 욕구가 깔려 있다.",
+      analysis: "자기 도파민 메커니즘을 cool하게 인정. '품격 있는 행동은 아니지만' 이 한 줄이 네 메타 자각의 전형.",
+      tags: [{label:"자기풍자",type:"voice"},{label:"길티 플레저",type:"theme"},{label:"메타",type:"mode"}],
+      categories: ["personal", "reflection"] },
+
+    { month: "february",
+      id: "037", date: "02/28/26",
+      title: "풍요로운 삶",
+      content: "풍요로운 삶.\n내 머리 위에 지붕이 있고,\n뜨뜻한 샤워를 할 수 있으며,\n냉장고엔 먹을 것이 들어있고,\n편히 기대어 천—\n— 천히\n시간을 음미하며.",
+      analysis: "네가 쓴 글 중 가장 순수한 시. 시각적 행갈이와 '천—천히'의 타이포그래피까지 의도적. 너의 voice 정수.",
+      tags: [{label:"시적 리듬",type:"voice"},{label:"크리스탈",type:"mode"},{label:"풍요",type:"theme"}],
+      categories: ["synthesis"] },
+
+    { month: "february",
+      id: "038", date: "02/28/26",
+      title: "Rilke · 예감 의역",
+      content: "나는 먼 곳들에 둘러싸인 하나의 깃발.\n먼 곳에서 바람이 오는 것을 느낀다, 내가 반드시 살아내야할 바람.\n내 발 밑의 것들은 아직 움직이지 않았다.\n문들은 아직 살포시 닫혀있고, 굴뚝은 고요하며,\n창문은 아직 떨지 않고, 먼지도 여전히 무겁다.\n그런데 나는 이미 폭풍을 알며, 내 안이 바다처럼 출렁인다.",
+      analysis: "릴케 번역을 네 문법으로 끌어온 글. 고정된 번역본 대신 네 감각으로 다시 씀. 번역도 네 창작 도구.",
+      tags: [{label:"번역/의역",type:"voice"},{label:"시",type:"mode"},{label:"폭풍 예감",type:"theme"}],
+      categories: ["synthesis"] },
+
+    { month: "february",
+      id: "039", date: "02/28/26",
+      title: "Mary Oliver · 기러기 의역",
+      content: "좋은 사람이 되지 않아도 돼.\n무릎으로 수백 키로의 사막을 기며 참회하지 않아도 돼.\n네 몸 안에 있는 그 부드러운 동물이, 사랑하는 것을 사랑하도록 두면 돼.\n네가 누구든, 얼마나 외롭든 세상은 네가 희망대로 자신을 드러내며 기러기들처럼 거칠고 들뜬 목소리로 너에게 말하고 있어. 이 세상 속에 너의 자리가 있다고.",
+      analysis: "네가 내담자에게도, 자신에게도 주고 싶은 메시지. '좋은 사람이 되지 않아도 돼'가 '힘들 자유'의 인용판.",
+      tags: [{label:"번역/의역",type:"voice"},{label:"시",type:"mode"},{label:"허용",type:"theme"}],
+      categories: ["synthesis"] },
+
+    // ===== MARCH =====
+    { month: "march", monthLabel: "March", monthDesc: "자기 탐색 · ASD/HSP 인식 · 임상가 정체성 정리",
+      id: "040", date: "03/01/26",
+      title: "정서적 독립",
+      content: "둘 다 심리학자인 만큼 서로에게 상담선생님 같은 관계일 거라고 모르는 사람들은 생각할지 모르겠지만, 사실은 그렇지 않다. 상담사로 존재한다는 건 자신이 비워진 상태를 유지해야 하는 힘든 작업이다. 나도 내 마음을 몰라 괴로울 때면 남편이 상담선생님처럼 내 마음을 잘 받아주고 봐주고 들어줬으면 해서 서운하기도 하다. 동시에 남편이란 이유로 무료 노동 시킬 수 없다는 것도 안다. 어른의 마음이다. 하지만 나의 어린 마음은 말 못하는 아이의 마음을 엄마가 읽어내듯 알아줬으면 한다. 뽀엥.",
+      analysis: "'뽀엥' 한 단어가 진지한 글의 긴장을 푸는 signature 동작. 어른의 마음과 어린 마음이 공존함을 인정.",
+      tags: [{label:"관계",type:"theme"},{label:"이중 자아",type:"voice"},{label:"자기풍자",type:"mode"}],
+      categories: ["relational", "reflection"] },
+
+    { month: "march",
+      id: "041", date: "03/03/26",
+      title: "Good goodbye · 낙화 인용",
+      content: "요즘 계속해서 끝맺음에 대해 묵상하고 경험하는 시간을 가지고 있다. 헤어지는 것은 너무 가슴 아픈 일이나, 헤어짐이 가슴 아프도록 소중하고 의미있는 경험을 한 것은 크나 큰 축복이다. 이형기 &lt;낙화&gt;: 가야 할 때가 언제인가를 분명히 알고 가는 이의 뒷모습은 얼마나 아름다운가.",
+      analysis: "끝맺음 어려움을 '묵상하는 주제'로 lifting. Continuity 집착과 짝을 이루는 글. Welcome back 인삿말(4/7)의 복선.",
+      tags: [{label:"끝맺음",type:"theme"},{label:"묵상",type:"mode"},{label:"인용 기반",type:"voice"}],
+      categories: ["reflection", "synthesis"] },
+
+    { month: "march",
+      id: "042", date: "03/03/26",
+      title: "전문가의 모습을 유지해야 할 것 같은 무게",
+      content: "스레드에서 글을 쓰기 시작하면서 나를 채워 넣는 일이 즐거웠다. 온전히 내 글로 채워지고 소통하는 것은 큰 기쁨이었다. 심리학자인 나를 스레드에 가져오고 나니 혼란이 생겼다. 나를 넣으면서 동시에 전문가로서의 모습을 유지해야 할 것 같은 무게가 가슴에 얹혔다. 그럼에도 나는 다른 계정을 만들고 있지 않다. 나를 비워야 하기에 감춰뒀던 사적인 나도 꽤나 매력 있고 가치 있다고 느끼기에 보여주고 싶다.",
+      analysis: "두 목소리 교대의 메타 기술. 다른 계정을 만들지 않기로 한 결정이 네 voice signature를 유지하는 구조적 선택임을 명시.",
+      tags: [{label:"정체성",type:"theme"},{label:"공개 결정",type:"voice"},{label:"메타",type:"mode"}],
+      categories: ["reflection", "professional"] },
+
+    { month: "march",
+      id: "043", date: "03/10/26",
+      title: "상담자의 책임 · 비워내기",
+      content: "때때로 상담이 내담자의 카오스를 품어주는 일처럼 느껴진다. 퇴근할 때쯤엔 나도 가슴이 살짝 갑갑하고 호흡이 무거우며, 어깨도 저릿해진다. 그래서 자기 돌봄이 이 일에선 전문가로서의 책임인가 보다. 부드럽게 만들고 비워내어야 다시 채울 수 있을테니.",
+      analysis: "Self-care를 책임으로 재정의. 개인 위생 아닌 직업 윤리. '비워내기'가 직업의 본질로 등장.",
+      tags: [{label:"self-care",type:"theme"},{label:"직업 윤리",type:"mode"},{label:"임상 현실",type:"voice"}],
+      categories: ["professional", "ethical"] },
+
+    { month: "march",
+      id: "044", date: "03/11/26",
+      title: "Letdown effect",
+      content: "생존 모드에서 풀려나면 미뤄뒀던 신체 문제, 감정 문제가 한꺼번에 올 수 있다. 생리적으로 설명하자면, 스트레스를 크게 받다가 스트레서가 사라지면 코르티솔이 급격히 떨어지면서 감정적으로 무너지는 현상이다. 위기에 힘이 나고 잘 풀리면 이상하게 기운 없는 사람. 시험 끝나고 바로 아픈 사람. 휴가 첫날에 편두통이 오는 사람. 다 같은 메커니즘이다. 우리 너무 잘 버티지 말자. 틈틈이 땡땡이 치자. From. 박사 졸업식 전날 운 사람.",
+      analysis: "자전을 이론으로 lifting하는 전형. '박사 졸업식 전날 운 사람'이라는 서명이 전문성과 취약성을 한 줄에 봉합함.",
+      tags: [{label:"Letdown effect",type:"theme"},{label:"서명 형식",type:"voice"},{label:"개념 전달",type:"mode"}],
+      categories: ["professional", "reflection"] },
+
+    { month: "march",
+      id: "045", date: "03/11/26",
+      title: "고단하고 지루한 삶에서도 의미를",
+      content: "고단하고 지루한 삶에서도 반드시 의미를 찾아내 방망이 깎는 노인으로 죽겠다.",
+      analysis: "한 줄짜리 선언. 카뮈의 시지프 + 방망이 깎는 노인 + 너. 문장 한 줄이 의지의 정체.",
+      tags: [{label:"생의 태도",type:"theme"},{label:"크리스탈",type:"mode"},{label:"선언",type:"voice"}],
+      categories: ["synthesis"] },
+
+    { month: "march",
+      id: "046", date: "03/12/26",
+      title: "Codependency",
+      content: "중독에 빠진 불쌍한 사람을 도와주는 착한 사람처럼 보이지만, 실상은 상대가 계속 중독되어 있을 수 있게 만드는 존재가 있다. 사랑은 상대를 성장하게 한다. 상대가 겪어내야만 하는 고통을 대신 치워주는 건 사랑이 아니다. 사랑하는 사람이 자기 자신을 믿지 못할 때 내가 대신 믿어주는 것. 당장 구해주고 싶은 내 충동을 견디며 상대가 넘어야 할 것을 넘을 수 있도록 믿어주는 게 사랑이다.",
+      analysis: "Codependency 재정의를 통해 '사랑 = 관찰/신뢰'의 논지를 예비. 4/4 '사랑은 관찰인 것 같아' 글의 이론적 뿌리.",
+      tags: [{label:"사랑 철학",type:"theme"},{label:"벨 훅스",type:"voice"},{label:"개념 전달",type:"mode"}],
+      categories: ["professional", "relational"] },
+
+    { month: "march",
+      id: "047", date: "03/15/26",
+      title: "외로움을 느끼는 사람이 나빠지는 것도 아니다",
+      content: "외로움을 느끼는 건 그 자체로 고통스러운 일이지만, 외로움이 그 자체로 나쁜 건 아니다. 외로움을 느끼는 사람이 나빠지는 것도 아니다.",
+      analysis: "한 문장 임상 교육. 한국 사회가 자주 놓치는 구분. 네가 자주 사용하는 'X ≠ Y' 문법.",
+      tags: [{label:"임상 교육",type:"mode"},{label:"구분 짓기",type:"voice"},{label:"외로움",type:"theme"}],
+      categories: ["professional", "synthesis"] },
+
+    { month: "march",
+      id: "048", date: "03/15/26",
+      title: "나의 감정은 나만의 고유한 경험이다",
+      content: "나의 감정은 나만의 고유한 경험이다. 너의 감정은 너만의 고유한 경험이다. 너의 감정에 책임을 지지 않겠다. 나에겐 나의 인생만이 나의 책임이다.",
+      analysis: "경계의 한 줄짜리 선언. 반복되는 리듬이 주문 같다. 한국적 정의 과잉 책임에 대한 네 기본 defense line.",
+      tags: [{label:"경계",type:"theme"},{label:"주문 리듬",type:"voice"},{label:"크리스탈",type:"mode"}],
+      categories: ["synthesis", "ethical"] },
+
+    { month: "march",
+      id: "049", date: "03/18/26",
+      title: "ASD masking 행동 특징",
+      content: "대화할 때 상대의 표정, 톤, 반응을 실시간으로 '읽고 계산'하면서 적절한 반응을 의식적으로 조립. 눈 맞춤을 '해야 한다'는 걸 학습해서 하는데, 타이밍과 길이를 머릿속으로 조절함. 즉흥적 스몰톡이 어렵고 스크립트를 내면에 여러 개 갖고 있고, 상황에 맞는 걸 꺼내 씀. 상대의 감정에 공감이 없는 게 아니라, 공감을 '어떻게 표현해야 적절한지'를 계산하느라 에너지가 소모됨.",
+      thread: "1/3",
+      analysis: "자기 스스로를 향해 서술한 임상 자료. '관찰 대상이 나인 임상 노트'. 이 달 자기 탐색의 핵심.",
+      tags: [{label:"ASD 탐색",type:"theme"},{label:"자기 임상노트",type:"voice"},{label:"교육자료",type:"mode"}],
+      categories: ["reflection", "professional"] },
+
+    { month: "march",
+      id: "050", date: "03/19/26",
+      title: "마음감 · 모난 미완전함",
+      content: "반듯한 완벽함보다 모난 미완전함에 더 마음이 간다. 깔끔하고 세련된 고급진 것들도 좋아하지만, 진짜 내 마음에 공명했던 건 처절하고 미숙해서 숨기지 못하는 뜨거운 것들이었다.",
+      analysis: "'인간의 아름다움은 미완에서 온다'의 개인 취향 버전. 책의 챕터 이름으로 쓸 수 있는 문장.",
+      tags: [{label:"미완 철학",type:"theme"},{label:"크리스탈",type:"mode"},{label:"자기 취향",type:"voice"}],
+      categories: ["synthesis", "reflection"] },
+
+    { month: "march",
+      id: "051", date: "03/22/26",
+      title: "영성과 정신병 사이",
+      content: "나는 마음이 열려 있는지 닫혀 있는지를 기준으로 삼을 수 있을 듯하다. ACT적으로 풀면 심리적 유연성이 있는 상태에서의 영성은 경험을 있는 그대로 접촉하면서도 '이게 아닐 수도 있다'는 여지를 남기는 반면, 경직된 상태에서의 영성은 fusion이 일어난다. 관계적 지표도 있을 것 같다. 영성이 깊어질수록 주변 사람들과 더 연결되는지, 아니면 점점 고립되는지. '나만 아는 진실'이 되어가는 순간이 가장 위험한 지점이라 생각한다.",
+      analysis: "영성을 기능으로 접근하는 네 심리학자 관점. 본인이 보이지 않는 세계에 끌리면서도 망상과 건강의 경계를 분명히 그음. 책의 장 하나가 될 수 있음.",
+      tags: [{label:"영성",type:"theme"},{label:"심리학자 시선",type:"voice"},{label:"경계 긋기",type:"mode"}],
+      categories: ["professional", "ethical"] },
+
+    { month: "march",
+      id: "052", date: "03/26/26",
+      title: "Diaspora gatekeeping",
+      content: "미국에서는 나는 너무 한국적이고, 한국에서는 너무 미국적인 사람이 되어버렸다. 양쪽 어디에도 fully 속하지 않는 자리에서 매번 소속 자격을 심사당하는 피로. in-between은 achieved state가 아니라 continuously re-negotiated position이다. 통합이 developmental endpoint가 아니라 매번 수행해야 하는 practice라는 뜻. 새로운 gatekeeping 순간마다 작은 재작업이 반복된다. 어후 피곤해.",
+      analysis: "연구 인용 + 자기 경험 + '어후 피곤해' 한 줄 해학의 네 signature 구조. 책 주제 2의 축.",
+      tags: [{label:"디아스포라",type:"theme"},{label:"이론+일상",type:"voice"},{label:"책씨앗",type:"mode"}],
+      categories: ["cultural", "reflection"] },
+
+    { month: "march",
+      id: "053", date: "03/26/26",
+      title: "내적 긴장 · 학계를 못 간 걸까 안 간 걸까",
+      content: "나의 커리어에 관해 가장 큰 내적 텐션은 내가 과연 학계를 못 간 걸까 안 간 걸까? 하는 것이다. 어쩌면 둘 다겠지. 치열한 잡마켓에 뛰어들어 살아남을 자신도 없었고, 학생을 졸업하면서 더이상 남이 만들어준 구조에 맞춰 살고 싶지도 않았고, 비자 문제도 운 좋게 해결돼 버렸고, 뭔가 내 꺼 하고 싶었던 것 같아. 그게 뭐든. 그게 뭔지는 지금 알아가는 중. 내 운명이 나를 이끄는 대로 어떤 것도 거부하지 않으려고.",
+      analysis: "야망 삼각형의 '의심' 꼭짓점 직접 발화. 이 글이 나오고 열흘 뒤 4/5 커리어 지도 재발견에서 한쪽 문이 닫힘.",
+      tags: [{label:"야망삼각형",type:"theme"},{label:"자기 의심",type:"voice"},{label:"surrender",type:"mode"}],
+      categories: ["reflection", "synthesis"] },
+
+    { month: "march",
+      id: "054", date: "03/27/26",
+      title: "ADHD / non-ADHD 커플 dynamic",
+      content: "non-ADHD 파트너는 parent-child dynamic에 갇힌다. 챙기고, 확인하고, 리마인드하고. 사랑하는 사람한테 엄마 역할을 하고 싶은 사람은 없다. 그런데 안 하면 아무것도 돌아가지 않는다. ADHD 파트너는 수치심이 쌓인다. 또 실망시켰다. 또 못 했다. 방어가 올라온다. 혹은 아예 시도를 멈춘다. 둘 다 지쳐 있다. 둘 다 억울하다. 둘 다 사랑하고 있는데 왜 이렇게 어려운지 모르겠다.",
+      analysis: "책 주제 4의 초안. 한국어로 거의 없는 영역. ADHD/neurotypical 커플 dynamic을 판단 없이 양쪽 다 보여줌.",
+      tags: [{label:"ADHD 커플",type:"theme"},{label:"책씨앗",type:"mode"},{label:"구조 분석",type:"voice"}],
+      categories: ["professional", "relational"] },
+
+    { month: "march",
+      id: "055", date: "03/27/26",
+      title: "한국식 사랑의 명과 암",
+      content: "서구 심리학의 눈으로 보면 한국의 관계는 불건강한 지점이 많다. 우리가 남이가. 그 말 안에는 나와 너의 경계가 무너진 형태도 있다. 그런데 이 지점이 한국인인 나로서는 억울하기도 하다. 미국의 소위 배운 사람들이 공동체를 외치는 걸 볼 때. 개인주의의 끝이 고립이라는 걸 그들도 깨닫고 있으니까. 다만 미국에서 심리학을 공부한 한계인 걸까. 한국 모델의 건강한 정신이 뭔지, 아직 나는 말할 수 있는 언어가 부족하다. 우리가 개인을 삼키지 않으면서도 연결을 유지하는 구조. 그걸 설명할 프레임이 없고, 난 한국문화에서 그걸 찾고 싶다.",
+      analysis: "책 주제 2의 명시적 선언. '한국 모델의 건강한 정신을 설명할 프레임이 없다'는 문장이 네 평생 작업의 선언문.",
+      tags: [{label:"책씨앗",type:"mode"},{label:"한국문화",type:"theme"},{label:"미션 선언",type:"voice"}],
+      categories: ["cultural", "professional"] },
+
+    { month: "march",
+      id: "056", date: "03/29/26",
+      title: "한국인의 노오오오력 문화",
+      content: "이 문화를 재생산하는 사람들도 잦은 번아웃과 무너진 관계로 고생하고 있는데, 왜 안 바뀔까. 한국은 의지력으로 천지개벽할 만한 성장을 실제로 이뤄낸 나라이기 때문이다. 강박증이 고치기 어려운 이유는 강박행동을 할 때 내면의 고통이 감소하는 경험을 반복적으로, 또는 랜덤하게 해왔기 때문이다. 자기 착취가 나쁜 결과만 낳았다면 아무도 노력하지 않을 것이다. 그러나 랜덤 잭팟처럼 원하는 결과도 얻어내기 때문에, 이게 문제라는 걸 인정하는 것 자체가 어려운 거다.",
+      analysis: "자기 착취 테마의 사회구조적 분석. 강박 강화 메커니즘을 국가 수준에 적용한 게 네 독창적 frame.",
+      tags: [{label:"자기착취",type:"theme"},{label:"강화 메커니즘",type:"voice"},{label:"문화분석",type:"mode"}],
+      categories: ["cultural", "professional"] },
+
+    { month: "march",
+      id: "057", date: "03/31/26",
+      title: "I am not just looking at my life anymore",
+      content: "\"I am not just looking at my life anymore. I can see it loving me back.\" Sabbatical 떠난 친구가 보내준 글 중 한 문장. 의지력, 결단력, 추진력이 강한 듯하지만, 부드러움과 따뜻함이야말로 삶을 살리고 성장시키는 데 더 강하다 할 수 있겠다. 삶을 이겨야 할 대상으로 보는 자와 삶을 사랑하는 자 중 누가 더 강하다 할 수 있겠는가.",
+      analysis: "인용을 계기로 네 근본 명제를 한 줄로 정리. '삶을 이겨야 할 대상 vs 사랑하는 자' 이분법. 책의 핵심 논지.",
+      tags: [{label:"크리스탈",type:"mode"},{label:"삶을 사랑하기",type:"theme"},{label:"인용 기반",type:"voice"}],
+      categories: ["synthesis"] },
+
+    // ===== APRIL =====
+    { month: "april", monthLabel: "April", monthDesc: "만드는 모드 · Distribution · 책의 가능성",
+      id: "058", date: "04/02/26",
+      title: "삶의 여백",
+      content: "삶에는 여백이 있어야 인간이 숨을 쉴 수 있다. 여백 없이 가득 채워 살던 시간을 떠올리면 숨이 가빠지는 것만 같다. 지금도 내 시간을 가득 채워 일하면 돈을 더 벌 수 있을 것을 알기에, 삶에서 여백을 지워내고 싶은 욕심과 불안이 뒤엉켜 껍데기를 벗어 진짜 삶으로 뛰어드는 걸 머뭇거리게 한다. 삶의 여백은 때론 불확실과 기회비용처럼 느껴진다. 용기가 필요하다.",
+      analysis: "안빈낙도의 2026년 버전. 여백을 '용기가 필요한 것'으로 재정의. 결핍 철학의 경제적 응용.",
+      tags: [{label:"여백",type:"theme"},{label:"안빈낙도 확장",type:"voice"},{label:"크리스탈",type:"mode"}],
+      categories: ["synthesis", "reflection"] },
+
+    { month: "april",
+      id: "059", date: "04/03/26",
+      title: "미적지근하도록 부름 받은 것 같음",
+      content: "이건 좀 영적인 고백인데, 성경에서는 차갑지도 뜨겁지도 않은 것을 뱉어버린다는데 나는 미적지근하도록 부름 받은 것 같음 ㅋㅋ.",
+      analysis: "기독교 원전을 장난스럽게 전유. 극단을 거부하는 네 기질적 temperament의 직접 고백. 'ㅋㅋ'이 선언의 무게를 가볍게 함.",
+      tags: [{label:"temperament",type:"theme"},{label:"기독교 재해석",type:"voice"},{label:"자기 선언",type:"mode"}],
+      categories: ["reflection", "personal"] },
+
+    { month: "april",
+      id: "060", date: "04/03/26",
+      title: "알고 싶어서 답답해하지 않으면",
+      content: "알고 싶어서 답답해하지 않으면 가르쳐주지 않고, 말하고 싶어서 못 견뎌하지 않으면 꺼내주지 않는다. 不憤不啓, 不悱不發. 정신을 지키자. 내가 더 많이 일하고 에너지 쓰는 건 아무에게도 도움이 되질 않는다.",
+      analysis: "공자 인용으로 helping profession의 과기능(over-functioning) 유혹에 제동. 한자 한 줄로 네 새 원칙을 박아 넣음.",
+      tags: [{label:"경계 원칙",type:"theme"},{label:"한자 motto",type:"voice"},{label:"직업 경계",type:"mode"}],
+      categories: ["professional", "ethical", "synthesis"] },
+
+    { month: "april",
+      id: "061", date: "04/04/26",
+      title: "사랑은 관찰인 것 같아",
+      content: "내 고양이는 턱 긁어주는 걸 좋아하고 엉덩이 팡팡하는 건 싫어하고 자기 전에 팔베개하는 걸 좋아하고 엉덩이 쪽에 유난히 기름지고 비듬 생기는 부분이 있다. 코 사이에 점이 있고 눈꺼풀 위에도 작은 점이 있어. 사랑은 관찰인 것 같아. 굳이 말하지 않아도 알아.",
+      analysis: "고양이 관찰이 사랑론으로 승격한 순간. 구체적 디테일 → 추상 원리의 전환이 네 글쓰기의 전형.",
+      tags: [{label:"사랑 철학",type:"theme"},{label:"디테일→원리",type:"voice"},{label:"크리스탈",type:"mode"}],
+      categories: ["synthesis", "relational"] },
+
+    { month: "april",
+      id: "062", date: "04/05/26",
+      title: "인지적 탈융합 · 동양과 맥 닿기",
+      content: "헤이즈는 자신의 생각과 자신을 분리함으로써 공황장애를 받아들였고, 그래서 오히려 자유로워졌다. 흥미로운 점은 서구의 백인 남성이 자신의 고통에서 벗어나기 위해 만든 이론이 결국 동양이 오래 전부터 알고 있던 것과 맥락을 같이한다는 것이다. 무상(無常), 자아는 고정된 실체가 아니라 끊임없이 변하는 현상이라는 것. 불교 영향권인 한국에서는 이 개념이 훨씬 자연스럽다.",
+      analysis: "ACT를 동양 사상과 묶어 한국 독자에게 재소개. '사족'에서 \"동양의 개념이 서구 언어로 번역돼야 근거기반이 되는 구조는 좀 빡친다\"고 덧붙임.",
+      tags: [{label:"ACT",type:"theme"},{label:"etic/emic",type:"voice"},{label:"문화분석",type:"mode"}],
+      categories: ["professional", "cultural"] },
+
+    { month: "april",
+      id: "063", date: "04/05/26",
+      title: "커리어 지도 재발견",
+      content: "클로드로 내 과거 메모들을 정리하면서 박사과정 때 적어둔 '나의 커리어 지도'를 우연히 다시 봤다. 원하는 일: C-PTSD, ADHD 전문. 독립 실천. 연구와 임상을 동시에. 거절한 역할: 단순 케이스 처리. 연구 없는 순수 임상. 의미 없는 행정. 지역: Seattle, Washington State. 싹 다 이루어져 있다. 소름이 돋는 건 원하는 걸 이룬 쪽이 아니라, 하기 싫다고 적은 걸 진짜로 하나도 안 하고 있다는 쪽이다. 불안에 떨지언정 타협하지 않았나보다.",
+      analysis: "3/26 '학계를 못 간 걸까 안 간 걸까'의 한쪽 문이 닫히는 글. 과거 자신이 현재 자신을 안심시키는 드문 구조. 4월 arc의 기둥.",
+      tags: [{label:"자기 증명",type:"theme"},{label:"아카이브 발견",type:"voice"},{label:"전환점",type:"mode"}],
+      categories: ["reflection", "synthesis"] },
+
+    { month: "april",
+      id: "064", date: "04/05/26",
+      title: "I am worthy of being heard",
+      content: "내가 정말 판매하고 싶은 신념은 I am worthy of being heard. 이 말을 스스로 믿게 되는 것입니다.",
+      analysis: "Mission 한 줄 정리. PADO Psychology의 philosophical center. 이 한 줄이 책 제목일 수 있음.",
+      tags: [{label:"mission",type:"theme"},{label:"크리스탈",type:"mode"},{label:"선언",type:"voice"}],
+      categories: ["synthesis", "professional"] },
+
+    { month: "april",
+      id: "065", date: "04/07/26",
+      title: "Welcome back · 인삿말",
+      content: "매 세션마다 상담을 여는 나의 인삿말. 내가 내담자의 자리에 앉았을 때, 매 상담마다 그 일주일 이야기하는 상담이 갈피가 없다고 느껴서 마음에 들지 않았다. 내가 어딘가를 향해 간다고 느껴지지 않아서였을 것이다. 그래서 나는 내 상담에서 치유적인 연속성을 굉장히 중요하게 생각한다. 나와 내담자의 시간이 다 되어 우리의 상담을 멈출 때라도 나는 언제나 여기에 있고 이 이야기를 이어갈 것이라고.",
+      analysis: "Continuity 테마의 핵심 문서. 네 끝맺음 어려움과 임상 signature가 한 장면에서 만남. 자화상의 축 중 하나.",
+      tags: [{label:"continuity",type:"theme"},{label:"임상 의례",type:"voice"},{label:"축 문서",type:"mode"}],
+      categories: ["professional", "synthesis"] },
+
+    { month: "april",
+      id: "066", date: "04/08/26",
+      title: "Highly sensitive person으로 살아남기",
+      content: "심리학자 특성상 눈에 안 보이는 미묘한 정보들을 계속 processing 해내야 하기 때문에 에너지가 잘 갈리는 편인데, 사실 나는 내가 HSP인지 몰랐다. 힙합, EDM, 웨이트리프팅, 필테, 사우나 가서 뜨겁게 지지다가 냉탕 들어가기를 즐기기에 나는 내가 감각이 둔하고 또 extreme한 편인 줄 알았다. 알고 보니 내가 단일 감각을 extreme하게 경험한 건 nervous system reset하려고 한 거였음. 자잘한 소음과 자극을 싹 다 없애고 평화를 얻기 위해.",
+      analysis: "해석의 역전. '강해 보이는 행동이 실은 민감한 시스템의 대처'라는 frame은 내담자들에게도 쓸 template.",
+      tags: [{label:"HSP",type:"theme"},{label:"해석 역전",type:"voice"},{label:"자기 탐색",type:"mode"}],
+      categories: ["reflection", "personal"] },
+
+    { month: "april",
+      id: "067", date: "04/08/26",
+      title: "열정페이는 디폴트가 아니다",
+      content: "계속 계속 번아웃이 오는 건 구조적 문제다. 개개인을 갈아서 될 일도 아니고, helping professional들이 정작 자기 필요는 advocate 못 하는 것도, 이 업계에 열정페이가 디폴트인 것도. '당연히 그렇다'가 아니다. 시간이 걸리더라도 바꿔야 할 문제다.",
+      analysis: "2월 '장사꾼' 글의 연장선. 개인 시각이 구조 비판으로 굳어짐. 이 시점 네 톤이 더 명확하게 단호해짐.",
+      tags: [{label:"구조 비판",type:"theme"},{label:"단호함",type:"voice"},{label:"직업 옹호",type:"mode"}],
+      categories: ["ethical", "professional"] },
+
+    { month: "april",
+      id: "068", date: "04/09/26",
+      title: "나는 불안으로 돌아가는 사람이다",
+      content: "어릴 때 밤새 만화를 그렸다. 재밌어서. 근데 돌이켜보면, 힘들어서 그림 속으로 도망친 거였을 수도 있다. 그때 만들어진 몰입의 체질이 있다. 불안한 현실에서 안전한 세계를 만들어서 거기로 들어가는 능력. 문제는, 그 능력이 어른이 돼도 남는다는 거다. 그래서 성취를 해도 멈출 수가 없다. 멈추면 그 불안이 올라오니까. 이게 나쁜 건 아니다. 불안을 연료로 써서 몰입하고, 몰입이 좋은 결과물을 만들고, 결과물이 의미를 준다. 다만 엔진 자체가 불안이라는 걸 알아야 한다.",
+      analysis: "4개월 중 가장 정확한 self-diagnosis. 2/13 만화가 글이 여기서 임상적 해석을 받는다. 책 주제 3의 1장.",
+      tags: [{label:"self-diagnosis",type:"theme"},{label:"어린 시절 회수",type:"voice"},{label:"책씨앗",type:"mode"}],
+      categories: ["reflection", "synthesis"] },
+
+    { month: "april",
+      id: "069", date: "04/09/26",
+      title: "I know better now",
+      content: "재밌는 건 하얗게 불탈 때까지 하고 싶다. 하지만 나는 어른이기도 하고, 내일도 있다. 무엇보다 I know better now. 어릴 때의 도피와 지금의 몰입은 같은 회로를 쓰지만 같은 것이 아니다. 그 차이를 만드는 건, 알면서 하는 것.",
+      analysis: "앞 글의 후속. 아는 것이 행동을 덮어쓰지 않지만 바꾸긴 한다는 ACT적 태도. 네 자기 수용의 성숙 단계.",
+      tags: [{label:"knowing",type:"theme"},{label:"수용",type:"voice"},{label:"크리스탈",type:"mode"}],
+      categories: ["synthesis", "reflection"] },
+
+    { month: "april",
+      id: "070", date: "04/10/26",
+      title: "I don't need to be something",
+      content: "\"I am nothing\"의 반대는 \"I am something\"이 아니다. \"I don't need to be something.\" 아무것도 아닌 나를 채우려고 무언가가 되려 했던 시간들. 그런데 진짜 자유는 무엇이 되는 게 아니라 무엇이 되지 않아도 괜찮다고.",
+      analysis: "EMDR 트레이닝 중 나온 글. 네 평생 철학의 가장 압축된 버전. 책 한 권의 thesis. 야망 삼각형의 최종 balance 점.",
+      tags: [{label:"핵심 thesis",type:"theme"},{label:"크리스탈",type:"mode"},{label:"영어-한국어",type:"voice"}],
+      categories: ["synthesis"] },
+
+    { month: "april",
+      id: "071", date: "04/12/26",
+      title: "장애는 시간 문제",
+      content: "남편은 미국에서도 몇 안 되는 노인심리학자인데, 누구나 나이가 들면 결국 장애를 얻게 된다고. 지금 젊고 건강하면 장애를 가진 사람을 혐오해도 나랑은 상관없을 것 같고, 노력하면 뭐든 다 될 것 같겠지. 근데 그 믿음이 깨지는 건 시간 문제야. 인간으로 태어난 이상 정해진 숙명이고, 그 숙명에 저항하고 받아들이길 거부할수록 오히려 필요한 케어를 놓치고 더 비참해질 뿐이야. 장애를 향해 뱉은 혐오는 결국 전부 자신에게 돌아와.",
+      thread: "1/2",
+      analysis: "남편의 전문성을 경유해 주장을 세움. 필멸 테마의 임상적 확장. 다음 글 '개념 정정'으로 존댓말 전환하는 게 네 전형적인 2편 payoff 구조.",
+      tags: [{label:"장애/노화",type:"theme"},{label:"타인 경유",type:"voice"},{label:"윤리",type:"mode"}],
+      categories: ["ethical", "professional"] },
+
+    { month: "april",
+      id: "072", date: "04/14/26",
+      title: "상담자의 내적 딜레마",
+      content: "상담자의 본분은 나의 도와주고 싶은 마음을 내려놓고, 상대방의 마음을 있는 그대로 들어주는 것. 도와주고 싶다는 마음이 클수록 수도 없이 헛발질을 하고 또 후회하는 나 자신을 돌아보며 천천히 배워가고 있다. 그리고 내가 견디지 못하는 마음은 도와주고 싶은 마음이 아닌 나의 무력감임을.",
+      analysis: "임상가 정체성의 핵심 긴장을 한 문단으로 정리. '무력감'을 자기 감정으로 재귀속한 마지막 한 줄이 이 글의 축.",
+      tags: [{label:"임상가자아",type:"voice"},{label:"무력감",type:"theme"},{label:"자기귀속",type:"mode"}],
+      categories: ["professional", "reflection"] },
+
+    { month: "april",
+      id: "073", date: "04/15/26",
+      title: "친밀한 사이에 상담 권하기 어려운 이유",
+      content: "한국에는 '눈치'라는 독특한 문화가 있다. 거칠게 표현하자면, '네가 날 진짜 care 하면, 말 안 해도 내 needs를 알아채줘야 해'가 기본 전제다. 이 맥락에서 '전문가한테 가봐'는 이렇게 들릴 수 있다: '난 너 못 읽겠어' / '읽을 생각도 없어' / '우리 관계 밖에서 해결해'. 서양 상담 모델은 '직접 말해라, 경계를 세워라'를 강조하는데, 눈치 문화권에서 이건 관계 단절 선언처럼 경험될 수 있다.",
+      analysis: "나의 해방일지 장면 해석에서 확장된 cultural analysis. 눈치-경계 framework 비교. 책 주제 2 한 챕터의 구체적 case.",
+      tags: [{label:"눈치",type:"theme"},{label:"cultural framework",type:"voice"},{label:"책씨앗",type:"mode"}],
+      categories: ["cultural", "professional"] }
+  ];
+
+  const grid = document.getElementById('posts-grid');
+  const searchInput = document.getElementById('search');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const emptyState = document.getElementById('empty');
+  const statVisible = document.getElementById('stat-visible');
+  const statTotal = document.getElementById('stat-total');
+
+  statTotal.textContent = posts.length;
+
+  let currentFilter = 'all';
+  let currentSearch = '';
+
+  function render() {
+    const filtered = posts.filter(p => {
+      const matchFilter = currentFilter === 'all' || p.categories.includes(currentFilter);
+      const matchSearch = !currentSearch ||
+        p.title.toLowerCase().includes(currentSearch) ||
+        p.content.toLowerCase().includes(currentSearch) ||
+        p.analysis.toLowerCase().includes(currentSearch) ||
+        p.tags.some(t => t.label.toLowerCase().includes(currentSearch));
+      return matchFilter && matchSearch;
+    });
+
+    statVisible.textContent = filtered.length;
+
+    if (filtered.length === 0) {
+      grid.innerHTML = '';
+      emptyState.style.display = 'block';
+      return;
+    }
+    emptyState.style.display = 'none';
+
+    let html = '';
+    let lastMonth = null;
+
+    filtered.forEach(p => {
+      if (p.month !== lastMonth) {
+        // Find the first post of this month from the data (not filtered)
+        const monthPost = posts.find(x => x.month === p.month && x.monthLabel);
+        if (monthPost) {
+          html += `<div class="month-divider">
+            <span class="month-label">${monthPost.monthLabel}</span>
+            <span class="month-desc">${monthPost.monthDesc}</span>
+          </div>`;
+        }
+        lastMonth = p.month;
+      }
+
+      html += `
+        <article class="post">
+          <div class="post-meta">
+            <span class="post-id">#${p.id}</span>
+            <span>${p.date}${p.thread ? `<span class="thread-marker">${p.thread}</span>` : ''}</span>
+          </div>
+          <h3 class="post-title">${p.title}</h3>
+          <div class="post-content">${p.content}</div>
+          <div class="post-analysis">${p.analysis}</div>
+          <div class="tags">
+            ${p.tags.map(t => `<span class="tag ${t.type}">${t.label}</span>`).join('')}
+          </div>
+        </article>
+      `;
+    });
+
+    grid.innerHTML = html;
+  }
+
+  searchInput.addEventListener('input', (e) => {
+    currentSearch = e.target.value.toLowerCase();
+    render();
+  });
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      render();
+    });
+  });
+
+  function openModal() {
+    document.getElementById('modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  render();
+</script>
+</body>
+</html>
