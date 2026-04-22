@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 9 Domains of ADHD Symptoms</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FDF8F3;
+      --warm-beige: #F5E6D3;
+      --soft-sage: #C5D4C0;
+      --calm-blue: #B8C9D4;
+      --dusty-rose: #E8D4D4;
+      --soft-lavender: #D4D4E8;
+      --deep-forest: #3D5A47;
+      --warm-brown: #8B7355;
+      --soft-charcoal: #4A4A4A;
+      --light-gray: #E8E1D9;
+      --in-dsm: #C5D4C0;
+      --partial-dsm: #F5E6D3;
+      --not-dsm: #E8D4D4;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+      background: var(--cream);
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+      padding: 48px 24px 40px;
+      background: linear-gradient(180deg, rgba(184, 201, 212, 0.25) 0%, transparent 100%);
+      border-radius: 24px;
+    }
+
+    .header-icon { font-size: 44px; margin-bottom: 16px; display: block; }
+
+    .header h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .header .subtitle {
+      font-size: 1rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    .header .tag {
+      display: inline-block;
+      background: var(--soft-sage);
+      color: var(--deep-forest);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .intro {
+      background: white;
+      border-radius: 16px;
+      padding: 28px 24px;
+      margin-bottom: 32px;
+      border: 1px solid rgba(139, 115, 85, 0.1);
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    .intro p { margin-bottom: 12px; }
+    .intro p:last-child { margin-bottom: 0; }
+    .intro strong { color: var(--deep-forest); }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 32px;
+      justify-content: center;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: var(--warm-brown);
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .filter-tab {
+      background: white;
+      border: 1.5px solid var(--light-gray);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 0.85rem;
+      font-family: 'Source Sans Pro', sans-serif;
+      color: var(--warm-brown);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-tab:hover { border-color: var(--warm-brown); }
+
+    .filter-tab.active {
+      background: var(--deep-forest);
+      color: white;
+      border-color: var(--deep-forest);
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      margin-bottom: 14px;
+      border: 1px solid rgba(139, 115, 85, 0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .card.hidden { display: none; }
+
+    .card-header {
+      padding: 20px 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: background 0.2s;
+      user-select: none;
+    }
+
+    .card-header:hover { background: rgba(245, 230, 211, 0.3); }
+
+    .card-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      flex-shrink: 0;
+    }
+
+    .card-title-area { flex: 1; }
+
+    .card-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      line-height: 1.4;
+    }
+
+    .dsm-badge {
+      font-size: 0.72rem;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-weight: 500;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .dsm-in { background: var(--in-dsm); color: var(--deep-forest); }
+    .dsm-partial { background: var(--partial-dsm); color: var(--warm-brown); }
+    .dsm-not { background: var(--not-dsm); color: #8B6B6B; }
+
+    .card-chevron {
+      font-size: 1.2rem;
+      color: var(--warm-brown);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+
+    .card.open .card-chevron { transform: rotate(180deg); }
+
+    .card-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .card.open .card-body { max-height: 800px; }
+
+    .card-content {
+      padding: 0 24px 24px;
+      border-top: 1px solid rgba(139, 115, 85, 0.08);
+      padding-top: 20px;
+    }
+
+    .card-desc {
+      font-size: 0.92rem;
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+
+    .daily-life {
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+    }
+
+    .daily-life-title {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--warm-brown);
+      margin-bottom: 8px;
+      letter-spacing: 0.3px;
+    }
+
+    .daily-life-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .daily-life-item {
+      background: white;
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: var(--soft-charcoal);
+      border: 1px solid rgba(139, 115, 85, 0.08);
+    }
+
+    .validation {
+      background: linear-gradient(135deg, rgba(197, 212, 192, 0.2), rgba(184, 201, 212, 0.2));
+      border-radius: 12px;
+      padding: 14px 18px;
+      font-size: 0.88rem;
+      color: var(--deep-forest);
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    .validation::before { content: '🌿 '; }
+
+    .footer {
+      margin-top: 48px;
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid rgba(139, 115, 85, 0.1);
+    }
+
+    .citation {
+      font-size: 0.78rem;
+      color: var(--warm-brown);
+      line-height: 1.7;
+      margin-bottom: 16px;
+      text-align: left;
+      background: rgba(245, 230, 211, 0.3);
+      padding: 16px 20px;
+      border-radius: 12px;
+    }
+
+    .citation-label {
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      color: var(--deep-forest);
+    }
+
+    .disclaimer {
+      font-size: 0.78rem;
+      color: var(--warm-brown);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 16px;
+    }
+
+    .brand {
+      font-size: 0.82rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+    }
+
+    .brand a {
+      color: var(--deep-forest);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 24px 16px; }
+      .header { padding: 36px 20px 32px; }
+      .header h1 { font-size: 1.6rem; }
+      .card-header { padding: 16px 18px; gap: 12px; }
+      .card-content { padding: 0 18px 20px; padding-top: 16px; }
+      .card-title { font-size: 1rem; }
+      .dsm-badge { font-size: 0.68rem; padding: 2px 8px; }
+      .filter-tabs { gap: 6px; }
+      .filter-tab { padding: 5px 12px; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <span class="header-icon">🧠</span>
+      <h1>The 9 Domains of ADHD</h1>
+      <p class="subtitle">Beyond what the DSM tells you</p>
+      <span class="tag">Psychoeducation</span>
+    </div>
+
+    <div class="intro">
+      <p>ADHD is typically described using three categories: <strong>inattention, hyperactivity, and impulsivity</strong>. But for adults living with ADHD, the day-to-day experience extends far beyond these three.</p>
+      <p>A 2026 qualitative study (Chua et al.) analyzed the lived experiences of adults with ADHD and identified <strong>9 symptom domains</strong>. Some are included in the current diagnostic criteria (DSM-5), some are only briefly mentioned, and others are missing entirely.</p>
+      <p>Tap each card to explore.</p>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-dot" style="background: var(--in-dsm);"></div>
+        In the DSM
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background: var(--partial-dsm);"></div>
+        Partially mentioned
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background: var(--not-dsm);"></div>
+        Not in the DSM
+      </div>
+    </div>
+
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="filterCards('all')">All</button>
+      <button class="filter-tab" onclick="filterCards('in')">In DSM</button>
+      <button class="filter-tab" onclick="filterCards('partial')">Partial</button>
+      <button class="filter-tab" onclick="filterCards('not')">Not in DSM</button>
+    </div>
+
+    <!-- 1. Inattention -->
+    <div class="card" data-dsm="in">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-number" style="background: var(--in-dsm);">1</div>
+        <div class="card-title-area">
+          <div class="card-title">Inattention</div>
+        </div>
+        <span class="dsm-badge dsm-in">In DSM</span>
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="card-content">
+          <p class="card-desc">Difficulty sustaining focus, filtering out distractions, or attending to details. This is especially noticeable with low-interest tasks, while high-interest activities can trigger the opposite: hyperfocus, an intense absorption that's hard to break out of.</p>
+          <div class="daily-life">
+            <div class="daily-life-title">What this looks like in daily life</div>
+            <div class="daily-life-items">
+              <span class="daily-life-item">Zoning out mid-conversation</span>
+              <span class="daily-life-item">Losing your place while reading</span>
+              <span class="daily-life-item">Struggling to multitask</span>
+              <span class="daily-life-item">Burnout after hyperfocus</span>
+              <span class="daily-life-item">Easily disrupted by noise</span>
+            </div>
+          </div>
+          <div class="validation">Attention isn't "lacking." It's dysregulated. Hyperfocus is the other side of the same mechanism.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Hyperactivity -->
+    <div class="card" data-dsm="in">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-number" style="background: var(--in-dsm);">2</div>
+        <div class="card-title-area">
+          <div class="card-title">Hyperactivity</div>
+        </div>
+        <span class="dsm-badge dsm-in">In DSM</span>
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="card-content">
+          <p class="card-desc">Difficulty staying still physically, or a mind that never stops running. In childhood, this often looks like running and fidgeting. In adulthood, it often shifts inward, showing up as internal restlessness, racing thoughts, and a constant need for stimulation.</p>
+          <div class="daily-life">
+            <div class="daily-life-title">What this looks like in daily life</div>
+            <div class="daily-life-items">
+              <span class="daily-life-item">Difficulty sitting still</span>
+              <span class="daily-life-item">Mind that won't quiet down</span>
+              <span class="daily-life-item">Leg bouncing, fidgeting</span>
+              <span class="daily-life-item">Talking fast</span>
+              <span class="daily-life-item">Internal restlessness</span>
+            </div>
+          </div>
+          <div class="validation">Adult hyperactivity is often invisible. "Quiet ADHD" can still involve hyperactivity, just on the inside.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Impulsivity -->
+    <div class="card" data-dsm="in">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-number" style="background: var(--in-dsm);">3</div>
+        <div class="card-title-area">
+          <div class="card-title">Impulsivity</div>
+        </div>
+        <span class="dsm-badge dsm-in">In DSM</span>
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="card-content">
+          <p class="card-desc">Acting before thinking, difficulty waiting, or interrupting others in conversation. This also includes making snap decisions, saying things you later regret, or starting new projects on impulse before finishing existing ones.</p>
+          <div class="daily-life">
+            <div class="daily-life-title">What this looks like in daily life</div>
+            <div class="daily-life-items">
+              <span class="daily-life-item">Impulse spending</span>
+              <span class="daily-life-item">Interrupting others</span>
+              <span class="daily-life-item">Snap decisions</span>
+              <span class="daily-life-item">Difficulty waiting</span>
+              <span class="daily-life-item">Regret after speaking</span>
+            </div>
+          </div>
+          <div class="validation">Impulsivity isn't a "character flaw." It reflects differences in inhibitory control. You don't have to blame yourself for it.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Disorganisation -->
+    <div class="card" data-dsm="partial">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-number" style="background: var(--partial-dsm);">4</div>
+        <div class="card-title-area">
+          <div class="card-title">Disorganisation</div>
+        </div>
+        <span class="dsm-badge dsm-partial">Partial</span>
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="card-content">
+          <p class="card-desc">Struggling to do things in order, keep things in order, or maintain systems over time. This affects not just physical spaces but also the organization of thoughts, plans, and priorities. Study participants reported that disorganization is often accompanied by a strong sense of overwhelm, and can significantly impact work and career.</p>
+          <div class="daily-life">
+            <div class="daily-life-title">What this looks like in daily life</div>
+            <div class="daily-life-items">
+              <span class="daily-life-item">Messy spaces despite trying</span>
+              <span class="daily-life-item">Can't prioritize tasks</span>
+              <span class="daily-life-item">Losing things frequently</span>
+              <span class="daily-life-item">Project management struggles</span>
+              <span class="daily-life-item">Feeling overwhelmed</span>
+            </div>
+          </div>
+          <div class="validation">Disorganization is not laziness. It comes from executive function differences, and external structure can genuinely help.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Forgetfulness -->
+    <div class="card" data-dsm="partial">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-number" style="background: var(--partial-dsm);">5</div>
+        <div class="card-title-area">
+          <div class="card-title">Forgetfulness</div>
+        </div>
+        <span class="dsm-badge dsm-partial">Partial</span>
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="card-content">
+          <p class="card-desc">The DSM mentions forgetting daily activities like chores and errands. But ADHD-related forgetfulness goes much deeper: forgetting appointments, struggling to recall recent conversations or events, losing track of people's names mid-conversation, or misplacing belongings because you can't remember where you put them.</p>
+          <div class="daily-life">
+            <div class="daily-life-title">What this looks like in daily life</div>
+            <div class="daily-life-items">
+              <span class="daily-life-item">Forgetting appointments</span>
+              <span class="daily-life-item">Can't recall what was just said</span>
+              <span class="daily-life-item">Misplacing belongings</span>
+              <span class="daily-life-item">Forgetting names</span>
+              <span class="daily-life-item">Missing important dates</span>
+            </div>
+          </div>
+          <div class="validation">Forgetting doesn't mean you don't care. It's a working memory difference. Using reminders and external systems is a smart, healthy strategy.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Activation -->
+    <div class="card" data-dsm="partial">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-number" style="background: var(--partial-dsm);">6</div>
+        <div class="card-title-area">
+          <div class="card-title">Activation Difficulty</div>
+        </div>
+        <span class="dsm-badge dsm-partial">Partial</span>
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="card-content">
+          <p class="card-desc">Often called "executive dysfunction" or "ADHD paralysis," this is the difficulty of starting or completing tasks, even important or interesting ones. The DSM describes avoidance of unpleasant tasks, but the lived experience runs deeper. Study participants reported feeling stuck in a state of inertia, where only urgency, external pressure, or outside help could get them moving.</p>
+          <div class="daily-life">
+            <div class="daily-life-title">What this looks like in daily life</div>
+            <div class="daily-life-items">
+              <span class="daily-life-item">Knowing what to do but can't start</span>
+              <span class="daily-life-item">Starting only at the last minute</span>
+              <span class="daily-life-item">Can't begin even fun tasks</span>
+              <span class="daily-life-item">Needing someone else to get going</span>
+              <span class="daily-life-item">Starting but not finishing</span>
+            </div>
+          </div>
+          <div class="validation">ADHD paralysis isn't about willpower. It's a difference in internal motivation systems. Body doubling and breaking tasks into tiny steps can help.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Emotional Dysregulation -->
+    <div class="card" data-dsm="not">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-number" style="background: var(--not-dsm);">7</div>
+        <div class="card-title-area">
+          <div class="card-title">Emotional Dysregulation</div>
+        </div>
+        <span class="dsm-badge dsm-not">Not in DSM</span>
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="card-content">
+          <p class="card-desc">Widely recognized in ADHD research but absent from diagnostic criteria. People report experiencing emotions at high intensity, feeling drained even after strong positive emotions, and rapid emotional shifts that are exhausting in themselves. Difficulty managing anger and strong reactions to perceived rejection are commonly reported.</p>
+          <div class="daily-life">
+            <div class="daily-life-title">What this looks like in daily life</div>
+            <div class="daily-life-items">
+              <span class="daily-life-item">Emotions feel intense</span>
+              <span class="daily-life-item">Mood shifts quickly</span>
+              <span class="daily-life-item">Strong reaction to rejection</span>
+              <span class="daily-life-item">Drained after joy too</span>
+              <span class="daily-life-item">Anger feels hard to manage</span>
+            </div>
+          </div>
+          <div class="validation">Feeling things deeply isn't a weakness. But bigger emotional waves need more regulation tools. Your emotions are valid.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Time Perception -->
+    <div class="card" data-dsm="not">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-number" style="background: var(--not-dsm);">8</div>
+        <div class="card-title-area">
+          <div class="card-title">Time Perception</div>
+        </div>
+        <span class="dsm-badge dsm-not">Not in DSM</span>
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="card-content">
+          <p class="card-desc">Many people with ADHD experience time differently. Estimating how long a task will take, or even sensing how much time has passed, can be genuinely difficult. Time can feel like it "slips away" during hyperfocus. Boring tasks may feel like they'll take forever (reinforcing avoidance), while engaging ones feel shorter than they are (leading to missed deadlines).</p>
+          <div class="daily-life">
+            <div class="daily-life-title">What this looks like in daily life</div>
+            <div class="daily-life-items">
+              <span class="daily-life-item">Poor time estimation</span>
+              <span class="daily-life-item">Chronically late</span>
+              <span class="daily-life-item">Time "disappears" during focus</span>
+              <span class="daily-life-item">Missed deadlines</span>
+              <span class="daily-life-item">"5 more minutes" becomes an hour</span>
+            </div>
+          </div>
+          <div class="validation">Experiencing time differently doesn't mean you're irresponsible. Visual timers and alarms can help bridge the gap between internal and clock time.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. Sleep -->
+    <div class="card" data-dsm="not">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-number" style="background: var(--not-dsm);">9</div>
+        <div class="card-title-area">
+          <div class="card-title">Sleep Difficulties</div>
+        </div>
+        <span class="dsm-badge dsm-not">Not in DSM</span>
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="card-content">
+          <p class="card-desc">Many people with ADHD report sleep difficulties. Delayed circadian rhythms (going to bed late, struggling to wake up) are common. Racing thoughts and mental hyperactivity at bedtime make falling asleep hard. The resulting daytime fatigue, sleepiness, and irritability create a cycle. Whether sleep issues are a comorbidity or a direct symptom of ADHD is still being studied.</p>
+          <div class="daily-life">
+            <div class="daily-life-title">What this looks like in daily life</div>
+            <div class="daily-life-items">
+              <span class="daily-life-item">Difficulty falling asleep</span>
+              <span class="daily-life-item">Brain is most active at night</span>
+              <span class="daily-life-item">Hard to wake up</span>
+              <span class="daily-life-item">Irregular sleep schedule</span>
+              <span class="daily-life-item">Daytime fatigue</span>
+            </div>
+          </div>
+          <div class="validation">Sleep difficulties may not be just a "lifestyle" issue. Neurobiological factors can play a role, and working with a professional to find strategies can make a real difference.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="citation">
+        <div class="citation-label">Reference</div>
+        Chua, I.J.J., Salmon, C., Vinnicombe, J., Bowen, J., McNicholas, F., Adamis, D., Jayasooriya, T., Das, S., & Johnson, K. (2026). ADHD symptom manifestation in adulthood: Moving beyond conceptualisations of inattention and hyperactivity/impulsivity. <em>Irish Journal of Psychological Medicine</em>, 1-8. https://doi.org/10.1017/ipm.2026.10175
+        <br><br>
+        <span style="font-size: 0.72rem;">This article is published under a Creative Commons Attribution (CC BY 4.0) license.</span>
+      </div>
+      <p class="disclaimer">This resource is for psychoeducational purposes only and does not replace professional diagnosis or treatment. If you suspect you may have ADHD, please consult a qualified professional.</p>
+      <p class="brand">PADO Psychological Wellness | <a href="https://padopsychology.com">padopsychology.com</a></p>
+    </div>
+  </div>
+
+  <script>
+    function toggleCard(header) {
+      const card = header.closest('.card');
+      card.classList.toggle('open');
+    }
+
+    function filterCards(type) {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
+
+      document.querySelectorAll('.card').forEach(card => {
+        const dsm = card.dataset.dsm;
+        if (type === 'all') {
+          card.classList.remove('hidden');
+        } else if (type === dsm) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+          card.classList.remove('open');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADHD의 9가지 증상 영역</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FDF8F3;
+      --warm-beige: #F5E6D3;
+      --soft-sage: #C5D4C0;
+      --calm-blue: #B8C9D4;
+      --dusty-rose: #E8D4D4;
+      --soft-lavender: #D4D4E8;
+      --deep-forest: #3D5A47;
+      --warm-brown: #8B7355;
+      --soft-charcoal: #4A4A4A;
+      --light-gray: #E8E1D9;
+      --in-dsm: #C5D4C0;
+      --partial-dsm: #F5E6D3;
+      --not-dsm: #E8D4D4;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+      background: var(--cream);
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+      padding: 48px 24px 40px;
+      background: linear-gradient(180deg, rgba(184, 201, 212, 0.25) 0%, transparent 100%);
+      border-radius: 24px;
+    }
+
+    .header-icon {
+      font-size: 44px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .header h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .header .subtitle {
+      font-size: 1rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    .header .tag {
+      display: inline-block;
+      background: var(--soft-sage);
+      color: var(--deep-forest);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    /* Intro */
+    .intro {
+      background: white;
+      border-radius: 16px;
+      padding: 28px 24px;
+      margin-bottom: 32px;
+      border: 1px solid rgba(139, 115, 85, 0.1);
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    .intro p {
+      margin-bottom: 12px;
+    }
+
+    .intro p:last-child {
+      margin-bottom: 0;
+    }
+
+    .intro strong {
+      color: var(--deep-forest);
+    }
+
+    /* Legend */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 32px;
+      justify-content: center;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: var(--warm-brown);
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Filter tabs */
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .filter-tab {
+      background: white;
+      border: 1.5px solid var(--light-gray);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 0.85rem;
+      font-family: 'Source Sans Pro', sans-serif;
+      color: var(--warm-brown);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-tab:hover {
+      border-color: var(--warm-brown);
+    }
+
+    .filter-tab.active {
+      background: var(--deep-forest);
+      color: white;
+      border-color: var(--deep-forest);
+    }
+
+    /* Cards */
+    .card {
+      background: white;
+      border-radius: 16px;
+      margin-bottom: 14px;
+      border: 1px solid rgba(139, 115, 85, 0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .card.hidden {
+      display: none;
+    }
+
+    .card-header {
+      padding: 20px 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: background 0.2s;
+      user-select: none;
+    }
+
+    .card-header:hover {
+      background: rgba(245, 230, 211, 0.3);
+    }
+
+    .card-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      flex-shrink: 0;
+    }
+
+    .card-title-area {
+      flex: 1;
+    }
+
+    .card-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      line-height: 1.4;
+    }
+
+    .card-title-en {
+      font-size: 0.82rem;
+      color: var(--warm-brown);
+      font-weight: 400;
+      margin-top: 2px;
+    }
+
+    .dsm-badge {
+      font-size: 0.72rem;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-weight: 500;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .dsm-in { background: var(--in-dsm); color: var(--deep-forest); }
+    .dsm-partial { background: var(--partial-dsm); color: var(--warm-brown); }
+    .dsm-not { background: var(--not-dsm); color: #8B6B6B; }
+
+    .card-chevron {
+      font-size: 1.2rem;
+      color: var(--warm-brown);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+
+    .card.open .card-chevron {
+      transform: rotate(180deg);
+    }
+
+    .card-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .card.open .card-body {
+      max-height: 800px;
+    }
+
+    .card-content {
+      padding: 0 24px 24px;
+      border-top: 1px solid rgba(139, 115, 85, 0.08);
+      padding-top: 20px;
+    }
+
+    .card-desc {
+      font-size: 0.92rem;
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+
+    .daily-life {
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+    }
+
+    .daily-life-title {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--warm-brown);
+      margin-bottom: 8px;
+      letter-spacing: 0.3px;
+    }
+
+    .daily-life-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .daily-life-item {
+      background: white;
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: var(--soft-charcoal);
+      border: 1px solid rgba(139, 115, 85, 0.08);
+    }
+
+    .validation {
+      background: linear-gradient(135deg, rgba(197, 212, 192, 0.2), rgba(184, 201, 212, 0.2));
+      border-radius: 12px;
+      padding: 14px 18px;
+      font-size: 0.88rem;
+      color: var(--deep-forest);
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    .validation::before {
+      content: '🌿 ';
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 48px;
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid rgba(139, 115, 85, 0.1);
+    }
+
+    .citation {
+      font-size: 0.78rem;
+      color: var(--warm-brown);
+      line-height: 1.7;
+      margin-bottom: 16px;
+      text-align: left;
+      background: rgba(245, 230, 211, 0.3);
+      padding: 16px 20px;
+      border-radius: 12px;
+    }
+
+    .citation-label {
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      color: var(--deep-forest);
+    }
+
+    .disclaimer {
+      font-size: 0.78rem;
+      color: var(--warm-brown);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 16px;
+    }
+
+    .brand {
+      font-size: 0.82rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+    }
+
+    .brand a {
+      color: var(--deep-forest);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container { padding: 24px 16px; }
+      .header { padding: 36px 20px 32px; }
+      .header h1 { font-size: 1.6rem; }
+      .card-header { padding: 16px 18px; gap: 12px; }
+      .card-content { padding: 0 18px 20px; padding-top: 16px; }
+      .card-title { font-size: 1rem; }
+      .dsm-badge { font-size: 0.68rem; padding: 2px 8px; }
+      .legend { gap: 8px; }
+      .filter-tabs { gap: 6px; }
+      .filter-tab { padding: 5px 12px; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <span class="header-icon">🧠</span>
+      <h1>ADHD의 9가지 증상 영역</h1>
+      <p class="subtitle">DSM이 말해주지 않는 것들</p>
+      <span class="tag">Psychoeducation</span>
+    </div>
+
+    <!-- Intro -->
+    <div class="intro">
+      <p>ADHD는 흔히 <strong>주의력 부족, 과활동성, 충동성</strong> 이 세 가지로 설명됩니다. 하지만 실제로 ADHD를 가진 성인들이 일상에서 경험하는 어려움은 이 세 가지보다 훨씬 넓고 복잡합니다.</p>
+      <p>2026년 발표된 질적 연구(Chua et al.)에서는 성인 ADHD 당사자들의 경험을 분석하여 <strong>9가지 증상 영역</strong>을 도출했습니다. 이 중 일부는 현재 진단 기준(DSM-5)에 포함되어 있지만, 일부는 간략하게만 언급되거나 아예 빠져 있습니다.</p>
+      <p>각 카드를 눌러서 자세한 내용을 확인해보세요.</p>
+    </div>
+
+    <!-- Legend -->
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-dot" style="background: var(--in-dsm);"></div>
+        DSM에 포함
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background: var(--partial-dsm);"></div>
+        DSM에 일부 언급
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background: var(--not-dsm);"></div>
+        DSM에 미포함
+      </div>
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="filterCards('all')">전체</button>
+      <button class="filter-tab" onclick="filterCards('in')">DSM 포함</button>
+      <button class="filter-tab" onclick="filterCards('partial')">일부 언급</button>
+      <button class="filter-tab" onclick="filterCards('not')">미포함</button>
+    </div>
+
+    <!-- Cards -->
+    <!-- 1. Inattention -->
+    <div class="card" data-dsm="in">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-number" style="background: var(--in-dsm);">1</div>
+        <div class="card-title-area">
+          <div class="card-title">주의력 결핍</div>
+          <div class="card-title-en">Inattention</div>
+        </div>
+        <span class="dsm-badge dsm-in">DSM 포함</span>
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="card-content">
+          <p class="card-desc">집중을 유지하거나, 외부 자극을 걸러내거나, 세부사항에 주의를 기울이는 데 어려움을 겪는 것입니다. 특히 관심이 낮은 과제에서 두드러지며, 반대로 흥미로운 활동에서는 과몰입(hyperfocus)이 나타나기도 합니다.</p>
+          <div class="daily-life">
+            <div class="daily-life-title">일상에서 이렇게 나타나요</div>
+            <div class="daily-life-items">
+              <span class="daily-life-item">대화 중 딴생각</span>
+              <span class="daily-life-item">읽던 곳을 놓침</span>
+              <span class="daily-life-item">멀티태스킹 어려움</span>
+              <span class="daily-life-item">과몰입 후 탈진</span>
+              <span class="daily-life-item">소음에 쉽게 방해</span>
+            </div>
+          </div>
+          <div class="validation">주의력은 '부족한 것'이 아니라 '조절하기 어려운 것'입니다. 과몰입도 같은 매커니즘의 다른 면이에요.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Hyperactivity -->
+    <div class="card" data-dsm="in">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-number" style="background: var(--in-dsm);">2</div>
+        <div class="card-title-area">
+          <div class="card-title">과활동성</div>
+          <div class="card-title-en">Hyperactivity</div>
+        </div>
+        <span class="dsm-badge dsm-in">DSM 포함</span>
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="card-content">
+          <p class="card-desc">신체적으로 가만히 있기 어렵거나, 머릿속이 쉬지 않고 돌아가는 상태입니다. 아동기에는 뛰어다니거나 안절부절하는 모습으로 보이지만, 성인이 되면 내면의 불안정감이나 끊임없는 생각(racing thoughts)으로 나타나는 경우가 많습니다.</p>
+          <div class="daily-life">
+            <div class="daily-life-title">일상에서 이렇게 나타나요</div>
+            <div class="daily-life-items">
+              <span class="daily-life-item">가만히 앉아있기 어려움</span>
+              <span class="daily-life-item">머릿속이 멈추지 않음</span>
+              <span class="daily-life-item">다리 떨기, 손장난</span>
+              <span class="daily-life-item">말이 빨라짐</span>
+              <span class="daily-life-item">내면의 초조함</span>
+            </div>
+          </div>
+          <div class="validation">성인 ADHD의 과활동성은 밖으로 보이지 않는 경우가 많아요. '조용한 ADHD'도 과활동성을 경험할 수 있습니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Impulsivity -->
+    <div class="card" data-dsm="in">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-number" style="background: var(--in-dsm);">3</div>
+        <div class="card-title-area">
+          <div class="card-title">충동성</div>
+          <div class="card-title-en">Impulsivity</div>
+        </div>
+        <span class="dsm-badge dsm-in">DSM 포함</span>
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="card-content">
+          <p class="card-desc">생각하기 전에 행동하거나, 기다리기 어렵거나, 대화 중 끼어드는 것입니다. 결정을 즉흥적으로 내리거나, 말을 하고 나서 후회하는 경우도 포함됩니다.</p>
+          <div class="daily-life">
+            <div class="daily-life-title">일상에서 이렇게 나타나요</div>
+            <div class="daily-life-items">
+              <span class="daily-life-item">충동 구매</span>
+              <span class="daily-life-item">말 끊기</span>
+              <span class="daily-life-item">즉흥적 결정</span>
+              <span class="daily-life-item">기다림의 어려움</span>
+              <span class="daily-life-item">말한 후 후회</span>
+            </div>
+          </div>
+          <div class="validation">충동성은 '성격 문제'가 아니라 억제 조절 기능의 차이입니다. 자신을 탓하지 않아도 돼요.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Disorganisation -->
+    <div class="card" data-dsm="partial">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-number" style="background: var(--partial-dsm);">4</div>
+        <div class="card-title-area">
+          <div class="card-title">비조직화</div>
+          <div class="card-title-en">Disorganisation</div>
+        </div>
+        <span class="dsm-badge dsm-partial">일부 언급</span>
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="card-content">
+          <p class="card-desc">일의 순서를 정하거나, 물건이나 공간을 체계적으로 유지하는 데 어려움을 겪는 것입니다. 물리적 공간뿐 아니라 생각과 계획의 정리에도 영향을 미치며, 일과 직업에 상당한 영향을 줄 수 있습니다. 연구 참여자들은 비조직화가 종종 강한 압도감과 함께 온다고 보고했습니다.</p>
+          <div class="daily-life">
+            <div class="daily-life-title">일상에서 이렇게 나타나요</div>
+            <div class="daily-life-items">
+              <span class="daily-life-item">정리 정돈의 어려움</span>
+              <span class="daily-life-item">우선순위 설정 실패</span>
+              <span class="daily-life-item">물건을 자주 잃어버림</span>
+              <span class="daily-life-item">프로젝트 관리 어려움</span>
+              <span class="daily-life-item">압도감</span>
+            </div>
+          </div>
+          <div class="validation">비조직화는 '게으름'과 다릅니다. 실행 기능(executive function)의 차이에서 오는 것이며, 외부 구조(external structure)가 도움이 될 수 있어요.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Forgetfulness -->
+    <div class="card" data-dsm="partial">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-number" style="background: var(--partial-dsm);">5</div>
+        <div class="card-title-area">
+          <div class="card-title">건망증</div>
+          <div class="card-title-en">Forgetfulness</div>
+        </div>
+        <span class="dsm-badge dsm-partial">일부 언급</span>
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="card-content">
+          <p class="card-desc">DSM에서는 일상적인 활동(집안일, 심부름, 청구서 납부 등)에서의 건망증을 언급하지만, ADHD에서의 건망증은 이보다 훨씬 광범위합니다. 약속을 잊거나, 최근 사건을 기억하지 못하거나, 대화 중 상대방의 이름을 떠올리지 못하는 것까지 포함됩니다.</p>
+          <div class="daily-life">
+            <div class="daily-life-title">일상에서 이렇게 나타나요</div>
+            <div class="daily-life-items">
+              <span class="daily-life-item">약속 시간 잊음</span>
+              <span class="daily-life-item">방금 들은 말 기억 안 남</span>
+              <span class="daily-life-item">물건 둔 곳 기억 못 함</span>
+              <span class="daily-life-item">이름 기억 어려움</span>
+              <span class="daily-life-item">중요한 날짜 놓침</span>
+            </div>
+          </div>
+          <div class="validation">건망증은 '관심이 없어서'가 아닙니다. 작업기억(working memory)의 차이이며, 리마인더나 외부 시스템을 활용하는 것은 매우 건강한 전략이에요.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Activation -->
+    <div class="card" data-dsm="partial">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-number" style="background: var(--partial-dsm);">6</div>
+        <div class="card-title-area">
+          <div class="card-title">시작의 어려움</div>
+          <div class="card-title-en">Activation Difficulty</div>
+        </div>
+        <span class="dsm-badge dsm-partial">일부 언급</span>
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="card-content">
+          <p class="card-desc">흔히 '실행 기능 부전' 또는 'ADHD 마비(paralysis)'라고 불리는 이 경험은 과제를 시작하거나 완료하는 데 큰 어려움을 겪는 것입니다. DSM에서는 불쾌한 과제 회피를 언급하지만, 실제 경험은 이보다 깊습니다. 연구 참여자들은 관심 있는 일조차 시작하지 못하는 관성 상태를 보고했으며, 마감이나 외부 압력만이 행동을 촉발할 수 있었다고 했습니다.</p>
+          <div class="daily-life">
+            <div class="daily-life-title">일상에서 이렇게 나타나요</div>
+            <div class="daily-life-items">
+              <span class="daily-life-item">해야 할 일을 알면서 못 함</span>
+              <span class="daily-life-item">마감 직전에야 시작</span>
+              <span class="daily-life-item">흥미 있는 일도 시작 못 함</span>
+              <span class="daily-life-item">외부 도움 없이 움직이기 어려움</span>
+              <span class="daily-life-item">시작 후 완료 어려움</span>
+            </div>
+          </div>
+          <div class="validation">'ADHD 마비'는 의지력의 문제가 아니에요. 내적 동기(internal motivation) 시스템의 차이입니다. body doubling이나 작은 단위로 쪼개기 같은 전략이 도움이 될 수 있어요.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Emotional Dysregulation -->
+    <div class="card" data-dsm="not">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-number" style="background: var(--not-dsm);">7</div>
+        <div class="card-title-area">
+          <div class="card-title">감정 조절의 어려움</div>
+          <div class="card-title-en">Emotional Dysregulation</div>
+        </div>
+        <span class="dsm-badge dsm-not">DSM 미포함</span>
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="card-content">
+          <p class="card-desc">ADHD와 감정 조절의 어려움은 과학 문헌에서 널리 인정되지만, 현재 진단 기준에는 포함되어 있지 않습니다. 감정의 강도가 크고, 긍정적인 감정을 강하게 느낀 후에도 소진을 경험하며, 감정이 빠르게 변동하는 것 자체가 피로를 유발합니다. 특히 분노의 조절과 거절에 대한 강한 감정 반응이 많이 보고됩니다.</p>
+          <div class="daily-life">
+            <div class="daily-life-title">일상에서 이렇게 나타나요</div>
+            <div class="daily-life-items">
+              <span class="daily-life-item">감정의 강도가 큼</span>
+              <span class="daily-life-item">기분 변동이 빠름</span>
+              <span class="daily-life-item">거절에 강하게 반응</span>
+              <span class="daily-life-item">좋은 감정 후에도 지침</span>
+              <span class="daily-life-item">분노 조절 어려움</span>
+            </div>
+          </div>
+          <div class="validation">감정이 크다는 것은 약점이 아닙니다. 다만 감정의 파도가 클수록 조절하는 기술이 더 필요할 뿐이에요. 당신의 감정은 유효합니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Time Perception -->
+    <div class="card" data-dsm="not">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-number" style="background: var(--not-dsm);">8</div>
+        <div class="card-title-area">
+          <div class="card-title">시간 인지의 차이</div>
+          <div class="card-title-en">Time Perception</div>
+        </div>
+        <span class="dsm-badge dsm-not">DSM 미포함</span>
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="card-content">
+          <p class="card-desc">ADHD를 가진 사람들은 시간의 흐름을 다르게 경험하는 경우가 많습니다. 과제에 걸리는 시간을 정확하게 예측하기 어렵고, 시간이 '사라지는' 느낌을 받기도 합니다. 특히 과몰입 상태에서 이런 경험이 두드러집니다. 지루한 과제는 실제보다 오래 걸릴 것 같아 더 피하게 되고, 흥미로운 과제는 걸리는 시간을 과소평가하여 마감을 놓치기도 합니다.</p>
+          <div class="daily-life">
+            <div class="daily-life-title">일상에서 이렇게 나타나요</div>
+            <div class="daily-life-items">
+              <span class="daily-life-item">시간 감각이 부정확</span>
+              <span class="daily-life-item">약속 시간에 자주 늦음</span>
+              <span class="daily-life-item">과몰입 중 시간 '소실'</span>
+              <span class="daily-life-item">마감 예측 실패</span>
+              <span class="daily-life-item">'5분만'이 1시간이 됨</span>
+            </div>
+          </div>
+          <div class="validation">시간을 다르게 경험하는 것은 당신이 '무책임'하다는 뜻이 아닙니다. 시각적 타이머나 알람 같은 외부 도구가 내부 시간 감각을 보완하는 데 도움이 돼요.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. Sleep -->
+    <div class="card" data-dsm="not">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-number" style="background: var(--not-dsm);">9</div>
+        <div class="card-title-area">
+          <div class="card-title">수면의 어려움</div>
+          <div class="card-title-en">Sleep Difficulties</div>
+        </div>
+        <span class="dsm-badge dsm-not">DSM 미포함</span>
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="card-content">
+          <p class="card-desc">ADHD를 가진 많은 사람들이 수면 문제를 보고합니다. 생체 리듬(circadian rhythm)이 지연되어 늦게 자고 아침에 일어나기 힘든 패턴이 많으며, 쉬지 않는 생각과 머릿속 활동 때문에 잠들기 어려운 경우도 흔합니다. 이로 인한 주간 피로와 졸음, 짜증 증가가 뒤따릅니다. 수면 문제가 ADHD의 동반질환인지 직접적인 증상인지는 아직 연구 중입니다.</p>
+          <div class="daily-life">
+            <div class="daily-life-title">일상에서 이렇게 나타나요</div>
+            <div class="daily-life-items">
+              <span class="daily-life-item">잠들기 어려움</span>
+              <span class="daily-life-item">밤에 머리가 더 활발함</span>
+              <span class="daily-life-item">아침 기상 어려움</span>
+              <span class="daily-life-item">수면 스케줄 불규칙</span>
+              <span class="daily-life-item">주간 피로</span>
+            </div>
+          </div>
+          <div class="validation">수면 어려움은 '생활 습관'만의 문제가 아닐 수 있어요. 신경생물학적 요인이 관여할 수 있으며, 전문가와 함께 전략을 찾는 것이 도움이 됩니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="citation">
+        <div class="citation-label">참고문헌 Reference</div>
+        Chua, I.J.J., Salmon, C., Vinnicombe, J., Bowen, J., McNicholas, F., Adamis, D., Jayasooriya, T., Das, S., & Johnson, K. (2026). ADHD symptom manifestation in adulthood: Moving beyond conceptualisations of inattention and hyperactivity/impulsivity. <em>Irish Journal of Psychological Medicine</em>, 1-8. https://doi.org/10.1017/ipm.2026.10175
+        <br><br>
+        <span style="font-size: 0.72rem;">이 논문은 Creative Commons Attribution (CC BY 4.0) 라이선스로 공개되었습니다.</span>
+      </div>
+      <p class="disclaimer">이 자료는 심리교육 목적으로 제작되었으며, 전문적인 진단이나 치료를 대체하지 않습니다. ADHD가 의심되시면 전문가와 상담하시기 바랍니다.</p>
+      <p class="brand">PADO Psychological Wellness | <a href="https://padopsychology.com">padopsychology.com</a></p>
+    </div>
+  </div>
+
+  <script>
+    function toggleCard(header) {
+      const card = header.closest('.card');
+      card.classList.toggle('open');
+    }
+
+    function filterCards(type) {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
+
+      document.querySelectorAll('.card').forEach(card => {
+        const dsm = card.dataset.dsm;
+        if (type === 'all') {
+          card.classList.remove('hidden');
+        } else if (type === dsm) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+          card.classList.remove('open');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
