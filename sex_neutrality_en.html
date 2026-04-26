@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sexuality, As It Is | Sex Neutrality</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #faf9f7;
+      --surface: #ffffff;
+      --surface-soft: #f5f3ef;
+      --accent: #6b9e8a;
+      --accent-light: #e8f2ee;
+      --accent-mid: #c5dfd6;
+      --text-main: #2d2d2d;
+      --text-sub: #666;
+      --text-light: #999;
+      --border: #e8e4de;
+      --warm: #f9f0e6;
+      --warm-border: #e8d9c4;
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.85;
+      font-size: 15px;
+      padding: 0 0 60px;
+    }
+
+    /* ── HEADER ── */
+    .hero {
+      background: linear-gradient(160deg, #e8f2ee 0%, #f5f0ea 100%);
+      padding: 56px 24px 44px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-emoji { font-size: 2.4rem; margin-bottom: 10px; display: block; }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--text-main);
+      letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+    .hero .sub {
+      font-size: 0.9rem;
+      color: var(--text-sub);
+      font-weight: 400;
+    }
+    .hero .tag {
+      display: inline-block;
+      margin-top: 14px;
+      background: var(--accent);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── CONTENT WRAPPER ── */
+    .wrap {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ── OPENER ── */
+    .opener {
+      margin: 36px 0 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 26px;
+    }
+    .opener p { color: var(--text-sub); margin-bottom: 18px; }
+    .opener .quotes { list-style: none; margin: 16px 0 20px; }
+    .opener .quotes li {
+      font-style: italic;
+      color: var(--text-main);
+      padding: 7px 0 7px 16px;
+      border-left: 3px solid var(--accent-mid);
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .opener .bridge { color: var(--text-sub); font-size: 0.9rem; }
+
+    /* ── SECTION ── */
+    section { margin-top: 32px; }
+    .section-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .section-head .icon { font-size: 1.4rem; flex-shrink: 0; padding-top: 2px; }
+    .section-head h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--text-main);
+    }
+    .section-head .sub-label {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      font-weight: 400;
+      display: block;
+      margin-top: 2px;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+    }
+    .card + .card { margin-top: 12px; }
+    .card p { color: var(--text-sub); font-size: 0.94rem; margin-bottom: 10px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card strong { color: var(--text-main); }
+
+    /* ── ANALOGY BOX ── */
+    .analogy {
+      background: var(--warm);
+      border: 1px solid var(--warm-border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-top: 14px;
+    }
+    .analogy .label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #b08050;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .analogy p { color: #5a4a38; font-size: 0.93rem; line-height: 1.85; }
+
+    /* ── THREE FRAME TABLE ── */
+    .frame-grid { display: grid; gap: 10px; margin-top: 14px; }
+    .frame-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .frame-item .badge {
+      flex-shrink: 0;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 12px;
+      white-space: nowrap;
+      margin-top: 3px;
+    }
+    .frame-item.neg .badge { background: #fde8e8; color: #c05050; }
+    .frame-item.pos .badge { background: #e8eef8; color: #4a6aa0; }
+    .frame-item.neu .badge { background: var(--accent-light); color: #3a7060; }
+    .frame-item .text { flex: 1; }
+    .frame-item .text .ko { font-size: 0.95rem; color: var(--text-main); font-weight: 500; margin-bottom: 4px; }
+    .frame-item .text .desc { font-size: 0.84rem; color: var(--text-sub); line-height: 1.6; }
+
+    /* ── MYTH BUSTING ── */
+    .myth-list { list-style: none; margin-top: 14px; }
+    .myth-list li {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      margin-bottom: 10px;
+    }
+    .myth-list .myth {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .myth-list .myth .x { color: #c05050; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; margin-top: 1px; }
+    .myth-list .myth .txt { font-size: 0.93rem; color: var(--text-sub); font-style: italic; }
+    .myth-list .truth { display: flex; align-items: flex-start; gap: 10px; }
+    .myth-list .truth .arrow { color: var(--accent); font-weight: 700; font-size: 0.9rem; flex-shrink: 0; margin-top: 1px; }
+    .myth-list .truth .txt { font-size: 0.88rem; color: var(--text-main); line-height: 1.7; }
+
+    /* ── MOMENT LIST ── */
+    .moment-list { list-style: none; margin-top: 14px; }
+    .moment-list li {
+      background: var(--accent-light);
+      border: 1px solid var(--accent-mid);
+      border-radius: var(--radius-sm);
+      padding: 14px 20px;
+      margin-bottom: 10px;
+    }
+    .moment-list .q { font-size: 0.94rem; font-weight: 500; color: #2d4a40; margin-bottom: 5px; }
+    .moment-list .a { font-size: 0.86rem; color: #3a6050; line-height: 1.65; }
+
+    /* ── REFLECTION ── */
+    .reflection {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px 24px;
+      margin-top: 14px;
+    }
+    .reflection-item {
+      display: flex;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .reflection-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .reflection-item .emoji { font-size: 1.2rem; flex-shrink: 0; padding-top: 2px; }
+    .reflection-item .q { font-size: 0.93rem; color: var(--text-main); line-height: 1.75; }
+
+    /* ── CLOSING ── */
+    .closing {
+      background: linear-gradient(160deg, #e8f2ee 0%, #f5f0ea 100%);
+      border: 1px solid var(--accent-mid);
+      border-radius: var(--radius);
+      padding: 28px 26px;
+      text-align: center;
+      margin-top: 14px;
+    }
+    .closing p { font-size: 0.93rem; color: #3a5040; line-height: 1.9; }
+    .closing .emphasis {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: #2a4030;
+      margin: 12px 0;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center;
+      padding: 32px 20px 0;
+      color: var(--text-light);
+      font-size: 0.8rem;
+    }
+    .footer .brand { font-weight: 700; color: var(--text-sub); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 1rem;
+      margin: 32px 0 0;
+      letter-spacing: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <span class="hero-emoji">🌿</span>
+    <h1>Sexuality, As It Is</h1>
+    <div class="sub">A guide to sex neutrality</div>
+    <span class="tag">Sexuality</span>
+  </div>
+
+  <div class="wrap">
+
+    <!-- OPENER -->
+    <div class="opener">
+      <p>Have any of these thoughts felt familiar?</p>
+      <ul class="quotes">
+        <li>"I don't really care about sex that much. Does that mean something is wrong with me?"</li>
+        <li>"The things I'm into — are they too weird? Am I too much?"</li>
+        <li>"If sex isn't happening in our relationship, does that mean we're broken?"</li>
+        <li>"After what happened to me, I feel like I'm damaged."</li>
+      </ul>
+      <p class="bridge">
+        These thoughts make a lot of sense. Most of us grew up absorbing messages that sex is an exceptional thing — either uniquely sacred, uniquely dangerous, or both at once.<br><br>
+        But what if there was another way to look at it?
+      </p>
+    </div>
+
+    <!-- SECTION 1: Sex Exceptionalism -->
+    <section>
+      <div class="section-head">
+        <span class="icon">🔍</span>
+        <h2>
+          How our culture treats sex
+          <span class="sub-label">Sex Exceptionalism</span>
+        </h2>
+      </div>
+      <div class="card">
+        <p>
+          Most cultures treat sex as categorically different from everything else —
+          as something that must be kept separate, approached with awe or fear,
+          and never talked about too casually.
+        </p>
+        <p>
+          This is called <strong>sex exceptionalism</strong>: the idea that sex sits in
+          its own special category, unlike any other human experience.
+        </p>
+        <p>This way of thinking creates some familiar struggles:</p>
+      </div>
+      <div class="card" style="margin-top:10px; background:var(--surface-soft);">
+        <ul style="padding-left:18px; color:var(--text-sub); font-size:0.91rem; line-height:2.1;">
+          <li>Feeling like something is wrong with you if you don't want sex</li>
+          <li>Shame about what you're into, or how often you want it</li>
+          <li>Difficulty talking honestly about sex — even with a therapist</li>
+          <li>Feeling permanently marked or damaged after a harmful experience</li>
+          <li>Treating mismatched desire as a verdict on the whole relationship</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION 2: What is Sex Neutrality -->
+    <section>
+      <div class="section-head">
+        <span class="icon">💡</span>
+        <h2>
+          What is sex neutrality?
+          <span class="sub-label">The Core Idea</span>
+        </h2>
+      </div>
+      <div class="card">
+        <p>
+          The term was introduced in 2021 by Christina Tesoro, a licensed clinical social worker,
+          who found that her clients' loaded feelings about sex were getting in the way of honest self-exploration.
+        </p>
+        <p>The core idea can be put simply:</p>
+        <p style="text-align:center; font-size:1.05rem; font-weight:600; color:var(--accent); padding:14px 0;">
+          "Sex is neither uniquely sacred<br>nor uniquely harmful."
+        </p>
+        <p>
+          It's a part of human life — variable in its importance, different for everyone,
+          and not inherently good or bad. What it means to you is yours to define.
+        </p>
+      </div>
+      <div class="analogy">
+        <div class="label">📖 An analogy</div>
+        <p>
+          Think about dancing.<br>
+          Some people make it the center of their social lives; others are completely
+          indifferent and can take it or leave it. Some only like to dance alone.
+          Some have had wonderful experiences on a dance floor; others have had
+          uncomfortable or even frightening ones.<br><br>
+          We don't assume someone's life is incomplete if they never go to a club.
+          We don't consider a person broken if they had a bad experience at a school dance.
+          Dancing just isn't treated as exceptional — it's part of life, with all the
+          variety that implies.<br><br>
+          Sex neutrality asks: what if we held sex the same way?
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Three Frames -->
+    <section>
+      <div class="section-head">
+        <span class="icon">🔄</span>
+        <h2>
+          Three perspectives
+          <span class="sub-label">Where Sex Neutrality Fits</span>
+        </h2>
+      </div>
+      <div class="frame-grid">
+        <div class="frame-item neg">
+          <span class="badge">Sex-Negative</span>
+          <div class="text">
+            <div class="desc">Sex is dangerous, shameful, or morally fraught. It should be suppressed or tightly controlled.</div>
+          </div>
+        </div>
+        <div class="frame-item pos">
+          <span class="badge">Sex-Positive</span>
+          <div class="text">
+            <div class="desc">Sex is inherently liberating and good. Embracing it freely is a sign of health and empowerment.</div>
+          </div>
+        </div>
+        <div class="frame-item neu">
+          <span class="badge">Sex-Neutral</span>
+          <div class="text">
+            <div class="desc">Sex is just sex. What it means — and whether it matters — depends entirely on the person experiencing it.</div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:12px; background:var(--surface-soft);">
+        <p style="font-size:0.88rem;">
+          Sex-negativity and sex-positivity look like opposites, but both treat sex as
+          <strong>exceptional</strong> — one as a source of danger, the other as a source of liberation.
+          Sex neutrality steps back from both, and removes the pedestal entirely.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Misconceptions -->
+    <section>
+      <div class="section-head">
+        <span class="icon">❓</span>
+        <h2>
+          What sex neutrality doesn't mean
+          <span class="sub-label">Common Misconceptions</span>
+        </h2>
+      </div>
+      <ul class="myth-list">
+        <li>
+          <div class="myth">
+            <span class="x">✗</span>
+            <span class="txt">"Sex doesn't matter or have meaning."</span>
+          </div>
+          <div class="truth">
+            <span class="arrow">→</span>
+            <span class="txt">If sex is deeply meaningful to you, that meaning is yours. Sex neutrality doesn't take that away — it just doesn't require that meaning to be there.</span>
+          </div>
+        </li>
+        <li>
+          <div class="myth">
+            <span class="x">✗</span>
+            <span class="txt">"Sexual abuse isn't a big deal."</span>
+          </div>
+          <div class="truth">
+            <span class="arrow">→</span>
+            <span class="txt">Actually the opposite. When we see that harm comes from <strong>violations of power and autonomy</strong> — not from sex itself — we can name abuse more clearly and respond to it more effectively.</span>
+          </div>
+        </li>
+        <li>
+          <div class="myth">
+            <span class="x">✗</span>
+            <span class="txt">"Consent and boundaries don't matter."</span>
+          </div>
+          <div class="truth">
+            <span class="arrow">→</span>
+            <span class="txt">Consent matters just as much — and sex neutrality actually makes it easier to talk about, because sex isn't treated as too fraught or too precious to discuss.</span>
+          </div>
+        </li>
+        <li>
+          <div class="myth">
+            <span class="x">✗</span>
+            <span class="txt">"You should feel nothing about sex."</span>
+          </div>
+          <div class="truth">
+            <span class="arrow">→</span>
+            <span class="txt">Neutral doesn't mean indifferent. It means approaching your own sexuality with curiosity rather than judgment — whatever you find there is okay.</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- SECTION 5: Helpful Moments -->
+    <section>
+      <div class="section-head">
+        <span class="icon">🌱</span>
+        <h2>
+          When this perspective helps
+          <span class="sub-label">Practical Applications</span>
+        </h2>
+      </div>
+      <ul class="moment-list">
+        <li>
+          <div class="q">🍃 "I don't really want sex. I think something might be wrong with me."</div>
+          <div class="a">Desire — or the absence of it — exists on a wide spectrum, including asexuality. Not wanting sex doesn't mean you're broken or missing something.</div>
+        </li>
+        <li>
+          <div class="q">🍃 "My body responded during something that felt wrong. Does that mean I wanted it?"</div>
+          <div class="a">Physical arousal is a physiological response — not a measure of consent or desire. It can happen involuntarily, like a reflex. It doesn't mean you wanted what happened.</div>
+        </li>
+        <li>
+          <div class="q">🍃 "We want sex at different frequencies. Is our relationship the problem?"</div>
+          <div class="a">Desire differences are common and workable. The question shifts from "is our relationship broken?" to "how do we navigate this difference?" — which is a much more useful place to start.</div>
+        </li>
+        <li>
+          <div class="q">🍃 "The things I'm into feel shameful."</div>
+          <div class="a">Removing the exceptionalism around sex creates room to explore what you actually want — with curiosity rather than shame as your guide.</div>
+        </li>
+        <li>
+          <div class="q">🍃 "Without sex, I don't feel like a real partner."</div>
+          <div class="a">A relationship's value isn't measured by sex. Connection, trust, care, shared life — these are what relationships are made of, and they can exist in many forms.</div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- DIVIDER -->
+    <div class="divider">· · ·</div>
+
+    <!-- SECTION 6: Reflection -->
+    <section>
+      <div class="section-head">
+        <span class="icon">✍️</span>
+        <h2>
+          Reflection questions
+          <span class="sub-label">For Personal Exploration</span>
+        </h2>
+      </div>
+      <div class="reflection">
+        <div class="reflection-item">
+          <span class="emoji">💭</span>
+          <span class="q">What does sex mean to you — and where did that meaning come from? Family, religion, culture, your own experiences?</span>
+        </div>
+        <div class="reflection-item">
+          <span class="emoji">🌊</span>
+          <span class="q">What messages about sex have you carried the longest? Which ones have served you, and which ones haven't?</span>
+        </div>
+        <div class="reflection-item">
+          <span class="emoji">🌿</span>
+          <span class="q">If you could look at your own sexuality without judgment — what would you notice?</span>
+        </div>
+        <div class="reflection-item">
+          <span class="emoji">💚</span>
+          <span class="q">Is the meaning you attach to sex something you chose — or something you inherited?</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section>
+      <div class="closing">
+        <p>Your sexuality is not a problem to be fixed.</p>
+        <p class="emphasis">It's a part of you — worth understanding, not correcting.</p>
+        <p>
+          Whether it feels expansive or minimal, simple or complicated —<br>
+          there's room to explore it at your own pace,<br>
+          without shame, and without judgment. 🌿
+        </p>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div class="brand">PADO Psychological Wellness</div>
+      <div>Dr. Yeji Son, Licensed Psychologist</div>
+    </div>
+
+  </div>
+</body>
+</html>
