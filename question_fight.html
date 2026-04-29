@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>질문했는데 싸움이 났다 | PADO Psychology</title>
+  <meta name="description" content="커플 사이에서 질문이 싸움이 되는 이유 — 신경다양성과 소통 방식의 차이를 이해하는 심리교육 자료. PADO Psychology." />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f9f7f4;
+      --surface: #ffffff;
+      --text: #1a1a1a;
+      --text-muted: #666666;
+      --text-light: #999999;
+      --accent: #4a7c6f;
+      --accent-light: #e8f2ef;
+      --accent-warm: #9b7b5a;
+      --border: #e8e3dc;
+      --tag-bg: #f0ece4;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15.5px;
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 32px;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--accent); }
+
+    .top-icon { font-size: 36px; margin-bottom: 20px; display: block; }
+
+    h1 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .en-title {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--tag-bg);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+      margin-right: 6px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 36px 0;
+    }
+
+    p {
+      margin-bottom: 14px;
+      line-height: 1.9;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    h2 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .scene-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin: 20px 0;
+    }
+
+    .scene-box .scene-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--text-light);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .scene-box .quote-line {
+      font-size: 16px;
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 8px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .scene-box .quote-line:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 28px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .step-content h3 { margin-bottom: 6px; }
+
+    .step-content p {
+      font-size: 14.5px;
+      color: var(--text-muted);
+    }
+
+    .callout {
+      background: var(--accent-light);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+
+    .callout p {
+      font-size: 15px;
+      color: var(--accent);
+      font-weight: 500;
+      margin: 0;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .col-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 16px;
+    }
+
+    .col-card .col-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .col-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .practice-section {
+      margin: 20px 0;
+    }
+
+    .practice-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+
+    .practice-card .practice-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .practice-card .practice-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+      align-items: flex-start;
+    }
+
+    .practice-card .practice-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .practice-card .practice-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .practice-card .practice-text h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .practice-card .practice-text p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.75;
+    }
+
+    .warning-box {
+      background: #fdf5ee;
+      border: 1px solid #e8d0b8;
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin: 28px 0;
+    }
+
+    .warning-box p {
+      font-size: 14.5px;
+      color: #7a5738;
+      margin: 0;
+      line-height: 1.85;
+    }
+
+    .note-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 16px 0 0 0;
+    }
+
+    .note-box p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer p {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 500px) {
+      .two-col { grid-template-columns: 1fr; }
+      h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <a href="https://padopsychology.com/resource" class="back-link">← 자료 목록으로</a>
+
+  <span class="top-icon">💬</span>
+  <h1>질문했는데 싸움이 났다</h1>
+  <div class="en-title">When Asking Questions Starts a Fight</div>
+  <div class="tag">Neuro-affirming</div>
+  <div class="tag">커플</div>
+  <div style="margin-bottom: 24px;"></div>
+
+  <p>이 패턴 있는 커플 꽤 많아요. 한 사람은 질문하고, 한 사람은 상처받고, 둘 다 이유를 모릅니다. 특히 도덕적, 감정적으로 예민한 주제에서 반복된다면, 한 번쯤 들여다볼 필요가 있어요.</p>
+
+  <hr />
+
+  <h2>🎬 이런 장면이 익숙하지 않나요?</h2>
+
+  <p>내가 말하고 있는데 상대가 질문을 해요.</p>
+
+  <div class="scene-box">
+    <div class="scene-label">상대방의 질문</div>
+    <div class="quote-line">"그게 언제야?"</div>
+    <div class="quote-line">"왜 그랬는데?"</div>
+  </div>
+
+  <p>듣는 사람 입장에서는 반박당하는 느낌, 내 말이 부족하다는 느낌이 들어요. 근데 질문한 사람은 그냥 이해하려고 물어본 거예요.</p>
+
+  <hr />
+
+  <h2>🔍 왜 이런 일이 생기는 걸까요?</h2>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <h3>신경전형인에게 질문은 특정한 신호예요</h3>
+      <p>말 중간에 들어오는 질문은 "동의 안 해" 또는 "설명이 부족해"라는 신호로 읽혀요. 친한 사이일수록 더 그렇습니다. 오래 알수록 말 안 해도 통하는 것이 친밀감의 언어이기 때문이에요.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <h3>신경다양인 뇌는 다르게 작동해요</h3>
+      <p>맥락이 빠지면 거기서 처리가 걸려요. 신경전형인의 뇌가 빈칸을 "대충 맞겠지"로 넘길 수 있다면, 신경다양인은 그게 안 돼요. 추측으로 공감했다가 틀리는 게 더 나쁜 결과이기 때문에 구체적인 질문을 던지는 거예요. 이걸 문자 그대로의 처리(<strong>literal processing</strong>)라고 해요. 말해주지 않은 건 없는 정보로 처리돼요. "알잖아"가 실제로 안 통하는 거예요.</p>
+      <p>이 패턴은 특히 자폐 스펙트럼(ASD)의 인지 방식에서 뚜렷하게 나타나요. ADHD에서도 질문이 많아질 수 있지만, 그건 주의가 빠져서 놓친 부분을 다시 묻거나, 떠오른 생각을 바로 말하는 것에 가까워요. 같은 행동처럼 보여도 그 아래 작동하는 기제가 달라요.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <h3>소통의 단절은 양방향이에요</h3>
+      <p>위 장면에서 자연스럽게 드는 생각은 "질문한 사람이 눈치가 없다"거나, "상처받은 사람이 예민하다"는 거예요. 하지만 심리학자 Damian Milton (2012)은 이 전제 자체를 뒤집습니다. 신경다양인이 신경전형인을 못 읽는 만큼, 신경전형인도 신경다양인을 못 읽어요. 소통의 단절은 한 사람의 결핍이 아니라 두 사람 사이의 차이에서 오는 거예요. 신경전형인의 방식이 사회적 "기본값"으로 여겨지기 때문에 항상 신경다양인 쪽이 문제처럼 보일 뿐이에요. 틀린 사람은 없어요. 번역이 안 된 거예요.</p>
+      <p style="font-size:12px; color: var(--text-light); margin-top: 8px; margin-bottom: 0;">Milton, D. E. M. (2012). On the ontological status of autism: the 'double empathy problem'. <em>Disability & Society, 27</em>(6), 883–887. &nbsp;<a href="https://kar.kent.ac.uk/62639/1/Double%20empathy%20problem.pdf" target="_blank" style="color: var(--accent);">원문 보기 →</a></p>
+    </div>
+  </div>
+
+  <hr />
+
+  <h2>⚡ 그래서 역설이 생겨요</h2>
+
+  <div class="two-col">
+    <div class="col-card">
+      <div class="col-label">신경전형인</div>
+      <p>질문 없이도 아는 것이 친밀감이에요. "말 안 해도 알잖아"가 가까운 사이의 언어예요.</p>
+    </div>
+    <div class="col-card">
+      <div class="col-label">신경다양인</div>
+      <p>질문하는 것이 존중이에요. 확인하는 것이 상대를 제대로 이해하려는 방식이에요.</p>
+    </div>
+  </div>
+
+  <p>둘 다 틀린 게 아닌데, 둘 다 상처받아요. 이 오해가 가장 크게 폭발하는 건 감정이 실린 주제일 때예요. 젠더, 정치, 사회 이슈. 이미 예민한 대화에서 질문이 들어오면 소통 방식의 차이가 가치관의 차이로 읽혀요.</p>
+
+  <div class="callout">
+    <p>"왜 내 편이 아니야?"가 되는 거예요.</p>
+  </div>
+
+  <hr />
+
+  <h2>🌿 작은 변화를 시도해볼 수 있어요</h2>
+
+  <p>이 패턴을 아는 것만으로도 달라질 수 있어요. 완벽하게 바꾸려 하기보다, 다음 번 비슷한 장면이 왔을 때 하나만 다르게 해보는 것으로 충분해요.</p>
+
+  <div class="practice-section">
+
+    <div class="practice-card">
+      <div class="practice-label">신경전형인 파트너에게</div>
+
+      <div class="practice-item">
+        <div class="practice-icon">⏸️</div>
+        <div class="practice-text">
+          <h4>질문이 들어왔을 때 0.5초 멈추기</h4>
+          <p>즉각적인 감정 반응 전에, "이건 반박이 아니라 이해하려는 거일 수 있어"라고 한 번 더 생각해보세요. 해석이 달라지면 느끼는 것도 달라져요.</p>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-icon">🗣️</div>
+        <div class="practice-text">
+          <h4>맥락부터 꺼내기</h4>
+          <p>말을 시작하기 전에 "언제, 어디서, 누구랑" 같은 정보를 먼저 주세요. 파트너가 빈칸 없이 받을 수 있으면, 질문할 필요가 줄어들어요.</p>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-icon">💬</div>
+        <div class="practice-text">
+          <h4>질문의 의미를 직접 물어보기</h4>
+          <p>상처받았을 때 "지금 반박하는 거야?"라고 직접 물어보는 것도 방법이에요. 파트너의 의도를 확인하는 것이 가정하는 것보다 나아요.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="practice-card">
+      <div class="practice-label">신경다양인 파트너에게</div>
+
+      <div class="practice-item">
+        <div class="practice-icon">💬</div>
+        <div class="practice-text">
+          <h4>질문 전에 한 마디 먼저</h4>
+          <p>"이해하고 싶어서 물어보는 건데"라고 먼저 말해주세요. 상대방의 방어를 낮추는 데 이 한 마디가 생각보다 큰 역할을 해요.</p>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-icon">🔄</div>
+        <div class="practice-text">
+          <h4>공감 한 마디 먼저, 질문은 그 다음에</h4>
+          <p>맥락을 채우고 싶은 마음이 크더라도, "그랬구나" 한 마디를 먼저 건네보세요. 상대방이 들렸다는 걸 느끼고 나면 대화가 더 잘 열려요.</p>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-icon">🤝</div>
+        <div class="practice-text">
+          <h4>내 방식을 파트너에게 설명해보기</h4>
+          <p>"나는 맥락이 있어야 제대로 들을 수 있어. 반박하는 게 아니야"라고 직접 말해보세요. 설명하지 않으면 상대방은 계속 오역해요.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr />
+
+  <div class="warning-box">
+    <p>이 자료를 읽고 파트너를 진단하지 않기를 바라요. 신경다양인이라는 라벨은 설명이지, 면죄부도 공격 무기도 아니에요. 이 패턴이 반복되고 있고 둘 다 지쳐있다면, 전문가와 이야기하는 게 맞아요.</p>
+  </div>
+
+  <div class="footer">
+    <p>이 자료는 심리교육 목적으로 제작되었으며, 전문적인 진단이나 치료를 대체하지 않습니다.</p>
+    <p style="margin-top: 12px;">Yeji Son, PhD | Counseling Psychologist</p>
+    <p><a href="https://padopsychology.com">padopsychology.com</a> &nbsp;|&nbsp; <a href="https://padopsychology.com/resource">더 많은 자료 보기</a></p>
+  </div>
+
+</div>
+</body>
+</html>

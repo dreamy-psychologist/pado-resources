@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>When Asking Questions Starts a Fight | PADO Psychology</title>
+  <meta name="description" content="Why a simple question can feel like an attack in your relationship — understanding neurodivergent and neurotypical communication differences. A psychoeducation resource by PADO Psychology." />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f9f7f4;
+      --surface: #ffffff;
+      --text: #1a1a1a;
+      --text-muted: #666666;
+      --text-light: #999999;
+      --accent: #4a7c6f;
+      --accent-light: #e8f2ef;
+      --accent-warm: #9b7b5a;
+      --border: #e8e3dc;
+      --tag-bg: #f0ece4;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15.5px;
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 32px;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--accent); }
+
+    .top-icon { font-size: 36px; margin-bottom: 20px; display: block; }
+
+    h1 {
+      font-family: 'Lora', serif;
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .sub-title {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--tag-bg);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+      margin-right: 6px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 36px 0;
+    }
+
+    p {
+      margin-bottom: 14px;
+      line-height: 1.9;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    h2 {
+      font-family: 'Lora', serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .scene-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin: 20px 0;
+    }
+
+    .scene-box .scene-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--text-light);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .scene-box .quote-line {
+      font-size: 16px;
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 8px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .scene-box .quote-line:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 28px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .step-content h3 { margin-bottom: 6px; }
+
+    .step-content p {
+      font-size: 14.5px;
+      color: var(--text-muted);
+    }
+
+    .callout {
+      background: var(--accent-light);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+
+    .callout p {
+      font-size: 15px;
+      color: var(--accent);
+      font-weight: 500;
+      margin: 0;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .col-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 16px;
+    }
+
+    .col-card .col-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .col-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .practice-section {
+      margin: 20px 0;
+    }
+
+    .practice-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+
+    .practice-card .practice-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .practice-card .practice-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+      align-items: flex-start;
+    }
+
+    .practice-card .practice-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .practice-card .practice-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .practice-card .practice-text h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .practice-card .practice-text p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.75;
+    }
+
+    .warning-box {
+      background: #fdf5ee;
+      border: 1px solid #e8d0b8;
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin: 28px 0;
+    }
+
+    .warning-box p {
+      font-size: 14.5px;
+      color: #7a5738;
+      margin: 0;
+      line-height: 1.85;
+    }
+
+    .link-box {
+      background: var(--accent-light);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .link-box p {
+      font-size: 14px;
+      color: var(--accent);
+      margin: 0;
+    }
+
+    .link-box a {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer p {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 500px) {
+      .two-col { grid-template-columns: 1fr; }
+      h1 { font-size: 22px; }
+      .link-box { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <a href="https://padopsychology.com/resource" class="back-link">← Back to Resources</a>
+
+  <span class="top-icon">💬</span>
+  <h1>When Asking Questions Starts a Fight</h1>
+  <div class="sub-title">질문했는데 싸움이 났다</div>
+  <div class="tag">Neuro-affirming</div>
+  <div class="tag">Couples</div>
+  <div style="margin-bottom: 24px;"></div>
+
+  <p>This pattern shows up in a lot of couples. One person asks a question, the other feels hurt, and neither understands why. If it keeps happening around emotionally or morally charged topics, it's worth looking at what's underneath.</p>
+
+  <hr />
+
+  <h2>🎬 Does this scene feel familiar?</h2>
+
+  <p>You're in the middle of saying something, and your partner jumps in with a question.</p>
+
+  <div class="scene-box">
+    <div class="scene-label">Your partner's question</div>
+    <div class="quote-line">"When was that?"</div>
+    <div class="quote-line">"Why did you do that?"</div>
+  </div>
+
+  <p>On the receiving end, it can feel like being challenged, like what you said wasn't enough. But the person who asked? They were just trying to understand.</p>
+
+  <hr />
+
+  <h2>🔍 Why does this happen?</h2>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <h3>For neurotypical people, questions carry a specific signal</h3>
+      <p>A question dropped mid-conversation can read as "I disagree" or "You're not making sense." The closer the relationship, the stronger this signal. In many relational contexts, not having to ask is what closeness sounds like. "You should just know" is the language of intimacy.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <h3>The neurodivergent brain works differently</h3>
+      <p>When context is missing, processing stalls. Where a neurotypical brain might fill in the blanks with "close enough," a neurodivergent brain often can't. Guessing at empathy and getting it wrong feels worse than asking, so specific questions come out instead. This is called <strong>literal processing</strong>: what hasn't been said is treated as information that doesn't exist. "You should know" genuinely doesn't compute.</p>
+      <p>This pattern is especially pronounced in autistic (ASD) cognitive styles. Questions can also increase with ADHD, but for different reasons: re-asking something that was missed due to inattention, or blurting out a thought impulsively. It can look like the same behavior, but the mechanism underneath is different.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <h3>The communication breakdown goes both ways</h3>
+      <p>The instinct in this scenario is to think "the one who asked has no social awareness" or "the one who got hurt is too sensitive." But psychologist Damian Milton (2012) flips this assumption entirely. Just as neurodivergent people struggle to read neurotypical cues, neurotypical people equally struggle to read neurodivergent ones. The breakdown isn't one person's deficit. It comes from the difference between two people. Neurotypical communication is treated as the social "default," which is why the neurodivergent partner always looks like the problem. No one is wrong. It's an untranslated conversation.</p>
+      <p style="font-size:12px; color: var(--text-light); margin-top: 8px; margin-bottom: 0;">Milton, D. E. M. (2012). On the ontological status of autism: the 'double empathy problem'. <em>Disability & Society, 27</em>(6), 883–887. &nbsp;<a href="https://kar.kent.ac.uk/62639/1/Double%20empathy%20problem.pdf" target="_blank" style="color: var(--accent);">Read the original →</a></p>
+    </div>
+  </div>
+
+  <hr />
+
+  <h2>⚡ This creates a paradox</h2>
+
+  <div class="two-col">
+    <div class="col-card">
+      <div class="col-label">Neurotypical</div>
+      <p>Knowing without asking is what intimacy feels like. "I shouldn't have to explain" is the language of closeness.</p>
+    </div>
+    <div class="col-card">
+      <div class="col-label">Neurodivergent</div>
+      <p>Asking is a form of respect. Checking is how they make sure they're truly understanding you.</p>
+    </div>
+  </div>
+
+  <p>Neither is wrong, but both get hurt. This collision hits hardest around emotionally loaded topics: gender, politics, social issues. When a question lands in the middle of an already sensitive conversation, a difference in communication style gets read as a difference in values.</p>
+
+  <div class="callout">
+    <p>It becomes: "Why aren't you on my side?"</p>
+  </div>
+
+  <hr />
+
+  <h2>🌿 Small shifts you can try</h2>
+
+  <p>Just knowing this pattern exists can change things. You don't have to overhaul how you communicate. Next time this scene comes up, try doing just one thing differently.</p>
+
+  <div class="practice-section">
+
+    <div class="practice-card">
+      <div class="practice-label">For the neurotypical partner</div>
+
+      <div class="practice-item">
+        <div class="practice-icon">⏸️</div>
+        <div class="practice-text">
+          <h4>Pause for half a second when a question lands</h4>
+          <p>Before the emotional reaction kicks in, try: "This might not be a challenge. They might be trying to understand." When the interpretation shifts, the feeling shifts too.</p>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-icon">🗣️</div>
+        <div class="practice-text">
+          <h4>Lead with context</h4>
+          <p>Before getting into the story, offer the basics: when, where, who. If your partner can receive it without gaps, they won't need to ask as many questions.</p>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-icon">💬</div>
+        <div class="practice-text">
+          <h4>Ask what the question means</h4>
+          <p>When you feel stung, try asking directly: "Are you pushing back, or just trying to understand?" Checking their intent beats assuming it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="practice-card">
+      <div class="practice-label">For the neurodivergent partner</div>
+
+      <div class="practice-item">
+        <div class="practice-icon">💬</div>
+        <div class="practice-text">
+          <h4>Flag it before you ask</h4>
+          <p>Try saying "I'm asking because I want to understand" before the question. That one line lowers your partner's defenses more than you'd expect.</p>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-icon">🔄</div>
+        <div class="practice-text">
+          <h4>Acknowledge first, ask second</h4>
+          <p>Even when the urge to fill in the missing context is strong, try leading with "That sounds hard" or "I hear you." Once your partner feels heard, the conversation opens up.</p>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-icon">🤝</div>
+        <div class="practice-text">
+          <h4>Explain your wiring to your partner</h4>
+          <p>Try saying: "I need the details so I can actually hear you. I'm not arguing." If you don't explain it, they'll keep misreading it.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr />
+
+  <div class="warning-box">
+    <p>Please don't use this resource to diagnose your partner. A neurodivergent label is an explanation, not an excuse or a weapon. If this pattern keeps repeating and you're both exhausted, it's time to talk to a professional.</p>
+  </div>
+
+  <div class="link-box">
+    <p>If this pattern keeps showing up, there's a space to work through it together.</p>
+    <a href="https://padopsychology.com/services">Couples therapy →</a>
+  </div>
+
+  <div class="footer">
+    <p>This resource is for psychoeducational purposes and does not replace professional diagnosis or treatment.</p>
+    <p style="margin-top: 12px;">Yeji Son, PhD | Counseling Psychologist</p>
+    <p><a href="https://padopsychology.com">padopsychology.com</a> &nbsp;|&nbsp; <a href="https://padopsychology.com/resource">More resources</a></p>
+  </div>
+
+</div>
+</body>
+</html>
