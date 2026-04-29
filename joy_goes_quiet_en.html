@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>When Joy Goes Quiet | PADO Psychology</title>
+  <meta name="description" content="When things you used to enjoy feel like nothing — understanding anhedonia as a neurodivergent person. A psychoeducation resource by PADO Psychology." />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f9f7f4;
+      --surface: #ffffff;
+      --text: #1a1a1a;
+      --text-muted: #666666;
+      --text-light: #999999;
+      --accent: #4a7c6f;
+      --accent-light: #e8f2ef;
+      --accent-warm: #9b7b5a;
+      --border: #e8e3dc;
+      --tag-bg: #f0ece4;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15.5px;
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 32px;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--accent); }
+
+    .top-icon { font-size: 36px; margin-bottom: 20px; display: block; }
+
+    h1 {
+      font-family: 'Lora', serif;
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .sub-title {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--tag-bg);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+      margin-right: 6px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 36px 0;
+    }
+
+    p {
+      margin-bottom: 14px;
+      line-height: 1.9;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    h2 {
+      font-family: 'Lora', serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .scene-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin: 20px 0;
+    }
+
+    .scene-box .scene-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--text-light);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .scene-box .quote-line {
+      font-size: 15px;
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 8px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .scene-box .quote-line:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 28px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .step-content h3 { margin-bottom: 6px; }
+
+    .step-content p {
+      font-size: 14.5px;
+      color: var(--text-muted);
+    }
+
+    .callout {
+      background: var(--accent-light);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+
+    .callout p {
+      font-size: 15px;
+      color: var(--accent);
+      font-weight: 500;
+      margin: 0;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .col-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 16px;
+    }
+
+    .col-card .col-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .col-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .practice-section {
+      margin: 20px 0;
+    }
+
+    .practice-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+
+    .practice-card .practice-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .practice-card .practice-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+      align-items: flex-start;
+    }
+
+    .practice-card .practice-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .practice-card .practice-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .practice-card .practice-text h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .practice-card .practice-text p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.75;
+    }
+
+    .warning-box {
+      background: #fdf5ee;
+      border: 1px solid #e8d0b8;
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin: 28px 0;
+    }
+
+    .warning-box p {
+      font-size: 14.5px;
+      color: #7a5738;
+      margin: 0;
+      line-height: 1.85;
+    }
+
+    .link-box {
+      background: var(--accent-light);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .link-box p {
+      font-size: 14px;
+      color: var(--accent);
+      margin: 0;
+    }
+
+    .link-box a {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer p {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .references {
+      margin: 28px 0 0 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .references .ref-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 14px;
+    }
+
+    .references p {
+      font-size: 12.5px;
+      color: var(--text-light);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .references a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 500px) {
+      .two-col { grid-template-columns: 1fr; }
+      h1 { font-size: 22px; }
+      .link-box { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <a href="https://padopsychology.com/resource" class="back-link">← Back to Resources</a>
+
+  <span class="top-icon">🌫️</span>
+  <h1>When Joy Goes Quiet</h1>
+  <div class="sub-title">즐거움이 사라진 느낌이 들 때</div>
+  <div class="tag">Neuro-affirming</div>
+  <div style="margin-bottom: 24px;"></div>
+
+  <p>Sometimes the things you used to enjoy just stop landing. It's not laziness. It's not a lack of willpower. It might be your nervous system telling you something about the state it's in right now.</p>
+
+  <hr />
+
+  <h2>🌫️ Do any of these feel familiar?</h2>
+
+  <div class="scene-box">
+    <div class="scene-label">Common experiences</div>
+    <div class="quote-line">"I know I'd enjoy it if I started, but I can't make myself start."</div>
+    <div class="quote-line">"I used to love this. Now it's just... nothing."</div>
+    <div class="quote-line">"I only feel alive when I'm deep in my special interest. Everything else is flat."</div>
+    <div class="quote-line">"I can feel stress just fine. It's the good stuff that's missing."</div>
+  </div>
+
+  <p>This experience has a name. In psychology, it's called <strong>anhedonia</strong>: a reduced ability to feel pleasure, or a reduced drive to move toward things that used to feel rewarding.</p>
+
+  <p>For neurodivergent people, this isn't an unfamiliar experience. But because it's so often read as "lazy," "unmotivated," or "probably depressed," many people carry it without ever naming it for what it is, and end up blaming themselves instead.</p>
+
+  <hr />
+
+  <h2>🔍 One important distinction first</h2>
+
+  <p>When it feels like pleasure is gone, two different things might actually be happening.</p>
+
+  <div class="two-col">
+    <div class="col-card">
+      <div class="col-label">Anhedonia</div>
+      <p>Pleasure itself isn't arriving. You listen to music you used to love and nothing comes up. The signal isn't firing.</p>
+    </div>
+    <div class="col-card">
+      <div class="col-label">Alexithymia</div>
+      <p>Pleasure might be happening, but you can't recognize or name it. Your body is responding, but your mind can't follow.</p>
+    </div>
+  </div>
+
+  <p>This distinction matters because the response is completely different. Not feeling and not noticing are different problems. You might be experiencing both. Either way, it's not something to blame yourself for.</p>
+
+  <hr />
+
+  <h2>⚡ Why "just do something fun" doesn't work</h2>
+
+  <p>The usual advice for this state sounds like: "Do something you enjoy," "Pick up a hobby," "Get out of the house." But this advice rests on a specific assumption.</p>
+
+  <div class="callout">
+    <p>The assumption that you already know what brings you pleasure.</p>
+  </div>
+
+  <p>This is a top-down approach. It starts with a concept of "pleasure" in your head, then asks you to find an activity that matches, then expects you to act on it. But if your access to pleasure is blocked right now, this is like rummaging through an empty drawer over and over.</p>
+
+  <p>Neurodivergent brains tend to process from the bottom up, building from concrete sensory experience toward bigger meaning. If "What would make you happy?" feels too big and abstract, that's not a failure on your part. The question is pointing in the wrong direction.</p>
+
+  <p>There's another layer, too. When your nervous system has been in overdrive for a long time, accessing emotions at all becomes harder. Under sustained overload, sensory overwhelm, and chronic tension, the nervous system prioritizes what's needed for survival and dials down the rest. The joy didn't disappear. Your system may just not have the bandwidth to process it right now.</p>
+
+  <hr />
+
+  <h2>🌿 Starting from sensation</h2>
+
+  <p>You don't need to find "good." "Not bad" is enough. Instead of starting from your head, try starting from one sensory input your body doesn't reject.</p>
+
+  <div class="practice-section">
+
+    <div class="practice-card">
+      <div class="practice-label">Things you can try</div>
+
+      <div class="practice-item">
+        <div class="practice-icon">🌡️</div>
+        <div class="practice-text">
+          <h4>Pay attention to temperature</h4>
+          <p>Put your hands under warm water, or hold a cold glass. It doesn't have to feel "good." If the temperature doesn't feel bad, stay with it for a moment.</p>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-icon">🤲</div>
+        <div class="practice-text">
+          <h4>Slowly notice texture</h4>
+          <p>The grain of a blanket, a wooden surface, the inside of a sweater. Touch it and ask: "What does this feel like?" Describe the sensation, not the emotion.</p>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-icon">👂</div>
+        <div class="practice-text">
+          <h4>Focus on a single sound</h4>
+          <p>Not a whole song. One sound. Rain, the click of a keyboard, the tone of a single instrument. Find the one your nervous system accepts.</p>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-icon">🚶</div>
+        <div class="practice-text">
+          <h4>One very small movement</h4>
+          <p>A stretch, moving your fingers, walking slowly. Follow what you feel in your body as it moves. This isn't exercise. It's sensory exploration.</p>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-icon">👃</div>
+        <div class="practice-text">
+          <h4>Smell something on purpose</h4>
+          <p>Coffee beans, citrus peel, a scent you used to like. Bring it close and breathe slowly. "Good" doesn't have to arrive. "There's something here" is enough.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="practice-card">
+      <div class="practice-label">Why this approach</div>
+
+      <div class="practice-item">
+        <div class="practice-icon">🧭</div>
+        <div class="practice-text">
+          <h4>It reverses the direction</h4>
+          <p>Instead of "What makes me happy?" (top-down), the question becomes "Does this sensation feel not-bad?" (bottom-up). Starting from sensation rather than concept means this is accessible even when you're overloaded.</p>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-icon">🔬</div>
+        <div class="practice-text">
+          <h4>Paying attention to pleasant features of sensory input</h4>
+          <p>In psychology, this practice is called savoring. It's not about forcing pleasure into existence. It's about noticing what your nervous system already accepts in the sensory experience right in front of you. Research suggests this approach can help restore responsiveness to pleasure over time.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <hr />
+
+  <h2>📐 Reducing overload might need to come first</h2>
+
+  <p>If even sensory exploration feels like too much right now, this might be a moment for subtraction, not addition. Before trying to add pleasure back in, give your nervous system the conditions to rest.</p>
+
+  <div class="practice-card">
+    <div class="practice-label">Start here instead</div>
+
+    <div class="practice-item">
+      <div class="practice-icon">🔇</div>
+      <div class="practice-text">
+        <h4>Reduce sensory input</h4>
+        <p>Lower the noise, dim the lights, create a low-stimulus environment. Just reducing how much your nervous system has to process can change how available your emotions become.</p>
+      </div>
+    </div>
+
+    <div class="practice-item">
+      <div class="practice-icon">🎭</div>
+      <div class="practice-text">
+        <h4>Make time to unmask</h4>
+        <p>Time where you can stop performing and just exist as you are. Even a short window counts. Your nervous system needs to leave performance mode before it can pick up other signals.</p>
+      </div>
+    </div>
+
+    <div class="practice-item">
+      <div class="practice-icon">⏸️</div>
+      <div class="practice-text">
+        <h4>Give yourself permission to do nothing</h4>
+        <p>It doesn't have to be productive. Recovery often happens inside time that looks like nothing is happening at all.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <hr />
+
+  <div class="warning-box">
+    <p>If the absence of joy has lasted a long time, that's a signal worth paying attention to. Anhedonia can be part of depression, burnout, or other conditions. This resource is meant to help you understand your experience, not to replace diagnosis or treatment. You don't have to carry this alone.</p>
+  </div>
+
+  <div class="references">
+    <div class="ref-label">References</div>
+    <p>Garland, E. L., Fix, S. T., Hudak, J. P., Bernat, E. M., Nakamura, Y., Hanley, A. W., Donaldson, G. W., Marchand, W. R., &amp; Froeliger, B. (2023). Mindfulness-Oriented Recovery Enhancement remediates anhedonia in chronic opioid use by enhancing neurophysiological responses during savoring of natural rewards. <em>Psychological Medicine, 53</em>(5), 2085–2094. <a href="https://doi.org/10.1017/S0033291721003834" target="_blank">doi →</a></p>
+    <p>Kinnaird, E., Stewart, C., &amp; Tchanturia, K. (2019). Investigating alexithymia in autism: A systematic review and meta-analysis. <em>European Psychiatry, 55</em>, 80–89. <a href="https://doi.org/10.1016/j.eurpsy.2018.09.004" target="_blank">doi →</a></p>
+    <p>Serretti, A. (2025). Anhedonia: Current and future treatments. <em>Psychiatry and Clinical Neurosciences Reports, 4</em>(1), e70088. <a href="https://doi.org/10.1002/pcn5.70088" target="_blank">doi →</a></p>
+  </div>
+
+  <div class="footer">
+    <p>This resource is for psychoeducational purposes and does not replace professional diagnosis or treatment.</p>
+    <p style="margin-top: 12px;">Yeji Son, PhD | Counseling Psychologist</p>
+    <p><a href="https://padopsychology.com">padopsychology.com</a> &nbsp;|&nbsp; <a href="https://padopsychology.com/resource">More resources</a></p>
+  </div>
+
+</div>
+</body>
+</html>
