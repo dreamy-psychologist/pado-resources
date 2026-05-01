@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>작은 좋음을 수집하는 연습 ① 감각에서 시작하기 | PADO Psychology</title>
+  <meta name="description" content="즐거움을 억지로 만들지 않아도 돼요. 감각에서 '싫지 않음'을 찾는 것부터 시작하는 savoring 연습. PADO Psychology." />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #FDF8F3;
+      --warm-beige: #F5E6D3;
+      --soft-sage: #C5D4C0;
+      --soft-sage-light: #EDF2EB;
+      --calm-blue: #B8C9D4;
+      --calm-blue-light: #EAF0F4;
+      --dusty-rose: #E8D4D4;
+      --dusty-rose-light: #F8F0F0;
+      --soft-lavender: #D4D4E8;
+      --soft-lavender-light: #EEEEF6;
+      --deep-forest: #3D5A47;
+      --warm-brown: #8B7355;
+      --soft-charcoal: #4A4A4A;
+      --warm-amber: #D4A574;
+      --warm-amber-light: #FAF0E4;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--cream);
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: var(--warm-brown);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 0.7; }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(212, 165, 116, 0.2) 0%, transparent 100%);
+      border-radius: 30px;
+    }
+    .header::before {
+      content: '✨';
+      font-size: 48px;
+      display: block;
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+    }
+    .header .subtitle {
+      font-size: 1.05rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+    }
+    .header .tags {
+      margin-top: 16px;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .header .tag {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+    .tag-primary { background: var(--warm-amber); color: white; }
+    .tag-secondary { background: var(--soft-sage); color: var(--deep-forest); }
+
+    /* Intro */
+    .intro {
+      background: linear-gradient(135deg, #fff 0%, var(--warm-amber-light) 100%);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 50px;
+      border-left: 5px solid var(--warm-amber);
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+    .intro p { font-size: 1rem; line-height: 1.9; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--warm-beige);
+      margin: 50px 0;
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+      border: 1px solid rgba(139, 115, 85, 0.1);
+    }
+    .section-card h2 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.6rem;
+      color: var(--deep-forest);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-card > p {
+      font-size: 1rem;
+      color: var(--soft-charcoal);
+      margin-bottom: 16px;
+    }
+
+    /* Highlight box */
+    .highlight-box {
+      background: var(--warm-amber-light);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+    .highlight-box.sage { background: var(--soft-sage-light); }
+    .highlight-box.rose { background: var(--dusty-rose-light); }
+    .highlight-box.lavender { background: var(--soft-lavender-light); }
+    .highlight-box.blue { background: var(--calm-blue-light); }
+
+    .highlight-box-title {
+      font-weight: 600;
+      color: var(--deep-forest);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.05rem;
+    }
+    .highlight-box p { font-size: 0.95rem; line-height: 1.8; }
+
+    /* Sensory cards */
+    .sensory-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    @media (max-width: 640px) { .sensory-grid { grid-template-columns: 1fr; } }
+
+    .sensory-card {
+      background: white;
+      border: 1px solid rgba(139, 115, 85, 0.15);
+      border-radius: 20px;
+      padding: 24px;
+      transition: all 0.3s ease;
+    }
+    .sensory-card:hover {
+      box-shadow: 0 4px 20px rgba(139, 115, 85, 0.12);
+      transform: translateY(-2px);
+    }
+    .sensory-card .card-emoji { font-size: 1.8rem; margin-bottom: 8px; }
+    .sensory-card h4 { font-size: 1.05rem; color: var(--deep-forest); margin-bottom: 8px; }
+    .sensory-card p { font-size: 0.92rem; line-height: 1.7; color: var(--soft-charcoal); }
+    .sensory-card .prompt {
+      margin-top: 12px; padding-top: 12px;
+      border-top: 1px solid rgba(139, 115, 85, 0.1);
+      font-size: 0.88rem; color: var(--warm-brown); font-style: italic;
+    }
+
+    /* Series grid */
+    .series-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 16px 0;
+    }
+    @media (max-width: 480px) { .series-grid { grid-template-columns: 1fr; } }
+    .series-item {
+      background: white;
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+      border: 1px solid rgba(139, 115, 85, 0.1);
+    }
+    .series-item.current {
+      border: 2px solid var(--warm-amber);
+      background: var(--warm-amber-light);
+    }
+    .series-item .si-emoji { font-size: 1.3rem; margin-bottom: 4px; }
+    .series-item .si-num { font-size: 0.8rem; color: var(--warm-brown); }
+    .series-item .si-title { font-weight: 600; font-size: 0.9rem; color: var(--deep-forest); }
+
+    /* Warning */
+    .warning-box {
+      background: var(--dusty-rose-light); border-radius: 20px; padding: 28px;
+      margin: 40px 0; border: 1px solid var(--dusty-rose);
+    }
+    .warning-box p { font-size: 0.95rem; }
+
+    /* References */
+    .references {
+      margin-top: 60px; padding-top: 30px;
+      border-top: 1px solid var(--warm-beige);
+    }
+    .references h3 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.1rem; color: var(--warm-brown); margin-bottom: 16px;
+    }
+    .references p {
+      font-size: 0.82rem; line-height: 1.7; color: #777; margin-bottom: 12px;
+    }
+    .references a { color: var(--warm-brown); text-decoration: none; }
+    .references a:hover { text-decoration: underline; }
+
+    /* Footer */
+    .footer {
+      text-align: center; margin-top: 60px; padding: 30px;
+      font-size: 0.85rem; color: var(--warm-brown);
+    }
+    .footer .disclaimer { font-size: 0.8rem; color: #999; margin-bottom: 16px; }
+    .footer a { color: var(--warm-brown); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="https://padopsychology.com/resource" class="back-link">← 자료 목록으로</a>
+
+    <div class="header">
+      <h1>작은 좋음을 수집하는 연습</h1>
+      <div class="subtitle">① 감각에서 시작하기</div>
+      <div class="tags">
+        <span class="tag tag-secondary">Neuro-affirming</span>
+        <span class="tag tag-secondary">자기돌봄 · Self-Care</span>
+      </div>
+    </div>
+
+    <div class="intro">
+      <p>"좋아하는 게 뭐예요?"라는 질문이 너무 크게 느껴질 때가 있어요. 예전엔 대답할 수 있었는데, 지금은 머릿속이 비어 있는 것 같을 때. 그건 당신이 취향을 잃어버린 게 아니에요. 지금은 그 정보에 접근하는 통로가 좁아져 있는 거예요.</p>
+      <p style="margin-top: 12px;">이 자료는 크고 즐거운 무언가를 찾으라는 게 아니에요. 아주 작은 감각에서, "이건 싫지 않다"를 하나씩 모아보는 연습이에요. 심리학에서는 이걸 <strong>음미하기(savoring)</strong>라고 불러요. 이 시리즈에서는 음미하기를 여러 방향에서 연습해볼 거예요. 첫 번째는 감각에서 시작해요.</p>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Section 1: What is Savoring -->
+    <div class="section-card">
+      <h2>🔬 이 연습의 원리</h2>
+      <p>심리학에서는 긍정적인 경험을 <strong>의도적으로 알아차리고, 그 경험에 머무르는 시간을 늘리는</strong> 것을 음미하기(savoring)라고 해요 (Bryant & Veroff, 2007).</p>
+      <p>중요한 건, 즐거움을 <em>만들어내는</em> 게 아니라는 거예요. 이미 일어나고 있는 경험 안에서, 신경계가 반응하는 부분을 <em>알아차리고</em>, 거기에 주의를 <em>좀 더 오래</em> 두는 거예요.</p>
+      <p>이 자료에서 하려는 건 그중에서도 <strong>감각에 집중하는 연습</strong>이에요. 특정 감각 자극에 의도적으로 집중해서, 그 경험의 디테일을 더 선명하게 느끼는 거예요.</p>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Sensory exploration -->
+    <div class="section-card">
+      <h2>🌿 감각 선호 탐색하기</h2>
+      <p>"좋다"를 찾지 않아도 돼요. <strong>"싫지 않다"면 충분해요.</strong> 각 영역에서 내 신경계가 거부하지 않는 감각을 하나씩 찾아보세요.</p>
+
+      <div class="sensory-grid">
+        <div class="sensory-card">
+          <div class="card-emoji">🌡️</div>
+          <h4>온도</h4>
+          <p>따뜻한 물에 손을 넣었을 때. 차가운 컵을 쥐었을 때. 이불 속의 체온. 얼굴에 닿는 바람. 따뜻한 샤워 물줄기가 어깨를 타고 내려올 때. 어떤 온도에서 몸이 긴장을 풀어요?</p>
+          <div class="prompt">시도: 손을 따뜻한 물에 넣고, 온도가 피부에 닿는 감각에 3초만 집중해보세요.</div>
+        </div>
+
+        <div class="sensory-card">
+          <div class="card-emoji">🎨</div>
+          <h4>색깔</h4>
+          <p>유독 눈이 가는 색이 있나요? 해질 무렵 하늘의 색, 찻잔 속 음료의 색, 이불 색, 나뭇잎의 초록, 좋아하는 옷의 색. 한 연구에서는 20분 산책을 하면서 주변의 꽃, 하늘, 풍경의 색을 알아차리는 것만으로도 행복감이 높아졌어요.</p>
+          <div class="prompt">시도: 지금 있는 공간에서 눈이 편안해지는 색 하나를 찾아보세요.</div>
+        </div>
+
+        <div class="sensory-card">
+          <div class="card-emoji">👃</div>
+          <h4>향</h4>
+          <p>커피 원두를 갈 때 나는 냄새, 감귤 껍질을 비틀었을 때, 비 온 뒤의 흙 냄새, 갓 세탁한 옷, 좋아하는 사람에게서 나는 향, 빵이 구워지는 냄새. 후각은 감정 기억과 가장 직접적으로 연결된 감각이에요.</p>
+          <div class="prompt">시도: 향이 있는 것을 코에 가까이 가져가서, 3초간 천천히 들이마셔보세요.</div>
+        </div>
+
+        <div class="sensory-card">
+          <div class="card-emoji">🤲</div>
+          <h4>촉감</h4>
+          <p>부드러운 담요, 나무 표면의 결, 고양이 털, 따뜻한 머그컵의 도자기 표면, 모래를 만지는 감촉, 니트 안감, 책 페이지의 질감. 같은 물체도 천천히 만지면 느낌이 달라져요.</p>
+          <div class="prompt">시도: 가까이에 있는 물건 하나를 골라 손끝으로 천천히 표면을 따라가보세요. 거칠거칠한지, 매끄러운지, 차가운지.</div>
+        </div>
+
+        <div class="sensory-card">
+          <div class="card-emoji">👂</div>
+          <h4>소리</h4>
+          <p>음악 전체가 아니라 하나의 소리에 집중해보세요. 빗소리, 키보드 타건 소리, 냄비에서 물이 끓는 소리, 새소리, 고양이의 그르릉, 특정 악기의 음색, 바스락거리는 나뭇잎. 연구에서는 자연 소리에 주의를 기울이는 것이 긍정 정서를 높이는 데 도움이 돼요.</p>
+          <div class="prompt">시도: 지금 들리는 소리 중에서 신경계가 거부하지 않는 소리 하나를 골라보세요.</div>
+        </div>
+
+        <div class="sensory-card">
+          <div class="card-emoji">👅</div>
+          <h4>맛</h4>
+          <p>한 입을 평소보다 두 배 천천히 먹어보세요. 첫 모금의 따뜻함, 과일의 산미, 초콜릿이 혀 위에서 녹는 속도, 국물의 감칠맛, 빵 껍질의 바삭한 식감. 맛이 아니라 감각의 변화 과정에 주의를 두는 거예요.</p>
+          <div class="prompt">시도: 다음 식사에서 첫 한 입만 10초 동안 씹으면서, 혀 위에서 무슨 일이 일어나는지 관찰해보세요.</div>
+        </div>
+
+        <div class="sensory-card">
+          <div class="card-emoji">🚶</div>
+          <h4>움직임</h4>
+          <p>기지개를 켤 때 근육이 늘어나는 감각, 천천히 걸을 때 발바닥이 바닥에 닿는 느낌, 손가락을 하나씩 펴고 접는 것, 고개를 돌릴 때 목이 풀리는 감각. 큰 운동이 아니에요. 몸이 움직일 때 어떤 감각이 오는지 따라가는 거예요.</p>
+          <div class="prompt">시도: 자리에서 양팔을 위로 쭉 뻗고, 몸 전체가 늘어나는 감각을 5초간 느껴보세요.</div>
+        </div>
+
+        <div class="sensory-card">
+          <div class="card-emoji">👁️</div>
+          <h4>시각</h4>
+          <p>빛이 창문으로 들어오는 각도, 나뭇잎이 바람에 흔들리는 모습, 물 위의 반사, 노을의 색 변화, 작은 동물의 움직임. 한 연구에서 참가자들은 산책 중 이런 시각적 요소들을 의도적으로 알아차리는 것만으로 행복감이 유의미하게 높아졌어요.</p>
+          <div class="prompt">시도: 창밖을 10초간 바라보면서, 눈이 편안해지는 장면 하나를 찾아보세요.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 5: Next steps -->
+    <div class="section-card">
+      <h2>🌱 감각 선호가 모이면</h2>
+
+      <div class="highlight-box sage">
+        <div class="highlight-box-title">💡 이걸로 뭘 할 수 있나요</div>
+        <p>지금은 알아차리기만 해도 충분해요. 감각 선호가 쌓이면, 자연스럽게 다음 질문이 생겨요. "이런 감각이 있는 활동은 뭐가 있을까?" 따뜻한 게 좋다면 차 한 잔. 초록색이 좋다면 식물 하나. 흙 냄새가 좋다면 가드닝. 감각 선호가 활동으로 연결될 때, 그게 자연스러운 다음 단계예요.</p>
+        <p style="margin-top: 8px;">하지만 지금 그 단계까지 갈 필요는 없어요. <strong>지금은 "나는 아직 좋고 싫음이 있구나"를 확인하는 것만으로 충분해요.</strong></p>
+      </div>
+    </div>
+
+    <!-- Section 6: How to practice -->
+    <div class="section-card">
+      <h2>🧭 연습하는 방법</h2>
+
+      <div class="highlight-box">
+        <div class="highlight-box-title">📝 일상에서 할 수 있는 것</div>
+        <p><strong>하루에 감각 하나.</strong> 거창하지 않아도 돼요. 아침에 마시는 물의 온도, 창문으로 들어오는 빛의 색깔, 이불의 촉감. 하루에 하나만 알아차리면 돼요.</p>
+        <p style="margin-top: 8px;"><strong>알아차리면, 3초만 더.</strong> 그 감각을 느낀 순간에 바로 지나가지 말고, 의도적으로 3초만 더 머물러 보세요. "이건 뭔가 있다"를 3초 더 느끼는 것. 그게 음미하기예요.</p>
+        <p style="margin-top: 8px;"><strong>기록할 수 있으면 더 좋아요.</strong> 메모장에 한 줄이면 충분해요. "오늘 아침, 커피 향. 싫지 않았다." 감각 선호의 기록이 쌓이면, 그게 나만의 지도가 돼요.</p>
+      </div>
+
+      <div class="highlight-box rose">
+        <div class="highlight-box-title">⚠️ 이것만은 기억하세요</div>
+        <p><strong>"좋다"를 느껴야 한다는 압박을 내려놓으세요.</strong> 이 연습의 목표는 강렬한 즐거움이 아니에요. "싫지 않다", "뭔가 있다", "괜찮다" 수준이면 성공이에요.</p>
+        <p style="margin-top: 8px;"><strong>아무것도 안 느껴져도 괜찮아요.</strong> 그날은 신경계가 쉬는 날일 수 있어요. 강제로 느끼려고 하지 마세요. 안 느껴지면 그냥 넘기세요.</p>
+      </div>
+    </div>
+
+    <!-- Series -->
+    <div class="highlight-box sage" style="margin-bottom: 40px;">
+      <div class="highlight-box-title">📚 작은 좋음을 수집하는 연습</div>
+      <div class="series-grid">
+        <div class="series-item current">
+          <div class="si-emoji">🌡️</div>
+          <div class="si-num">①</div>
+          <div class="si-title">감각에서 시작하기</div>
+        </div>
+        <div class="series-item">
+          <div class="si-emoji">🌄</div>
+          <div class="si-num">②</div>
+          <div class="si-title">경이로움에 머물기</div>
+        </div>
+        <div class="series-item">
+          <div class="si-emoji">🏆</div>
+          <div class="si-num">③</div>
+          <div class="si-title">뿌듯함 느끼기</div>
+        </div>
+        <div class="series-item">
+          <div class="si-emoji">🙏</div>
+          <div class="si-num">④</div>
+          <div class="si-title">감사</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Warning -->
+    <div class="warning-box">
+      <p>즐거움이 오랫동안 사라진 상태가 계속된다면, 그건 주의가 필요한 신호예요. 무쾌감증은 우울증, 번아웃, 그 외 여러 상태의 일부일 수 있어요. 이 자료는 자기 경험을 이해하는 데 도움을 주기 위한 것이지, 진단이나 치료를 대체하지 않아요. 가까운 곳의 전문가와 상의하세요.</p>
+    </div>
+
+    <!-- References -->
+    <div class="references">
+      <h3>References</h3>
+      <p>Bryant, F. B., & Veroff, J. (2007). <em>Savoring: A new model of positive experience.</em> Lawrence Erlbaum Associates. <a href="https://doi.org/10.4324/9781315088426" target="_blank">doi →</a></p>
+    </div>
+
+    <div class="footer">
+      <p class="disclaimer">이 자료는 심리교육 목적으로 제작되었으며, 전문적인 진단이나 치료를 대체하지 않습니다.</p>
+      <p>Yeji Son, PhD | Counseling Psychologist</p>
+      <p><a href="https://padopsychology.com">padopsychology.com</a>  |  <a href="https://padopsychology.com/resource">더 많은 자료 보기</a></p>
+    </div>
+  </div>
+
+
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collecting Small Goodness ① Starting from Sensation | PADO Psychology</title>
+  <meta name="description" content="You don't have to force pleasure. Start by finding sensations that aren't unpleasant. A sensory savoring practice. PADO Psychology." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #FDF8F3;
+      --warm-beige: #F5E6D3;
+      --soft-sage: #C5D4C0;
+      --soft-sage-light: #EDF2EB;
+      --calm-blue: #B8C9D4;
+      --calm-blue-light: #EAF0F4;
+      --dusty-rose: #E8D4D4;
+      --dusty-rose-light: #F8F0F0;
+      --soft-lavender: #D4D4E8;
+      --soft-lavender-light: #EEEEF6;
+      --deep-forest: #3D5A47;
+      --warm-brown: #8B7355;
+      --soft-charcoal: #4A4A4A;
+      --warm-amber: #D4A574;
+      --warm-amber-light: #FAF0E4;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      background: var(--cream);
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: var(--warm-brown);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 0.7; }
+
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(212, 165, 116, 0.2) 0%, transparent 100%);
+      border-radius: 30px;
+    }
+    .header::before {
+      content: '✨';
+      font-size: 48px;
+      display: block;
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+    }
+    .header .subtitle {
+      font-size: 1.05rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+      font-style: italic;
+    }
+    .header .tags {
+      margin-top: 16px;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .header .tag {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+    .tag-secondary { background: var(--soft-sage); color: var(--deep-forest); }
+
+    .intro {
+      background: linear-gradient(135deg, #fff 0%, var(--warm-amber-light) 100%);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 50px;
+      border-left: 5px solid var(--warm-amber);
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+    .intro p { font-size: 1rem; line-height: 1.9; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--warm-beige);
+      margin: 50px 0;
+    }
+
+    .section-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+      border: 1px solid rgba(139, 115, 85, 0.1);
+    }
+    .section-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--deep-forest);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-card > p {
+      font-size: 1rem;
+      color: var(--soft-charcoal);
+      margin-bottom: 16px;
+    }
+
+    .highlight-box {
+      background: var(--warm-amber-light);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+    .highlight-box.sage { background: var(--soft-sage-light); }
+    .highlight-box.rose { background: var(--dusty-rose-light); }
+
+    .highlight-box-title {
+      font-weight: 600;
+      color: var(--deep-forest);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.05rem;
+    }
+    .highlight-box p { font-size: 0.95rem; line-height: 1.8; }
+
+    .sensory-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    @media (max-width: 640px) { .sensory-grid { grid-template-columns: 1fr; } }
+
+    .sensory-card {
+      background: white;
+      border: 1px solid rgba(139, 115, 85, 0.15);
+      border-radius: 20px;
+      padding: 24px;
+      transition: all 0.3s ease;
+    }
+    .sensory-card:hover {
+      box-shadow: 0 4px 20px rgba(139, 115, 85, 0.12);
+      transform: translateY(-2px);
+    }
+    .sensory-card .card-emoji { font-size: 1.8rem; margin-bottom: 8px; }
+    .sensory-card h4 { font-size: 1.05rem; color: var(--deep-forest); margin-bottom: 8px; }
+    .sensory-card p { font-size: 0.92rem; line-height: 1.7; color: var(--soft-charcoal); }
+    .sensory-card .prompt {
+      margin-top: 12px; padding-top: 12px;
+      border-top: 1px solid rgba(139, 115, 85, 0.1);
+      font-size: 0.88rem; color: var(--warm-brown); font-style: italic;
+    }
+
+    /* Series grid */
+    .series-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 16px 0;
+    }
+    @media (max-width: 480px) { .series-grid { grid-template-columns: 1fr; } }
+    .series-item {
+      background: white;
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+      border: 1px solid rgba(139, 115, 85, 0.1);
+    }
+    .series-item.current {
+      border: 2px solid var(--warm-amber);
+      background: var(--warm-amber-light);
+    }
+    .series-item .si-emoji { font-size: 1.3rem; margin-bottom: 4px; }
+    .series-item .si-num { font-size: 0.8rem; color: var(--warm-brown); }
+    .series-item .si-title { font-weight: 600; font-size: 0.9rem; color: var(--deep-forest); }
+
+    .warning-box {
+      background: var(--dusty-rose-light); border-radius: 20px; padding: 28px;
+      margin: 40px 0; border: 1px solid var(--dusty-rose);
+    }
+    .warning-box p { font-size: 0.95rem; }
+
+    .references {
+      margin-top: 60px; padding-top: 30px;
+      border-top: 1px solid var(--warm-beige);
+    }
+    .references h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; color: var(--warm-brown); margin-bottom: 16px;
+    }
+    .references p {
+      font-size: 0.82rem; line-height: 1.7; color: #777; margin-bottom: 12px;
+    }
+    .references a { color: var(--warm-brown); text-decoration: none; }
+    .references a:hover { text-decoration: underline; }
+
+    .footer {
+      text-align: center; margin-top: 60px; padding: 30px;
+      font-size: 0.85rem; color: var(--warm-brown);
+    }
+    .footer .disclaimer { font-size: 0.8rem; color: #999; margin-bottom: 16px; }
+    .footer a { color: var(--warm-brown); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="https://padopsychology.com/resource" class="back-link">← Back to Resources</a>
+
+    <div class="header">
+      <h1>Collecting Small Goodness</h1>
+      <div class="subtitle">① Starting from Sensation</div>
+      <div class="tags">
+        <span class="tag tag-secondary">Neuro-affirming</span>
+        <span class="tag tag-secondary">Self-Care</span>
+      </div>
+    </div>
+
+    <div class="intro">
+      <p>"What do you enjoy?" Sometimes that question feels impossibly big. You used to have answers, but right now your mind draws a blank. That doesn't mean you've lost your preferences. It means the pathway to that information has narrowed.</p>
+      <p style="margin-top: 12px;">This resource isn't asking you to find something big and joyful. It's about noticing, one small sensation at a time, what feels "not unpleasant." In psychology, this practice is called <strong>savoring</strong>. This series explores savoring from different angles. The first one starts with sensation.</p>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section-card">
+      <h2>🔬 How This Practice Works</h2>
+      <p>In psychology, savoring means <strong>intentionally noticing a positive experience and extending the time you spend with it</strong> (Bryant & Veroff, 2007).</p>
+      <p>The key idea: you're not <em>creating</em> pleasure. You're noticing what your nervous system is already responding to, and staying with it a little longer.</p>
+      <p>This resource focuses specifically on <strong>paying attention to sensation</strong>: deliberately focusing on a sensory stimulus and sharpening its details.</p>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section-card">
+      <h2>🌿 Exploring Sensory Preferences</h2>
+      <p>You don't need to find "good." <strong>"Not unpleasant" is enough.</strong> In each domain, look for one sensation your nervous system doesn't reject.</p>
+
+      <div class="sensory-grid">
+        <div class="sensory-card">
+          <div class="card-emoji">🌡️</div>
+          <h4>Temperature</h4>
+          <p>Warm water on your hands. A cold glass in your grip. Body heat under a blanket. Wind on your face. A warm shower stream running down your shoulders. At what temperature does your body ease up?</p>
+          <div class="prompt">Try: Put your hands under warm water and focus on the sensation of temperature meeting skin for 3 seconds.</div>
+        </div>
+
+        <div class="sensory-card">
+          <div class="card-emoji">🎨</div>
+          <h4>Color</h4>
+          <p>Is there a color your eyes are drawn to? The sky at dusk, the color of tea in a cup, the green of a leaf, the shade of a favorite sweater. In one study, participants who noticed colors, flowers, and scenery during a 20-minute walk reported higher levels of happiness.</p>
+          <div class="prompt">Try: Look around the space you're in and find one color that feels easy on your eyes.</div>
+        </div>
+
+        <div class="sensory-card">
+          <div class="card-emoji">👃</div>
+          <h4>Scent</h4>
+          <p>Grinding coffee beans, twisting a citrus peel, the smell of earth after rain, freshly laundered clothes, the scent of someone you feel safe with, bread baking in the oven. Smell is the sense most directly connected to emotional memory.</p>
+          <div class="prompt">Try: Bring something scented close to your nose and inhale slowly for 3 seconds.</div>
+        </div>
+
+        <div class="sensory-card">
+          <div class="card-emoji">🤲</div>
+          <h4>Touch</h4>
+          <p>A soft blanket, the grain of a wooden surface, a cat's fur, the ceramic warmth of a mug, sand between your fingers, the lining of a knit sweater, the texture of a book page. The same object feels different when you touch it slowly.</p>
+          <div class="prompt">Try: Pick up an object nearby and trace its surface slowly with your fingertips. Rough or smooth? Warm or cool?</div>
+        </div>
+
+        <div class="sensory-card">
+          <div class="card-emoji">👂</div>
+          <h4>Sound</h4>
+          <p>Not a whole song, just one sound. Rain on a window, the click of a keyboard, water boiling in a pot, birdsong, a cat's purr, the tone of a specific instrument, rustling leaves. Research shows that paying attention to natural sounds can increase positive affect.</p>
+          <div class="prompt">Try: Among the sounds around you right now, pick one that your nervous system doesn't reject.</div>
+        </div>
+
+        <div class="sensory-card">
+          <div class="card-emoji">👅</div>
+          <h4>Taste</h4>
+          <p>Try eating one bite twice as slowly as usual. The warmth of a first sip, the tartness of fruit, the pace at which chocolate melts on your tongue, the depth of broth, the crunch of a bread crust. Pay attention not to the flavor, but to the sensory process as it unfolds.</p>
+          <div class="prompt">Try: At your next meal, chew the first bite for 10 seconds and observe what happens on your tongue.</div>
+        </div>
+
+        <div class="sensory-card">
+          <div class="card-emoji">🚶</div>
+          <h4>Movement</h4>
+          <p>The stretch of muscles when you yawn, the feel of your feet meeting the floor as you walk slowly, curling and uncurling your fingers, the release in your neck when you turn your head. This isn't exercise. It's noticing what sensation arrives when your body moves.</p>
+          <div class="prompt">Try: Reach both arms overhead and hold for 5 seconds. Notice the sensation of your whole body stretching.</div>
+        </div>
+
+        <div class="sensory-card">
+          <div class="card-emoji">👁️</div>
+          <h4>Sight</h4>
+          <p>The angle of light through a window, leaves swaying in the wind, reflections on water, shifting colors at sunset, the movement of a small animal. In one study, participants who intentionally noticed visual details like these during walks showed significantly higher happiness.</p>
+          <div class="prompt">Try: Look out a window for 10 seconds and find one scene that feels easy to rest your eyes on.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>🌱 When Preferences Start to Gather</h2>
+
+      <div class="highlight-box sage">
+        <div class="highlight-box-title">💡 What Can You Do With This</div>
+        <p>For now, just noticing is enough. As sensory preferences accumulate, a natural next question emerges: "What activities have these sensations?" If warmth feels good, maybe a cup of tea. If green catches your eye, maybe a plant. If you like the smell of soil, maybe gardening. When sensory preferences connect to activities, that's a natural next step.</p>
+        <p style="margin-top: 8px;">But you don't need to get there yet. <strong>For now, confirming "I still have likes and dislikes" is enough.</strong></p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>🧭 How to Practice</h2>
+
+      <div class="highlight-box">
+        <div class="highlight-box-title">📝 What You Can Do Every Day</div>
+        <p><strong>One sensation a day.</strong> It doesn't need to be elaborate. The temperature of your morning water, the color of light coming through a window, the texture of your blanket. Just one.</p>
+        <p style="margin-top: 8px;"><strong>When you notice it, stay 3 seconds longer.</strong> Don't move past the sensation immediately. Intentionally linger for just 3 more seconds. "There's something here," held for 3 seconds. That's savoring.</p>
+        <p style="margin-top: 8px;"><strong>Write it down if you can.</strong> One line in a notes app is enough. "This morning, coffee scent. Not unpleasant." As these records accumulate, they become your own map.</p>
+      </div>
+
+      <div class="highlight-box rose">
+        <div class="highlight-box-title">⚠️ Please Remember</div>
+        <p><strong>Let go of the pressure to feel "good."</strong> The goal of this practice isn't intense pleasure. "Not unpleasant," "there's something here," "it's okay" are all successes.</p>
+        <p style="margin-top: 8px;"><strong>It's okay to feel nothing.</strong> Some days, your nervous system is resting. Don't force it. If nothing registers, just move on.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box sage" style="margin-bottom: 40px;">
+      <div class="highlight-box-title">📚 Collecting Small Goodness</div>
+      <div class="series-grid">
+        <div class="series-item current">
+          <div class="si-emoji">🌡️</div>
+          <div class="si-num">①</div>
+          <div class="si-title">Starting from Sensation</div>
+        </div>
+        <div class="series-item">
+          <div class="si-emoji">🌄</div>
+          <div class="si-num">②</div>
+          <div class="si-title">Staying with Wonder</div>
+        </div>
+        <div class="series-item">
+          <div class="si-emoji">🏆</div>
+          <div class="si-num">③</div>
+          <div class="si-title">Feeling Proud</div>
+        </div>
+        <div class="series-item">
+          <div class="si-emoji">🙏</div>
+          <div class="si-num">④</div>
+          <div class="si-title">Gratitude</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <p>If the absence of pleasure has persisted for a long time, that's a signal worth paying attention to. Anhedonia can be part of depression, burnout, and other conditions. This resource is meant to help you understand your experience, not to replace diagnosis or treatment. Please consult a professional near you.</p>
+    </div>
+
+    <div class="references">
+      <h3>References</h3>
+      <p>Bryant, F. B., & Veroff, J. (2007). <em>Savoring: A new model of positive experience.</em> Lawrence Erlbaum Associates. <a href="https://doi.org/10.4324/9781315088426" target="_blank">doi →</a></p>
+    </div>
+
+    <div class="footer">
+      <p class="disclaimer">This resource is for psychoeducational purposes and does not replace professional diagnosis or treatment.</p>
+      <p>Yeji Son, PhD | Counseling Psychologist</p>
+      <p><a href="https://padopsychology.com">padopsychology.com</a>  |  <a href="https://padopsychology.com/resource">More Resources</a></p>
+    </div>
+  </div>
+</body>
+</html>
