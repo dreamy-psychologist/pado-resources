@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>기억이 남긴 믿음들 — EMDR 부정적 자기믿음 안내서 | PADO Psychology</title>
+  <meta name="description" content="EMDR에서 다루는 부정적 자기믿음(Negative Cognition)을 다섯 가지 영역으로 정리한 안내서. 한국 문화권 맥락 포함. PADO Psychology." />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #FDF8F3;
+      --warm-beige: #F5E6D3;
+      --soft-sage: #C5D4C0;
+      --soft-sage-light: #EDF2EB;
+      --calm-blue: #B8C9D4;
+      --calm-blue-light: #EAF0F4;
+      --dusty-rose: #E8D4D4;
+      --dusty-rose-light: #F8F0F0;
+      --soft-lavender: #D4D4E8;
+      --soft-lavender-light: #EEEEF6;
+      --deep-forest: #3D5A47;
+      --warm-brown: #8B7355;
+      --soft-charcoal: #4A4A4A;
+      --warm-amber: #D4A574;
+      --warm-amber-light: #FAF0E4;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--cream);
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: var(--warm-brown);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 0.7; }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(212, 165, 116, 0.2) 0%, transparent 100%);
+      border-radius: 30px;
+    }
+    .header::before {
+      content: '🪞';
+      font-size: 48px;
+      display: block;
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+    }
+    .header .subtitle {
+      font-size: 1.05rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+    }
+    .header .tags {
+      margin-top: 16px;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .header .tag {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+    .tag-primary { background: var(--warm-amber); color: white; }
+    .tag-secondary { background: var(--soft-sage); color: var(--deep-forest); }
+
+    /* Intro */
+    .intro {
+      background: linear-gradient(135deg, #fff 0%, var(--warm-amber-light) 100%);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 50px;
+      border-left: 5px solid var(--warm-amber);
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+    .intro p { font-size: 1rem; line-height: 1.9; }
+    .intro p + p { margin-top: 12px; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--warm-beige);
+      margin: 50px 0;
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+      border: 1px solid rgba(139, 115, 85, 0.1);
+    }
+    .section-card h2 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.6rem;
+      color: var(--deep-forest);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-card > p {
+      font-size: 1rem;
+      color: var(--soft-charcoal);
+      margin-bottom: 16px;
+    }
+
+    /* Highlight box */
+    .highlight-box {
+      background: var(--warm-amber-light);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+    .highlight-box.sage { background: var(--soft-sage-light); }
+    .highlight-box.rose { background: var(--dusty-rose-light); }
+    .highlight-box.lavender { background: var(--soft-lavender-light); }
+    .highlight-box.blue { background: var(--calm-blue-light); }
+
+    .highlight-box-title {
+      font-weight: 600;
+      color: var(--deep-forest);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.05rem;
+    }
+    .highlight-box p { font-size: 0.95rem; line-height: 1.8; }
+
+    /* Toggle */
+    .toggle-wrap {
+      text-align: right;
+      margin-bottom: 12px;
+    }
+
+    .reveal-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.85rem;
+      color: var(--warm-brown);
+      cursor: pointer;
+      padding: 7px 16px;
+      border: 1px solid var(--warm-beige);
+      border-radius: 20px;
+      background: white;
+      transition: all 0.2s ease;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .reveal-toggle:hover {
+      border-color: var(--warm-amber);
+      background: var(--warm-amber-light);
+    }
+
+    .reveal-toggle.active {
+      border-color: var(--soft-sage);
+      color: var(--deep-forest);
+      background: var(--soft-sage-light);
+    }
+
+    /* Cognition table */
+    .cognition-table {
+      width: 100%;
+      margin: 20px 0;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(139, 115, 85, 0.15);
+    }
+
+    .cognition-table thead th {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 14px 20px;
+      text-align: left;
+      border-bottom: 1px solid rgba(139, 115, 85, 0.15);
+    }
+
+    .cognition-table thead th:first-child {
+      color: var(--warm-brown);
+      background: var(--dusty-rose-light);
+    }
+
+    .cognition-table thead th:last-child {
+      color: var(--deep-forest);
+      background: var(--soft-sage-light);
+    }
+
+    .cognition-table tbody td {
+      font-size: 0.95rem;
+      padding: 12px 20px;
+      border-bottom: 1px solid rgba(139, 115, 85, 0.08);
+      vertical-align: middle;
+      background: white;
+    }
+
+    .cognition-table tbody tr:last-child td { border-bottom: none; }
+
+    .cognition-table tbody td:first-child {
+      color: var(--soft-charcoal);
+      font-weight: 400;
+      width: 50%;
+    }
+
+    .cognition-table tbody td:last-child {
+      color: var(--deep-forest);
+      font-weight: 400;
+      width: 50%;
+    }
+
+    /* PC reveal */
+    .pc-cell {
+      cursor: pointer;
+      position: relative;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .pc-text {
+      filter: blur(5px);
+      transition: filter 0.3s ease, opacity 0.3s ease;
+      opacity: 0.35;
+    }
+
+    .pc-cell.revealed .pc-text {
+      filter: blur(0);
+      opacity: 1;
+    }
+
+    .pc-hint {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 0.75rem;
+      color: var(--warm-brown);
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .pc-cell.revealed .pc-hint { opacity: 0; }
+
+    /* Cultural note */
+    .cultural-note {
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 20px;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--soft-charcoal);
+    }
+
+    .cultural-note .note-label {
+      font-weight: 600;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+    }
+
+    /* Category descriptions */
+    .cat-desc {
+      font-size: 0.95rem;
+      color: var(--soft-charcoal);
+      margin-bottom: 4px;
+      line-height: 1.8;
+    }
+
+    .cat-subtitle {
+      font-size: 0.85rem;
+      color: var(--warm-brown);
+      margin-bottom: 16px;
+    }
+
+    /* References */
+    .references {
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid var(--warm-beige);
+    }
+    .references h3 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.1rem;
+      color: var(--warm-brown);
+      margin-bottom: 16px;
+    }
+    .references p {
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: #777;
+      margin-bottom: 12px;
+    }
+    .references a { color: var(--warm-brown); text-decoration: none; }
+    .references a:hover { text-decoration: underline; }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      font-size: 0.85rem;
+      color: var(--warm-brown);
+    }
+    .footer .disclaimer {
+      font-size: 0.8rem;
+      color: #999;
+      margin-bottom: 16px;
+    }
+    .footer a { color: var(--warm-brown); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.8rem; }
+      .section-card { padding: 28px 20px; }
+      .cognition-table thead th,
+      .cognition-table tbody td {
+        padding: 10px 14px;
+        font-size: 0.88rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="https://padopsychology.com/resource" class="back-link">← 자료 목록으로</a>
+
+    <div class="header">
+      <h1>기억이 남긴 믿음들</h1>
+      <div class="subtitle">EMDR에서 다루는 부정적 자기믿음(Negative Cognition) 안내서</div>
+      <div class="tags">
+        <span class="tag tag-secondary">EMDR</span>
+        <span class="tag tag-secondary">Neuro-affirming</span>
+      </div>
+    </div>
+
+    <div class="intro">
+      <p>힘든 일을 겪은 뒤, 우리 안에는 그 경험이 남긴 믿음이 자리잡을 수 있어요. "내 잘못이야," "나는 안전하지 않아," "나는 아무것도 할 수 없어," "나는 혼자야" 같은 말들이에요.</p>
+      <p>이런 믿음은 논리적으로는 사실이 아니어도, 몸과 감정에는 사실처럼 느껴질 수 있어요. EMDR에서는 이 믿음을 억지로 긍정적으로 바꾸려 하지 않아요. 그 믿음이 어디에서 왔는지 안전하게 살펴보고, 지금의 나에게 더 맞는 믿음으로 이동할 수 있도록 도와요.</p>
+      <p>아래는 트라우마 경험 이후 흔히 나타나는 부정적 자기믿음들을 다섯 가지 영역으로 나눈 거예요. 오른쪽 열의 긍정적 자기믿음(Positive Cognition)은 탭하면 확인할 수 있어요.</p>
+    </div>
+
+    <!-- Felt-sense box -->
+    <div class="section-card">
+      <h2>📌 이 목록을 읽기 전에</h2>
+      <p>이 목록은 정답을 고르는 시험지가 아니에요. 읽으면서 머리가 아니라 몸이 반응하는 문장이 있는지 천천히 살펴보세요.</p>
+      <p>어떤 문장에서 가슴이 답답해지거나, 목이 조이거나, 눈물이 나려 하거나, 혹은 "이건 나한테 해당 안 돼"라고 빨리 넘기고 싶어지는 것도 하나의 신호일 수 있어요.</p>
+      <p>해석은 당신의 몫이에요. 치료자가 골라주는 것이 아니라, 당신의 경험에 가장 가까운 문장을 당신이 찾는 과정이 EMDR의 시작이에요.</p>
+    </div>
+
+    <div class="toggle-wrap">
+      <button class="reveal-toggle" id="revealAll" onclick="toggleAll()">
+        <span id="toggleIcon">◯</span>
+        <span id="toggleLabel">긍정적 믿음 전체 보기</span>
+      </button>
+    </div>
+
+    <!-- Category 1 -->
+    <div class="section-card">
+      <h2>🪨 책임감과 결함감의 영역</h2>
+      <p class="cat-subtitle">Responsibility: Defectiveness / Self-Worth</p>
+      <p class="cat-desc">어떤 일이 일어난 뒤, 내가 잘못되었거나 부족한 사람처럼 느껴지는 믿음이에요. 사건의 원인을 "내 존재의 문제"로 받아들이는 경우가 많아요.</p>
+      <table class="cognition-table"><thead><tr><th>부정적 자기믿음 (NC)</th><th>긍정적 자기믿음 (PC)</th></tr></thead><tbody>
+        <tr><td>나는 나쁜 사람이다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 괜찮은 사람이다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>나는 사랑받을 수 없다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 사랑받을 수 있다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>나는 충분하지 않다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 충분하다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>나는 무능하다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 할 수 있는 사람이다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>나는 중요하지 않다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 중요한 사람이다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>내 잘못이다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">내 잘못이 아니다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+      </tbody></table>
+      <div class="cultural-note" style="background: var(--warm-amber-light);">
+        <div class="note-label">🇰🇷 한국 문화권에서는</div>
+        <p>"나는 충분하지 않다"보다 <strong>"부모님한테 못난 자식이다,"</strong> <strong>"집안 망신이다"</strong>처럼 가족 안에서의 역할이나 체면과 연결된 형태로 나타날 수 있어요. 결함감이 개인의 가치가 아니라 관계 안에서의 위치로 경험되는 경우가 많아요.</p>
+      </div>
+    </div>
+
+    <!-- Category 2 -->
+    <div class="section-card">
+      <h2>⏳ 행동과 죄책감의 영역</h2>
+      <p class="cat-subtitle">Responsibility: Action / Guilt</p>
+      <p class="cat-desc">그때 내가 뭔가를 했어야 했거나, 다르게 행동했어야 했다고 느끼는 믿음이에요. 특히 "그때의 나"가 실제로 가진 정보, 힘, 선택지를 과소평가할 때 강해져요.</p>
+      <table class="cognition-table"><thead><tr><th>부정적 자기믿음 (NC)</th><th>긍정적 자기믿음 (PC)</th></tr></thead><tbody>
+        <tr><td>내가 뭔가 했어야 했다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 그때 할 수 있는 만큼 했다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>내가 잘못했다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 배울 수 있다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>내가 더 잘 알았어야 했다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 그때 알 수 있는 만큼 알았다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>나는 부족하고 약하다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 충분하고 강하다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>나는 용서받을 수 없다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 지금의 내가 괜찮다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+      </tbody></table>
+      <div class="cultural-note" style="background: var(--dusty-rose-light);">
+        <div class="note-label">🇰🇷 한국 문화권에서는</div>
+        <p><strong>"어른한테 대들 수 없었다,"</strong> <strong>"참았어야 했는데,"</strong> <strong>"효도를 못했다"</strong>처럼 위계 관계에서의 순응이나 도리와 연결된 죄책감으로 나타나기도 해요. "그때 뭔가 했어야 했다"는 말 안에 "그래도 어른이니까" 혹은 "가족이니까 참아야 했다"는 문화적 기대가 얽혀 있는 경우가 많아요.</p>
+      </div>
+    </div>
+
+    <!-- Category 3 -->
+    <div class="section-card">
+      <h2>🛡️ 안전감과 취약성의 영역</h2>
+      <p class="cat-subtitle">Safety / Vulnerability</p>
+      <p class="cat-desc">위협은 지나갔지만, 몸과 마음이 아직도 "지금도 위험하다"고 느끼는 믿음이에요. 현재와 과거의 안전 조건이 혼동될 때 나타나요.</p>
+      <table class="cognition-table"><thead><tr><th>부정적 자기믿음 (NC)</th><th>긍정적 자기믿음 (PC)</th></tr></thead><tbody>
+        <tr><td>나는 취약하다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 나를 보호할 수 있다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>나는 죽을 것 같다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 살아남았다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>나는 안전하지 않다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">지금은 안전하다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>아무도 믿을 수 없다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">누구를 믿을지 선택할 수 있다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>나는 위험하다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">그건 끝났고, 나는 앞으로 나아갈 수 있다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+      </tbody></table>
+      <div class="cultural-note" style="background: var(--calm-blue-light);">
+        <div class="note-label">🇰🇷 한국 문화권에서는</div>
+        <p><strong>"참으면 되는 건데,"</strong> <strong>"남한테 말하면 안 되는 거다"</strong>처럼 위험이나 고통을 느끼는 것 자체를 숨겨야 한다는 믿음과 결합되기도 해요. 취약함을 인정하는 것이 곧 "약한 사람"이 되는 것처럼 느껴지는 문화적 맥락이 작용해요.</p>
+      </div>
+    </div>
+
+    <!-- Category 4 -->
+    <div class="section-card">
+      <h2>🔑 통제감과 선택권의 영역</h2>
+      <p class="cat-subtitle">Control / Choices</p>
+      <p class="cat-desc">과거에 힘이 없었거나 선택지가 없었던 경험 때문에, 지금도 내가 아무것도 할 수 없다고 느끼는 믿음이에요.</p>
+      <table class="cognition-table"><thead><tr><th>부정적 자기믿음 (NC)</th><th>긍정적 자기믿음 (PC)</th></tr></thead><tbody>
+        <tr><td>나는 무력하다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">지금의 나에게는 선택지가 있다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>나는 갇혀 있다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 자유롭다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>나는 통제할 수 없다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">지금은 내가 통제할 수 있다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>나는 감당할 수 없다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 감당할 수 있다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>나는 통제력을 잃었다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 내 반응을 통제할 수 있다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>나는 내 판단을 믿을 수 없다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 내 판단을 믿을 수 있다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+      </tbody></table>
+      <div class="cultural-note" style="background: var(--soft-lavender-light);">
+        <div class="note-label">🇰🇷 한국 문화권에서는</div>
+        <p><strong>"내 인생은 내 뜻대로 안 된다,"</strong> <strong>"어차피 정해진 대로 살아야 한다"</strong>는 형태로, 개인의 무력감이 운명론이나 가족/사회적 기대와 결합되어 나타나기도 해요. 선택의 부재가 "원래 그런 것"으로 정상화되어 있을 때, 무력감 자체를 인식하기 어려울 수 있어요.</p>
+      </div>
+    </div>
+
+    <!-- Category 5 -->
+    <div class="section-card">
+      <h2>🫂 연결감과 소속감의 영역</h2>
+      <p class="cat-subtitle">Connection / Belonging</p>
+      <p class="cat-desc">거절, 배제, 차별, 외로움, 관계적 상처와 연결된 믿음이에요. "나는 사람들과 연결될 수 없다"거나 "나는 어딘가에 속할 수 없다"는 감각으로 나타나요.</p>
+      <table class="cognition-table"><thead><tr><th>부정적 자기믿음 (NC)</th><th>긍정적 자기믿음 (PC)</th></tr></thead><tbody>
+        <tr><td>나는 연결될 수 없다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 연결될 수 있다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>나는 어디에도 속하지 못한다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 속할 수 있는 사람이다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>나는 보이지 않는 존재다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 보일 자격이 있다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>나는 다르고, 그건 괜찮지 않다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 나이고, 그건 괜찮다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+        <tr><td>나는 혼자다</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">나는 혼자가 아니다</span><span class="pc-hint">탭하여 확인</span></td></tr>
+      </tbody></table>
+      <div class="cultural-note" style="background: var(--soft-sage-light);">
+        <div class="note-label">🇰🇷 한국 문화권에서는</div>
+        <p><strong>"나만 다르다,"</strong> <strong>"어디 가도 겉도는 느낌"</strong>은 이민, 이중문화, 세대 차이, 또는 사회적 기대에서 벗어난 경험과 깊이 연결될 수 있어요. 소속감의 상실이 개인의 선택이 아니라 구조적 배제의 결과일 때, 이 믿음은 특히 강하게 느껴져요.</p>
+      </div>
+    </div>
+
+    <!-- Closing -->
+    <div class="highlight-box sage" style="text-align: center; margin-bottom: 40px;">
+      <p style="font-family: 'Gowun Batang', serif; font-size: 1.1rem; line-height: 2; color: var(--deep-forest);">
+        기억이 남긴 믿음은 당신의 진실이 아니에요.<br>그것은 아직 처리되지 않은 경험의 흔적이에요.
+      </p>
+    </div>
+
+    <!-- References -->
+    <div class="references">
+      <h3>References</h3>
+      <p>Shapiro, F. (2018). <em>Eye movement desensitization and reprocessing (EMDR) therapy: Basic principles, protocols, and procedures</em> (3rd ed.). Guilford Press.</p>
+      <p>EMDR Institute. (2024). <em>EMDR therapy worksheets and resources for clinical practice.</em></p>
+    </div>
+
+    <div class="footer">
+      <p class="disclaimer">이 자료는 심리교육 목적으로 제작되었으며, 전문적인 진단이나 치료를 대체하지 않습니다.</p>
+      <p>Yeji Son, PhD | Counseling Psychologist</p>
+      <p><a href="https://padopsychology.com">padopsychology.com</a>  |  <a href="https://padopsychology.com/resource">더 많은 자료 보기</a></p>
+    </div>
+  </div>
+
+  <script>
+    function revealPC(cell) {
+      cell.classList.toggle('revealed');
+      updateToggleState();
+    }
+
+    function toggleAll() {
+      const cells = document.querySelectorAll('.pc-cell');
+      const allRevealed = Array.from(cells).every(c => c.classList.contains('revealed'));
+      cells.forEach(cell => {
+        if (allRevealed) {
+          cell.classList.remove('revealed');
+        } else {
+          cell.classList.add('revealed');
+        }
+      });
+      updateToggleState();
+    }
+
+    function updateToggleState() {
+      const cells = document.querySelectorAll('.pc-cell');
+      const allRevealed = Array.from(cells).every(c => c.classList.contains('revealed'));
+      const btn = document.getElementById('revealAll');
+      const icon = document.getElementById('toggleIcon');
+      const label = document.getElementById('toggleLabel');
+      if (allRevealed) {
+        btn.classList.add('active');
+        icon.textContent = '●';
+        label.textContent = '긍정적 믿음 전체 숨기기';
+      } else {
+        btn.classList.remove('active');
+        icon.textContent = '◯';
+        label.textContent = '긍정적 믿음 전체 보기';
+      }
+    }
+  </script>
+</body>
+</html>

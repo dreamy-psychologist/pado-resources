@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beliefs Left Behind by Memory — EMDR Negative Cognition Guide | PADO Psychology</title>
+  <meta name="description" content="A guide to the five domains of Negative Cognitions in EMDR therapy, with culturally responsive context for collectivistic cultures. PADO Psychology." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Nunito+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #FDF8F3;
+      --warm-beige: #F5E6D3;
+      --soft-sage: #C5D4C0;
+      --soft-sage-light: #EDF2EB;
+      --calm-blue: #B8C9D4;
+      --calm-blue-light: #EAF0F4;
+      --dusty-rose: #E8D4D4;
+      --dusty-rose-light: #F8F0F0;
+      --soft-lavender: #D4D4E8;
+      --soft-lavender-light: #EEEEF6;
+      --deep-forest: #3D5A47;
+      --warm-brown: #8B7355;
+      --soft-charcoal: #4A4A4A;
+      --warm-amber: #D4A574;
+      --warm-amber-light: #FAF0E4;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      background: var(--cream);
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: var(--warm-brown);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 0.7; }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(212, 165, 116, 0.2) 0%, transparent 100%);
+      border-radius: 30px;
+    }
+    .header::before {
+      content: '🪞';
+      font-size: 48px;
+      display: block;
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+    .header .subtitle {
+      font-size: 1.05rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+    }
+    .header .tags {
+      margin-top: 16px;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .header .tag {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+    .tag-secondary { background: var(--soft-sage); color: var(--deep-forest); }
+
+    /* Intro */
+    .intro {
+      background: linear-gradient(135deg, #fff 0%, var(--warm-amber-light) 100%);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 50px;
+      border-left: 5px solid var(--warm-amber);
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+    .intro p { font-size: 1rem; line-height: 1.9; }
+    .intro p + p { margin-top: 12px; }
+
+    /* Section Cards */
+    .section-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+      border: 1px solid rgba(139, 115, 85, 0.1);
+    }
+    .section-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-card > p {
+      font-size: 1rem;
+      color: var(--soft-charcoal);
+      margin-bottom: 16px;
+    }
+
+    /* Highlight box */
+    .highlight-box {
+      background: var(--warm-amber-light);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+    .highlight-box.sage { background: var(--soft-sage-light); }
+    .highlight-box.rose { background: var(--dusty-rose-light); }
+    .highlight-box.lavender { background: var(--soft-lavender-light); }
+    .highlight-box.blue { background: var(--calm-blue-light); }
+
+    .highlight-box p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+    }
+
+    /* Toggle */
+    .toggle-wrap {
+      text-align: right;
+      margin-bottom: 12px;
+    }
+
+    .reveal-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 0.85rem;
+      color: var(--warm-brown);
+      cursor: pointer;
+      padding: 7px 16px;
+      border: 1px solid var(--warm-beige);
+      border-radius: 20px;
+      background: white;
+      transition: all 0.2s ease;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .reveal-toggle:hover {
+      border-color: var(--warm-amber);
+      background: var(--warm-amber-light);
+    }
+
+    .reveal-toggle.active {
+      border-color: var(--soft-sage);
+      color: var(--deep-forest);
+      background: var(--soft-sage-light);
+    }
+
+    /* Cognition table */
+    .cognition-table {
+      width: 100%;
+      margin: 20px 0;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(139, 115, 85, 0.15);
+    }
+
+    .cognition-table thead th {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 14px 20px;
+      text-align: left;
+      border-bottom: 1px solid rgba(139, 115, 85, 0.15);
+    }
+
+    .cognition-table thead th:first-child {
+      color: var(--warm-brown);
+      background: var(--dusty-rose-light);
+    }
+
+    .cognition-table thead th:last-child {
+      color: var(--deep-forest);
+      background: var(--soft-sage-light);
+    }
+
+    .cognition-table tbody td {
+      font-size: 0.95rem;
+      padding: 12px 20px;
+      border-bottom: 1px solid rgba(139, 115, 85, 0.08);
+      vertical-align: middle;
+      background: white;
+    }
+
+    .cognition-table tbody tr:last-child td { border-bottom: none; }
+
+    .cognition-table tbody td:first-child {
+      color: var(--soft-charcoal);
+      font-weight: 400;
+      width: 50%;
+    }
+
+    .cognition-table tbody td:last-child {
+      color: var(--deep-forest);
+      font-weight: 400;
+      width: 50%;
+    }
+
+    /* PC reveal */
+    .pc-cell {
+      cursor: pointer;
+      position: relative;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .pc-text {
+      filter: blur(5px);
+      transition: filter 0.3s ease, opacity 0.3s ease;
+      opacity: 0.35;
+    }
+
+    .pc-cell.revealed .pc-text {
+      filter: blur(0);
+      opacity: 1;
+    }
+
+    .pc-hint {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 0.75rem;
+      color: var(--warm-brown);
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .pc-cell.revealed .pc-hint { opacity: 0; }
+
+    /* Cultural note */
+    .cultural-note {
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 20px;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--soft-charcoal);
+    }
+
+    .cultural-note .note-label {
+      font-weight: 600;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+    }
+
+    .cat-subtitle {
+      font-size: 0.85rem;
+      color: var(--warm-brown);
+      margin-bottom: 16px;
+    }
+
+    .cat-desc {
+      font-size: 0.95rem;
+      color: var(--soft-charcoal);
+      margin-bottom: 4px;
+      line-height: 1.8;
+    }
+
+    /* References */
+    .references {
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid var(--warm-beige);
+    }
+    .references h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--warm-brown);
+      margin-bottom: 16px;
+    }
+    .references p {
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: #777;
+      margin-bottom: 12px;
+    }
+    .references a { color: var(--warm-brown); text-decoration: none; }
+    .references a:hover { text-decoration: underline; }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      font-size: 0.85rem;
+      color: var(--warm-brown);
+    }
+    .footer .disclaimer {
+      font-size: 0.8rem;
+      color: #999;
+      margin-bottom: 16px;
+    }
+    .footer a { color: var(--warm-brown); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.8rem; }
+      .section-card { padding: 28px 20px; }
+      .cognition-table thead th,
+      .cognition-table tbody td {
+        padding: 10px 14px;
+        font-size: 0.88rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="https://padopsychology.com/resource" class="back-link">← Back to Resources</a>
+
+    <div class="header">
+      <h1>Beliefs Left Behind by Memory</h1>
+      <div class="subtitle">A Guide to Negative Cognitions in EMDR Therapy</div>
+      <div class="tags">
+        <span class="tag tag-secondary">EMDR</span>
+        <span class="tag tag-secondary">Neuro-affirming</span>
+      </div>
+    </div>
+
+    <div class="intro">
+      <p>After difficult experiences, beliefs about ourselves can take root inside us. Things like "it's my fault," "I'm not safe," "I can't do anything," or "I'm alone."</p>
+      <p>These beliefs may not be true logically, but they can feel true in the body and in emotions. EMDR doesn't try to force these beliefs into something positive. Instead, it helps you safely explore where these beliefs came from, and move toward beliefs that fit who you are now.</p>
+      <p>Below are common negative self-beliefs that can emerge after trauma, organized into five domains. The positive cognitions (PC) in the right column can be revealed by tapping.</p>
+    </div>
+
+    <!-- Felt-sense box -->
+    <div class="section-card">
+      <h2>📌 Before You Read This List</h2>
+      <p>This list is not a test with right answers. As you read, notice whether your body responds to any of these sentences, rather than your mind.</p>
+      <p>A tightness in your chest, a lump in your throat, the urge to tear up, or even wanting to quickly skip past a sentence with "that doesn't apply to me" can all be signals.</p>
+      <p>The interpretation belongs to you. Rather than a therapist selecting for you, the process of you finding the sentence closest to your experience is where EMDR begins.</p>
+    </div>
+
+    <div class="toggle-wrap">
+      <button class="reveal-toggle" id="revealAll" onclick="toggleAll()">
+        <span id="toggleIcon">◯</span>
+        <span id="toggleLabel">Show all positive beliefs</span>
+      </button>
+    </div>
+
+    <!-- Category 1 -->
+    <div class="section-card">
+      <h2>🪨 Defectiveness and Shame</h2>
+      <p class="cat-subtitle">Responsibility: Defectiveness / Self-Worth</p>
+      <p class="cat-desc">Beliefs that arise after an experience where you came to feel fundamentally flawed or inadequate. The cause of what happened gets internalized as a problem with who you are.</p>
+      <table class="cognition-table"><thead><tr><th>Negative Cognition (NC)</th><th>Positive Cognition (PC)</th></tr></thead><tbody>
+        <tr><td>I am bad.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I am good.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I am unlovable.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I am lovable.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I'm not good enough.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I am good enough.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I am incompetent.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I am competent.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I don't matter.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I do matter.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>It's my fault.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">It's not my fault.</span><span class="pc-hint">tap to reveal</span></td></tr>
+      </tbody></table>
+      <div class="cultural-note" style="background: var(--warm-amber-light);">
+        <div class="note-label">🌏 In collectivistic cultural contexts</div>
+        <p>Rather than "I'm not good enough," this may show up as <strong>"I'm a disgrace to my family"</strong> or <strong>"I've brought shame to my parents."</strong> Defectiveness is often experienced not as an individual failing, but through one's role and standing within family and community. The sense of being flawed is inseparable from relational expectations like filial duty and saving face.</p>
+      </div>
+    </div>
+
+    <!-- Category 2 -->
+    <div class="section-card">
+      <h2>⏳ Guilt and Regret</h2>
+      <p class="cat-subtitle">Responsibility: Action / Guilt</p>
+      <p class="cat-desc">Beliefs rooted in the feeling that you should have done something differently, or that you failed to act when you should have. These beliefs grow stronger when you underestimate the information, power, and options that were actually available to you at the time.</p>
+      <table class="cognition-table"><thead><tr><th>Negative Cognition (NC)</th><th>Positive Cognition (PC)</th></tr></thead><tbody>
+        <tr><td>I should have done something.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I did the best I could.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I did something wrong.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I learned / can learn from it.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I should have known better.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I do the best I can.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I'm inadequate / weak.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I am adequate / strong.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I am unforgivable.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I'm fine as I am.</span><span class="pc-hint">tap to reveal</span></td></tr>
+      </tbody></table>
+      <div class="cultural-note" style="background: var(--dusty-rose-light);">
+        <div class="note-label">🌏 In collectivistic cultural contexts</div>
+        <p>This domain can manifest as <strong>"I couldn't talk back to an elder,"</strong> <strong>"I should have endured it,"</strong> or <strong>"I failed in my filial duty."</strong> Guilt is often tied to compliance within hierarchical relationships. Behind "I should have done something" may lie the cultural expectation that one must defer to elders or endure suffering for the sake of family.</p>
+      </div>
+    </div>
+
+    <!-- Category 3 -->
+    <div class="section-card">
+      <h2>🛡️ Safety and Vulnerability</h2>
+      <p class="cat-subtitle">Safety / Vulnerability</p>
+      <p class="cat-desc">Beliefs that persist after a threat has passed, where the body and mind continue to feel as though danger is still present. These emerge when past and present conditions of safety become confused.</p>
+      <table class="cognition-table"><thead><tr><th>Negative Cognition (NC)</th><th>Positive Cognition (PC)</th></tr></thead><tbody>
+        <tr><td>I am vulnerable.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I can protect myself.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I am going to die.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I survived.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I am not safe.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I am safe now.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I can't trust anyone.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I can choose whom to trust.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I'm in danger.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">It's over. I can move beyond it.</span><span class="pc-hint">tap to reveal</span></td></tr>
+      </tbody></table>
+      <div class="cultural-note" style="background: var(--calm-blue-light);">
+        <div class="note-label">🌏 In collectivistic cultural contexts</div>
+        <p>This can intertwine with beliefs like <strong>"I should just endure it"</strong> or <strong>"you don't talk about these things with others."</strong> Acknowledging vulnerability may feel equivalent to being "weak." When the cultural expectation is to suppress pain and maintain composure, the very act of feeling unsafe can become something to hide.</p>
+      </div>
+    </div>
+
+    <!-- Category 4 -->
+    <div class="section-card">
+      <h2>🔑 Control and Choices</h2>
+      <p class="cat-subtitle">Control / Choices</p>
+      <p class="cat-desc">Beliefs that carry forward from experiences of powerlessness or having no options, leaving you feeling as though you still have no control or agency in the present.</p>
+      <table class="cognition-table"><thead><tr><th>Negative Cognition (NC)</th><th>Positive Cognition (PC)</th></tr></thead><tbody>
+        <tr><td>I am helpless / powerless.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I have choices now.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I'm trapped.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I'm free.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I am not in control.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I'm in control now.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I can't handle it.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I can handle it.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I am out of control.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I'm in control of my reactions.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I cannot trust myself / my judgment.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I can trust myself / my judgment.</span><span class="pc-hint">tap to reveal</span></td></tr>
+      </tbody></table>
+      <div class="cultural-note" style="background: var(--soft-lavender-light);">
+        <div class="note-label">🌏 In collectivistic cultural contexts</div>
+        <p>Helplessness can merge with fatalism or familial obligation: <strong>"my life isn't mine to decide"</strong> or <strong>"I have to live the way it was laid out for me."</strong> When the absence of choice is normalized as "just how things are," it becomes difficult to even recognize the helplessness itself.</p>
+      </div>
+    </div>
+
+    <!-- Category 5 -->
+    <div class="section-card">
+      <h2>🫂 Connection and Belonging</h2>
+      <p class="cat-subtitle">Connection / Belonging</p>
+      <p class="cat-desc">Beliefs connected to rejection, exclusion, discrimination, loneliness, and relational wounds. They often manifest as a sense of "I can't connect with people" or "I don't belong anywhere."</p>
+      <table class="cognition-table"><thead><tr><th>Negative Cognition (NC)</th><th>Positive Cognition (PC)</th></tr></thead><tbody>
+        <tr><td>I can't connect.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I can connect.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I don't belong.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I do belong.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I am invisible.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I deserve to be seen.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I'm different, and that's not okay.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I am myself, and that's okay.</span><span class="pc-hint">tap to reveal</span></td></tr>
+        <tr><td>I'm alone.</td><td class="pc-cell" onclick="revealPC(this)"><span class="pc-text">I'm not alone.</span><span class="pc-hint">tap to reveal</span></td></tr>
+      </tbody></table>
+      <div class="cultural-note" style="background: var(--soft-sage-light);">
+        <div class="note-label">🌏 In collectivistic cultural contexts</div>
+        <p><strong>"I'm the only one who's different"</strong> and <strong>"I never quite fit in anywhere"</strong> can be deeply tied to immigration, biculturalism, generational divides, or falling outside social expectations. When the loss of belonging is not a personal choice but a result of structural exclusion, these beliefs hit especially hard.</p>
+      </div>
+    </div>
+
+    <!-- Closing -->
+    <div class="highlight-box sage" style="text-align: center; margin-bottom: 40px;">
+      <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; line-height: 2; color: var(--deep-forest);">
+        The beliefs left behind by memory are not your truth.<br>They are traces of experiences that haven't been fully processed yet.
+      </p>
+    </div>
+
+    <!-- References -->
+    <div class="references">
+      <h3>References</h3>
+      <p>Shapiro, F. (2018). <em>Eye movement desensitization and reprocessing (EMDR) therapy: Basic principles, protocols, and procedures</em> (3rd ed.). Guilford Press.</p>
+      <p>EMDR Institute. (2024). <em>EMDR therapy worksheets and resources for clinical practice.</em></p>
+    </div>
+
+    <div class="footer">
+      <p class="disclaimer">This resource is for psychoeducational purposes and does not replace professional diagnosis or treatment.</p>
+      <p>Yeji Son, PhD | Counseling Psychologist</p>
+      <p><a href="https://padopsychology.com">padopsychology.com</a>  |  <a href="https://padopsychology.com/resource">More Resources</a></p>
+    </div>
+  </div>
+
+  <script>
+    function revealPC(cell) {
+      cell.classList.toggle('revealed');
+      updateToggleState();
+    }
+
+    function toggleAll() {
+      const cells = document.querySelectorAll('.pc-cell');
+      const allRevealed = Array.from(cells).every(c => c.classList.contains('revealed'));
+      cells.forEach(cell => {
+        if (allRevealed) {
+          cell.classList.remove('revealed');
+        } else {
+          cell.classList.add('revealed');
+        }
+      });
+      updateToggleState();
+    }
+
+    function updateToggleState() {
+      const cells = document.querySelectorAll('.pc-cell');
+      const allRevealed = Array.from(cells).every(c => c.classList.contains('revealed'));
+      const btn = document.getElementById('revealAll');
+      const icon = document.getElementById('toggleIcon');
+      const label = document.getElementById('toggleLabel');
+      if (allRevealed) {
+        btn.classList.add('active');
+        icon.textContent = '●';
+        label.textContent = 'Hide all positive beliefs';
+      } else {
+        btn.classList.remove('active');
+        icon.textContent = '◯';
+        label.textContent = 'Show all positive beliefs';
+      }
+    }
+  </script>
+</body>
+</html>
