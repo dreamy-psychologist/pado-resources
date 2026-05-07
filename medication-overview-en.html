@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Starting Medication: What to Know | PADO Psychology</title>
+  <meta name="description" content="A research-based guide for clients beginning psychiatric medication. Timeline expectations, when to contact your prescriber, and how your therapist and prescriber differ. PADO Psychology." />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #FDF8F3;
+      --warm-beige: #F5E6D3;
+      --soft-sage: #C5D4C0;
+      --soft-sage-light: #EDF2EB;
+      --calm-blue: #B8C9D4;
+      --calm-blue-light: #EAF0F4;
+      --dusty-rose: #E8D4D4;
+      --dusty-rose-light: #F8F0F0;
+      --soft-lavender: #D4D4E8;
+      --soft-lavender-light: #EEEEF6;
+      --deep-forest: #3D5A47;
+      --warm-brown: #8B7355;
+      --soft-charcoal: #4A4A4A;
+      --warm-amber: #D4A574;
+      --warm-amber-light: #FAF0E4;
+      --alert-red: #B85450;
+      --alert-red-light: #F9E5E3;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--cream);
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+
+    .back-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: var(--warm-brown);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 0.7; }
+
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(197, 212, 192, 0.3) 0%, transparent 100%);
+      border-radius: 30px;
+    }
+    .header::before {
+      content: '🌱';
+      font-size: 48px;
+      display: block;
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+    }
+    .header .subtitle {
+      font-size: 1.05rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+    }
+    .header .tags {
+      margin-top: 16px;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .header .tag {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      background: var(--soft-sage);
+      color: var(--deep-forest);
+    }
+
+    .intro {
+      background: linear-gradient(135deg, #fff 0%, var(--soft-sage-light) 100%);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 50px;
+      border-left: 5px solid var(--soft-sage);
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+    .intro p { font-size: 1rem; line-height: 1.9; }
+    .intro p + p { margin-top: 12px; }
+
+    .section-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+      border: 1px solid rgba(139, 115, 85, 0.1);
+    }
+    .section-card h2 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.6rem;
+      color: var(--deep-forest);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-card .sub {
+      font-size: 0.85rem;
+      color: var(--warm-brown);
+      margin-bottom: 20px;
+    }
+    .section-card > p {
+      font-size: 1rem;
+      color: var(--soft-charcoal);
+      margin-bottom: 14px;
+    }
+    .section-card > p + p { margin-top: 4px; }
+
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+      margin: 24px 0 16px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px; top: 8px; bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--soft-sage-light), var(--soft-sage), var(--warm-amber));
+      border-radius: 2px;
+    }
+    .timeline-item {
+      position: relative;
+      padding-bottom: 22px;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -28px; top: 8px;
+      width: 14px; height: 14px;
+      background: white;
+      border: 2.5px solid var(--soft-sage);
+      border-radius: 50%;
+    }
+    .timeline-item .tl-week {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--warm-brown);
+      letter-spacing: 0.4px;
+      margin-bottom: 4px;
+    }
+    .timeline-item .tl-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--deep-forest);
+      margin-bottom: 6px;
+      font-family: 'Gowun Batang', serif;
+    }
+    .timeline-item .tl-desc {
+      font-size: 0.92rem;
+      color: var(--soft-charcoal);
+      line-height: 1.75;
+    }
+
+    .note-box {
+      border-radius: 16px;
+      padding: 22px 24px;
+      margin-top: 20px;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+    .note-box .note-label {
+      font-weight: 600;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+    }
+    .note-amber { background: var(--warm-amber-light); }
+    .note-rose { background: var(--dusty-rose-light); }
+    .note-sage { background: var(--soft-sage-light); }
+    .note-blue { background: var(--calm-blue-light); }
+    .note-lavender { background: var(--soft-lavender-light); }
+
+    .alert-card {
+      border-radius: 16px;
+      padding: 24px 26px;
+      margin-bottom: 16px;
+    }
+    .alert-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Gowun Batang', serif;
+    }
+    .alert-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .alert-card li {
+      font-size: 0.92rem;
+      color: var(--soft-charcoal);
+      padding: 5px 0 5px 20px;
+      position: relative;
+      line-height: 1.7;
+    }
+    .alert-card li::before {
+      content: '◦';
+      position: absolute;
+      left: 4px;
+      color: var(--warm-brown);
+      font-weight: 700;
+    }
+    .alert-card .crisis-note {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(184, 84, 80, 0.2);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--soft-charcoal);
+    }
+    .alert-immediate {
+      background: var(--alert-red-light);
+      border-left: 4px solid var(--alert-red);
+    }
+    .alert-immediate h3 { color: var(--alert-red); }
+    .alert-soon {
+      background: var(--warm-amber-light);
+      border-left: 4px solid var(--warm-amber);
+    }
+    .alert-soon h3 { color: var(--warm-brown); }
+    .alert-discuss {
+      background: var(--calm-blue-light);
+      border-left: 4px solid var(--calm-blue);
+    }
+    .alert-discuss h3 { color: #4A6B7B; }
+
+    .reminder-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 8px;
+    }
+    .reminder-list li {
+      font-size: 0.95rem;
+      color: var(--soft-charcoal);
+      padding: 12px 0 12px 30px;
+      position: relative;
+      line-height: 1.75;
+      border-bottom: 1px solid var(--warm-beige);
+    }
+    .reminder-list li:last-child { border-bottom: none; }
+    .reminder-list li::before {
+      content: '✦';
+      position: absolute;
+      left: 6px;
+      top: 14px;
+      color: var(--warm-amber);
+      font-size: 0.9rem;
+    }
+    .reminder-list strong {
+      color: var(--deep-forest);
+    }
+
+    .callout-quote {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin: 20px 0;
+      border-left: 4px solid var(--warm-amber);
+      font-family: 'Gowun Batang', serif;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--deep-forest);
+    }
+    .callout-quote .source {
+      display: block;
+      margin-top: 10px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.78rem;
+      color: var(--warm-brown);
+      font-weight: 400;
+    }
+
+    .references {
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid var(--warm-beige);
+    }
+    .references h3 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.1rem;
+      color: var(--warm-brown);
+      margin-bottom: 16px;
+    }
+    .references p {
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: #777;
+      margin-bottom: 12px;
+    }
+    .references a { color: var(--warm-brown); text-decoration: none; }
+    .references a:hover { text-decoration: underline; }
+
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      font-size: 0.85rem;
+      color: var(--warm-brown);
+    }
+    .footer .disclaimer {
+      font-size: 0.8rem;
+      color: #999;
+      margin-bottom: 16px;
+    }
+    .footer a { color: var(--warm-brown); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.8rem; }
+      .section-card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="https://padopsychology.com/resource" class="back-link">← Back to resources</a>
+
+    <div class="header">
+      <h1>Starting Medication: What to Know</h1>
+      <div class="subtitle">A research-based guide for your medication journey</div>
+      <div class="tags">
+        <span class="tag">약물치료 · Medication</span>
+      </div>
+    </div>
+
+    <div class="intro">
+      <p>Starting a new medication isn't a switch that flips overnight. It's a process that takes time, with changes that build gradually.</p>
+      <p>The American Psychological Association describes <strong>Measurement-Based Care (MBC)</strong> as "the systematic and routine assessment of the patient's perspective through patient-reported progress and outcomes... to inform treatment decisions and engage patients in their treatment." Research consistently shows this leads to better outcomes and reduced dropout rates.</p>
+      <p>Your therapist does not prescribe or adjust your medication. That is your prescriber's role. But the observations you track between appointments give both providers the concrete information they need to support your care.</p>
+    </div>
+
+    <!-- Section 1: Timeline -->
+    <div class="section-card">
+      <h2>⏳ A General Timeline</h2>
+      <p class="sub">What to Expect</p>
+
+      <p>Every person responds to medication differently. The timeline below reflects general patterns observed in research on psychiatric medications, particularly antidepressants and anxiolytics. Your prescriber is the best resource for your specific medication's expected course.</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="tl-week">WEEKS 1–2</div>
+          <div class="tl-title">Initial Adjustment</div>
+          <div class="tl-desc">Side effects are most common in the first three weeks or at dose changes. You may notice changes in sleep, appetite, or energy before any mood improvement. This is expected.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-week">WEEKS 2–4</div>
+          <div class="tl-title">Early Signs Emerge</div>
+          <div class="tl-desc">Research suggests early improvement of at least 20% in the first two weeks can predict sustained positive response. Some side effects may begin to diminish.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-week">WEEKS 4–8</div>
+          <div class="tl-title">Therapeutic Effects Develop</div>
+          <div class="tl-desc">Full therapeutic effects generally emerge during this period. Your prescriber may evaluate your response and consider dose adjustments.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-week">WEEKS 8–12</div>
+          <div class="tl-title">Full Evaluation Window</div>
+          <div class="tl-desc">Treatment guidelines often recommend 8–12 weeks for a full medication trial evaluation. If significant improvement hasn't occurred, your prescriber may discuss next steps.</div>
+        </div>
+      </div>
+
+      <div class="note-box note-blue">
+        <div class="note-label">💡 Timelines vary by medication type</div>
+        <p>ADHD stimulants can show effects within hours, while antidepressants typically require weeks. Always discuss your specific timeline with your prescriber.</p>
+      </div>
+    </div>
+
+    <!-- Section 2: When to contact prescriber -->
+    <div class="section-card">
+      <h2>📞 When to Contact Your Prescriber</h2>
+      <p class="sub">Three Levels of Concern</p>
+
+      <p>You don't need to report every change to your prescriber, but the type and intensity of change determines when to reach out. Use these three tiers as a guide.</p>
+
+      <div class="alert-card alert-immediate">
+        <h3>⚠️ Contact Immediately</h3>
+        <ul>
+          <li>Thoughts of self-harm or suicide, or sudden increase in suicidal ideation</li>
+          <li>Severe allergic reaction (rash, swelling, difficulty breathing)</li>
+          <li>Sudden, severe mood changes (unusual agitation, panic, mania-like symptoms)</li>
+          <li>Seizures, fainting, or severe disorientation</li>
+          <li>Any symptom that feels dangerous or alarming</li>
+        </ul>
+        <div class="crisis-note">
+          <strong>If you are in crisis:</strong> Call 988 (Suicide &amp; Crisis Lifeline), go to your nearest emergency room, or call 911.
+        </div>
+      </div>
+
+      <div class="alert-card alert-soon">
+        <h3>📞 Contact Before Next Appointment</h3>
+        <ul>
+          <li>Side effects significantly interfering with daily life</li>
+          <li>New symptoms not present before starting medication</li>
+          <li>Side effects worsening rather than improving over time</li>
+          <li>Difficulty taking medication as prescribed</li>
+          <li>Considering stopping or reducing medication on your own</li>
+        </ul>
+      </div>
+
+      <div class="alert-card alert-discuss">
+        <h3>💬 Discuss at Next Appointment</h3>
+        <ul>
+          <li>Mild, manageable side effects</li>
+          <li>Uncertain whether a change is a side effect or coincidental</li>
+          <li>Questions about long-term effects or medication duration</li>
+          <li>Patterns you've noticed in your tracking</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Section 3: Different roles -->
+    <div class="section-card">
+      <h2>🤝 Your Therapist and Prescriber Have Different Roles</h2>
+      <p class="sub">You Are the Bridge Between Them</p>
+
+      <p>Your therapist and prescriber typically work independently. <strong>You are the bridge between them.</strong> The observations you track and share are what carries information between both providers.</p>
+
+      <div class="note-box note-sage">
+        <div class="note-label">💊 Your Prescriber</div>
+        <p>Manages medication selection, dosing, and medical monitoring. Makes decisions about starting, changing, or stopping medications.</p>
+      </div>
+
+      <div class="note-box note-lavender" style="margin-top: 12px;">
+        <div class="note-label">🪞 Your Therapist</div>
+        <p>Helps you make sense of what you're experiencing. Looks at patterns in your tracking with you, helps distinguish between side effects and emotional responses, and supports you in organizing observations to bring to your prescriber.</p>
+      </div>
+
+      <div class="note-box note-amber" style="margin-top: 12px;">
+        <div class="note-label">🌱 You</div>
+        <p>You are the expert on your own experience. Your observations are essential clinical data. Bringing your tracking to both your therapy sessions and prescriber appointments keeps everyone on the same page.</p>
+      </div>
+
+      <div class="note-box note-rose" style="margin-top: 20px;">
+        <div class="note-label">📋 Release of Information</div>
+        <p>If you'd like your providers to communicate directly, let your therapist know. With a signed release of information, the two can coordinate when it would benefit your care.</p>
+      </div>
+    </div>
+
+    <!-- Section 4: Key Reminders -->
+    <div class="section-card">
+      <h2>✨ Key Reminders</h2>
+      <p class="sub">Things to Hold Onto</p>
+
+      <ul class="reminder-list">
+        <li><strong>Never stop or change your dose without consulting your prescriber.</strong> Abrupt discontinuation can cause withdrawal effects or symptom relapse.</li>
+        <li><strong>Side effects often diminish over time</strong> as your body adjusts during the first few weeks.</li>
+        <li><strong>"Not working" doesn't mean all medication won't work for you.</strong> Finding the right fit often takes time and collaboration.</li>
+        <li><strong>Medication and therapy can work synergistically.</strong> Research supports their combination as often more effective than either alone.</li>
+        <li><strong>You have agency in this process.</strong> Asking questions, requesting changes, and advocating for your wellbeing are all part of good self-care.</li>
+      </ul>
+
+      <div class="callout-quote">
+        "Generic statements like 'I feel better' make it impossible to know whether dose adjustments are necessary. Tracking specific, concrete observations gives your providers the data they need."
+        <span class="source">Adapted from measurement-based care literature (APA, n.d.)</span>
+      </div>
+    </div>
+
+    <!-- References -->
+    <div class="references">
+      <h3>References</h3>
+      <p>American Psychological Association. (n.d.). Measurement-based care. APA Services. <a href="https://www.apaservices.org/practice/measurement-based-care" target="_blank" rel="noopener">https://www.apaservices.org/practice/measurement-based-care</a></p>
+      <p>Uher, R., Mors, O., Rietschel, M., Rajewska-Rager, A., Petrovic, A., Zobel, A., … McGuffin, P. (2011). Early and delayed onset of response to antidepressants in individual trajectories of change during treatment of major depression: A secondary analysis of data from the Genome-Based Therapeutic Drugs for Depression (GENDEP) study. <em>Journal of Clinical Psychiatry, 72</em>(11), 1478–1484. <a href="https://doi.org/10.4088/JCP.10m06419" target="_blank" rel="noopener">https://doi.org/10.4088/JCP.10m06419</a></p>
+    </div>
+
+    <div class="footer">
+      <p class="disclaimer">This resource is for psychoeducation only and does not replace professional diagnosis or treatment. Always consult your prescriber for medication-related decisions.</p>
+      <p>Yeji Son, PhD | Counseling Psychologist</p>
+      <p><a href="https://padopsychology.com">padopsychology.com</a> &nbsp;|&nbsp; <a href="https://padopsychology.com/resource">More resources</a></p>
+    </div>
+  </div>
+</body>
+</html>

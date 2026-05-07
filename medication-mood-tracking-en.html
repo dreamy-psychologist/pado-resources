@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tracking Mood While on Medication: A Guide | PADO Psychology</title>
+  <meta name="description" content="A research-based guide for tracking mood and emotions when starting psychiatric medication. Therapeutic effect vs. side effect, emotional blunting, interactive mood map. PADO Psychology." />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #FDF8F3;
+      --warm-beige: #F5E6D3;
+      --soft-sage: #C5D4C0;
+      --soft-sage-light: #EDF2EB;
+      --calm-blue: #B8C9D4;
+      --calm-blue-light: #EAF0F4;
+      --dusty-rose: #E8D4D4;
+      --dusty-rose-light: #F8F0F0;
+      --soft-lavender: #D4D4E8;
+      --soft-lavender-light: #EEEEF6;
+      --deep-forest: #3D5A47;
+      --warm-brown: #8B7355;
+      --soft-charcoal: #4A4A4A;
+      --warm-amber: #D4A574;
+      --warm-amber-light: #FAF0E4;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--cream);
+      color: var(--soft-charcoal);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+
+    .back-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: var(--warm-brown);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 0.7; }
+
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 50px 30px;
+      background: linear-gradient(180deg, rgba(184, 201, 212, 0.25) 0%, transparent 100%);
+      border-radius: 30px;
+    }
+    .header::before {
+      content: '🌤';
+      font-size: 48px;
+      display: block;
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+    }
+    .header .subtitle {
+      font-size: 1.05rem;
+      color: var(--warm-brown);
+      font-weight: 300;
+    }
+    .header .tags {
+      margin-top: 16px;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .header .tag {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      background: var(--soft-sage);
+      color: var(--deep-forest);
+    }
+
+    .intro {
+      background: linear-gradient(135deg, #fff 0%, var(--calm-blue-light) 100%);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 50px;
+      border-left: 5px solid var(--calm-blue);
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+    }
+    .intro p { font-size: 1rem; line-height: 1.9; }
+    .intro p + p { margin-top: 12px; }
+
+    .section-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 30px rgba(139, 115, 85, 0.08);
+      border: 1px solid rgba(139, 115, 85, 0.1);
+    }
+    .section-card h2 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.6rem;
+      color: var(--deep-forest);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-card .sub {
+      font-size: 0.85rem;
+      color: var(--warm-brown);
+      margin-bottom: 20px;
+    }
+    .section-card > p {
+      font-size: 1rem;
+      color: var(--soft-charcoal);
+      margin-bottom: 14px;
+    }
+    .section-card > p + p { margin-top: 4px; }
+
+    /* Comparison table */
+    .compare-table {
+      width: 100%;
+      margin: 20px 0;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(139, 115, 85, 0.15);
+    }
+    .compare-table thead th {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 14px 20px;
+      text-align: left;
+      border-bottom: 1px solid rgba(139, 115, 85, 0.15);
+    }
+    .compare-table thead th:first-child {
+      color: var(--deep-forest);
+      background: var(--soft-sage-light);
+    }
+    .compare-table thead th:last-child {
+      color: var(--warm-brown);
+      background: var(--warm-amber-light);
+    }
+    .compare-table tbody td {
+      font-size: 0.95rem;
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(139, 115, 85, 0.08);
+      vertical-align: top;
+      line-height: 1.7;
+      background: white;
+    }
+    .compare-table tbody tr:last-child td { border-bottom: none; }
+    .compare-table tbody td:first-child {
+      color: var(--deep-forest);
+      width: 50%;
+    }
+    .compare-table tbody td:last-child {
+      color: var(--soft-charcoal);
+      width: 50%;
+    }
+
+    /* Blunting signs grid */
+    .signs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .sign-item {
+      background: var(--soft-lavender-light);
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--soft-charcoal);
+    }
+    @media (max-width: 580px) { .signs-grid { grid-template-columns: 1fr; } }
+
+    /* Note boxes */
+    .note-box {
+      border-radius: 16px;
+      padding: 22px 24px;
+      margin-top: 20px;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+    .note-box .note-label {
+      font-weight: 600;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+    }
+    .note-amber { background: var(--warm-amber-light); }
+    .note-rose { background: var(--dusty-rose-light); }
+    .note-sage { background: var(--soft-sage-light); }
+    .note-blue { background: var(--calm-blue-light); }
+    .note-lavender { background: var(--soft-lavender-light); }
+
+    /* Interactive Mood Map */
+    .mm-wrap {
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 28px 24px;
+      margin: 20px 0;
+      border: 1px solid rgba(139, 115, 85, 0.1);
+    }
+    .mm-title {
+      font-weight: 600;
+      color: var(--deep-forest);
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+    .mm-desc {
+      font-size: 0.88rem;
+      color: var(--warm-brown);
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+    .mm-selected {
+      background: white;
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      border: 1.5px dashed rgba(139, 115, 85, 0.2);
+      transition: all 0.3s ease;
+    }
+    .mm-selected.has-selection { border-style: solid; border-color: var(--soft-sage); }
+    .mm-selected-empty {
+      font-size: 0.88rem;
+      color: var(--warm-brown);
+      opacity: 0.7;
+      font-style: italic;
+    }
+    .mm-selected-emotion {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.8rem;
+      color: var(--deep-forest);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+    .mm-selected-quadrant {
+      font-size: 0.82rem;
+      color: var(--warm-brown);
+    }
+    .mm-grid-outer {
+      position: relative;
+      padding: 28px 38px 32px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .mm-axis {
+      position: absolute;
+      font-size: 0.78rem;
+      color: var(--warm-brown);
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      pointer-events: none;
+    }
+    .mm-axis.top { top: 4px; left: 50%; transform: translateX(-50%); }
+    .mm-axis.bottom { bottom: 6px; left: 50%; transform: translateX(-50%); }
+    .mm-axis.left { left: 8px; top: 50%; transform: translateY(-50%) rotate(-90deg); transform-origin: center; white-space: nowrap; }
+    .mm-axis.right { right: 8px; top: 50%; transform: translateY(-50%) rotate(90deg); transform-origin: center; white-space: nowrap; }
+    .mm-canvas {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: crosshair;
+      border: 1.5px solid rgba(139, 115, 85, 0.15);
+      -webkit-tap-highlight-color: transparent;
+      touch-action: none;
+    }
+    .mm-q {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      pointer-events: none;
+    }
+    .mm-q.tl { top: 0; left: 0; background: #F5DCDC; }
+    .mm-q.tr { top: 0; right: 0; background: #F4E2C9; }
+    .mm-q.bl { bottom: 0; left: 0; background: #D9E3EB; }
+    .mm-q.br { bottom: 0; right: 0; background: #D8E4D2; }
+    .mm-canvas .mm-axis-line {
+      position: absolute;
+      background: rgba(139, 115, 85, 0.18);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .mm-canvas .mm-axis-line.h { left: 0; right: 0; top: calc(50% - 0.5px); height: 1px; }
+    .mm-canvas .mm-axis-line.v { top: 0; bottom: 0; left: calc(50% - 0.5px); width: 1px; }
+    .mm-q-hint {
+      position: absolute;
+      font-size: 0.7rem;
+      color: var(--deep-forest);
+      opacity: 0.5;
+      font-weight: 500;
+      pointer-events: none;
+      z-index: 1;
+      letter-spacing: 0.3px;
+    }
+    .mm-cursor {
+      position: absolute;
+      width: 12px; height: 12px;
+      background: var(--deep-forest);
+      border: 2px solid white;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 2px 8px rgba(61, 90, 71, 0.3);
+      pointer-events: none;
+      z-index: 3;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .mm-cursor.active { opacity: 1; }
+    .mm-cursor.pinned {
+      background: var(--warm-amber);
+      width: 16px; height: 16px;
+      box-shadow: 0 0 0 5px rgba(212, 165, 116, 0.25), 0 2px 8px rgba(212, 165, 116, 0.3);
+    }
+    .mm-floating {
+      position: absolute;
+      background: white;
+      padding: 6px 14px;
+      border-radius: 16px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--deep-forest);
+      box-shadow: 0 4px 14px rgba(61, 90, 71, 0.18);
+      pointer-events: none;
+      z-index: 4;
+      transform: translate(-50%, calc(-100% - 14px));
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      border: 1px solid rgba(139, 115, 85, 0.15);
+    }
+    .mm-floating.active { opacity: 1; }
+    .mm-floating::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 8px; height: 8px;
+      background: white;
+      border-right: 1px solid rgba(139, 115, 85, 0.15);
+      border-bottom: 1px solid rgba(139, 115, 85, 0.15);
+    }
+    .mm-hint {
+      margin-top: 18px;
+      font-size: 0.82rem;
+      color: var(--warm-brown);
+      text-align: center;
+      line-height: 1.7;
+    }
+    @media (max-width: 580px) {
+      .mm-grid-outer { padding: 26px 32px 30px; }
+      .mm-axis { font-size: 0.72rem; }
+      .mm-q-hint { font-size: 0.62rem; }
+      .mm-floating { font-size: 0.88rem; padding: 5px 12px; }
+    }
+
+    /* Check-in prompts */
+    .prompts-section {
+      margin-top: 28px;
+    }
+    .prompts-intro {
+      font-size: 0.95rem;
+      color: var(--soft-charcoal);
+      margin-bottom: 16px;
+    }
+    .prompt-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 580px) { .prompt-list { grid-template-columns: 1fr; } }
+    .prompt-card {
+      background: white;
+      border: 1px solid rgba(139, 115, 85, 0.12);
+      border-radius: 14px;
+      padding: 16px 18px;
+    }
+    .prompt-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--deep-forest);
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+    .prompt-text {
+      font-size: 0.92rem;
+      color: var(--soft-charcoal);
+      line-height: 1.6;
+      font-style: italic;
+    }
+    .prompt-hint {
+      font-size: 0.78rem;
+      color: var(--warm-brown);
+      margin-top: 6px;
+      font-style: normal;
+    }
+
+    /* Download box */
+    .download-box {
+      margin-top: 36px;
+      background: linear-gradient(135deg, var(--soft-sage-light) 0%, var(--warm-amber-light) 100%);
+      border-radius: 20px;
+      padding: 28px;
+      text-align: center;
+      border: 1px solid rgba(139, 115, 85, 0.15);
+    }
+    .download-box h3 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.25rem;
+      color: var(--deep-forest);
+      margin-bottom: 8px;
+    }
+    .download-box p {
+      font-size: 0.92rem;
+      color: var(--soft-charcoal);
+      margin-bottom: 18px;
+      line-height: 1.7;
+    }
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--deep-forest);
+      color: white;
+      padding: 12px 26px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(61, 90, 71, 0.2);
+    }
+    .download-btn:hover {
+      background: #2f4737;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(61, 90, 71, 0.3);
+    }
+
+    /* Closing */
+    .closing-quote {
+      text-align: center;
+      margin-bottom: 40px;
+      background: var(--soft-sage-light);
+      border-radius: 16px;
+      padding: 28px 24px;
+    }
+    .closing-quote p {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.1rem;
+      line-height: 2;
+      color: var(--deep-forest);
+    }
+
+    /* References */
+    .references {
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid var(--warm-beige);
+    }
+    .references h3 {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.1rem;
+      color: var(--warm-brown);
+      margin-bottom: 16px;
+    }
+    .references p {
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: #777;
+      margin-bottom: 12px;
+    }
+    .references a { color: var(--warm-brown); text-decoration: none; }
+    .references a:hover { text-decoration: underline; }
+
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      font-size: 0.85rem;
+      color: var(--warm-brown);
+    }
+    .footer .disclaimer {
+      font-size: 0.8rem;
+      color: #999;
+      margin-bottom: 16px;
+    }
+    .footer a { color: var(--warm-brown); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.8rem; }
+      .section-card { padding: 28px 20px; }
+      .compare-table thead th,
+      .compare-table tbody td {
+        padding: 12px 14px;
+        font-size: 0.88rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="https://padopsychology.com/resource" class="back-link">← Back to resources</a>
+
+    <div class="header">
+      <h1>Tracking Mood While on Medication</h1>
+      <div class="subtitle">A research-based guide to noticing what's shifting</div>
+      <div class="tags">
+        <span class="tag">약물치료 · Medication</span>
+      </div>
+    </div>
+
+    <div class="intro">
+      <p>For many people, mood and emotional difficulties are the main reason for starting medication. Yet once you actually begin, noticing changes in your mood can feel surprisingly hard.</p>
+      <p>The symptoms being treated, your natural emotional responses to daily life, and sometimes the side effects of the medication itself can all overlap and look alike.</p>
+      <p>This resource is meant to help you notice the subtle differences and organize observations that will be useful to share with your prescriber and therapist.</p>
+    </div>
+
+    <!-- Section 1: Therapeutic vs side effect -->
+    <div class="section-card">
+      <h2>🔍 Effect or Side Effect?</h2>
+      <p class="sub">Therapeutic Effect vs. Side Effect</p>
+      <p>One of the most important and most confusing parts of mood tracking is telling apart changes that mean the medication is <em>working</em> from changes that are unwanted side effects. Here is a general framework.</p>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Therapeutic Effect ✓</th>
+            <th>Possible Side Effect ⚠</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Emotional lows feel less overwhelming and more manageable</td>
+            <td>Both highs <em>and</em> lows feel flattened or muted</td>
+          </tr>
+          <tr>
+            <td>Irritability decreases; reactions feel more proportionate</td>
+            <td>You feel detached or indifferent to things that used to matter to you</td>
+          </tr>
+          <tr>
+            <td>Motivation and interest gradually return</td>
+            <td>A lack of motivation that feels different from depression. More "blankness" than sadness</td>
+          </tr>
+          <tr>
+            <td>You feel more capable of joy, connection, and meaning</td>
+            <td>It's hard to cry, laugh, or feel moved even when you want to</td>
+          </tr>
+          <tr>
+            <td>Anxiety reduces to a level that allows daily functioning</td>
+            <td>New or worsened anxiety, agitation, or restlessness</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note-box note-blue">
+        <div class="note-label">💡 You don't have to figure this out alone</div>
+        <p>The line between therapeutic effect and side effect can be genuinely unclear. Your tracking data helps you discuss this with your therapist and bring specific observations to your prescriber.</p>
+      </div>
+    </div>
+
+    <!-- Section 2: Emotional Blunting -->
+    <div class="section-card">
+      <h2>🌫 Emotional Blunting</h2>
+      <p class="sub">Common, but rarely talked about</p>
+
+      <p><strong>Emotional blunting</strong> is a narrowing of your emotional range. It's not just sadness that decreases. The capacity to feel joy, excitement, tenderness, and connection can decrease too.</p>
+      <p>Research from the University of Cambridge suggests this happens because SSRIs affect how the brain processes <strong>rewards and reinforcement</strong>, not only negative emotions.</p>
+
+      <div class="note-box note-lavender">
+        <div class="note-label">📊 How common is it?</div>
+        <p>An estimated <strong>40–60%</strong> of people taking SSRIs or SNRIs experience some degree of emotional blunting. It's distinct from depression itself, though the two can overlap and be hard to separate.</p>
+      </div>
+
+      <p style="margin-top: 24px;"><strong>Signs to watch for:</strong></p>
+      <div class="signs-grid">
+        <div class="sign-item">Feeling emotionally "flat" or "numb." Not sad exactly, just nothing</div>
+        <div class="sign-item">Difficulty being moved by music, stories, or relationships</div>
+        <div class="sign-item">Reduced caring about things that used to matter to you</div>
+        <div class="sign-item">A sense of "going through the motions"</div>
+        <div class="sign-item">Less desire for connection or closeness with others</div>
+        <div class="sign-item">Trouble crying even at moments when you'd expect to</div>
+      </div>
+
+      <div class="note-box note-amber" style="margin-top: 28px;">
+        <div class="note-label">🗣 Worth telling your prescriber</div>
+        <p>Emotional blunting can sometimes be addressed through dose adjustment, switching medications, or augmentation, but only if your prescriber knows about it. Even a simple "it's working but I feel kind of numb" is a great start.</p>
+      </div>
+    </div>
+
+    <!-- Section 3: How to track -->
+    <div class="section-card">
+      <h2>📝 What to Notice, How to Track It</h2>
+      <p class="sub">Two Dimensions of Mood: Valence × Arousal</p>
+
+      <p>Affective science describes emotions along two core dimensions: <strong>valence</strong> (how pleasant or unpleasant something feels) and <strong>arousal</strong> (how activated or calm you feel). Tracking both gives a much richer picture than a single mood rating.</p>
+
+      <div class="mm-wrap">
+        <div class="mm-title">Mood Map: Move your cursor</div>
+        <div class="mm-desc">Naming emotions specifically supports self-understanding and emotion regulation, according to research. As you move across the grid, the closest specific emotion appears. When one fits, click to pin it.</div>
+
+        <div class="mm-selected" id="mmSelected">
+          <div class="mm-selected-empty" id="mmEmpty">Hover or tap to find the emotion closest to what you're feeling</div>
+        </div>
+
+        <div class="mm-grid-outer">
+          <div class="mm-axis top">↑ High energy</div>
+          <div class="mm-axis bottom">↓ Low energy</div>
+          <div class="mm-axis left">← Unpleasant</div>
+          <div class="mm-axis right">Pleasant →</div>
+
+          <div class="mm-canvas" id="mmCanvas">
+            <div class="mm-q tl"></div>
+            <div class="mm-q tr"></div>
+            <div class="mm-q bl"></div>
+            <div class="mm-q br"></div>
+
+            <div class="mm-axis-line h"></div>
+            <div class="mm-axis-line v"></div>
+
+            <div class="mm-q-hint" style="top:10px; left:14px;">Tense · Angry</div>
+            <div class="mm-q-hint" style="top:10px; right:14px;">Energetic · Joyful</div>
+            <div class="mm-q-hint" style="bottom:10px; left:14px;">Tired · Sad</div>
+            <div class="mm-q-hint" style="bottom:10px; right:14px;">Calm · Content</div>
+
+            <div class="mm-cursor" id="mmCursor"></div>
+            <div class="mm-floating" id="mmFloating"></div>
+          </div>
+        </div>
+
+        <div class="mm-hint">The skill of putting precise names to emotions is called <em>emotional granularity</em>. It's especially useful when tracking medication effects.</div>
+      </div>
+
+      <p style="margin-top: 16px;">Over time, noticing which area you tend to land in (and which specific words describe that state) gives your therapist and prescriber the most useful information.</p>
+
+      <!-- Daily check-in prompts -->
+      <div class="prompts-section">
+        <p style="font-weight: 600; color: var(--deep-forest); margin-bottom: 6px; font-size: 1rem;">Pick 2–3 prompts a day</p>
+        <p class="prompts-intro">You don't need to answer all of them every day. Picking 2–3 that feel most relevant and using them consistently matters more than completeness.</p>
+
+        <div class="prompt-list">
+          <div class="prompt-card">
+            <div class="prompt-label">OVERALL MOOD</div>
+            <div class="prompt-text">"On a 1–10 scale, how is my mood today?"</div>
+            <div class="prompt-hint">1 = worst · 10 = best</div>
+          </div>
+          <div class="prompt-card">
+            <div class="prompt-label">EMOTIONAL RANGE</div>
+            <div class="prompt-text">"Did I feel a full range of emotions today, or did things feel flat?"</div>
+          </div>
+          <div class="prompt-card">
+            <div class="prompt-label">POSITIVE MOMENT</div>
+            <div class="prompt-text">"Was there a moment of joy, interest, humor, connection, or hope today?"</div>
+          </div>
+          <div class="prompt-card">
+            <div class="prompt-label">DIFFICULT EMOTIONS</div>
+            <div class="prompt-text">"If I felt irritability, anxiety, sadness, or agitation, how intense was it (1–10)?"</div>
+          </div>
+          <div class="prompt-card">
+            <div class="prompt-label">REACTIVITY</div>
+            <div class="prompt-text">"Did my emotional reactions match what was happening, or feel out of proportion?"</div>
+          </div>
+          <div class="prompt-card">
+            <div class="prompt-label">MOTIVATION</div>
+            <div class="prompt-text">"Did I feel motivated to engage with my day, or was it hard to care?"</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PDF download -->
+      <div class="download-box">
+        <h3>📄 Weekly Tracking Sheet (PDF)</h3>
+        <p>A one-page sheet with a week of check-ins, plus space for side effects, notes, and what to bring to your prescriber and therapist. Print it or use it digitally.</p>
+        <a href="mood-tracking-sheet.pdf" download class="download-btn">
+          <span>↓</span> Download tracking sheet
+        </a>
+      </div>
+    </div>
+
+    <!-- Closing -->
+    <div class="closing-quote">
+      <p>Tracking your mood isn't about evaluating it.<br>
+      It's about making a small, shareable map of what's going on inside.</p>
+    </div>
+
+    <!-- References -->
+    <div class="references">
+      <h3>References</h3>
+      <p>Ma, H., Cai, M., & Wang, H. (2021). Emotional blunting in patients with major depressive disorder: A brief non-systematic review of current research. <em>Frontiers in Psychiatry, 12</em>, 792960. <a href="https://doi.org/10.3389/fpsyt.2021.792960" target="_blank" rel="noopener">https://doi.org/10.3389/fpsyt.2021.792960</a></p>
+      <p>Langley, C., Armand, S., Luo, Q., Savulich, G., Segerberg, T., Søndergaard, A., … Sahakian, B. J. (2023). Chronic escitalopram in healthy volunteers has specific effects on reinforcement sensitivity: A double-blind, placebo-controlled semi-randomised study. <em>Neuropsychopharmacology, 48</em>(4), 664–670. <a href="https://doi.org/10.1038/s41386-022-01523-x" target="_blank" rel="noopener">https://doi.org/10.1038/s41386-022-01523-x</a></p>
+      <p>Russell, J. A. (1980). A circumplex model of affect. <em>Journal of Personality and Social Psychology, 39</em>(6), 1161–1178. <a href="https://doi.org/10.1037/h0077714" target="_blank" rel="noopener">https://doi.org/10.1037/h0077714</a></p>
+      <p>Kashdan, T. B., Barrett, L. F., & McKnight, P. E. (2015). Unpacking emotion differentiation: Transforming unpleasant experience by perceiving distinctions in negativity. <em>Current Directions in Psychological Science, 24</em>(1), 10–16. <a href="https://doi.org/10.1177/0963721414550708" target="_blank" rel="noopener">https://doi.org/10.1177/0963721414550708</a></p>
+    </div>
+
+    <div class="footer">
+      <p class="disclaimer">This resource is for psychoeducation only and does not replace professional diagnosis or treatment. Always consult your prescriber for medication-related decisions.</p>
+      <p>Yeji Son, PhD | Counseling Psychologist</p>
+      <p><a href="https://padopsychology.com">padopsychology.com</a> &nbsp;|&nbsp; <a href="https://padopsychology.com/resource">More resources</a></p>
+    </div>
+  </div>
+
+  <script>
+    // Emotion coordinates: x (0=unpleasant, 1=pleasant), y (0=top/high energy, 1=bottom/low energy)
+    const emotions = [
+      // Top-left (high energy, unpleasant) - Tense · Angry
+      { name: 'enraged',     x: 0.06, y: 0.06, q: 'Tense · Angry' },
+      { name: 'panicked',    x: 0.10, y: 0.14, q: 'Tense · Angry' },
+      { name: 'furious',     x: 0.18, y: 0.10, q: 'Tense · Angry' },
+      { name: 'terrified',   x: 0.10, y: 0.26, q: 'Tense · Angry' },
+      { name: 'overwhelmed', x: 0.22, y: 0.18, q: 'Tense · Angry' },
+      { name: 'stressed',    x: 0.30, y: 0.12, q: 'Tense · Angry' },
+      { name: 'frustrated',  x: 0.30, y: 0.26, q: 'Tense · Angry' },
+      { name: 'angry',       x: 0.22, y: 0.34, q: 'Tense · Angry' },
+      { name: 'irritated',   x: 0.32, y: 0.40, q: 'Tense · Angry' },
+      { name: 'anxious',     x: 0.40, y: 0.22, q: 'Tense · Angry' },
+      { name: 'tense',       x: 0.42, y: 0.34, q: 'Tense · Angry' },
+      { name: 'restless',    x: 0.42, y: 0.42, q: 'Tense · Angry' },
+      { name: 'annoyed',     x: 0.36, y: 0.46, q: 'Tense · Angry' },
+      { name: 'flustered',   x: 0.46, y: 0.46, q: 'Tense · Angry' },
+
+      // Top-right (high energy, pleasant) - Energetic · Joyful
+      { name: 'ecstatic',    x: 0.94, y: 0.06, q: 'Energetic · Joyful' },
+      { name: 'elated',      x: 0.88, y: 0.10, q: 'Energetic · Joyful' },
+      { name: 'thrilled',    x: 0.92, y: 0.16, q: 'Energetic · Joyful' },
+      { name: 'excited',     x: 0.84, y: 0.18, q: 'Energetic · Joyful' },
+      { name: 'giddy',       x: 0.78, y: 0.14, q: 'Energetic · Joyful' },
+      { name: 'exhilarated', x: 0.86, y: 0.26, q: 'Energetic · Joyful' },
+      { name: 'eager',       x: 0.74, y: 0.22, q: 'Energetic · Joyful' },
+      { name: 'passionate',  x: 0.66, y: 0.14, q: 'Energetic · Joyful' },
+      { name: 'energetic',   x: 0.66, y: 0.26, q: 'Energetic · Joyful' },
+      { name: 'joyful',      x: 0.74, y: 0.32, q: 'Energetic · Joyful' },
+      { name: 'happy',       x: 0.70, y: 0.40, q: 'Energetic · Joyful' },
+      { name: 'proud',       x: 0.60, y: 0.30, q: 'Energetic · Joyful' },
+      { name: 'confident',   x: 0.56, y: 0.38, q: 'Energetic · Joyful' },
+      { name: 'motivated',   x: 0.56, y: 0.46, q: 'Energetic · Joyful' },
+      { name: 'hopeful',     x: 0.62, y: 0.46, q: 'Energetic · Joyful' },
+
+      // Bottom-left (low energy, unpleasant) - Tired · Sad
+      { name: 'hopeless',    x: 0.08, y: 0.94, q: 'Tired · Sad' },
+      { name: 'numb',        x: 0.06, y: 0.78, q: 'Tired · Sad' },
+      { name: 'empty',       x: 0.18, y: 0.86, q: 'Tired · Sad' },
+      { name: 'drained',     x: 0.14, y: 0.72, q: 'Tired · Sad' },
+      { name: 'depressed',   x: 0.24, y: 0.74, q: 'Tired · Sad' },
+      { name: 'lonesome',    x: 0.32, y: 0.84, q: 'Tired · Sad' },
+      { name: 'sad',         x: 0.30, y: 0.66, q: 'Tired · Sad' },
+      { name: 'lonely',      x: 0.36, y: 0.74, q: 'Tired · Sad' },
+      { name: 'discouraged', x: 0.40, y: 0.66, q: 'Tired · Sad' },
+      { name: 'disappointed',x: 0.44, y: 0.62, q: 'Tired · Sad' },
+      { name: 'bored',       x: 0.46, y: 0.74, q: 'Tired · Sad' },
+      { name: 'weary',       x: 0.40, y: 0.86, q: 'Tired · Sad' },
+      { name: 'spaced out',  x: 0.46, y: 0.82, q: 'Tired · Sad' },
+      { name: 'tired',       x: 0.42, y: 0.54, q: 'Tired · Sad' },
+
+      // Bottom-right (low energy, pleasant) - Calm · Content
+      { name: 'relieved',    x: 0.58, y: 0.54, q: 'Calm · Content' },
+      { name: 'calm',        x: 0.58, y: 0.62, q: 'Calm · Content' },
+      { name: 'peaceful',    x: 0.66, y: 0.56, q: 'Calm · Content' },
+      { name: 'comfortable', x: 0.70, y: 0.66, q: 'Calm · Content' },
+      { name: 'at ease',     x: 0.66, y: 0.74, q: 'Calm · Content' },
+      { name: 'secure',      x: 0.74, y: 0.56, q: 'Calm · Content' },
+      { name: 'satisfied',   x: 0.78, y: 0.62, q: 'Calm · Content' },
+      { name: 'grateful',    x: 0.78, y: 0.54, q: 'Calm · Content' },
+      { name: 'warm',        x: 0.84, y: 0.62, q: 'Calm · Content' },
+      { name: 'fulfilled',   x: 0.88, y: 0.56, q: 'Calm · Content' },
+      { name: 'refreshed',   x: 0.74, y: 0.50, q: 'Calm · Content' },
+      { name: 'serene',      x: 0.86, y: 0.74, q: 'Calm · Content' },
+      { name: 'tranquil',    x: 0.92, y: 0.84, q: 'Calm · Content' },
+      { name: 'mellow',      x: 0.94, y: 0.92, q: 'Calm · Content' },
+    ];
+
+    const canvas = document.getElementById('mmCanvas');
+    const cursor = document.getElementById('mmCursor');
+    const floating = document.getElementById('mmFloating');
+    const selectedDisplay = document.getElementById('mmSelected');
+    let pinned = false;
+
+    function findNearest(x, y) {
+      let min = Infinity, found = null;
+      for (const e of emotions) {
+        const dx = e.x - x, dy = e.y - y;
+        const d = dx*dx + dy*dy;
+        if (d < min) { min = d; found = e; }
+      }
+      return found;
+    }
+
+    function updatePosition(clientX, clientY) {
+      if (pinned) return;
+      const rect = canvas.getBoundingClientRect();
+      const px = (clientX - rect.left) / rect.width;
+      const py = (clientY - rect.top) / rect.height;
+      if (px < 0 || px > 1 || py < 0 || py > 1) return;
+
+      const nearest = findNearest(px, py);
+      cursor.style.left = (px * 100) + '%';
+      cursor.style.top = (py * 100) + '%';
+      cursor.classList.add('active');
+      cursor.classList.remove('pinned');
+
+      floating.textContent = nearest.name;
+      floating.style.left = (px * 100) + '%';
+      floating.style.top = (py * 100) + '%';
+      floating.classList.add('active');
+    }
+
+    function pinSelection(clientX, clientY) {
+      const rect = canvas.getBoundingClientRect();
+      const px = (clientX - rect.left) / rect.width;
+      const py = (clientY - rect.top) / rect.height;
+      if (px < 0 || px > 1 || py < 0 || py > 1) return;
+
+      const nearest = findNearest(px, py);
+      pinned = true;
+      cursor.style.left = (nearest.x * 100) + '%';
+      cursor.style.top = (nearest.y * 100) + '%';
+      cursor.classList.add('active', 'pinned');
+
+      floating.textContent = nearest.name;
+      floating.style.left = (nearest.x * 100) + '%';
+      floating.style.top = (nearest.y * 100) + '%';
+      floating.classList.add('active');
+
+      selectedDisplay.classList.add('has-selection');
+      selectedDisplay.innerHTML =
+        '<div class="mm-selected-emotion">' + nearest.name + '</div>' +
+        '<div class="mm-selected-quadrant">' + nearest.q + ' zone</div>';
+    }
+
+    canvas.addEventListener('mousemove', e => updatePosition(e.clientX, e.clientY));
+    canvas.addEventListener('mouseleave', () => {
+      if (pinned) return;
+      cursor.classList.remove('active');
+      floating.classList.remove('active');
+    });
+    canvas.addEventListener('click', e => {
+      if (pinned) {
+        pinned = false;
+        updatePosition(e.clientX, e.clientY);
+      } else {
+        pinSelection(e.clientX, e.clientY);
+      }
+    });
+
+    canvas.addEventListener('touchstart', e => {
+      e.preventDefault();
+      const t = e.touches[0];
+      if (pinned) pinned = false;
+      updatePosition(t.clientX, t.clientY);
+    });
+    canvas.addEventListener('touchmove', e => {
+      e.preventDefault();
+      const t = e.touches[0];
+      if (pinned) pinned = false;
+      updatePosition(t.clientX, t.clientY);
+    });
+    canvas.addEventListener('touchend', e => {
+      const t = e.changedTouches[0];
+      pinSelection(t.clientX, t.clientY);
+    });
+  </script>
+</body>
+</html>
