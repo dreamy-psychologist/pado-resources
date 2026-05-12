@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Paradox of Sleep | PADO Psychological Wellness</title>
+  <meta name="description" content="Why trying harder to sleep keeps you awake. A psychoeducation resource on sleep, trauma, and the nervous system. By PADO Psychological Wellness.">
+  <meta name="keywords" content="sleep, insomnia, trauma, C-PTSD, nervous system, sympathetic, parasympathetic, sleep paradox, sleep hygiene, hyperarousal, Korean psychologist, Seattle counseling">
+  <meta name="author" content="PADO Psychological Wellness">
+  <link rel="canonical" href="https://padopsychology.com/resource">
+
+  <meta property="og:title" content="The Paradox of Sleep | PADO Psychology">
+  <meta property="og:description" content="Why trying harder to sleep keeps you awake. A psychoeducation resource on sleep, trauma, and the nervous system.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://padopsychology.com/resource">
+  <meta property="og:site_name" content="PADO Psychological Wellness">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The Paradox of Sleep | PADO Psychology">
+  <meta name="twitter:description" content="Why trying harder to sleep keeps you awake.">
+
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #1a1a2e;
+      --cream: #f8f6f1;
+      --warm-white: #fffdf8;
+      --night: #16213e;
+      --night-mid: #1a1a3e;
+      --twilight: #2d2d5e;
+      --moon: #e8dcc8;
+      --moon-glow: #f5eedd;
+      --star: #c9b896;
+      --star-dim: #a89878;
+      --lavender: #9b8ec4;
+      --lavender-soft: #b8aed8;
+      --sage: #7a9e7e;
+      --sage-soft: #a8c4ab;
+      --rose: #c4888a;
+      --rose-soft: #d4a8aa;
+      --amber: #c49a6c;
+      --text-body: #3a3a4a;
+      --text-light: #6a6a7a;
+      --text-on-dark: #e8e0d0;
+      --border-soft: #e0dcd4;
+      --shadow-soft: rgba(26, 26, 46, 0.06);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--cream);
+      color: var(--text-body);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ─── Hero ─── */
+    .hero {
+      background: linear-gradient(170deg, var(--night) 0%, var(--twilight) 50%, #3d3d6e 100%);
+      padding: 80px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(1px 1px at 15% 25%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1.5px 1.5px at 45% 15%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 75% 35%, rgba(255,255,255,0.35), transparent),
+        radial-gradient(1px 1px at 25% 65%, rgba(255,255,255,0.25), transparent),
+        radial-gradient(1.5px 1.5px at 85% 55%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 55% 80%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(1px 1px at 35% 45%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1.5px 1.5px at 65% 70%, rgba(255,255,255,0.25), transparent);
+      animation: twinkle 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes twinkle { 0% { opacity: 0.6; } 100% { opacity: 1; } }
+
+    .hero-moon {
+      width: 60px; height: 60px;
+      margin: 0 auto 28px;
+      position: relative; z-index: 1;
+    }
+
+    .hero-moon svg {
+      width: 100%; height: 100%;
+      filter: drop-shadow(0 0 20px rgba(232, 220, 200, 0.3));
+    }
+
+    .hero h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--moon-glow);
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+      position: relative; z-index: 1;
+    }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--star);
+      letter-spacing: 0.02em;
+      position: relative; z-index: 1;
+    }
+
+    /* ─── Intro ─── */
+    .intro { padding: 48px 0 36px; }
+
+    .intro p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--text-body);
+      margin-bottom: 16px;
+    }
+    .intro p:last-child { margin-bottom: 0; }
+
+    .highlight-line {
+      display: inline;
+      background: linear-gradient(to top, rgba(155, 142, 196, 0.15) 0%, rgba(155, 142, 196, 0.15) 35%, transparent 35%);
+      padding: 0 2px;
+    }
+
+    /* ─── Section Headers ─── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      padding-top: 8px;
+    }
+
+    .section-num {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.85rem; font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    /* ─── Cards ─── */
+    .content-section {
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .content-section:last-of-type { border-bottom: none; }
+
+    .content-card {
+      background: var(--warm-white);
+      border-radius: 16px;
+      padding: 32px 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px var(--shadow-soft);
+      border: 1px solid var(--border-soft);
+    }
+    .content-card:last-child { margin-bottom: 0; }
+
+    .card-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .card-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .card-body {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: var(--text-body);
+    }
+
+    .card-body p { margin-bottom: 14px; }
+    .card-body p:last-child { margin-bottom: 0; }
+
+    /* color themes */
+    .theme-night .section-num { background: var(--night); color: var(--moon-glow); }
+    .theme-night .card-label { background: rgba(22, 33, 62, 0.08); color: var(--night); }
+
+    .theme-lavender .section-num { background: var(--lavender); color: white; }
+    .theme-lavender .card-label { background: rgba(155, 142, 196, 0.12); color: var(--lavender); }
+
+    .theme-rose .section-num { background: var(--rose); color: white; }
+    .theme-rose .card-label { background: rgba(196, 136, 138, 0.12); color: var(--rose); }
+
+    .theme-sage .section-num { background: var(--sage); color: white; }
+    .theme-sage .card-label { background: rgba(122, 158, 126, 0.12); color: var(--sage); }
+
+    .theme-amber .section-num { background: var(--amber); color: white; }
+    .theme-amber .card-label { background: rgba(196, 154, 108, 0.12); color: var(--amber); }
+
+    /* ─── NS Diagram ─── */
+    .ns-diagram {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .ns-box {
+      padding: 24px 20px;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .ns-box.sympathetic {
+      background: linear-gradient(145deg, #2d2245, #3d3265);
+      color: var(--moon-glow);
+    }
+
+    .ns-box.parasympathetic {
+      background: linear-gradient(145deg, #2a4038, #3a5548);
+      color: var(--moon-glow);
+    }
+
+    .ns-icon { font-size: 1.6rem; margin-bottom: 10px; }
+
+    .ns-label {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.82rem; font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .ns-sub {
+      font-size: 0.78rem; font-weight: 300; opacity: 0.85;
+    }
+
+    .ns-items {
+      margin-top: 12px;
+      font-size: 0.78rem; line-height: 1.8; opacity: 0.9;
+    }
+
+    /* ─── Cycle ─── */
+    .cycle-wrapper {
+      background: linear-gradient(145deg, var(--night), var(--twilight));
+      border-radius: 16px;
+      padding: 32px 24px;
+      margin: 24px 0;
+      text-align: center;
+    }
+
+    .cycle-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.9rem; font-weight: 400;
+      color: var(--moon-glow);
+      margin-bottom: 24px;
+    }
+
+    .cycle-steps {
+      display: flex; flex-direction: column;
+      gap: 6px; align-items: center;
+    }
+
+    .cycle-step {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 14px 20px;
+      width: 100%; max-width: 400px;
+      color: var(--text-on-dark);
+      font-size: 0.85rem; line-height: 1.5;
+    }
+
+    .cycle-arrow { color: var(--star-dim); font-size: 0.9rem; opacity: 0.6; }
+
+    .cycle-loop {
+      margin-top: 12px;
+      font-size: 0.78rem;
+      color: var(--star-dim);
+      font-style: italic;
+    }
+
+    /* ─── Reframe ─── */
+    .reframe-box {
+      background: linear-gradient(135deg, rgba(155, 142, 196, 0.08), rgba(122, 158, 126, 0.08));
+      border-radius: 16px;
+      padding: 28px 24px;
+      margin: 24px 0;
+      border-left: 3px solid var(--lavender-soft);
+    }
+
+    .reframe-label {
+      font-size: 0.72rem; font-weight: 600;
+      color: var(--lavender);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .reframe-before {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      text-decoration: line-through;
+      margin-bottom: 6px;
+    }
+
+    .reframe-after {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.98rem; font-weight: 400;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    /* ─── List ─── */
+    .gentle-list {
+      list-style: none; padding: 0; margin: 20px 0;
+    }
+
+    .gentle-list li {
+      padding: 12px 0 12px 28px;
+      position: relative;
+      font-size: 0.93rem; line-height: 1.8;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+    .gentle-list li:last-child { border-bottom: none; }
+
+    .gentle-list li::before {
+      content: '';
+      position: absolute;
+      left: 8px; top: 20px;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--lavender-soft);
+    }
+
+    /* ─── Quote ─── */
+    .insight-quote {
+      padding: 24px 28px;
+      margin: 24px 0;
+      background: var(--warm-white);
+      border-radius: 14px;
+      border-left: 3px solid var(--star);
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.95rem; font-weight: 400;
+      color: var(--ink);
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    /* ─── References ─── */
+    .references { padding: 40px 0 20px; }
+
+    .ref-toggle {
+      background: none;
+      border: 1px solid var(--border-soft);
+      border-radius: 10px;
+      padding: 14px 20px;
+      width: 100%; text-align: left;
+      cursor: pointer;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.82rem; font-weight: 500;
+      color: var(--text-light);
+      display: flex; justify-content: space-between; align-items: center;
+      transition: background 0.2s;
+    }
+    .ref-toggle:hover { background: rgba(0,0,0,0.02); }
+    .ref-toggle-arrow { transition: transform 0.3s; font-size: 0.7rem; }
+    .ref-toggle.open .ref-toggle-arrow { transform: rotate(180deg); }
+
+    .ref-list { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .ref-list.open { max-height: 800px; }
+
+    .ref-list ul { list-style: none; padding: 16px 0 0 0; }
+
+    .ref-list ul li {
+      font-size: 0.78rem; line-height: 1.7;
+      color: var(--text-light);
+      margin-bottom: 10px;
+      padding-left: 16px; text-indent: -16px;
+    }
+
+    /* ─── Footer ─── */
+    .footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border-soft);
+    }
+
+    .footer-logo {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.9rem; font-weight: 700;
+      color: var(--ink); margin-bottom: 4px;
+    }
+
+    .footer-name { font-size: 0.82rem; color: var(--text-light); margin-bottom: 4px; }
+    .footer-copy { font-size: 0.75rem; color: var(--text-light); opacity: 0.7; }
+
+    .footer-disclaimer {
+      font-size: 0.72rem; color: var(--text-light); opacity: 0.6;
+      margin-top: 16px; line-height: 1.6;
+      max-width: 500px; margin-left: auto; margin-right: auto;
+    }
+
+    /* ─── Back Link ─── */
+    .back-link {
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      font-size: 0.82rem;
+      color: var(--star);
+      text-decoration: none;
+      z-index: 2;
+      transition: opacity 0.2s;
+    }
+
+    .back-link:hover {
+      opacity: 0.7;
+    }
+
+    /* ─── Tags ─── */
+    .hero-tags {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--star);
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 60px 20px 48px; }
+      .hero h1 { font-size: 1.6rem; }
+      .container { padding: 0 18px; }
+      .content-card { padding: 24px 20px; }
+      .ns-diagram { grid-template-columns: 1fr; gap: 12px; }
+      .cycle-step { padding: 12px 16px; font-size: 0.82rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Hero -->
+  <header class="hero">
+    <a href="https://padopsychology.com/resource" class="back-link">← Back to Resources</a>
+    <div class="hero-moon">
+      <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="moonGrad" cx="40%" cy="40%">
+            <stop offset="0%" stop-color="#f5eedd"/>
+            <stop offset="100%" stop-color="#e0d4be"/>
+          </radialGradient>
+        </defs>
+        <circle cx="30" cy="30" r="22" fill="url(#moonGrad)" opacity="0.9"/>
+        <circle cx="38" cy="30" r="18" fill="#2d2d5e" opacity="0.85"/>
+      </svg>
+    </div>
+    <h1>The Paradox of Sleep</h1>
+    <p class="hero-sub">잠의 역설</p>
+    <div class="hero-tags">
+      <span class="hero-tag">수면 · Sleep</span>
+      <span class="hero-tag">조절 · Regulation</span>
+      <span class="hero-tag">트라우마 · Trauma</span>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- Intro -->
+    <section class="intro">
+      <p>
+        On nights when you can't sleep, the thoughts usually go something like this:
+        "I need to fall asleep." "Why can't I sleep again?" "What's wrong with me?"
+      </p>
+      <p>
+        And since sleep won't come, you reach for your phone. The phone keeps you up longer.
+        Eventually it's 3 a.m., and now you're awake <em>and</em> filled with regret about the scrolling.
+        <span class="highlight-line">The more this cycle repeats, the more "sleep" becomes a stage for failure.</span>
+      </p>
+      <p>
+        But here's the thing most people don't realize:
+        <strong>Sleep is not a goal you achieve through effort.</strong>
+        It's perhaps the only task in life that gets further away the harder you try.
+      </p>
+    </section>
+
+    <!-- Section 1 -->
+    <section class="content-section theme-night">
+      <div class="section-header">
+        <div class="section-num">1</div>
+        <h2 class="section-title">For Trauma Survivors, Nighttime Is Different</h2>
+      </div>
+
+      <div class="content-card">
+        <span class="card-label">Why Night Is Especially Hard</span>
+        <div class="card-body">
+          <p>
+            During the day, external stimulation — work, people, noise, movement — keeps your nervous system distributed outward. But when night falls and those stimuli disappear, <strong>your nervous system turns inward.</strong>
+          </p>
+          <p>
+            For someone who has experienced trauma, this transition isn't simply "quiet time."
+            Hypervigilance ramps up. Intrusive thoughts flood in.
+            The body starts sending signals that it isn't safe.
+          </p>
+          <p>
+            An estimated 70–90% of people with PTSD report sleep disturbances.
+            This is not a willpower problem.
+            <strong>It's a nervous system that can't stand down from guard duty.</strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <span class="card-label">Falling Asleep Means Letting Go of Control</span>
+        <div class="card-body">
+          <p>
+            Falling asleep is, fundamentally, <strong>an act of releasing conscious control.</strong>
+            You stop monitoring your environment. You leave your body in a defenseless state.
+          </p>
+          <p>
+            For someone who grew up in a safe environment, this process happens naturally.
+            But for someone who grew up in an unsafe one,
+            letting go of control feels instinctively dangerous.
+            <strong>It may not be that you "can't" sleep — it may be that sleeping feels unsafe.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="content-section theme-lavender">
+      <div class="section-header">
+        <div class="section-num">2</div>
+        <h2 class="section-title">The Paradox: The Harder You Try, the Further It Goes</h2>
+      </div>
+
+      <div class="content-card">
+        <span class="card-label">The Only Reverse-Effort Task</span>
+        <div class="card-body">
+          <p>
+            In almost every area of life, trying harder gets better results.
+            Studying, working out, cooking, building skills — effort generally equals outcome.
+          </p>
+          <p>
+            <strong>Sleep is the exact opposite.</strong>
+          </p>
+          <p>
+            The moment you think "I need to fall asleep," the prefrontal cortex — your problem-solving region — activates. This is precisely the region that needs to <em>deactivate</em> for sleep to happen.
+            Treating sleep as a task to complete triggers the sympathetic nervous system (Fight or Flight), pushing you into a state of heightened alertness.
+          </p>
+        </div>
+      </div>
+
+      <div class="ns-diagram">
+        <div class="ns-box sympathetic">
+          <div class="ns-icon">⚡</div>
+          <div class="ns-label">Sympathetic</div>
+          <div class="ns-sub">Fight or Flight</div>
+          <div class="ns-items">
+            Heart rate increases<br>
+            Muscles tense<br>
+            Cortisol released<br>
+            Hyperarousal state
+          </div>
+        </div>
+        <div class="ns-box parasympathetic">
+          <div class="ns-icon">🌿</div>
+          <div class="ns-label">Parasympathetic</div>
+          <div class="ns-sub">Rest and Digest</div>
+          <div class="ns-items">
+            Heart rate slows<br>
+            Muscles relax<br>
+            Digestion activates<br>
+            Sleep onset begins
+          </div>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <span class="card-label">Don't Chase Sleep — Welcome It</span>
+        <div class="card-body">
+          <p>
+            Sleep isn't something you "chase down and catch." It's something you <strong>make space for and welcome.</strong>
+            The shift from sympathetic to parasympathetic doesn't happen through willpower — it happens when you <strong>create the conditions for safety</strong> and let the transition occur naturally.
+          </p>
+          <p>
+            This is the paradox of sleep:
+            <strong>Stopping the effort is the most effective effort you can make.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="content-section theme-rose">
+      <div class="section-header">
+        <div class="section-num">3</div>
+        <h2 class="section-title">The Phone-Guilt Cycle</h2>
+      </div>
+
+      <div class="cycle-wrapper">
+        <div class="cycle-title">A pattern that repeats every night</div>
+        <div class="cycle-steps">
+          <div class="cycle-step">😰 Can't fall asleep → anxiety, restlessness</div>
+          <div class="cycle-arrow">↓</div>
+          <div class="cycle-step">📱 Reach for phone (seeking stimulation / avoiding feelings)</div>
+          <div class="cycle-arrow">↓</div>
+          <div class="cycle-step">⏰ Time slips away</div>
+          <div class="cycle-arrow">↓</div>
+          <div class="cycle-step">😞 Regret and self-blame ("I did it again")</div>
+          <div class="cycle-arrow">↓</div>
+          <div class="cycle-step">💤 Sleep = "another thing I failed at" → sleep anxiety ↑</div>
+          <div class="cycle-arrow">↓</div>
+          <div class="cycle-step">🔄 Next night: stronger anxiety, cycle repeats</div>
+        </div>
+        <p class="cycle-loop">The core of this cycle isn't the phone — it's the desire to escape the uncomfortable feelings that arrive at night.</p>
+      </div>
+
+      <div class="content-card">
+        <span class="card-label">The Phone Is Coping, Not the Cause</span>
+        <div class="card-body">
+          <p>
+            Most sleep hygiene guides say "put your phone away before bed."
+            And yes — blue light and stimulating content do interfere with sleep.
+          </p>
+          <p>
+            But for trauma survivors, the phone isn't just a "bad habit."
+            It can be a <strong>coping strategy</strong> — a way to protect yourself from the intrusive thoughts, hyperarousal, and anxiety that flood in when the lights go out.
+          </p>
+          <p>
+            That's why "just don't use your phone" isn't enough.
+            You need to think about <strong>what will fill the space</strong> when you put the phone down.
+          </p>
+        </div>
+      </div>
+
+      <div class="reframe-box">
+        <div class="reframe-label">Reframe</div>
+        <p class="reframe-before">"I was on my phone again. What's wrong with me?"</p>
+        <p class="reframe-after">→ "The night felt uncomfortable, so I reached for stimulation. My nervous system was looking for a sense of safety."</p>
+      </div>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="content-section theme-sage">
+      <div class="section-header">
+        <div class="section-num">4</div>
+        <h2 class="section-title">The "Novice Sleeper" Perspective</h2>
+      </div>
+
+      <div class="content-card">
+        <span class="card-label">From Shame to Learning Curve</span>
+        <div class="card-body">
+          <p>
+            People who struggle with sleep often feel this way about themselves:
+            "I can't even do something as basic as sleeping."
+            "Everyone else sleeps fine."
+            "Something is broken in me."
+          </p>
+          <p>
+            But if you <strong>didn't grow up in a safe sleeping environment,</strong>
+            you may never have had the chance to learn how to sleep well.
+            You had to stay alert every night. You fell asleep in a state of tension.
+            Deep sleep may not have been safe.
+          </p>
+          <p>
+            You are not broken.
+            <strong>You are a novice sleeper.</strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="insight-quote">
+        A beginner pianist doesn't feel ashamed for not being able to play Chopin.
+        Sleep is the same way.
+        "How to sleep well" is something that requires learning, practice, and gathering data.
+      </div>
+
+      <div class="content-card">
+        <span class="card-label">The Novice Sleeper's Approach</span>
+        <div class="card-body">
+          <ul class="gentle-list">
+            <li>Observe people around you who sleep well. What do they do before bed? What's their environment like? This isn't comparison — it's <strong>data collection.</strong></li>
+            <li>If tonight was a bad night, it's not a failure — it's <strong>one data point you can learn from.</strong></li>
+            <li>Instead of "I have to try this tonight," try: "Let me <strong>see what happens</strong> if I try this tonight."</li>
+            <li>Progress can be slow, and that's okay. For a novice, <strong>every small discovery is an achievement.</strong></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5 -->
+    <section class="content-section theme-amber">
+      <div class="section-header">
+        <div class="section-num">5</div>
+        <h2 class="section-title">Practicing "Welcoming" Sleep</h2>
+      </div>
+
+      <div class="content-card">
+        <span class="card-label">Sending Safety Signals to Your Nervous System</span>
+        <div class="card-body">
+          <p>
+            To shift sleep from "something you have to do" to "something that arrives,"
+            you need environments and routines that send <strong>safety signals</strong> to your nervous system.
+          </p>
+          <ul class="gentle-list">
+            <li><strong>Build a predictable routine.</strong> A trauma-shaped nervous system is sensitive to unpredictability. Going to bed in a similar sequence each night signals: "What comes next is safe."</li>
+            <li><strong>Create a "before bed" buffer zone.</strong> Reduce the pressure of "lying down = must sleep immediately." Spend time outside of bed engaging the parasympathetic system first — a warm drink, gentle stretching, quiet music.</li>
+            <li><strong>Plan ahead for sleepless moments.</strong> The anxiety of "what if I can't sleep?" itself raises arousal. Having a pre-decided plan — "if I'm not asleep in 15 minutes, I'll get up and do ___" — reduces the uncertainty.</li>
+            <li><strong>Replace phone stimulation with sensory alternatives.</strong> Instead of the visual and cognitive stimulation of a phone, explore senses that activate the parasympathetic system: touch (soft blankets, warm objects), sound (white noise, nature sounds), smell (lavender, a familiar scent).</li>
+            <li><strong>Replace self-criticism with observation.</strong> "I couldn't sleep again" → "Tonight was like this. I wonder what tomorrow night will be like." This shift seems small, but it's a crucial first step in breaking the sleep anxiety cycle.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reframe-box">
+        <div class="reframe-label">Remember</div>
+        <p class="reframe-after">
+          Struggling with sleep doesn't mean you're deficient or broken.<br>
+          It means your nervous system spent a long time protecting you in "guard mode."<br>
+          Now, it's a process of gently letting that nervous system know: "It's safe here."
+        </p>
+      </div>
+    </section>
+
+    <!-- References -->
+    <section class="references">
+      <button class="ref-toggle" onclick="toggleRefs(this)" aria-expanded="false">
+        <span>References</span>
+        <span class="ref-toggle-arrow">▼</span>
+      </button>
+      <div class="ref-list" id="refList">
+        <ul>
+          <li>Broomfield, N. M., & Espie, C. A. (2005). Towards a valid, reliable measure of sleep effort. <em>Journal of Sleep Research, 14</em>(4), 401–407.</li>
+          <li>Espie, C. A. (2002). Insomnia: Conceptual issues in the development, persistence, and treatment of sleep disorder in adults. <em>Annual Review of Psychology, 53</em>(1), 215–243.</li>
+          <li>Germain, A. (2013). Sleep disturbances as the hallmark of PTSD: Where are we now? <em>American Journal of Psychiatry, 170</em>(4), 372–382.</li>
+          <li>Kroese, F. M., De Ridder, D. T. D., Evers, C., & Adriaanse, M. A. (2014). Bedtime procrastination: Introducing a new area of procrastination. <em>Frontiers in Psychology, 5</em>, 611.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer-logo">PADO Psychological Wellness</p>
+      <p class="footer-name">Dr. Yeji Son</p>
+      <p class="footer-copy">© 2026 All rights reserved</p>
+      <p class="footer-disclaimer">
+        This resource is designed for psychoeducation purposes and
+        does not replace professional mental health services.
+      </p>
+    </footer>
+
+  </div>
+
+  <script>
+    function toggleRefs(btn) {
+      const list = document.getElementById('refList');
+      const isOpen = list.classList.contains('open');
+      list.classList.toggle('open');
+      btn.classList.toggle('open');
+      btn.setAttribute('aria-expanded', !isOpen);
+    }
+  </script>
+
+</body>
+</html>
